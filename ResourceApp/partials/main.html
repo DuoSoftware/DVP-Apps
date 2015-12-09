@@ -1,0 +1,49 @@
+<!--START OF HEADER CONTAINER-->
+ <div class="header_container">
+
+   <md-whiteframe class="md-whiteframe-z1" layout="row" layout-align="start start" style="background-color: #FFFFFF;max-width: 960px;height:40px;">
+        
+        
+		<md-autocomplete flex
+			ng-keypress="enter($event)"
+			md-selected-item="actionSelectedItem"
+			md-search-text="actionSearchText"
+			md-selected-item-change="selectedActionItemChange(item)"
+			md-items="item in actionQuerySearchView(actionSearchText)"
+			md-min-length="0"
+			placeholder="Action Search">
+			<md-item-template>
+			<span md-highlight-text="actionSearchText" md-highlight-flags="^i">{{item.ProductCode}}</span>
+			</md-item-template>
+				 
+		</md-autocomplete>
+
+</div>
+<!--END OF HEADER CONTAINER-->
+
+<!--START OF SECOND CARD CONTAINER-->
+<div class="card_container">
+
+
+	<div class="span12 ui-view-container">
+	   <div class="container" ui-view  viewcss></div>        
+	 </div>
+   
+  
+</div>
+<!--START OF SECOND CARD CONTAINER-->
+	
+
+<div  class="lock-size" layout="row">
+	<md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
+	ng-class="demo.selectedMode" style="position:fixed;bottom:20px;right:20px;">
+		<md-fab-trigger>
+			<md-button aria-label="menu" class="md-fab " style="background-color:#db4437;" ng-click="addInvoice($event)">
+				<md-icon md-svg-src="img/ic_add_24px.svg" style="width:30px;" ></md-icon>
+				<md-tooltip md-direction="left">Add</md-tooltip>
+			</md-button>
+		</md-fab-trigger>
+	<md-fab-actions>
+        </md-fab-actions>
+    </md-fab-speed-dial>
+</div> 
