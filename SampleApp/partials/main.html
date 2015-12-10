@@ -1,9 +1,9 @@
 <!--START OF HEADER CONTAINER-->
  <div class="header_container">
 
-   <md-whiteframe class="md-whiteframe-z1" layout="row" layout-align="start start" style="background-color: #FFFFFF;max-width: 960px;height:40px;">
-        
-        
+   <md-whiteframe class="md-whiteframe-z1" layout="row" layout-align="start start" style="background-color: #FFFFFF;max-width: 960px;height:40px;"></md-whiteframe>
+
+
 		<md-autocomplete flex
 			ng-keypress="enter($event)"
 			md-selected-item="actionSelectedItem"
@@ -15,7 +15,7 @@
 			<md-item-template>
 			<span md-highlight-text="actionSearchText" md-highlight-flags="^i">{{item.ProductCode}}</span>
 			</md-item-template>
-				 
+
 		</md-autocomplete>
 
 </div>
@@ -26,13 +26,13 @@
 
 
 	<div class="span12 ui-view-container">
-	   <div class="container" ui-view  viewcss></div>        
+	   <div class="container" ui-view  viewcss></div>
 	 </div>
-   
-  
+
+
 </div>
 <!--START OF SECOND CARD CONTAINER-->
-	
+
 
 <div  class="lock-size" layout="row">
 	<md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
@@ -46,4 +46,4 @@
 	<md-fab-actions>
         </md-fab-actions>
     </md-fab-speed-dial>
-</div> 
+</div>
