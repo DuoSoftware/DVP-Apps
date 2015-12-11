@@ -24,6 +24,7 @@ resourceModule.factory("resource", function($http){
     });
   }
 
+
   var getResource = function(id){
 
 
@@ -85,7 +86,6 @@ resourceModule.factory("resource", function($http){
   }
 
 
-
   var createResource = function(resource){
 
 
@@ -104,6 +104,72 @@ resourceModule.factory("resource", function($http){
   }
 
 
+  //att.Concurrency,att.RefInfo,att.OtherData
+
+  var assignTaskToResource= function(resourceId, TaskId, taskInfo){
+
+
+    if(resource && resource.ResourceId)
+      return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks/" + TaskId, taskInfo).then(function(response) {
+        if(response.data && response.data.IsSuccess) {
+
+          return response.data.Result;
+
+
+        }else{
+
+          return {};
+        }
+
+      });
+
+
+  };
+
+  ///DVP/API/' + version + '/ResourceManager/Resource/Task/:TaskId
+
+  var deleteTaskToResource= function(TaskId, taskInfo){
+
+
+
+      return $http.delete("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/Task/" + TaskId).then(function(response) {
+        if(response.data && response.data.IsSuccess) {
+
+          return response.data.Result;
+
+
+        }else{
+
+          return {};
+        }
+
+      });
+
+
+  };
+
+
+  var getTasksAssignedToResource= function(resourceId){
+
+
+      return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks").then(function(response) {
+        if(response.data && response.data.IsSuccess) {
+
+          return response.data.Result;
+
+
+        }else{
+
+          return {};
+        }
+
+      });
+
+
+  };
+
+
+
   return{
 
     GetResources : getResources,
@@ -111,6 +177,9 @@ resourceModule.factory("resource", function($http){
     UpdateResource: updateResource,
     CreateResource: createResource,
     DeleteResource: deleteResource,
+    AssignTaskToResource: assignTaskToResource,
+    GetTasksAssignedToResource: getTasksAssignedToResource,
+    DeleteTaskToResource: deleteTaskToResource,
     User: {}
 
   }

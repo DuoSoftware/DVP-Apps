@@ -6,7 +6,7 @@ app.controller("ResourceListController",function($scope, $location,resource){
 
   $scope.loadResources = function() {
 
-    resource.user = {};
+   // resource.user = {};
     resource.GetResources().then(function (response) {
       $scope.resources = response;
     }, function (error) {
@@ -20,7 +20,7 @@ app.controller("ResourceListController",function($scope, $location,resource){
 
     resource.DeleteResource(resourceObj.ResourceId).then(function (response) {
       //$scope.resources = response;
-      $location.path('/resources/list');
+      $scope.loadResources();
 
     }, function (error) {
       alert(error);
@@ -37,7 +37,7 @@ app.controller("ResourceCreateController",function($scope,$location,resource){
 
 
 
-  $scope.resource = resource.user;
+  $scope.resource = {};
 
   $scope.createResource = function() {
     resource.CreateResource($scope.resource).then(function (response) {
@@ -87,5 +87,55 @@ app.controller("ResourceViewController",function($scope,$routeParams,resource){
 
   $scope.loadResource();
 
+
+});
+
+
+app.controller("ResourceTaskListController",function($scope,$routeParams,$location,resource){
+
+
+
+  $scope.Delete = function(resourceTask){
+
+    alert(resourceTask.ResTask.ResTaskInfo.TaskName);
+
+
+
+    resource.DeleteTaskToResource(resourceTask.ResTask.TaskId).then(function (response) {
+
+      $location.path('/resource/'+resource.User.ResourceId+'/tasklist');
+
+    }, function (error) {
+      alert(error);
+    });
+
+  };
+
+
+  $scope.Configure = function(resourceTask){
+
+    alert(resourceTask.ResTask.ResTaskInfo.TaskName);
+
+  };
+
+
+  $scope.loadResourceTasks = function() {
+    resource.GetTasksAssignedToResource($routeParams.id).then(function (response) {
+      $scope.resourceTasks = response;
+      $scope.resource = resource.User;
+    }, function (error) {
+      alert(error);
+    });
+  };
+
+
+  $scope.loadResourceTasks();
+
+
+});
+
+
+
+app.controller("ResourceTaskListAttributeController",function($scope){
 
 });

@@ -1,5 +1,5 @@
 
-var app = angular.module("ResourceApp",["ngRoute", "resourceService"]);
+var app = angular.module("ResourceApp",["ngRoute", "resourceService", "taskService"]);
 
 app.config(function($routeProvider){
 
@@ -31,7 +31,27 @@ app.config(function($routeProvider){
 
 
 
-    }).otherwise({
+    }).when("/resource/:id/tasklist",{
+
+    templateUrl: 'partials/resourceTaskList.html',
+    controller: 'ResourceTaskListController'
+
+
+  }).when("/resource/:resId/task/:taskId",{
+
+
+    templateUrl: 'partials/resourceTaskAttributeList.html',
+    controller: 'ResourceTaskListAttributeController'
+
+
+  }).when("/resource/:resId/newtask",{
+
+
+    templateUrl: 'partials/resourceTaskAttributeList.html',
+    controller: 'ResourceTaskListAttributeController'
+
+
+  }).otherwise({
 
 
     templateUrl: 'partials/resourceList.html',

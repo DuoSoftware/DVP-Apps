@@ -1,0 +1,27 @@
+<a ui-sref="newResource" class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/newtask">Add New Tasks</a>
+
+  <h3>{{resource.ResourceName}} Tasks</h3>
+    <task  ng-repeat="resourceTask in resourceTasks" resourceTask="resourceTask"></task>
+
+
+
+
+  <!--
+<table class="table resourceTskTable">
+
+  <tr>
+    <td><h3>Resource {{resource.ResourceName}} Tasks</h3></td>
+    <td></td>
+  </tr>
+
+  <tr ng-repeat="resourceTask in resourceTasks">
+
+    <td> {{resourceTask.ResTask.ResTaskInfo.TaskName}}</td>
+    <td>
+      <a class="btn" href="#/resource/{{resource.ResourceId}}/task/{{resourceTask.TaskId}}">Configure</a>
+      <a class="btn"  ng-click="removeTask(resource,resourceTask)">Delete</a>
+    </td>
+  </tr>
+</table>
+
+-->
