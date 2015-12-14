@@ -1,7 +1,17 @@
-<a ui-sref="newResource" class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/newtask">Add New Tasks</a>
+<h2>Add New Tasks</h2>
+
+<a class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/view">Back</a>
+
+  <div class="panel">
+    <select name="taskSelect" ng-model="masterTask">
+      <option ng-repeat="item in masterTasks" value="{{item}}">{{item.ResTaskInfo.TaskName}}</option></select>
+    <div class="button" ng-click="AssignTask(masterTask)">Add</div>
+  </div>
 
   <h3>{{resource.ResourceName}} Tasks</h3>
     <task  ng-repeat="resourceTask in resourceTasks" resourceTask="resourceTask"></task>
+
+
 
 
 

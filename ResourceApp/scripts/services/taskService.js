@@ -11,7 +11,7 @@ taskModule.factory("task", function($http){
 
   var getTasks = function(){
 
-    return $http.get("http://127.0.0.1:8831/DVP/API/6.0//ResourceManager/Task").then(function(response){
+    return $http.get("http://127.0.0.1:8831/DVP/API/6.0//ResourceManager/Tasks").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {

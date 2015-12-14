@@ -1,7 +1,11 @@
 var app = angular.module("ResourceApp");
 
 
-app.controller("ResourceListController",function($scope, $location,resource){
+app.controller("ResourceListController",function($scope, $location,resource,task){
+
+
+
+
 
 
   $scope.loadResources = function() {
@@ -29,7 +33,10 @@ app.controller("ResourceListController",function($scope, $location,resource){
 
   };
 
+
+
   $scope.loadResources();
+
 
 });
 
@@ -75,6 +82,8 @@ app.controller("ResourceEditController",function($scope,$routeParams,$location,r
 app.controller("ResourceViewController",function($scope,$routeParams,resource){
 
 
+
+
   $scope.loadResource = function() {
     resource.GetResource($routeParams.id).then(function (response) {
       $scope.resource = response;
@@ -91,10 +100,11 @@ app.controller("ResourceViewController",function($scope,$routeParams,resource){
 });
 
 
-app.controller("ResourceTaskListController",function($scope,$routeParams,$location,resource){
+app.controller("ResourceTaskListController",function($scope,$routeParams,$location,$route,resource, task){
 
 
 
+  $scope.resource = resource.User;
   $scope.Delete = function(resourceTask){
 
     alert(resourceTask.ResTask.ResTaskInfo.TaskName);
@@ -103,13 +113,32 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
 
     resource.DeleteTaskToResource(resourceTask.ResTask.TaskId).then(function (response) {
 
-      $location.path('/resource/'+resource.User.ResourceId+'/tasklist');
+      $route.reload();
+      //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
 
     }, function (error) {
       alert(error);
     });
 
   };
+
+
+
+
+  $scope.UpdateTask= function(resourceTask){
+
+    resource.UpdateTasksAssignedToResource(resourceTask).then(function (response) {
+
+      //$route.reload();
+      //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
+
+    }, function (error) {
+      alert(error);
+    });
+
+  };
+
+
 
 
   $scope.Configure = function(resourceTask){
@@ -122,15 +151,57 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
   $scope.loadResourceTasks = function() {
     resource.GetTasksAssignedToResource($routeParams.id).then(function (response) {
       $scope.resourceTasks = response;
-      $scope.resource = resource.User;
+
     }, function (error) {
       alert(error);
     });
   };
 
 
+
+
   $scope.loadResourceTasks();
 
+
+
+  $scope.loadMasterTasks= function() {
+
+    // resource.user = {};
+    task.GetTasks().then(function (response) {
+      $scope.masterTasks = response;
+    }, function (error) {
+      alert(error);
+    });
+
+  };
+
+  $scope.loadMasterTasks();
+
+
+  $scope.AssignTask = function(mastertask){
+
+    mastertask = JSON.parse(mastertask);
+    ////att.Concurrency,att.RefInfo,att.OtherData
+
+
+    var concurrencyObj = {};
+    concurrencyObj.Concurrency = $scope.concurrency;
+    concurrencyObj.RefInfo = "";
+    concurrencyObj.OtherData = $scope.otherData;
+    // resource.user = {};
+    resource.AssignTaskToResource($routeParams.id,mastertask.TaskId,concurrencyObj).then(function (response) {
+      //$scope.masterTasks = response;
+
+      $route.reload();
+      //$scope.$apply();
+      //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
+
+    }, function (error) {
+      alert(error);
+    });
+
+
+  }
 
 });
 

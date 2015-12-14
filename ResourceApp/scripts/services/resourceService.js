@@ -109,8 +109,9 @@ resourceModule.factory("resource", function($http){
   var assignTaskToResource= function(resourceId, TaskId, taskInfo){
 
 
-    if(resource && resource.ResourceId)
-      return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks/" + TaskId, taskInfo).then(function(response) {
+
+
+      return $http.put("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks/" + TaskId, taskInfo).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -170,6 +171,29 @@ resourceModule.factory("resource", function($http){
 
 
 
+
+  var updateTasksAssignedToResource= function(resourceTask){
+
+
+    return $http.put("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Task/"+resourceTask.TaskId,resourceTask).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+    });
+
+
+  };
+
+
+
+
   return{
 
     GetResources : getResources,
@@ -180,6 +204,7 @@ resourceModule.factory("resource", function($http){
     AssignTaskToResource: assignTaskToResource,
     GetTasksAssignedToResource: getTasksAssignedToResource,
     DeleteTaskToResource: deleteTaskToResource,
+    UpdateTasksAssignedToResource: updateTasksAssignedToResource,
     User: {}
 
   }

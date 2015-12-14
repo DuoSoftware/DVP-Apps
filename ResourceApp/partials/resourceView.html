@@ -1,4 +1,4 @@
-<table class="table resourcetable">
+<!--<table class="table resourcetable">
   <tr>
     <td><h3>Details for {{resource.ResourceName}}</h3></td>
     <td></td>
@@ -19,9 +19,20 @@
     <td>Resource otherdata</td>
     <td>{{resource.OtherData}}</td>
   </tr>
-</table>
+</table> -->
+
+<div><h3>Details for {{resource.ResourceName}}</h3></div>
+  <div class="panel">
+
+    <div>Resource class : {{resource.ResClass}}</div>
+    <div>Resource type : {{resource.ResType}}</div>
+    <div>Resource category : {{resource.ResCategory}}</div>
+    <div>Resource otherdata : {{resource.OtherData}}</div>
+  </div>
+
 <div>
   <a class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/tasklist">Configure</a>
   <a class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/edit">Edit</a>
   <a class="btn btn-primary" href="#/resources/list">Back</a>
 </div>
+

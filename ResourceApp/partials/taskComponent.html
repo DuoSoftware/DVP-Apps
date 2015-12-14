@@ -1,0 +1,7 @@
+<div class="panel" >
+  <div>Task : {{resourceTask.ResTask.ResTaskInfo.TaskName}}</div>
+  <div>Concurrency:<input ng-model="resourceTask.Concurrency" type="text"/> OtherData:<input ng-model="resourceTask.OtherData" type="text"/></div>
+  <div class="button"  ng-click="UpdateTask(resourceTask)">Update</div>
+  <!--<div class="button"  ng-click="Configure(resourceTask)">Configure</div>-->
+  <div class="button"  ng-click="Delete(resourceTask)">Delete</div>
+</div>
