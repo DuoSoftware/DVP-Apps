@@ -34,7 +34,11 @@ app.controller("ResourceListController",function($scope, $location,resource,task
   };
 
 
+  $scope.viewResource = function(resourceID){
 
+    $location.path('/resource/'+resourceID+'/edit');
+
+  }
 
 
   $scope.loadResources();
@@ -64,13 +68,27 @@ app.controller("ResourceCreateController",function($scope,$location,resource){
 
 app.controller("ResourceEditController",function($scope,$routeParams,$location,resource){
 
-  $scope.resource = resource.User;
+
+  $scope.loadResource = function() {
+    resource.GetResource($routeParams.id).then(function (response) {
+      $scope.resource = response;
+      resource.User = response;
+    }, function (error) {
+      alert(error);
+    });
+  };
+
+
+  $scope.loadResource();
+
+  //$scope.resource = resource.User;
 
   $scope.updateResource = function() {
     resource.UpdateResource($scope.resource).then(function (response) {
       //$scope.resource = response;
 
       $location.path('/resource/'+resource.User.ResourceId+'/view');
+      $location.path('/resource/list');
 
     }, function (error) {
       alert(error);
@@ -101,7 +119,6 @@ app.controller("ResourceViewController",function($scope,$routeParams,resource){
 
 });
 
-
 app.controller("ResourceTaskListController",function($scope,$routeParams,$location,$route,resource, task){
 
 
@@ -113,7 +130,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
 
 
 
-    resource.DeleteTaskToResource(resourceTask.ResTask.TaskId).then(function (response) {
+    resource.DeleteTaskToResource($routeParams.id,resourceTask.ResTask.TaskId).then(function (response) {
 
       $route.reload();
       //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
@@ -129,7 +146,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
 
   $scope.UpdateTask= function(resourceTask){
 
-    resource.UpdateTasksAssignedToResource(resourceTask).then(function (response) {
+    resource.UpdateTasksAssignedToResource($routeParams.id,resourceTask).then(function (response) {
 
       //$route.reload();
       //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
@@ -206,8 +223,6 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
   }
 
 });
-
-
 
 app.controller("ResourceTaskListAttributeController",function($scope){
 

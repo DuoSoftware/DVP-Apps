@@ -1,0 +1,36 @@
+<!--<a ui-sref="newResource" class="btn btn-primary" href="#/resource/create">Add New Resource</a>
+
+table class="table resourceTable">
+<tr>
+  <td><h3>Resources</h3></td>
+  <td></td>
+</tr>
+<tr ng-repeat="resource in resources">
+  <td>{{resource.ResourceName}}</td>
+  <td>
+    <a class="btn" href="#/resource/{{resource.ResourceId}}/view">View</a>
+    <a class="btn"  ng-click="deleteResource(resource)">Delete</a>
+  </td>
+</tr>
+</table>
+-->
+
+
+
+<md-list ng-cloak>
+  <md-subheader class="md-no-sticky">Resource APP</md-subheader>
+  <md-list-item ng-repeat="resource in resources">
+
+    <p>{{ resource.ResourceName }}</p>
+    <p>{{ resource.ResClass }}</p>
+    <p>{{ resource.ResType }}</p>
+    <p>{{ resource.ResCategory }}</p>
+    <ng-md-icon icon="edit" style="fill: blue" size="32" ng-click="viewResource(resource.ResourceId)"></ng-md-icon>
+    <ng-md-icon icon="delete" style="fill: red" size="32"  ng-click="deleteResource(resource)"></ng-md-icon>
+  </md-list-item>
+</md-list>
+
+
+<md-button class="md-fab" ng-disabled="false" aria-label="Add"  href="#/resource/create">
+  <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+</md-button>
