@@ -5,6 +5,8 @@
 
 var Attribobj;
     var GroupObj;
+    var GID;
+    var GIDst = false;
 
     var dbcontroller = function ($http) {
 
@@ -137,6 +139,16 @@ var Attribobj;
 
         }
 
+        var GetAttributesOfGroup = function (GrpID) {
+
+
+            return $http.get("http://localhost:8831/DVP/API/6.0/ResourceManager/Group/"+GrpID+"/Attribute")
+                .then(function (response) {
+                    return response.data;
+                });
+
+        }
+
 
 
         return{
@@ -150,8 +162,12 @@ var Attribobj;
             updateGroup:updateGroup,
             groupDelete:groupDelete,
             NewGroup:NewGroup,
-            AddAttributesToGroup:AddAttributesToGroup
-        };
+            AddAttributesToGroup:AddAttributesToGroup,
+            GID:GID,
+            GetAttributesOfGroup:GetAttributesOfGroup,
+            GIDst:GIDst
+
+    };
     };
 
     var module = angular.module("attributeapp");
