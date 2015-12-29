@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Usage</title>
+    <link rel='stylesheet prefetch' href='../../bower_components/angular-material/angular-material.css'>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<form name="abc" novalidate>
+    <md-input-container>
+        <label>Last Name</label>
+        <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
+        <div ng-messages="abc.lastName.$error" ng-show="abc.lastName.$dirty">
+            <div ng-message="required">This is required!</div>
+            <div ng-message="md-maxlength">That's too long!</div>
+            <div ng-message="minlength">That's too short!</div>
+        </div>
+    </md-input-container>
+    <md-input-container>
+        <label>Biography</label>
+        <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
+        <div ng-messages="abc.bio.$error" ng-show="abc.bio.$dirty">
+            <div ng-message="required">This is required!</div>
+            <div ng-message="md-maxlength">That's too long!</div>
+        </div>
+    </md-input-container>
+    <md-input-container>
+        <input aria-label="title" ng-model="title">
+    </md-input-container>
+    <md-input-container>
+        <input placeholder="title" ng-model="title">
+    </md-input-container>
+</form>
+
+<div ng-controller="IndexController" class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak=""
+     ng-app="CampaignApp">
+    <p class="inset">
+        Campaign Manager
+    </p>
+
+    <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="">
+        <md-button class="md-primary md-raised" ng-click="showAdvanced($event,'create')" flex-sm="100" flex-md="100"
+                   flex-gt-md="auto">
+            Create Campaign
+        </md-button>
+
+        <md-button class="md-primary md-raised" ng-click="showAdvanced($event,'edit')" flex-sm="100" flex-md="100"
+                   flex-gt-md="auto">
+            Edit Campaign
+        </md-button>
+
+        <md-button class="md-primary md-raised" ng-click="showAdvanced($event,'view')" flex-sm="100" flex-md="100"
+                   flex-gt-md="auto">
+            View Campaign
+        </md-button>
+
+    </div>
+
+    <div ng-if="status">
+        <br>
+        <b layout="row" layout-align="center center" class="md-padding">
+            {{status}}
+        </b>
+    </div>
+
+    <script type="text/ng-template" id="camCreate.html">
+        <md-dialog ng-controller="IndexController" aria-label="Create Campaign" ng-cloak>
+            <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Create Campaign </h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <md-dialog-content>
+                    <div class="md-dialog-content">
+
+                        <div layout="column" ng-cloak="" class="inputdemoErrors">
+
+                            <md-content layout-padding="">
+                                <form name="userForm"  novalidate>
+
+                                    <br/>
+                                    <br/>
+
+                                    <div layout="column" ng-cloak="" class="inputdemoErrors">
+
+                                        <md-content layout-padding="">
+                                            <md-input-container class="md-block" >
+                                                <label>Campaign Name </label>
+                                                <input md-maxlength="30" required name="camName" ng-model="campaignData.camName">
+                                                <div ng-messages="projectForm.camName.$error"  >
+                                                    <div ng-message="required" >This is required.</div>
+                                                    <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                                                </div>
+                                            </md-input-container>
+
+
+                                            <md-input-container class="md-block" ng-class="{ 'has-error' : userForm.camName.$invalid && !userForm.camName.$pristine }">
+                                                <label>Campaign Name </label>
+                                                <input md-maxlength="30" class="form-control" required name="camName" ng-model="campaignData.camName">
+                                                <div ng-messages="userForm.camName.$error"  ng-show="userForm.name.$invalid && !userForm.name.$pristine" >
+                                                    <div ng-message="required" >This is required.</div>
+                                                    <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                                                </div>
+                                            </md-input-container>
+
+                                        </md-content>
+
+                                    </div>
+
+                                    <md-dialog-actions layout="row">
+                                        <md-button  ng-click="answer(campaignData)" ng-disabled="userForm.$invalid" class="btn btn-primary">
+                                            Save
+                                        </md-button>
+                                    </md-dialog-actions>
+
+                                </form>
+                            </md-content>
+
+                        </div>
+
+                    </div>
+                </md-dialog-content>
+
+
+            </form>
+        </md-dialog>
+    </script>
+
+    <script type="text/ng-template" id="camEdit.html">
+        <md-dialog aria-label="Edit Campaign" ng-cloak>
+            <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Edit Campaign</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <md-dialog-content>
+                    <div class="md-dialog-content">
+
+                        <h2>Edit</h2>
+                    </div>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">
+                    <md-button ng-click="answer('save')" style="margin-right:20px;">
+                        Save
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </script>
+
+    <script type="text/ng-template" id="camView.html">
+        <md-dialog aria-label="View Campaign" ng-cloak>
+            <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>View Campaign</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <md-dialog-content>
+                    <div class="md-dialog-content">
+
+                        <h2>View</h2>
+                    </div>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">
+                    <md-button ng-click="answer('save')" style="margin-right:20px;">
+                        Save
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </script>
+
+</div>
+
+
+<script src="../../bower_components/angular/angular.js"></script>
+<script src='../../bower_components/angular-animate/angular-animate.min.js'></script>
+<script src='../../bower_components/angular-route/angular-route.min.js'></script>
+<script src='../../bower_components/angular-aria/angular-aria.min.js'></script>
+<script src='../../bower_components/angular-messages/angular-messages.min.js'></script>
+<script src='../../bower_components/angular-material/angular-material.js'></script>
+<script src='../../bower_components/assets-cache/assets-cache.js'></script>
+
+<script src="js/indexController.js"></script>
+<script src="js/campaignHandler.js"></script>
+
+
+</body>
+</html>
