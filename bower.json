@@ -1,28 +1,27 @@
 {
-  "name": "dvp-apps",
-  "version": "0.0.0",
+  "name": "dvpapps",
+  "description": "",
+  "main": "",
+  "authors": [
+    "sukitha <sukithaj@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/DuoSoftware/DVP-Apps",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "^1.4.0",
-    "bootstrap-sass-official": "^3.2.0",
-    "angular-animate": "^1.4.0",
-    "angular-cookies": "^1.4.0",
-    "angular-resource": "^1.4.0",
+    "angular-material": "~0.11.4",
     "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.0"
-  },
-  "appPath": "app",
-  "moduleName": "dvpAppsApp",
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
-    }
+    "restangular": "~1.5.1",
+    "angular-material-icons": "~0.6.0",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6",
+    "foundation": "~5.5.3"
   }
 }

@@ -1,0 +1,26 @@
+<md-dialog ng-controller="IndexController" aria-label="Create Campaign" ng-cloak>
+    <form name="camEditForm"   novalidate>
+        <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit Campaign </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <div ng-include="'UI/partials/camForm.html'"></div>
+        </form>
+
+        {{status}}
+
+        <md-dialog-actions layout="row">
+            <md-button  ng-click="amDone(campaignData,'create')" ng-disabled="camEditForm.$invalid" style="margin-right:20px;">
+                Update
+            </md-button>
+        </md-dialog-actions>
+    </form>
+
+</md-dialog>
