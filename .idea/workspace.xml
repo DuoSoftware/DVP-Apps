@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39cc3a18-8bf2-4c51-b3c3-ef8e39f4d659" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Extention_DID_DOD/scripts/services/sipUserEndpointService.js" />
 =======
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/camCreate.html" />
@@ -22,6 +23,24 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-CampaignManager/css/randomColor.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-CampaignManager/test.html" />
 >>>>>>> bec73235db4f25dd4a0cf0c6a579b2cc60105d02
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/UI/camCreate.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/camCreate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/UI/camEdit.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/camEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/UI/partials/camForm.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/partials/camForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/UI/partials/camOngoing.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/partials/camOngoing.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/js/camOngoingController.js" afterPath="$PROJECT_DIR$/DVP-CampaignManager/js/camOngoingController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/UI/camView.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/UI/camView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/js/campaignHandler.js" afterPath="$PROJECT_DIR$/DVP-CampaignManager/js/campaignHandler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/css/demo-swipe.css" afterPath="$PROJECT_DIR$/DVP-CampaignManager/css/demo-swipe.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/img/icons/ic_close_24px.svg" afterPath="$PROJECT_DIR$/DVP-CampaignManager/img/icons/ic_close_24px.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/index-async.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/index-async.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/index.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/js/indexController.js" afterPath="$PROJECT_DIR$/DVP-CampaignManager/js/indexController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/css/inputfrmstyle.css" afterPath="$PROJECT_DIR$/DVP-CampaignManager/css/inputfrmstyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/css/normalize.css" afterPath="$PROJECT_DIR$/DVP-CampaignManager/css/normalize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/css/randomColor.css" afterPath="$PROJECT_DIR$/DVP-CampaignManager/css/randomColor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DVP-CampaignManager/test.html" afterPath="$PROJECT_DIR$/DVP-CampaignManager/test.html" />
+>>>>>>> c5e11bf1b40a8e54840db3112e0a9058402f9f8e
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DVP-Apps.iws" />
@@ -834,6 +853,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
