@@ -1,0 +1,21 @@
+<div>
+  {{error}}
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <td>DID Number</td>
+        <td>Extention</td>
+        <td>DID Active</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="didNumber in didNumbers">
+        <td>{{didNumber.DidNumber}}</td>
+        <td>{{didNumber.Extension.Extension}}</td>
+        <td>{{didNumber.DidActive}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
