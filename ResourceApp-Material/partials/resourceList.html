@@ -1,28 +1,28 @@
 
 
+<div class="md-padding" id="popupContainer" ng-cloak>
+  <md-list ng-cloak>
+    <md-subheader class="md-no-sticky"><h3>Resource APP</h3></md-subheader>
 
-<md-list ng-cloak>
-  <md-subheader class="md-no-sticky"><h3>Resource APP</h3></md-subheader>
-
-  <md-button class="md-raised md-primary" ng-disabled="false" aria-label="Add"  href="#/resource/create">
-    <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
-  </md-button>
-
-  <md-list-item ng-repeat="resource in resources">
-
-    <p>{{ resource.ResourceName }}</p>
-    <p>{{ resource.ResClass }}</p>
-    <p>{{ resource.ResType }}</p>
-    <p>{{ resource.ResCategory }}</p>
-
-    <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewResource(resource.ResourceId)">
-      <md-icon md-svg-src="img/edit26.svg"></md-icon>
-    </md-button>
-    <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteResource(resource)">
-      <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+    <md-button class="md-raised md-primary" ng-disabled="false" aria-label="Add"  href="#/resource/create">
+      <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
     </md-button>
 
-  </md-list-item>
-</md-list>
+    <md-list-item ng-repeat="resource in resources">
 
+      <p>{{ resource.ResourceName }}</p>
+      <p>{{ resource.ResClass }}</p>
+      <p>{{ resource.ResType }}</p>
+      <p>{{ resource.ResCategory }}</p>
+
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewResource(resource.ResourceId)">
+        <md-icon md-svg-src="img/edit26.svg"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteResource(resource)">
+        <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+      </md-button>
+
+    </md-list-item>
+  </md-list>
+</div>
 

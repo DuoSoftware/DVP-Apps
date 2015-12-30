@@ -1,14 +1,5 @@
-
-
-
-<!--
-  <div class="panel">
-    <select name="taskSelect" ng-model="masterTask">
-      <option ng-repeat="item in masterTasks" value="{{item}}">{{item.ResTaskInfo.TaskName}}</option></select>
-    <div class="button" ng-click="AssignTask(masterTask)">Add</div>
-  </div> -->
-
-  <h3>{{resource.ResourceName}} Tasks</h3>
+<div class="md-padding" id="popupContainer" ng-cloak>
+<h3>{{resource.ResourceName}} Tasks</h3>
 
 <md-button class="md-raised md-primary" ng-disabled="false" aria-label="Back"  href="#/resource/{{resource.ResourceId}}/edit">
   <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
@@ -17,9 +8,9 @@
 
 
 <div flex="50" flex-sm="100" flex-xs="100" layout="row">
-    <task  ng-repeat="resourceTask in resourceTasks" resourceTask="resourceTask"></task>
+  <task  ng-repeat="resourceTask in resourceTasks" resourceTask="resourceTask"></task>
 
 </div>
 
-
+</div>
 
