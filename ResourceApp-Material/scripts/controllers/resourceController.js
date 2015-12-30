@@ -1,20 +1,46 @@
 var app = angular.module("ResourceApp");
 
 
-app.controller("ResourceListController",function($scope, $location,resource,task){
+app.controller("ResourceListController",function($scope, $location,$mdDialog, resource,task){
 
 
 
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
+
+  $scope.showConfirm = function(tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
+
+    var confirm = $mdDialog.confirm()
+      .title(tittle)
+      .textContent(content)
+      .ok(okbutton)
+      .cancel(cancelbutton);
+    $mdDialog.show(confirm).then(function() {
+      OkCallback(okObj);
+    }, function() {
+      CancelCallBack();
+    });
+  };
 
 
 
   $scope.loadResources = function() {
 
-   // resource.user = {};
+    // resource.user = {};
     resource.GetResources().then(function (response) {
       $scope.resources = response;
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
 
   };
@@ -22,13 +48,26 @@ app.controller("ResourceListController",function($scope, $location,resource,task
 
   $scope.deleteResource = function(resourceObj){
 
-    resource.DeleteResource(resourceObj.ResourceId).then(function (response) {
-      //$scope.resources = response;
-      $scope.loadResources();
 
-    }, function (error) {
-      alert(error);
-    });
+    $scope.showConfirm("Delete Resource","Delete","ok","cancel","Do you want to delete " + resourceObj.ResourceName,function(obj){
+
+      resource.DeleteResource(obj.ResourceId).then(function (response) {
+        //$scope.resources = response;
+        $scope.loadResources();
+
+        $scope.showAlert("Deleted", "Deleted", "ok","Resource " + obj.ResourceName+ " Deleted successfully");
+
+      }, function (error) {
+        $scope.showAlert("Error","Error","ok","There is an error ");
+      });
+
+    }, function(){
+
+      //$scope.showAlert("title","lable","ok","content");
+
+    },resourceObj)
+
+
 
 
   };
@@ -46,7 +85,20 @@ app.controller("ResourceListController",function($scope, $location,resource,task
 
 });
 
-app.controller("ResourceCreateController",function($scope,$location,resource){
+app.controller("ResourceCreateController",function($scope,$location,$mdDialog,resource){
+
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
 
 
 
@@ -56,25 +108,43 @@ app.controller("ResourceCreateController",function($scope,$location,resource){
     resource.CreateResource($scope.resource).then(function (response) {
       //$scope.resource = response;
 
+
+      $scope.showAlert("Resource Created","Resource Created","ok","Resource created successfully "+response.ResourceName);
       $location.path('/resources/list');
 
+
+
     }, function (error) {
-      alert(error);
+
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
   };
 
 
 });
 
-app.controller("ResourceEditController",function($scope,$routeParams,$location,resource){
+app.controller("ResourceEditController",function($scope,$routeParams,$mdDialog,$location,resource){
 
+
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
 
   $scope.loadResource = function() {
     resource.GetResource($routeParams.id).then(function (response) {
       $scope.resource = response;
       resource.User = response;
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
   };
 
@@ -87,11 +157,12 @@ app.controller("ResourceEditController",function($scope,$routeParams,$location,r
     resource.UpdateResource($scope.resource).then(function (response) {
       //$scope.resource = response;
 
-      $location.path('/resource/'+resource.User.ResourceId+'/view');
-      $location.path('/resource/list');
+      $scope.showAlert("Resource Updated","Resource Updated","ok","Resource Updated successfully "+$scope.resource.ResourceName);
+      //$location.path('/resource/'+resource.User.ResourceId+'/view');
+      //$location.path('/resource/list');
 
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
   };
 
@@ -99,9 +170,7 @@ app.controller("ResourceEditController",function($scope,$routeParams,$location,r
 
 });
 
-app.controller("ResourceViewController",function($scope,$routeParams,resource){
-
-
+app.controller("ResourceViewController",function($scope,$mdDialog,$routeParams,resource){
 
 
   $scope.loadResource = function() {
@@ -109,7 +178,7 @@ app.controller("ResourceViewController",function($scope,$routeParams,resource){
       $scope.resource = response;
       resource.User = response;
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
   };
 
@@ -119,16 +188,26 @@ app.controller("ResourceViewController",function($scope,$routeParams,resource){
 
 });
 
-app.controller("ResourceTaskListController",function($scope,$routeParams,$location,$route,resource, task){
+app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDialog,$location,$route,resource, task){
 
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
 
 
   $scope.resource = resource.User;
   $scope.Delete = function(resourceTask){
 
-    alert(resourceTask.ResTask.ResTaskInfo.TaskName);
-
-
+    //alert(resourceTask.ResTask.ResTaskInfo.TaskName);
 
     resource.DeleteTaskToResource($routeParams.id,resourceTask.ResTask.TaskId).then(function (response) {
 
@@ -136,7 +215,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
       //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
 
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
 
   };
@@ -150,9 +229,12 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
 
       //$route.reload();
       //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
+      $scope.showAlert("Resource Updated","Resource Updated","ok","Resource Updated successfully "+$scope.resource.ResourceName);
 
     }, function (error) {
-      alert(error);
+
+      $scope.showAlert("Error","Error","ok","There is an error ");
+
     });
 
   };
@@ -162,7 +244,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
 
   $scope.Configure = function(resourceTask){
 
-    alert(resourceTask.ResTask.ResTaskInfo.TaskName);
+    //alert(resourceTask.ResTask.ResTaskInfo.TaskName);
 
   };
 
@@ -172,7 +254,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
       $scope.resourceTasks = response;
 
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
   };
 
@@ -189,7 +271,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
     task.GetTasks().then(function (response) {
       $scope.masterTasks = response;
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
 
   };
@@ -216,7 +298,7 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$locati
       //$location.path('/resource/'+resource.User.ResourceId+'/tasklist');
 
     }, function (error) {
-      alert(error);
+      $scope.showAlert("Error","Error","ok","There is an error ");
     });
 
 
