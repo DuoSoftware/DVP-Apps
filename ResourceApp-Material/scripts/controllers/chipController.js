@@ -58,8 +58,11 @@
 
     self.OnChipAdd = function($chip){
       //alert("Add " + $chip.TaskName);
-      self.AssignTask($chip);
-      return $chip;
+
+
+        self.AssignTask($chip);
+        return $chip;
+
 
     }
 

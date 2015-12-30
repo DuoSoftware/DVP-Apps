@@ -1,13 +1,43 @@
 <!--<form class="form-horizontal" role="form" ng-submit="updateResource()">-->
-  <div ng-include="'partials/resourceForm.html'"></div>
 
-  <div ng-controller="BasicDemoCtrl as ctrl" layout="column">
+<div class="md-padding" id="popupContainer" ng-cloak>
+<div>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Resource</span>
+        <span class="md-subhead">{{resource.ResourceName}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
 
-    <md-content class="md-padding" layout="column">
-      <h2 class="md-title">Resource Tasks</h2>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content layout="column" layout-align="space-between">
+      <div ng-include="'partials/resourceForm.html'"></div>
 
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/list">
+          <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  ng-click="updateResource()">
+          <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+</div>
+<div ng-controller="BasicDemoCtrl as ctrl" layout="column">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Resource Allocated Tasks</span>
+      </md-card-title-text>
+      <md-card-title-media>
+      </md-card-title-media>
+    </md-card-title>
+
+    <md-card-content layout="column" layout-align="space-between">
       <md-chips ng-model="ctrl.resourceTasks" md-on-append="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-on-select="ctrl.OnChipSelect($chip)" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">
-
         <md-autocomplete
           md-selected-item="ctrl.selectedItem"
           md-search-text="ctrl.searchText"
@@ -16,36 +46,19 @@
           placeholder="Search for a tasks">
           <span md-highlight-text="ctrl.searchText">{{item.TaskName}}</span>
         </md-autocomplete>
-
         <md-chip-template>
           <strong>{{$chip.TaskName}}</strong>
           <em>(task)</em>
         </md-chip-template>
       </md-chips>
-    </md-content>
 
-    <md-content class="md-padding" layout="column">
-      <h2 class="md-title">Available Tasks</h2>
-    <md-chips class="custom-chips" ng-model="ctrl.masterTasks" readonly="true"
-              md-transform-chip="ctrl.transformChip($chip)">
-      <md-chip-template>
-        <md-chip-template>
-          <strong>{{$chip.TaskName}}</strong>
-          <em>(task)</em>
-        </md-chip-template>
-      </md-chip-template>
-    </md-chips>
-    </md-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  href="#/resource/{{resource.ResourceId}}/tasklist">
+          <md-icon md-svg-src="img/settings49.svg"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
 
-
-  </div>
-
-
-<md-button class="md-fab" ng-disabled="false" aria-label="Add"  href="#/resource/list">
-  <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
-</md-button>
-
-<md-button class="md-fab" ng-disabled="false" aria-label="Add"  ng-click="updateResource()">
-  <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
-</md-button>
-<!--</form>-->
+</div>
+</div>
