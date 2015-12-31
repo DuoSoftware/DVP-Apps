@@ -22,6 +22,11 @@
         $scope.AssignAttributes = function () {
             $location.path("/map")
         }
+        $scope.ShowAssignedAttributes = function (GroupId) {
+            dbcontroller.GID = GroupId;
+            dbcontroller.GIDst = true;
+            $location.path("/attribute")
+        }
 
     }
 
