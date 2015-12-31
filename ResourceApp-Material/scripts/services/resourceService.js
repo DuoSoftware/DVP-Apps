@@ -101,7 +101,7 @@ resourceModule.factory("resource", function($http){
 
       });
 
-  }
+  };
 
 
   //att.Concurrency,att.RefInfo,att.OtherData
