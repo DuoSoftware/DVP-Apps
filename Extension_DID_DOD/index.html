@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="extension_DID_DOD">
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Extension DID/DOD</title>
 </head>
 <body>
+  <h1>Extension DID/DOD</h1>
 
+  <div>
+    <a href="#/extension">Extionsion</a>  <a href="#/did">DID</a>
+  </div>
+  <ng-view></ng-view>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/ExtensionController.js"></script>
+  <script src="scripts/controllers/DidController.js"></script>
+  <script src="scripts/services/sipUserEndpointService.js"></script>
 </body>
 </html>

@@ -9,61 +9,61 @@
     app.config(function($routeProvider) {
         $routeProvider.when("/main", {
 
-            templateUrl: "main.html",
+            templateUrl: "partials/main.html",
             controller: "MainController"
         })
             .when("/attribute",{
-                templateUrl: "attribute.html",
+                templateUrl: "partials/attribute.html",
                 controller: "AttributeController"
             })
             .when("/viewattrib",{
-                templateUrl: "view.html",
+                templateUrl: "partials/view.html",
                 controller: "ViewController"
 
 
             })
             .when("/editattrib",{
-                templateUrl: "edit.html",
+                templateUrl: "partials/edit.html",
                 controller: "EditController"
 
 
             })
             .when("/newattrib",{
-                templateUrl: "new.html",
+                templateUrl: "partials/new.html",
                 controller: "NewController"
 
 
             })
             .when("/group",{
-                templateUrl: "group.html",
+                templateUrl: "partials/group.html",
                 controller: "GroupController"
             })
             .when("/viewgroup",{
-                templateUrl: "viewgroup.html",
+                templateUrl: "partials/viewgroup.html",
                 controller: "ViewgroupController"
 
 
             })
             .when("/editgroup",{
-                templateUrl: "editgroup.html",
+                templateUrl: "partials/editgroup.html",
                 controller: "EditgroupController"
 
 
             })
             .when("/newgroup",{
-                templateUrl: "newgroup.html",
+                templateUrl: "partials/newgroup.html",
                 controller: "NewgroupController"
 
 
             })
             .when("/map",{
-                templateUrl: "assignattributestogroup.html",
+                templateUrl: "partials/assignattributestogroup.html",
                 controller: "MapController"
 
 
             })
             .when("/testa",{
-                templateUrl: "testaz.html",
+                templateUrl: "partials/testaz.html",
                 controller: "MapTestController"
 
 
