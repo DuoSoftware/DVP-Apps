@@ -1,21 +1,25 @@
 <div>
   {{error}}
-  <div>
-    <table>
-      <thead>
-      <tr>
-        <td>DID Number</td>
-        <td>Extention</td>
-        <td>DID Active</td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="didNumber in didNumbers">
-        <td>{{didNumber.DidNumber}}</td>
-        <td>{{didNumber.Extension.Extension}}</td>
-        <td>{{didNumber.DidActive}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="md-padding" id="popupContainer" ng-cloak>
+    <md-list ng-cloak>
+      <md-button class="md-raised md-primary" ng-disabled="false" ng-click="showAdvanced($event, null)" aria-label="Add">
+        <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+      </md-button>
+
+      <md-list-item ng-repeat="didNumber in didNumbers | orderBy:'+createdAt'">
+
+        <p>{{didNumber.DidNumber}}</p>
+        <p>{{didNumber.Extension.Extension}}</p>
+        <p>{{didNumber.DidActive}}</p>
+
+        <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="showAdvanced($event, didNumber)">
+          <md-icon md-svg-src="img/edit26.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="showConfirm($event, didNumber.id)">
+          <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+        </md-button>
+
+      </md-list-item>
+    </md-list>
   </div>
 </div>
