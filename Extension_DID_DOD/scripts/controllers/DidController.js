@@ -4,6 +4,10 @@
 (function(){
   var app = angular.module("extension_DID_DOD");
   var DidController = function($scope,sipUser,$mdDialog,$mdMedia){
+    $scope.query = {
+      limit: 5,
+      page: 1
+    };
     $scope.showAdvanced = function(ev, didNumber) {
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
       if(didNumber) {
