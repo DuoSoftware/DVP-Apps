@@ -18,21 +18,21 @@
         </tr>
         <tr>
             <td>GroupName</td>
-            <td ><input type="text" ng-model="GroupName"  placeholder="{{GDataObj.GroupName}}"/></td>
+            <td ><input type="text" ng-model="editObj.GroupName"  placeholder="{{GDataObj.GroupName}}"/></td>
 
         </tr>
         <tr>
             <td>OtherData</td>
-            <td ><input type="text" ng-model="OtherData" placeholder="{{GDataObj.OtherData}}"/></td>
+            <td ><input type="text" ng-model="editObj.OtherData" placeholder="{{GDataObj.OtherData}}"/></td>
         </tr>
         <tr>
             <td>Percentage</td>
-            <td ><input type="text" ng-model="Percentage" placeholder="{{GDataObj.Percentage}}"/></td>
+            <td ><input type="text" ng-model="editObj.Percentage" placeholder="{{GDataObj.Percentage}}"/></td>
         </tr>
 
         <tr>
 
-            <td ><md-button class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId,GroupName,OtherData,Percentage)">Save</md-button></td>
+            <td ><md-button class="md-raised md-primary" ng-disabled="isDisabled" ng-click="SaveUpdated(GDataObj.GroupId)" >Save</md-button></td>
         </tr>
         </tbody>
     </table>

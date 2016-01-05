@@ -4,6 +4,7 @@
 (function(){
   var app = angular.module("extension_DID_DOD");
   var ExtensionController = function($scope,sipUser){
+
     var onGetExtensionComplete = function(data){
       if(data.IsSuccess){
         $scope.extensions = data.Result;
