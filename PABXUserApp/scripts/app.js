@@ -3,16 +3,24 @@
  */
 
 (function(){
-  var app = angular.module("pabxUserApp", ["ngMaterial", "ngRoute", "md.data.table"]);
+  var app = angular.module("pabxUserApp", ["ngMaterial", "ngMessages", "ngRoute", "md.data.table"]);
 
   app.config(function($routeProvider)
   {
     $routeProvider.
-      when("/pabxUsers/list", {
+      when("/pabxUsers", {
         templateUrl: 'partials/pabxUserListView.html',
         controller: 'PABXUserListController'
       })
-      .otherwise({redirectTo:"/pabxUsers/list"})
+      .when("/pabxUser/:userUuid", {
+        templateUrl: 'partials/pabxBasicConfigView.html',
+        controller: 'PABXBasicConfigController'
+      })
+      .when("/pabxUser/:userUuid/followMe", {
+        templateUrl: 'partials/followMeConfigView.html',
+        controller: 'FollowMeConfigController'
+      })
+      .otherwise({redirectTo:"/pabxUsers"});
 
   })
 }());

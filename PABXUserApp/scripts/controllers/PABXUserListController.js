@@ -12,16 +12,25 @@
         page: 1
       };
 
+      $scope.dataReady = false;
+
+      $scope.onEditPressed = function()
+      {
+          $location.url("/pabxUser/123");
+      };
+
       var onGetPABXUserListSuccess = function(data)
       {
           $scope.pabxUsrList = data.Result;
           $scope.total = data.Result.length;
+          $scope.dataReady = true;
       };
 
       var onGetPABXUserListError = function(err)
       {
           console.log('Error occurred : ' + err);
           $scope.serviceErr = "Could not load pabx users";
+          $scope.dataReady = true;
       };
 
 
