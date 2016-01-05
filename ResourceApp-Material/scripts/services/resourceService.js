@@ -7,7 +7,7 @@ resourceModule.factory("resource", function($http){
 
   var getResources = function(){
 
-    return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resources").then(function(response){
+    return $http.get("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resources").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -29,7 +29,7 @@ resourceModule.factory("resource", function($http){
 
 
 
-      return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/" + id).then(function(response) {
+      return $http.get("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/" + id).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -49,7 +49,7 @@ resourceModule.factory("resource", function($http){
 
 
 
-    return $http.delete("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/" + id).then(function(response) {
+    return $http.delete("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/" + id).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -70,7 +70,7 @@ resourceModule.factory("resource", function($http){
 
 
     if(resource && resource.ResourceId)
-      return $http.put("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/" + resource.ResourceId,resource).then(function(response) {
+      return $http.put("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/" + resource.ResourceId,resource).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -91,7 +91,7 @@ resourceModule.factory("resource", function($http){
 
 
 
-      return $http.post("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource",resource).then(function(response) {
+      return $http.post("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource",resource).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -101,7 +101,7 @@ resourceModule.factory("resource", function($http){
 
       });
 
-  }
+  };
 
 
   //att.Concurrency,att.RefInfo,att.OtherData
@@ -111,7 +111,7 @@ resourceModule.factory("resource", function($http){
 
 
 
-      return $http.post("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks/" + TaskId, taskInfo).then(function(response) {
+      return $http.post("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks/" + TaskId, taskInfo).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -133,7 +133,7 @@ resourceModule.factory("resource", function($http){
 
 
 
-      return $http.delete("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+ResourceId+"/Task/" + TaskId).then(function(response) {
+      return $http.delete("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/"+ResourceId+"/Task/" + TaskId).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -153,7 +153,7 @@ resourceModule.factory("resource", function($http){
   var getTasksAssignedToResource= function(resourceId){
 
 
-      return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks").then(function(response) {
+      return $http.get("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceId+"/Tasks").then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -175,7 +175,7 @@ resourceModule.factory("resource", function($http){
   var updateTasksAssignedToResource= function(resourceID, resourceTask){
 
 
-    return $http.put("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceID+"/Tasks/"+resourceTask.TaskId,resourceTask).then(function(response) {
+    return $http.put("http://192.168.0.97:8831/DVP/API/6.0/ResourceManager/Resource/"+resourceID+"/Tasks/"+resourceTask.TaskId,resourceTask).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
 

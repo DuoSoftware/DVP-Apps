@@ -8,7 +8,8 @@
     var AttributeController= function ($scope,dbcontroller,$location) {
 
         var onAttribComplete = function (data) {
-
+            dbcontroller.GIDst=false;
+            console.log("Got as Attributes "+JSON.stringify(data.Result));
             $scope.attribData=data.Result;
 
         }
@@ -32,7 +33,25 @@
             $scope.attribData.splice(val, 1);
         }
 
-        dbcontroller.getAttributeList().then(onAttribComplete,onError);
+
+        if(dbcontroller.GIDst )
+        {
+            console.log("GID is in");
+            console.log("GID "+dbcontroller.GID);
+            console.log("GID status "+dbcontroller.GIDst);
+            dbcontroller.GIDst=false;
+            dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onAttribComplete,onError);
+        }
+        else
+        {
+            console.log("NO GID");
+            console.log("GID "+dbcontroller.GID);
+            console.log("GID status "+dbcontroller.GIDst);
+            dbcontroller.getAttributeList().then(onAttribComplete,onError);
+        }
+
+
+
 
         $scope.DeleteAttribute = function(Attb)
         {
