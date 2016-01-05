@@ -37,7 +37,7 @@
     </md-card-title>
 
     <md-card-content layout="column" layout-align="space-between">
-      <md-chips ng-model="ctrl.resourceTasks" md-on-append="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-on-select="ctrl.OnChipSelect($chip)" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">
+      <md-chips ng-model="ctrl.resourceTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-on-select="ctrl.OnChipSelect($chip)" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">
         <md-autocomplete
           md-selected-item="ctrl.selectedItem"
           md-search-text="ctrl.searchText"
