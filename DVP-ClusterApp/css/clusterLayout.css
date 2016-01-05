@@ -1,3 +1,21 @@
+.ul{
+  display: table;
+
+  table-layout: fixed; /* Magic rule */
+  border-collapse: collapse;
+}
+.li{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding:10px;
+  border: 1px solid #333;
+  font: 18px arial;
+  color:#fff;
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background-image:    -moz-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background-image:         linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
+}
 .odd {
   background-color: #D8D8D8;
 
@@ -9,7 +27,12 @@
 .header md-toolbar md-icon.md-default-theme {
   color: white;
 }
-
+.trTitle{
+  background-color: #666666;
+  text-align: center;
+  font-size: 12px;
+  font-style: oblique;
+}
 .panel {
   padding: 50px 10px;
   text-align: center;
@@ -28,8 +51,5 @@
   background-color: #cccccc;
 }
 .divTable{
-  text-align: center;
-  border: 1px solid #7a43b6;
-  font-size: 10px;
-  width: 100%;
+  background-color: #cccccc;
 }

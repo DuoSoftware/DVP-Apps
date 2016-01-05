@@ -4,13 +4,21 @@ var app = angular.module("ClusterManageApp");
 app.controller("ClusterListController",function($scope, $location,$mdDialog,$log,clusterService){
 
 
+  $scope.query = {
+    limit: 5,
+    page: 1
+  };
+
+  $scope.dataReady = false;
   $scope.loadClusters = function() {
 
     // resource.user = {};
     clusterService.GetClusters().then(function (response) {
 
       $log.debug("GetClusters: response"+response);
+      $scope.dataReady=true;
       $scope.clusters = response;
+      $scope.total = response.length;
     }, function (error) {
       $log.debug("GetClusters err");
       $scope.showAlert("Error","Error","ok","There is an error ");
