@@ -1,19 +1,19 @@
 <div>
-
 <md-data-table-toolbar>
+  <h2 class="md-title">PABX Users</h2>
 </md-data-table-toolbar>
 
 <md-data-table-container>
   <table md-data-table md-progress="deferred">
     <thead>
     <tr>
-      <th name="UserUUID"></th>
-      <th name="UserStatus"></th>
-      <th name="AdvancedRouteMethod"></th>
-      <th name="OutboundAllowed"></th>
+      <th name="User UUID"></th>
+      <th name="User Status"></th>
+      <th name="Advanced Route Method"></th>
+      <th name="Outbound Allowed"></th>
       <th name="Voicemail"></th>
-      <th name="MediaBypass"></th>
-      <th name="IgnoreEarlyMedia"></th>
+      <th name="Media Bypass"></th>
+      <th name="Ignore Early Media"></th>
     </tr>
     </thead>
     <tbody>
@@ -26,18 +26,17 @@
       <td><md-checkbox class="md-primary" ng-model="item.VoicemailEnabled"></td>
       <td><md-checkbox class="md-primary" ng-model="item.BypassMedia"></td>
       <td><md-checkbox class="md-primary" ng-model="item.IgnoreEarlyMedia"></td>
-      <md-button class="md-icon-button" ng-disabled="false" aria-label="edit">
+      <td><md-button class="md-icon-button" ng-disabled="false" aria-label="edit">
         <md-icon md-svg-src="../../ResourceApp-Material/img/edit26.svg"></md-icon>
-      </md-button>
-      <md-button class="md-icon-button" ng-disabled="false" aria-label="delete">
+      </md-button></td>
+      <td><md-button class="md-icon-button" ng-disabled="false" aria-label="delete">
         <md-icon md-svg-src="../../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
-      </md-button>
-      <td><md-button class="md-raised md-primary" ng-disabled="!item.IsChanged" ng-click="SetDidMapping(item)">Update</md-button></td>
-      <td><md-button class="md-raised md-warn" ng-click="DeleteDid(item.id)">Delete</md-button></td>
+      </md-button></td>
     </tr>
     </tbody>
   </table>
 </md-data-table-container>
 <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-data-table-pagination>
 </div>
+
 
