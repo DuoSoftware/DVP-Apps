@@ -1,7 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39cc3a18-8bf2-4c51-b3c3-ef8e39f4d659" name="Default" comment="" />
+    <list default="true" id="39cc3a18-8bf2-4c51-b3c3-ef8e39f4d659" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/arrow1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_0_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_1_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_2_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_3_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_4_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_5_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_6_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_7_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_8_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_9_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_a_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_b_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_c_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_d_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_e_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_f_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_g_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_h_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_i_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_j_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_k_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_l_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_m_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_n_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_o_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_p_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_q_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_r_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_s_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_t_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_u_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_v_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_w_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_x_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_y_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/material alperbert/avatar_tile_z_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/govpaylogo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/hash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/settings - Copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/star-empty-lg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/star-fill-lg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/Dialpad/star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/services/attributeService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/css/child_app_styles.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/chipController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterAdd.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterAssignTask.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterEdit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterForm.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/css/clusterLayout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/services/clusterService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterTaskAttributeList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterTaskList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterView.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/css/directive_library.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/directivelibrary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/edit26.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_add_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_arrow_back_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_arrow_drop_down_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_arrow_drop_up_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_backspace_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_block_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_cancel_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_check_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_check_box_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_check_box_outline_blank_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_check_circle_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_chevron_left_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_chevron_right_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_close_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_close_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_cloud_done_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_cloud_upload_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_delete_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/directive_library/ic_delete_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_done_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_more_vert_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_note_add_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_print_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_remove_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_reorder_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_save_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_star_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_stars_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_visibility_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/ic_vpn_key_24px.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/jquery-2.1.4.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/services/resourceService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/img/settings49.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/partials/taskComponent.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/directives/taskDirective.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/scripts/services/taskService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DVP-ClusterApp/css/test.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="DVP-Apps.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,30 +128,119 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="DVP-Apps" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="bower.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bower.json">
+      <file leaf-file-name="clusterList.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4940171" vertical-offset="0" max-vertical-offset="612">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8206897">
+              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pabxUserListView.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PABXUserApp/partials/pabxUserListView.html">
+      <file leaf-file-name="randomColor.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/css/randomColor.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="833">
-              <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/css/test.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clusterLayout.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/css/clusterLayout.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camOngoingController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/js/camOngoingController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="49" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camOngoing.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/UI/partials/camOngoing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="23" column="76" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="76" />
+              <folding>
+                <element signature="n#style#0;n#md-content#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.6923077">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="24" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#div#0;n#md-toolbar#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clusterForm.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterForm.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.653847">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -46,26 +248,21 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Html5" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/main.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/resourceEdit.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/resourceAdd.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/resourceForm.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/resourceList.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/scripts/services/attributeService.js" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/taskList.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/resourceAssignTask.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/taskDirective.html" />
-        <option value="$PROJECT_DIR$/ResourceApp/scripts/services/taskService.js" />
-        <option value="$PROJECT_DIR$/ResourceApp/scripts/directives/taskDirective.js" />
-        <option value="$PROJECT_DIR$/ResourceApp/scripts/services/resourceService.js" />
-        <option value="$PROJECT_DIR$/ResourceApp/partials/taskComponent.html" />
         <option value="$PROJECT_DIR$/ResourceApp/partials/resourceTaskList.html" />
         <option value="$PROJECT_DIR$/ResourceApp/partials/resourceView.html" />
         <option value="$PROJECT_DIR$/ResourceApp/scripts/app.js" />
@@ -76,7 +273,6 @@
         <option value="$PROJECT_DIR$/ResourceApp-Material/partials/resourceView.html" />
         <option value="$PROJECT_DIR$/ResourceApp-Material/scripts/controllers/resourceController.js" />
         <option value="$PROJECT_DIR$/ResourceApp-Material/scripts/controllers/contactController.js" />
-        <option value="$PROJECT_DIR$/ResourceApp-Material/index.html" />
         <option value="$PROJECT_DIR$/ResourceApp-Material/partials/resourceTaskList.html" />
         <option value="$PROJECT_DIR$/ResourceApp-Material/scripts/services/resourceService.js" />
         <option value="$PROJECT_DIR$/ResourceApp-Material/scripts/controllers/chipController.js" />
@@ -92,6 +288,32 @@
         <option value="$PROJECT_DIR$/PABXUserApp/index.html" />
         <option value="$PROJECT_DIR$/PABXUserApp/partials/pabxUserListView.html" />
         <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/indexController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/campaignHandler.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/camOngoingController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/controllers/camOngoingController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/controllers/indexController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/services/clusterServiceHandler.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/UI/index.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/app.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/controllers/ClusterListController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/js/controllers/ClusterCreateController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/UI/partials/clusterList.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/chipController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/directives/taskDirective.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/clusterService.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/partials/resourceList.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/ClusterListController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterAdd.html" />
+        <option value="$PROJECT_DIR$/ResourceApp-Material/index.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterEdit.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/services/clusterService.js" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterForm.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/index.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/css/clusterLayout.css" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/partials/clusterList.html" />
+        <option value="$PROJECT_DIR$/DVP-ClusterApp/scripts/app.js" />
       </list>
     </option>
   </component>
@@ -109,6 +331,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -122,7 +347,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -166,6 +391,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ResourceApp-Material" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ResourceApp-Material" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="PABXUserApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -184,19 +441,69 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-ClusterApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-ClusterApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DVP-ClusterApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../NodeJS/DVP-ResourceService" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="editorconfig.notification" value="Applied .editorconfig settings" />
     <property name="recentsLimit" value="5" />
@@ -206,30 +513,26 @@
     <property name="options.lastSelected" value="vcs.Git" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="editor.config.accepted" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps" />
-      <recent name="E:\Projects\DVP\DVP-Apps\ResourceApp-Material" />
-      <recent name="E:\Projects\DVP\DVP-Apps\ResourceApp\scripts" />
-      <recent name="E:\Projects\DVP\DVP-Apps\ResourceApp" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\css" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\scripts\controllers" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\js" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\js\controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Projects\DVP\DVP-Apps\SampleApp" />
-      <recent name="E:\Projects\DVP\DVP-Apps\ResourceApp\scripts\services" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\scripts\services" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\css" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\UI" />
+      <recent name="I:\Duo Projects\WebstormProjects\DVP-Apps\DVP-ClusterApp\js\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html (6)">
-    <configuration default="false" name="index.html (5)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:49401/DVP-Apps/ResourceApp-Material/index.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:49401/DVP-Apps/SampleApp/index.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="index.html (6)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DVP-Apps/PABXUserApp/index.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
@@ -245,17 +548,16 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DVP-Apps/DVP-ClusterApp/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="clusterList.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DVP-Apps/DVP-ClusterApp/UI/partials/clusterList.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
@@ -263,6 +565,13 @@
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
@@ -278,6 +587,7 @@
       <node-options />
       <gulpfile />
       <tasks />
+      <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
@@ -289,19 +599,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html (5)" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.index.html (6)" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.index.js" />
-      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html (6)" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.index.js" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.clusterList.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html (6)" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
         <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.index.js" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.index.html (5)" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.clusterList.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.index.html (6)" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.index.js" />
       </list>
     </recent_temporary>
   </component>
@@ -319,52 +629,53 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24346405" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22321428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23206443" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39717427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24346405" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3968504" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23511904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24346405" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23133236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3968504" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -377,11 +688,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -396,8 +702,86 @@
           <line>63</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/js/services/clusterServiceHandler.js</url>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>3</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/js/app.js</url>
+          <line>54</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>56</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>49</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>42</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>35</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>28</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>20</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>13</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js</url>
+          <line>7</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/clusterService.js</url>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/clusterService.js</url>
+          <line>30</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js</url>
+          <line>104</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js</url>
+          <line>116</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js</url>
+          <line>119</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -421,156 +805,9 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/services/attributeService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.423077" vertical-offset="0" max-vertical-offset="0">
-          <caret line="21" column="133" selection-start-line="21" selection-start-column="133" selection-end-line="21" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceTaskAttributeList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/directives/taskDirective.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceAssignTask.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/services/taskService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/taskComponent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21834862" vertical-offset="0" max-vertical-offset="0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.269231" vertical-offset="0" max-vertical-offset="0">
-          <caret line="10" column="76" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36021507" vertical-offset="0" max-vertical-offset="0">
-          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/partials/tabtwo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/css/child_app_styles.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/jquery-2.1.4.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/css/directive_library.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/js/directivelibrary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="545" column="68" selection-start-line="545" selection-start-column="68" selection-end-line="545" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="1" column="72" selection-start-line="1" selection-start-column="72" selection-end-line="1" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/partials/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="0">
-          <caret line="3" column="41" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/js/controllers/js.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/partials/tabone.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03046595" vertical-offset="0" max-vertical-offset="0">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.086021505" vertical-offset="0" max-vertical-offset="0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SampleApp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="0">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceAssignTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -582,42 +819,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/controllers/resourceController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33213645" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.33213645">
           <caret line="164" column="26" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceTaskList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="-1.3076923">
           <caret line="2" column="72" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp/partials/resourceEdit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="67" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/directivelibrary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceTaskList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="-9.153846">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp/scripts/services/resourceService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33216783" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.33216783">
           <caret line="131" column="6" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
           <folding>
             <element signature="e#444#725#0" expanded="false" />
@@ -627,21 +857,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4257603" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.4257603">
           <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/services/resourceService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="131" column="26" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/controllers/chipController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
@@ -651,143 +881,364 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/controllers/resourceController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.574359" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.574359">
           <caret line="54" column="23" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceEdit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp/css/directive_library.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/directives/taskDirective.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4" vertical-offset="0" max-vertical-offset="595">
+        <state vertical-scroll-proportion="0.4">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ExtensionManager/scripts/controllers/ExtManagerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1836">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4940171" vertical-offset="0" max-vertical-offset="585">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="4" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31965813" vertical-offset="0" max-vertical-offset="765">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/angular/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/angular-material/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AttributeApplication/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2905983" vertical-offset="153" max-vertical-offset="1258">
+        <state vertical-scroll-proportion="0.2905983">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PABXUserApp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="612">
+        <state vertical-scroll-proportion="0.0">
           <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/services/dvpApiHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41571194">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/controllers/PABXUserListController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6661211">
+          <caret line="27" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3616601">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7335835">
+          <caret line="44" column="58" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/directivelibrary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/chipController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13972056">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/directives/taskDirective.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21956088">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/attributeService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1824687">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/app.js">
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/taskService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08346972" vertical-offset="0" max-vertical-offset="611">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/css/child_app_styles.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.029259896">
+          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.029259896">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67173254">
+          <caret line="13" column="102" selection-start-line="13" selection-start-column="89" selection-end-line="13" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/resourceService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/services/clusterService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding>
             <element signature="e#0#44#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/services/dvpApiHandler.js">
+    <entry file="file://$PROJECT_DIR$/bower_components/angular/angular.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41571194" vertical-offset="1" max-vertical-offset="612">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14791" column="19" selection-start-line="14791" selection-start-column="19" selection-end-line="14791" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/controllers/pabxUserListController.js">
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/controllers/resourceController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6661211" vertical-offset="18" max-vertical-offset="629">
-          <caret line="27" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="4" />
           <folding>
-            <element signature="e#0#44#0" expanded="false" />
+            <element signature="e#183#502#0" expanded="false" />
+            <element signature="e#271#365#0" expanded="false" />
+            <element signature="e#547#605#0" expanded="false" />
+            <element signature="e#653#1138#0" expanded="false" />
+            <element signature="e#1469#1710#0" expanded="false" />
+            <element signature="e#2404#2645#0" expanded="false" />
+            <element signature="e#3587#3899#0" expanded="false" />
+            <element signature="e#3626#3867#0" expanded="false" />
+            <element signature="e#3695#3768#0" expanded="false" />
+            <element signature="e#3787#3861#0" expanded="false" />
+            <element signature="e#4017#6689#0" expanded="false" />
+            <element signature="e#4083#4324#0" expanded="false" />
+            <element signature="e#4403#4774#0" expanded="false" />
+            <element signature="e#4567#4674#0" expanded="false" />
+            <element signature="e#4693#4767#0" expanded="false" />
+            <element signature="e#4823#5262#0" expanded="false" />
+            <element signature="e#4924#5160#0" expanded="false" />
+            <element signature="e#4933#4951#0" expanded="false" />
+            <element signature="e#5179#5255#0" expanded="false" />
+            <element signature="e#5311#5374#0" expanded="false" />
+            <element signature="e#5418#5648#0" expanded="false" />
+            <element signature="e#5502#5549#0" expanded="false" />
+            <element signature="e#5568#5642#0" expanded="false" />
+            <element signature="e#5724#5943#0" expanded="false" />
+            <element signature="e#5799#5843#0" expanded="false" />
+            <element signature="e#5862#5936#0" expanded="false" />
+            <element signature="e#6018#6686#0" expanded="false" />
+            <element signature="e#6414#6585#0" expanded="false" />
+            <element signature="e#6485#6503#0" expanded="false" />
+            <element signature="e#6604#6678#0" expanded="false" />
+            <element signature="e#6761#6765#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PABXUserApp/partials/pabxUserListView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="833">
-          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="40" selection-end-column="116" />
+          <folding>
+            <element signature="n#md-data-table-container#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/css/test.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterForm.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4940171" vertical-offset="0" max-vertical-offset="612">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state vertical-scroll-proportion="-17.653847">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14629948">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6923077">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#md-icon#0;n#md-button#0;n#div#0;n#md-toolbar#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ResourceApp-Material/partials/resourceList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29259896">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/css/randomColor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/js/camOngoingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-CampaignManagerApp/UI/partials/camOngoing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="23" column="76" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#md-content#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/css/clusterLayout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/partials/clusterList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PABXUserApp/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14003295">
+          <caret line="5" column="83" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DVP-ClusterApp/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8206897">
+          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
           <folding />
         </state>
       </provider>

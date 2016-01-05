@@ -1,0 +1,76 @@
+<div class="md-padding" id="popupContainer" flex="90" flex-sm="100" flex-gt-sm="96" flex-md="92" flex-gt-md="90"
+     flex-lg="90" flex-gt-lg="90" show-sm show-gt-sm show-md show-gt-md show-lg show-gt-lg ng-cloak>
+
+  <div layout="row" style="width: 100%">
+    <div class="divTable" style="width: 18%">Name</div>
+    <div class="divTable" style="width: 18%">Cloud Model</div>
+    <div class="divTable" style="width: 18%">Class</div>
+    <div class="divTable" style="width: 18%">Type</div>
+    <div class="divTable" style="width: 18%">Category</div>
+    <div class="divTable" style="width: 5%">Edit</div>
+    <div class="divTable" style="width: 5%">Delete</div>
+  </div>
+
+  <div layout="row" style="width: 100%" ng-repeat="cluster in clusters">
+    <div class="divTable" style="width: 18%">{{cluster.Name}}</div>
+    <div class="divTable" style="width: 18%">{{cluster.CloudModel}}</div>
+    <div class="divTable" style="width: 18%">{{cluster.Class}}</div>
+    <div class="divTable" style="width: 18%">{{cluster.Type}}</div>
+    <div class="divTable" style="width: 18%">{{cluster.Category}}</div>
+    <div class="divTable" style="width: 5%">
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewCluster(cluster.id)">
+        <md-icon md-svg-src="img/edit26.svg"></md-icon>
+      </md-button>
+    </div>
+    <div class="divTable" style="width: 5%">
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteCluster(cluster)">
+        <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+      </md-button>
+    </div>
+  </div>
+
+
+  <md-list ng-cloak>
+
+
+    <md-data-table-container>
+      <table md-data-table md-progress="deferred">
+        <thead>
+        <tr>
+          <th name="Name">Name</th>
+          <th name="Cloud Model">Cloud Model</th>
+          <th name="Class">Class</th>
+          <th name="Type">Type</th>
+          <th name="Category">Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" layout-align="center center" md-auto-select
+            ng-repeat="cluster in clusters | limitTo: query.limit: (query.page - 1) * query.limit">
+
+          <td>{{cluster.Name}}</td>
+          <td>{{cluster.CloudModel}}</td>
+          <td>{{cluster.Class}}</td>
+          <td>{{cluster.Type}}</td>
+          <td>{{cluster.Category}}</td>
+
+          <td>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewCluster(cluster.id)">
+              <md-icon md-svg-src="img/edit26.svg"></md-icon>
+            </md-button>
+          </td>
+          <td>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteCluster(cluster)">
+              <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </md-data-table-container>
+    <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-data-table-pagination>
+  </md-list>
+
+
+</div>
+
