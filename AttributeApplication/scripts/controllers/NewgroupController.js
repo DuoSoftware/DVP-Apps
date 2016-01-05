@@ -5,24 +5,38 @@
  * Created by Pawan on 12/15/2015.
  */
 (function () {
-    var app= angular.module("attributeapp");
+  var app= angular.module("attributeapp");
 
-    var NewgroupController = function ($scope,dbcontroller,$location,$mdDialog) {
+  var NewgroupController = function ($scope,dbcontroller,$location,$mdDialog) {
 
-        var onError = function(reason)
-        {
+    $scope.isDisabled = false;
 
-        }
-        var onGroupAddingCompleted = function (data) {
-            $scope.AddData= data.Result;
-            $location.path("/group");
-        }
-
-        $scope.AddNewGroup = function (GroupName,OtherData,Percentage) {
-            dbcontroller.NewGroup(GroupName,OtherData,Percentage).then(onGroupAddingCompleted,onError);
-        }
-
-
+    var onError = function(reason)
+    {
+      $scope.isDisabled = false;
+      $scope.error=reason;
+      console.log(reason);
     }
-    app.controller("NewgroupController",NewgroupController);
+    var onGroupAddingCompleted = function (response) {
+
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+        $scope.isDisabled = false;
+        $scope.AddData = response.data.Result;
+        $location.path("/group");
+      }
+    }
+
+    $scope.AddNewGroup = function (GroupName,OtherData,Percentage) {
+      $scope.isDisabled = true;
+      dbcontroller.NewGroup(GroupName,OtherData,Percentage).then(onGroupAddingCompleted,onError);
+    }
+
+
+  }
+  app.controller("NewgroupController",NewgroupController);
 }());

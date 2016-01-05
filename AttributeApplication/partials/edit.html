@@ -18,17 +18,17 @@
         </tr>
         <tr>
             <td>Attribute</td>
-            <td ><input type="text" ng-model="Attribute" placeholder="{{DataObj.Attribute}}"/></td>
+            <td ><input type="text" ng-model="editObj.Attribute" placeholder="{{DataObj.Attribute}}"/></td>
 
         </tr>
         <tr>
             <td>OtherData</td>
-            <td ><input type="text" ng-model="OtherData" placeholder="{{DataObj.OtherData}}"/></td>
+            <td ><input type="text" ng-model="editObj.OtherData" placeholder="{{DataObj.OtherData}}"/></td>
         </tr>
 
         <tr>
 
-            <td ><md-button class="md-raised md-primary" ng-click="SaveUpdated(DataObj.AttributeId,Attribute,OtherData)">Save</md-button></td>
+            <td ><md-button class="md-raised md-primary" ng-click="SaveUpdated(DataObj.AttributeId)" ng-disabled="isDisabled" >Save</md-button></td>
         </tr>
         </tbody>
     </table>

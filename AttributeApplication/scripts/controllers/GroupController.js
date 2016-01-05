@@ -10,29 +10,48 @@
 
     var GroupController= function ($scope,dbcontroller,$location) {
 
-        var onGroupComplete = function (data) {
+        var onGroupComplete = function (response) {
 
-            $scope.grps=data.Result;
+          if(response.data.Exception)
+          {
+            onError(response.data.Exception.Message);
+          }
+          else
+          {
+            $scope.grps=response.data.Result;
+          }
+
 
         }
-        var onError = function(data)
+        var onError = function(reason)
         {
-            $scope.error=data.Exception;
+            $scope.error=reason;
         }
 
         var onGroupDeleteComplete = function (response) {
 
+
+          if(response.data.Exception)
+          {
+            onError(response.data.Exception.Message);
+          }
+          else
+          {
             var val = 0;
             for (var i = 0, len = $scope.grps.length; i < len; i++) {
 
-                if($scope.grps[i].GroupId == response) {
-                    val = i;
-                    break;
+              if($scope.grps[i].GroupId == response.GroupId) {
+                val = i;
+                break;
 
-                }
+              }
             }
 
             $scope.grps.splice(val, 1);
+          }
+
+
+
         }
 
         dbcontroller.getGroupList().then(onGroupComplete,onError);
