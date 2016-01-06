@@ -5,7 +5,7 @@
 (function() {
   var app = angular.module("pabxUserApp");
 
-  var PABXUserListController = function ($scope, dvpHandler, $location)
+  var PABXUserListController = function ($scope, dvpHandler, sharedResPABXUser, $location)
   {
       $scope.query = {
         limit: 5,
@@ -14,8 +14,9 @@
 
       $scope.dataReady = false;
 
-      $scope.onEditPressed = function()
+      $scope.onEditPressed = function(usrObj)
       {
+          sharedResPABXUser.PABXUser = usrObj;
           $location.url("/pabxUser/123");
       };
 

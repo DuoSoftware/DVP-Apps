@@ -22,7 +22,7 @@
     return {
       getPABXUsers: getPABXUsers
     };
-  }
+  };
 
   var module = angular.module("pabxUserApp");
   module.factory("dvpHandler", dvpHandler);
