@@ -2,24 +2,39 @@
  * Created by Pawan on 12/15/2015.
  */
 (function () {
-    var app= angular.module("attributeapp");
+  var app= angular.module("attributeapp");
 
-    var NewController = function ($scope,dbcontroller,$location,$mdDialog) {
+  var NewController = function ($scope,dbcontroller,$location,$mdDialog) {
 
-        var onError = function(reason)
-        {
+    $scope.isDisabled = false;
+    var onError = function(reason)
+    {
+      $scope.isDisabled = false;
+      console.log("new saving error "+reason);
+    }
+    var onAttribAddingCompleted = function (response) {
 
-        }
-        var onAttribAddingCompleted = function (data) {
-            $scope.AddData= data.Result;
-            $location.path("/attribute");
-        }
 
-        $scope.AddNew = function (Attribute,Otherdata) {
-            dbcontroller.NewAttribute(Attribute,Otherdata).then(onAttribAddingCompleted,onError);
-        }
-
+      if(response.data.Exception)
+      {
+        console.log(response.data.Exception.Message);
+       onError(response.data.Exception.Message);
+      }
+      else
+      {
+        $scope.isDisabled = false;
+        $scope.AddData= response.Result;
+        $location.path("/attribute");
+      }
 
     }
-    app.controller("NewController",NewController);
+
+    $scope.AddNew = function (Attribute,Otherdata) {
+      $scope.isDisabled = true;
+      dbcontroller.NewAttribute(Attribute,Otherdata).then(onAttribAddingCompleted,onError);
+    }
+
+
+  }
+  app.controller("NewController",NewController);
 }());
