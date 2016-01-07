@@ -18,7 +18,11 @@
             <label>PABX User Name</label>
             <input name="userName" ng-model="basicConfig.UserName">
           </md-input-container>
-          <div flex="55"></div>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>PIN Number</label>
+            <input name="pinNumber" ng-model="basicConfig.Pin">
+          </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
@@ -32,7 +36,7 @@
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Advanced Route Method</label>
-            <md-select name="advRouteMethod" ng-model="basicConfig.AdvRouteMethod" ng-model-options="{trackBy: '$value'}">
+            <md-select name="advRouteMethod" ng-model="basicConfig.AdvancedRouteMethod" ng-model-options="{trackBy: '$value'}">
               <md-option value="NONE">Default</md-option>
               <md-option value="FOLLOW_ME">Follow Me</md-option>
               <md-option value="FORWARDING">Conditional Forward</md-option>
@@ -42,56 +46,53 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Schedule</label>
-            <md-select name="schedule" ng-model="basicConfig.Schedule" ng-model-options="{trackBy: '$value.id'}">
+            <md-select name="schedule" ng-model="basicConfig.ScheduleId" ng-model-options="{trackBy: '$value.id'}">
               <md-option ng-repeat="schedItem in scheduleList" value="{{schedItem.id}}">{{schedItem.Name}}</md-option>
             </md-select>
           </md-input-container>
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
+            <label>Divert Number</label>
+            <input name="divertNumber" ng-model="basicConfig.DivertNumber">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Time Zone: (Eg: +01:00)</label>
-            <input name="timeZone" ng-model="basicConfig.TimeZone">
+            <md-select name="timeZone" ng-model="basicConfig.TimeZone" ng-model-options="{trackBy: '$value'}">
+              <md-option ng-repeat="tz in timeZoneList" ng-value="tz.Offset">{{tz.TZName}}</md-option>
+            </md-select>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Day Greeting</label>
-            <md-select name="userStatus" ng-model="basicConfig.DayGreeting" ng-model-options="{trackBy: '$value'}">
+            <md-select name="userStatus" ng-model="basicConfig.DayGreetingFile" ng-model-options="{trackBy: '$value'}">
               <md-option ng-repeat="dayGreetItem in fileList" value="{{dayGreetItem.id}}">{{dayGreetItem.Name}}</md-option>
             </md-select>
           </md-input-container>
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Night Greeting</label>
-            <md-select name="userStatus" ng-model="basicConfig.DayGreeting" ng-model-options="{trackBy: '$value'}">
+            <md-select name="userStatus" ng-model="basicConfig.NightGreetingFile" ng-model-options="{trackBy: '$value'}">
               <md-option ng-repeat="nightGreetItem in fileList" value="{{nightGreetItem.id}}">{{nightGreetItem.Name}}</md-option>
             </md-select>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Divert Number</label>
-            <input name="divertNumber" ng-model="basicConfig.DivertNumber">
-          </md-input-container>
-          <div flex="5"></div>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>PIN Number</label>
-            <input name="pinNumber" ng-model="basicConfig.PinNumber">
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-checkbox md-no-ink aria-label="mediaBypass" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="BypassMedia" ng-model="basicConfig.BypassMedia" class="md-primary" flex-gt-sm>
             Media Bypass
           </md-checkbox>
           <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="ignoreEarlyMedia" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="IgnoreEarlyMedia" ng-model="basicConfig.IgnoreEarlyMedia" class="md-primary" flex-gt-sm>
             Ignore Early Media
           </md-checkbox>
           <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="voicemail" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="VoicemailEnabled" ng-model="basicConfig.VoicemailEnabled" class="md-primary" flex-gt-sm>
             Voicemail
           </md-checkbox>
           <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="allowOutbound" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="AllowOutbound" ng-model="basicConfig.AllowOutbound" class="md-primary" flex-gt-sm>
             Allow Outbound
           </md-checkbox>
         </div>

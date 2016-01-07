@@ -1,0 +1,44 @@
+<md-dialog aria-label="Add Attributes"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Skill ({{ctrl.parent.task.ResTask.ResTaskInfo.TaskName}})</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="column" ng-cloak class="md-inline-form">
+          <md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+            <md-input-container>
+              <label>Skill</label>
+              <md-select ng-model="attribute.Attribute">
+                <md-option ng-repeat="attrib in attributes" value="{{attrib.AttributeId}}">
+                  {{attrib.Attribute}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container>
+              <label>Percentage</label>
+              <input type="text" ng-model="attribute.Percentage" class="form-control" id="Presentage" placeholder="Resource Skill Percentage"/>
+            </md-input-container>
+            <md-input-container>
+              <label>OtherData</label>
+              <input type="text" ng-model="attribute.OtherData" class="form-control" id="OtherData" placeholder="Any Data?"/>
+            </md-input-container>
+          </md-content>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  ng-click="AddSkill(ctrl.parent.task,attribute)">
+        <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
+
