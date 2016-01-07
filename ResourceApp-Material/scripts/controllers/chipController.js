@@ -77,7 +77,8 @@
     }
 
     self.OnChipSelect = function($chip){
-      //alert("Select "+$chip);
+
+      alert("Select "+JSON.stringify($chip));
 
 
 
@@ -175,15 +176,6 @@
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
     loadResourceTasks();
