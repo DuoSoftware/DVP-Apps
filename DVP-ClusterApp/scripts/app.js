@@ -1,5 +1,5 @@
 
-var app = angular.module("ClusterManageApp",["ngMaterial","md.data.table","ngRoute", "clusterServiceModule"]);
+var app = angular.module("ClusterManageApp",["ngMaterial","md.data.table","ngRoute","ngMessages", "clusterServiceModule"]);
 
 app.config(function($routeProvider){
 

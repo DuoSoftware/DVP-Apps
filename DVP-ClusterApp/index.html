@@ -38,35 +38,37 @@
 </div>-->
 
 
-<div layout="row" style="width: 100% ;" >
-  <div class="SidePanel" flex="10" ></div>
-  <div class="panel" flex="80" >
-
-    <md-toolbar>
-      <div class="md-toolbar-tools" >
-        <h2>
-          <span>Cluster Manage App</span>
-        </h2>
-
-        <span flex></span>
-
-        <md-button class="md-fab md-accent"  href="#/cluster/create">
-          <md-tooltip>Add Cluster</md-tooltip>
-          <md-icon md-svg-src="img/ic_add_24px.svg" style="width:24px;height:24px;"></md-icon>
-        </md-button>
-
+<div layout="row">
+  <div flex="10"></div>
+  <div class="ui-main" flex="80">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <div class="main-fab">
+        <md-button class="md-fab md-accent" href="#/cluster/create">+</md-button>
+        <md-tooltip>Add Cluster</md-tooltip>
       </div>
+      <md-toolbar layout="column" class="md-tall"><span flex="flex"></span>
 
-    </md-toolbar>
-    <ng-view ></ng-view>
+        <div class="md-toolbar-tools">
+          <div layout="row" flex="flex" class="fill-height">
+            <div ng-hide="toggleSearch" class="md-toolbar-item md-breadcrumb"><span>Cluster Manage App</span></div>
+            <span flex="flex" ng-hide="toggleSearch"></span>
+            <md-input-container flex="flex" style="padding-left:88px;" ng-show="toggleSearch">
+              <input type="text" ng-model="search"/>
+            </md-input-container>
+            <div layout="row" class="md-toolbar-item md-tools"><a href="href" ng-click="toggleSearch = !toggleSearch"
+                                                                  class="md-button md-default-theme"><i
+              class="ion-android-search"></i></a></div>
+          </div>
+        </div>
+      </md-toolbar>
 
+      <md-card-content ng-view>
+      </md-card-content>
+    </md-card>
   </div>
-  <div class="SidePanel" flex="10"  ></div>
+  <div flex="10"></div>
+
 </div>
-
-
-
-
 
 
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -80,15 +82,11 @@
 <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
 
 
-
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/chipController.js"></script>
-<script src="scripts/controllers/resourceController.js"></script>
-<script src="scripts/services/resourceService.js"></script>
-  <script src="scripts/services/clusterService.js"></script>
-<script src="scripts/services/taskService.js"></script>
+<script src="scripts/controllers/clusterController.js"></script>
+<script src="scripts/services/clusterService.js"></script>
 <script src="scripts/directives/taskDirective.js"></script>
-
 
 
 </body>

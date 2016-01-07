@@ -1,29 +1,61 @@
+<div class="ui-sub" layout="column" ng-cloak>
+  <md-content class="ui-sub" layout-padding>
+    <form name="projectForm">
+      <md-input-container class="md-block">
+        <label>Name</label>
+        <input md-maxlength="30" required name="Name" ng-model="cluster.Name">
 
-<div layout="column" ng-cloak class="md-inline-form">
-  <md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
-    <md-input-container>
-      <label>Name</label>
-      <input type="text" ng-model="cluster.Name" class="form-control" id="Name" placeholder="cluster Name Here"/>
-    </md-input-container>
-    <md-input-container>
-      <label>Cloud Model</label>
-      <input type="text" ng-model="cluster.CloudModel" class="form-control" id="CloudModel" placeholder="What is the cluster Cloud Model?"/>
-    </md-input-container>
-    <md-input-container>
-      <label>Class</label>
-      <input type="text" ng-model="cluster.Class" class="form-control" id="Class" placeholder="What is the cluster Class?"/>
-    </md-input-container>
-    <md-input-container>
-      <label>Type</label>
-      <input type="text" ng-model="cluster.Type" class="form-control" id="Type" placeholder="What is the cluster Type?"/>
-    </md-input-container>
-    <md-input-container>
-      <label>Category</label>
-      <input type="text" ng-model="cluster.Category" class="form-control" id="Category" placeholder="What is the cluster Category?"/>
-    </md-input-container>
+        <div ng-messages="projectForm.Name.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <div >
+          <label>Cloud Model</label>
+          <md-select name="CloudModel" ng-model="cluster.CloudModel" ng-model-options="{trackBy: '$value'}">
+            <md-option ng-value="model.CloudModel" ng-repeat="model in cModels">{{ model.name }}</md-option>
+          </md-select>
+        </div>
+      </md-input-container>
+
+
+      <div layout-gt-sm="row">
+
+        <md-input-container class="md-block">
+          <label>Class</label>
+          <input required name="Class" ng-model="cluster.Class">
+
+          <div ng-messages="projectForm.Class.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Type</label>
+          <input required name="Type" ng-model="cluster.Type">
+
+          <div ng-messages="projectForm.Type.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Category</label>
+          <input required name="Category" ng-model="cluster.Category">
+
+          <div ng-messages="projectForm.Category.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+      </div>
+    </form>
+
+
+
   </md-content>
 </div>
-
 
 
 

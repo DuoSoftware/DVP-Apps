@@ -5,39 +5,55 @@
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
   </div>
-  <table  md-table md-progress="promise" width="100%" ng-show="dataReady">
+  <table md-table md-progress="promise" width="100%" ng-show="dataReady">
     <thead md-head>
-    <tr class="trTitle" md-row>
-      <th md-column>Name</th>
-      <th md-column>Cloud Model</th>
-      <th md-column>Class</th>
-      <th md-column>Type</th>
-      <th md-column>Category</th>
-      <th md-column>Edit</th>
-
+    <tr class="md-table-header" md-row>
+      <th  md-column>Name</th>
+      <th  md-column>Cloud Model</th>
+      <th  md-column>Class</th>
+      <th  md-column>Type</th>
+      <th  md-column>Category</th>
+      <th  md-column>Activate</th>
+      <th  md-column>Edit</th>
+      <th  md-column>Delete</th>
     </tr>
     </thead>
     <tbody md-body>
-    <tr ng-class-odd="'odd'" ng-class-even="'even'"  md-auto-select ng-repeat="cluster in clusters | limitTo: query.limit: (query.page - 1) * query.limit">
+    <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
+        ng-repeat="cluster in clusters | limitTo: query.limit: (query.page - 1) * query.limit">
 
-      <td md-cell>{{cluster.Name}}</td>
-      <td md-cell>{{cluster.CloudModel}}</td>
-      <td md-cell>{{cluster.Class}}</td>
-      <td md-cell>{{cluster.Type}}</td>
-      <td md-cell>{{cluster.Category}}</td>
-      <td md-cell>
-        <div layout="row">
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewCluster(cluster.id)">
-            <md-icon md-svg-src="img/edit26.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteCluster(cluster)">
-            <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
-          </md-button>
+      <td  md-cell>{{cluster.Name}}</td>
+      <td  md-cell>
+        <div ng-switch="cluster.CloudModel">
+          <span ng-switch-when="0">Unknown</span>
+          <span ng-switch-when="1">Basic</span>
+          <span ng-switch-when="2">Intermediate</span>
+          <span ng-switch-when="3">Advanced</span>
         </div>
+      </td>
+      <td  md-cell>{{cluster.Class}}</td>
+      <td  md-cell>{{cluster.Type}}</td>
+      <td  md-cell>{{cluster.Category}}</td>
+      <td  md-cell>
+        <md-checkbox ng-disabled="true" ng-checked="cluster.Activate"></md-checkbox>
+      </td>
+      <td  md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewCluster(cluster.id)">
+          <md-icon md-svg-src="img/edit26.svg"></md-icon>
+        </md-button>
+      </td>
+      <td md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteCluster(cluster)">
+          <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+        </md-button>
       </td>
     </tr>
     </tbody>
   </table>
 </md-table-container>
 <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+
+
+
+
 
