@@ -1,0 +1,14 @@
+<a ui-sref="newResource" class="btn btn-primary" href="#/resource/{{resource.ResourceId}}/newtask">Add New Tasks</a>
+
+<table class="table resourceAssignTaskTable">
+  <tr>
+    <td><h3>Tasks {{resource.ResourceName}}</h3></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="task in masterTasks">
+    <td>{{task.ResTaskInfo.TaskName}}</td>
+    <td>
+      <a class="btn"  ng-click="assignTask(resource,task)">Add</a>
+    </td>
+  </tr>
+</table>

@@ -188,8 +188,11 @@ app.controller("ResourceViewController",function($scope,$mdDialog,$routeParams,r
 
 });
 
-app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDialog,$location,$route,resource, task){
+app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDialog,$location,$route,resource, task, attribute){
 
+
+
+  $scope.Attributes = [];
 
   $scope.showAlert = function(tittle, label, button, content) {
 
@@ -239,6 +242,50 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDial
 
   };
 
+  $scope.OnChipDelete = function($chip){
+
+
+
+
+    attribute.DeleteAttributeToTask($chip.ResAttId).then(function (response) {
+
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+  }
+
+
+
+  $scope.AddSkill = function(resourceTask){
+
+    $scope.task = resourceTask;
+
+    $mdDialog.show({
+      templateUrl: 'partials/AddSkillDialog.html',
+      clickOutsideToClose:true,
+      locals: {parent: $scope},
+      controller: "ResourceAttributeController",
+      controllerAs: 'ctrl',
+      bindToController: true,
+      fullscreen: true
+    })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+        $scope.LoadChips($scope.task);
+
+
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+
+
+  };
+
+
+
 
 
 
@@ -250,8 +297,10 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDial
 
 
   $scope.loadResourceTasks = function() {
+
     resource.GetTasksAssignedToResource($routeParams.id).then(function (response) {
       $scope.resourceTasks = response;
+
 
     }, function (error) {
       $scope.showAlert("Error","Error","ok","There is an error ");
@@ -259,6 +308,32 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDial
   };
 
 
+
+  $scope.LoadChips = function(resourceTask) {
+
+
+    //$scope.Attributes = ["aaa", "bbb", "ccc"];
+
+
+    attribute.GetTskAttributes(resourceTask.ResTaskId).then(function (response) {
+      $scope.Attributes = response.ResResourceAttributeTask.map(function(c, index){
+
+        var item = {};
+        item.Attribute = c.ResAttribute.Attribute;
+        item.Percentage = c.Percentage;
+        item.OtherData = c.OtherData;
+        item.ResAttId = c.ResAttId;
+        item.AttributeId = c.AttributeId;
+        return item;
+
+      });
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  };
 
 
   $scope.loadResourceTasks();
@@ -303,6 +378,59 @@ app.controller("ResourceTaskListController",function($scope,$routeParams,$mdDial
 
 
   }
+
+});
+
+app.controller("ResourceAttributeController",function($scope, attribute, $mdDialog){
+
+
+  $scope.attributes = null,
+  $scope.loadAttributes= function() {
+
+    // resource.user = {};
+    attribute.GetAttributes().then(function (response) {
+      $scope.attributes = response;
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error on loading tasks");
+    });
+
+  };
+
+  $scope.loadAttributes();
+
+
+  $scope.ViewScope = function(attributes){
+
+    //alert(JSON.stringify(attributes));
+
+    $mdDialog.hide();
+
+  };
+
+  $scope.cancel = function(attributes){
+
+    //alert(JSON.stringify(attributes));
+
+    $mdDialog.hide();
+
+  };
+
+
+
+  $scope.AddSkill = function(task, attrib){
+
+    attribute.SetTskAttributes(task.ResTaskId,attrib).then(function (response) {
+      $scope.attributes = response;
+      //$scope.LoadChips(resourceTask);
+      $scope.task = task;
+      $mdDialog.hide();
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error on loading tasks");
+    });
+
+  };
+
 
 });
 

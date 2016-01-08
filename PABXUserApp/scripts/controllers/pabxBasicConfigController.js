@@ -4,13 +4,10 @@
 (function() {
   var app = angular.module("pabxUserApp");
 
-  var PABXBasicConfigController = function ($scope, dvpHandler, $location)
+  var PABXBasicConfigController = function ($scope, dvpHandler, sharedResPABXUser, $location)
   {
-      $scope.basicConfig = {
-        UserName:"",
-        AllowedNumbers:[]
-      }
-
+      $scope.basicConfig = sharedResPABXUser.PABXUser;
+      $scope.timeZoneList = timeZones;
   };
 
   app.controller("PABXBasicConfigController", PABXBasicConfigController);

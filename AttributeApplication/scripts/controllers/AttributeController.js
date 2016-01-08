@@ -3,69 +3,117 @@
  */
 (function () {
 
-    var app =   angular.module("attributeapp");
+  var app =   angular.module("attributeapp");
 
-    var AttributeController= function ($scope,dbcontroller,$location) {
+  var AttributeController= function ($scope,dbcontroller,commoncontroller,$location,$mdDialog,$mdMedia) {
 
-        var onAttribComplete = function (data) {
-            dbcontroller.GIDst=false;
-            console.log("Got as Attributes "+JSON.stringify(data.Result));
-            $scope.attribData=data.Result;
+    $scope.isDisabled = false;
 
+    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+    var onAttribComplete = function (response) {
+      console.log(JSON.stringify(response.data.Result));
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+        dbcontroller.GIDst=false;
+        console.log("Got as Attributes "+JSON.stringify(response.data.Result));
+        $scope.attribData=response.data.Result;
+      }
+
+
+
+
+    }
+    var onError = function(reason)
+    {
+      $scope.isDisabled = false;
+      $scope.error=reason;
+    }
+
+    var onAttributeDeleteComplete = function (response) {
+
+      console.log(JSON.stringify(response));
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+
+        var val = 0;
+        for (var i = 0, len = $scope.attribData.length; i < len; i++) {
+
+          if($scope.attribData[i].AttributeId == response.AttributeId) {
+            val = i;
+
+            break;
+
+          }
         }
-        var onError = function(data)
-        {
-            $scope.error=data.Exception;
-        }
-
-        var onAttributeDeleteComplete = function (response) {
-
-            var val = 0;
-            for (var i = 0, len = $scope.attribData.length; i < len; i++) {
-
-                if($scope.attribData[i].AttributeId == response) {
-                    val = i;
-                    break;
-
-                }
-            }
-
-            $scope.attribData.splice(val, 1);
-        }
+        $scope.isDisabled = false;
+        $scope.attribData.splice(val, 1);
+      }
+    }
 
 
-        if(dbcontroller.GIDst )
-        {
-            console.log("GID is in");
-            console.log("GID "+dbcontroller.GID);
-            console.log("GID status "+dbcontroller.GIDst);
-            dbcontroller.GIDst=false;
-            dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onAttribComplete,onError);
-        }
-        else
-        {
-            console.log("NO GID");
-            console.log("GID "+dbcontroller.GID);
-            console.log("GID status "+dbcontroller.GIDst);
-            dbcontroller.getAttributeList().then(onAttribComplete,onError);
-        }
+    if(dbcontroller.GIDst )
+    {
+      console.log("GID is in");
+      console.log("GID "+dbcontroller.GID);
+      console.log("GID status "+dbcontroller.GIDst);
+      dbcontroller.GIDst=false;
+      dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onAttribComplete,onError);
+    }
+    else
+    {
+      console.log("NO GID");
+      console.log("GID "+dbcontroller.GID);
+      console.log("GID status "+dbcontroller.GIDst);
+      dbcontroller.getAttributeList().then(onAttribComplete,onError);
+    }
 
 
 
 
-        $scope.DeleteAttribute = function(Attb)
-        {
-            dbcontroller.attribDelete(Attb).then(onAttributeDeleteComplete,onError);
-        }
-        $scope.ViewAttribute = function(Attb)
-        {
-            dbcontroller.Attribobj=Attb;
-            console.log(dbcontroller.Attribobj);
-            $location.path("/viewattrib");
-        }
+    $scope.DeleteAttribute = function(Attb)
+    {
+      $scope.isDisabled = true;
+      var title="Delete attribute ";
+      var content= "Do you want to delete "+ Attb.Attribute;
+      console.log(content) ;
+      commoncontroller.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
+
+        dbcontroller.attribDelete(Attb).then(onAttributeDeleteComplete,onError);
 
 
-    };
+      }, function(){
 
-    app.controller("AttributeController",AttributeController);
+        //$scope.showAlert("title","lable","ok","content");
+        $scope.isDisabled = false;
+
+      },Attb)
+
+
+
+
+    }
+
+    $scope.ViewAttribute = function(Attb)
+    {
+      dbcontroller.Attribobj=Attb;
+      console.log(dbcontroller.Attribobj);
+      $location.path("/viewattrib");
+    }
+
+
+
+
+
+  };
+
+  app.controller("AttributeController",AttributeController);
 }());
