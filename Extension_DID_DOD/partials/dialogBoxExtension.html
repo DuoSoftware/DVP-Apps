@@ -21,17 +21,25 @@
           <div>
             <div layout="column" ng-cloak class="md-inline-form">
               <md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+                <form name="extensionForm">
                 <md-input-container>
                   <label>Extension</label>
-                  <input type="text" class="form-control" id="extension" placeholder="Extension" ng-disabled="enableEdit" ng-model="extension.Extension">
+                  <input type="text" required name="Extension" class="form-control" id="extension" placeholder="Extension" ng-disabled="enableEdit" ng-model="extension.Extension" ng-pattern="/^[0-9]*$/">
+                  <div ng-messages="extensionForm.Extension.$error">
+                    <div ng-message="required">Extension is required.</div>
+                    <div ng-message="pattern">Please enter a valid Number.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Extension Name</label>
-                  <input type="text" class="form-control" id="extensionName" placeholder="Extension Name" ng-model="extension.ExtensionName">
+                  <input type="text" required name="ExtensionName" class="form-control" id="extensionName" placeholder="Extension Name" ng-model="extension.ExtensionName">
+                  <div ng-messages="extensionForm.ExtensionName.$error">
+                    <div ng-message="required">ExtensionName is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Extension Type</label>
-                  <md-select ng-model="extension.ObjCategory" class="form-control" placeholder="Externsion Type">
+                  <md-select ng-model="extension.ObjCategory" required name="ObjCategory" class="form-control" placeholder="Externsion Type">
                     <md-option value="USER">
                       USER
                     </md-option>
@@ -51,23 +59,30 @@
                       IVR
                     </md-option>
                   </md-select>
+                  <div ng-messages="extensionForm.ObjCategory.$error">
+                    <div ng-message="required">ExtensionType is required.</div>
+                  </div>
                 </md-input-container>
                 <md-checkbox ng-model="extension.Enabled" class="form-control" ng-hide="true" ng-disabled=true ng-click="updateExtensionEnable()" aria-label="Active">
                 </md-checkbox>
                 <md-input-container>
                   <label>DOD Number</label>
-                  <input type="text" class="form-control" id="dodNumber" placeholder="DOD Number" ng-model="extension.DodNumber">
+                  <input type="text" class="form-control" required name="DodNumber" id="dodNumber" placeholder="DOD Number" ng-model="extension.DodNumber" ng-pattern="/^[0-9]*$/">
+                  <div ng-messages="extensionForm.DodNumber.$error">
+                    <div ng-message="pattern">Please enter a valid Number.</div>
+                  </div>
                 </md-input-container>
                 <md-checkbox ng-model="extension.DodActive" class="form-control" ng-hide="true" ng-disabled=true ng-click="updateDodEnable()" aria-label="Active">
                 </md-checkbox>
+              </form>
               </md-content>
             </div>
           </div>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-raised md-primary" ng-hide="enableEdit" ng-click="addExtension(extension)" style="margin-right:20px;">
+            <md-button class="md-raised md-primary" ng-hide="enableEdit"  ng-disabled="extensionForm.Extension.$invalid || extensionForm.ExtensionName.$invalid || extensionForm.ObjCategory.$invalid" ng-click="addExtension(extension)" style="margin-right:20px;">
               Add
             </md-button>
-            <md-button class="md-raised md-primary" ng-show="enableEdit" ng-click="editExtension(extension)" style="margin-right:20px;">
+            <md-button class="md-raised md-primary" ng-show="enableEdit" ng-disabled="extensionForm.Extension.$invalid || extensionForm.ExtensionName.$invalid || extensionForm.ObjCategory.$invalid" ng-click="editExtension(extension)" style="margin-right:20px;">
               Edit
             </md-button>
             <md-button class="md-raised md-primary" ng-click="answer('not useful')">
