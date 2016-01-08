@@ -70,7 +70,70 @@
         .then(function(response){
           return response.data;
         });
-    }
+    };
+    var getExtension = function(accessToken, extension){
+      return $http({
+        method: 'GET',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/'+extension,
+        headers: {
+          'authorization': accessToken
+        }})
+        .then(function(response){
+          return response.data;
+        });
+    };
+    var addExtension = function(accessToken, extensionInfo){
+      return $http({
+        method: 'POST',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension',
+        headers: {
+          'authorization': accessToken
+        },
+        data:extensionInfo
+      })
+        .then(function(response){
+          return response.data;
+        });
+    };
+    var updateExtensionState = function(accessToken, extension, state){
+      return $http({
+        method: 'POST',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/'+extension+'/Status/'+state,
+        headers: {
+          'authorization': accessToken
+        }
+      })
+        .then(function(response){
+          return response.data;
+        });
+    };
+    var updateExtensionWithDod = function(accessToken, extId, dodNumber, isActive){
+      var dodInfo = {ExtId:extId, DodNumber:dodNumber, DodActive:isActive};
+      return $http({
+        method: 'POST',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/DodNumber',
+        headers: {
+          'authorization': accessToken
+        },
+        data:dodInfo
+      })
+        .then(function(response){
+          return response.data;
+        });
+    };
+    var updateExtension = function(accessToken, extensionInfo){
+      return $http({
+        method: 'POST',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/'+extensionInfo.Extension,
+        headers: {
+          'authorization': accessToken
+        },
+        data:extensionInfo
+      })
+        .then(function(response){
+          return response.data;
+        });
+    };
     return{
       getExtensions:getExtensions,
       getDidNumbers:getDidNumbers,
@@ -78,6 +141,11 @@
       updateDidWithExtension:updateDidWithExtension,
       updateDidState:updateDidState,
       deleteDidNumber:deleteDidNumber,
+      addExtension:addExtension,
+      updateExtension:updateExtension,
+      updateExtensionState:updateExtensionState,
+      updateExtensionWithDod:updateExtensionWithDod,
+      getExtension:getExtension,
       didNumber:didNumber,
       extension:extension
     };

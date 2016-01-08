@@ -61,6 +61,7 @@
     var onDidNumbersComplete = function(data){
       if(data.IsSuccess){
         $scope.didNumbers = data.Result;
+        $scope.total = $scope.didNumbers.length;
       }else{
         $scope.error = data.Exception;
       }

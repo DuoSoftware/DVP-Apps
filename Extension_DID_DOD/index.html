@@ -6,14 +6,36 @@
 
     <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" type="text/css"/>
+    <link rel="stylesheet" href="../PABXUserApp/css/custButtons.css" type="text/css"/>
 </head>
-<body>
-  <h1>Extension DID/DOD</h1>
+<body ng-controller="IndexController">
 
-  <div>
-    <a href="#/extension">Extension</a>  <a href="#/did">DID</a>
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content>
+        <md-content class="md-padding">
+          <md-tabs class="md-accent" md-align-tabs="top" md-selected="selectedIndex">
+            <md-tab id="tab_extension">
+              <a href="#/extension">View 1</a>
+              <md-tab-label>Extension</md-tab-label>
+            </md-tab>
+            <md-tab id="tab_did">
+              <a href="#/did">View 1</a>
+              <md-tab-label>DID</md-tab-label>
+            </md-tab>
+          </md-tabs>
+          <ng-view></ng-view>
+        </md-content>
+
+      </md-card-content>
+    </md-card>
   </div>
-  <ng-view></ng-view>
+  <div flex="20"></div>
+
+</div>
+
 
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
@@ -23,6 +45,7 @@
   <script src="../bower_components/angular-material/angular-material.js"></script>
   <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
   <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/IndexController.js"></script>
   <script src="scripts/controllers/ExtensionController.js"></script>
   <script src="scripts/controllers/DidController.js"></script>
   <script src="scripts/services/sipUserEndpointService.js"></script>
