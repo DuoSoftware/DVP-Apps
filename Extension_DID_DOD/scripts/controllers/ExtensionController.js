@@ -8,6 +8,14 @@
       limit: 5,
       page: 1
     };
+    $scope.filterFn = function(item)
+    {
+      if(item.Enabled == true)
+      {
+        return true;
+      }
+      return false;
+    };
     $scope.showAdvanced = function(ev, extension) {
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
       if(extension) {
@@ -50,6 +58,18 @@
         //$scope.status = 'You decided to keep your debt.';
       });
     };
+    $scope.showAlert = function(ev) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(false)
+          .title('This is an alert title')
+          .textContent('You can specify some description text in here.')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    };
     var onUpdateExtensionState = function(data){
       if(data.IsSuccess){
         $scope.loadData();
@@ -87,6 +107,21 @@ function DialogBoxExtensionController($scope, sipUser, $mdDialog) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
+  $scope.showConfirm = function(extension) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+      .title('Extension already exsit')
+      .textContent('Would you like to update exsiting Extension?')
+      .ariaLabel('Lucky day')
+      .ok('Overwite')
+      .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
+      sipUser.updateExtension("1#1",extension).then(onUpdateExtensionComplete,onError("update exsisting extenstion"));
+    }, function() {
+      //$scope.status = 'You decided to keep your debt.';
+    });
+  };
+
 
   var onGetExtensionComplete = function(data){
     if(data.IsSuccess){
@@ -95,6 +130,12 @@ function DialogBoxExtensionController($scope, sipUser, $mdDialog) {
         sipUser.addExtension($scope.accessToken, $scope.extension).then(onAddExtensionComplete, onError("add Extension"));
       }else{
         $scope.isExtensionExsist = true;
+        if($scope.isExtensionExsist== true && data.Result.Enabled == false) {
+          $scope.showConfirm($scope.extension);
+        }else{
+          $scope.error = "Extension already exsit.";
+          $scope.hide();
+        }
       }
     }else{
       $scope.error = data.Exception;
@@ -142,10 +183,14 @@ function DialogBoxExtensionController($scope, sipUser, $mdDialog) {
 
   $scope.addExtension = function(extensionInfo){
     $scope.extension = extensionInfo;
+    $scope.extension.Enabled = true;
+    $scope.extension.DodActive = true;
     sipUser.getExtension($scope.accessToken,$scope.extension.Extension).then(onGetExtensionComplete,onError("validate Extension"));
   };
   $scope.editExtension = function(extensionInfo){
     $scope.extension = extensionInfo;
+    $scope.extension.Enabled = true;
+    $scope.extension.DodActive = true;
     sipUser.updateExtension($scope.accessToken,$scope.extension).then(onUpdateExtensionComplete,onError("update Extension"));
   };
 }

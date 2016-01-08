@@ -31,8 +31,7 @@
         </tr>
         </thead>
         <tbody md-body>
-        <tr md-row layout-align="center center" md-auto-select ng-repeat="extension in extensions | filter: extension.Enabled: true | orderBy:'+createdAt' | limitTo: query.limit: (query.page - 1) * query.limit">
-
+        <tr md-row layout-align="center center" md-auto-select ng-repeat="extension in extensions | orderBy:'+createdAt' | limitTo: query.limit: (query.page - 1) * query.limit">
           <td md-cell>{{extension.Extension}}</td>
           <td md-cell>{{extension.ExtensionName}}</td>
           <td md-cell>{{extension.ObjCategory}}</td>

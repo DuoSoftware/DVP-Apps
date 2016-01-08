@@ -52,13 +52,13 @@
                     </md-option>
                   </md-select>
                 </md-input-container>
-                <md-checkbox ng-model="extension.Enabled" class="form-control" ng-disabled=true ng-click="updateExtensionEnable()" aria-label="Active">
+                <md-checkbox ng-model="extension.Enabled" class="form-control" ng-hide="true" ng-disabled=true ng-click="updateExtensionEnable()" aria-label="Active">
                 </md-checkbox>
                 <md-input-container>
                   <label>DOD Number</label>
                   <input type="text" class="form-control" id="dodNumber" placeholder="DOD Number" ng-model="extension.DodNumber">
                 </md-input-container>
-                <md-checkbox ng-model="extension.DodActive" class="form-control" ng-disabled=true ng-click="updateDodEnable()" aria-label="Active">
+                <md-checkbox ng-model="extension.DodActive" class="form-control" ng-hide="true" ng-disabled=true ng-click="updateDodEnable()" aria-label="Active">
                 </md-checkbox>
               </md-content>
             </div>
