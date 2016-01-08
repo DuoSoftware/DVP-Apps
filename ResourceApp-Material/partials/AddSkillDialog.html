@@ -1,6 +1,6 @@
 <md-dialog aria-label="Add Attributes"  ng-cloak>
-  <form>
-    <md-toolbar>
+  <form name="userForm">
+    <!--<md-toolbar>-->
       <div class="md-toolbar-tools">
         <h2>Add Skill ({{ctrl.parent.task.ResTask.ResTaskInfo.TaskName}})</h2>
         <span flex></span>
@@ -8,7 +8,7 @@
           <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
-    </md-toolbar>
+    <!--</md-toolbar>-->
     <md-dialog-content>
       <div class="md-dialog-content">
         <div layout="column" ng-cloak class="md-inline-form">
@@ -22,8 +22,13 @@
               </md-select>
             </md-input-container>
             <md-input-container>
-              <label>Percentage</label>
-              <input type="text" ng-model="attribute.Percentage" class="form-control" id="Presentage" placeholder="Resource Skill Percentage"/>
+              <label>Percentage (%)</label>
+              <input type="number" ng-model="attribute.Percentage" class="form-control" id="percentage" name="percentage"  min="1" max="100" placeholder="Resource Skill Percentage"  ng-required="true"/>
+              <div ng-messages="userForm.percentage.$error">
+                <div ng-message="required">Percentage is required.</div>
+                <div ng-message="type">Percentage should be a number.</div>
+                <div ng-message="max">Percentage should between 0-100.</div>
+              </div>
             </md-input-container>
             <md-input-container>
               <label>OtherData</label>
@@ -34,7 +39,7 @@
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
-      <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  ng-click="AddSkill(ctrl.parent.task,attribute)">
+      <md-button class="md-icon-button"  ng-disabled="userForm.$invalid" aria-label="Add"  ng-click="AddSkill(ctrl.parent.task,attribute)">
         <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
       </md-button>
     </md-dialog-actions>

@@ -13,36 +13,38 @@
       </md-card-title-media>
     </md-card-title>
     <md-card-content layout="column" layout-align="space-between">
-      <div ng-include="'partials/resourceForm.html'"></div>
-      <div ng-controller="BasicDemoCtrl as ctrl" layout="column">
+      <form name="userForm">
+        <div ng-include="'partials/resourceForm.html'"></div>
+        <div ng-controller="BasicDemoCtrl as ctrl" layout="column">
 
-        <md-chips ng-model="ctrl.resourceTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-on-select="ctrl.OnChipSelect($chip)" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">
-          <md-autocomplete
-            md-selected-item="ctrl.selectedItem"
-            md-search-text="ctrl.searchText"
-            md-items="item in ctrl.querySearch(ctrl.searchText)"
-            md-item-text="item.name"
-            placeholder="Search for a tasks">
-            <span md-highlight-text="ctrl.searchText">{{item.TaskName}}</span>
-          </md-autocomplete>
-          <md-chip-template>
-            <strong>{{$chip.TaskName}}</strong>
-            <em>(task)</em>
-          </md-chip-template>
-        </md-chips>
-      </div>
+          <md-chips ng-model="ctrl.resourceTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-on-select="ctrl.OnChipSelect($chip)" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">
+            <md-autocomplete
+              md-selected-item="ctrl.selectedItem"
+              md-search-text="ctrl.searchText"
+              md-items="item in ctrl.querySearch(ctrl.searchText)"
+              md-item-text="item.name"
+              placeholder="Search for a tasks">
+              <span md-highlight-text="ctrl.searchText">{{item.TaskName}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+              <strong>{{$chip.TaskName}}</strong>
+              <em>(task)</em>
+            </md-chip-template>
+          </md-chips>
+        </div>
 
-      <md-card-actions layout="row" layout-align="end center">
-        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/list">
-          <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  href="#/resource/{{resource.ResourceId}}/tasklist">
-          <md-icon md-svg-src="img/settings49.svg"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  ng-click="updateResource()">
-          <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
-        </md-button>
-      </md-card-actions>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/list">
+            <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  href="#/resource/{{resource.ResourceId}}/tasklist">
+            <md-icon md-svg-src="img/settings49.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button"  aria-label="Add"  ng-disabled="userForm.$invalid" ng-click="updateResource()">
+            <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </form>
     </md-card-content>
   </md-card>
 </div>
