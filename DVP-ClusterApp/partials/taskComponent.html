@@ -1,0 +1,30 @@
+<div class="md-padding" id="popupContainer" ng-cloak>
+<md-card>
+  <md-card-title >
+    <md-card-title-text>
+      <span class="md-headline">Task</span>
+      <span class="md-subhead">{{resourceTask.ResTask.ResTaskInfo.TaskName}}</span>
+    </md-card-title-text>
+  </md-card-title>
+
+  <md-card-content layout="row" layout-align="space-between">
+    <div class="md-media-lg card-media">
+      <md-input-container>
+        <label>Concurrency</label>
+        <input ng-model="resourceTask.Concurrency">
+      </md-input-container>
+      <md-input-container>
+        <label>OtherData</label>
+        <input ng-model="resourceTask.OtherData">
+      </md-input-container>
+    </div>
+  </md-card-content>
+
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button  class="md-icon-button" ng-disabled="false" aria-label="Update" ng-click="UpdateTask(resourceTask)">
+      <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+    </md-button>
+  </md-card-actions>
+</md-card>
+</div>
+
