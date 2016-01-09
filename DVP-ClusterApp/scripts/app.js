@@ -1,62 +1,65 @@
+var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages", "clusterServiceModule"]);
 
-var app = angular.module("ClusterManageApp",["ngMaterial","md.data.table","ngRoute","ngMessages", "clusterServiceModule"]);
+app.config(function ($routeProvider) {
 
-app.config(function($routeProvider){
-
-  $routeProvider.when("/clusters/list",{
+  $routeProvider.when("/clusters/list", {
 
     templateUrl: 'partials/clusterList.html',
     controller: 'ClusterListController'
 
-  }).when("/cluster/create",{
+  }).when("/cluster/create", {
 
 
     templateUrl: 'partials/clusterAdd.html',
-    controller: 'ClusterCreateController'
+    controller: 'ClusterEditController'
 
 
-  }).when("/cluster/:id/edit",{
+  }).when("/cluster/:id/edit", {
 
 
     templateUrl: 'partials/clusterEdit.html',
     controller: 'ClusterEditController'
 
 
-
-  }).when("/cluster/:id/view",{
-
-
-      templateUrl: 'partials/clusterView.html',
-      controller: 'ClusterViewController'
+  }).when("/clusterConfigure/:id/edit", {
 
 
+    templateUrl: 'partials/clusterConfig.html',
+    controller: 'ClusterEditController'
 
-    }).when("/cluster/:id/tasklist",{
+
+  }).when("/cluster/:id/view", {
+
+
+    templateUrl: 'partials/clusterView.html',
+    controller: 'ClusterViewController'
+
+
+  }).when("/cluster/:id/tasklist", {
 
     templateUrl: 'partials/clusterTaskList.html',
     controller: 'ClusterTaskListController'
 
 
-  }).when("/cluster/:resId/task/:taskId",{
+  }).when("/cluster/config", {
 
+    templateUrl: 'partials/clusterConfig.html',
+    controller: 'CustomInputDemoCtrl'
 
-    templateUrl: 'partials/clusterTaskAttributeList.html',
-    controller: 'ClusterTaskListAttributeController'
+  }).when("/callserver/list", {
+    templateUrl: 'partials/callList.html',
+    controller: 'CallListController'
+  }).
+    when("/callserver/create", {
+      templateUrl: 'partials/callAdd.html',
+      controller: 'CallEditController'
 
-
-  }).when("/cluster/:resId/newtask",{
-
-
-    templateUrl: 'partials/clusterTaskAttributeList.html',
-    controller: 'ClusterTaskListAttributeController'
-
-
-  }).otherwise({
-
-
-    templateUrl: 'partials/clusterList.html',
-    controller: 'ClusterListController'
-
-  });
+    }).when("/callserver/:id/edit", {
+      templateUrl: 'partials/callEdit.html',
+      controller: 'CallEditController'
+    }).otherwise({
+      templateUrl: 'partials/clusterList.html',
+      controller: 'ClusterListController'
+    });
 
 });
