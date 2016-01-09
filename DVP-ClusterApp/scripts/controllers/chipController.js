@@ -3,14 +3,14 @@
   angular
     .module('ClusterManageApp')
     .controller('CustomInputDemoCtrl', DemoCtrl);
-  function DemoCtrl($timeout, $q, $routeParams, clusterService) {
+  function DemoCtrl($scope, $routeParams, clusterService) {
     var self = this;
     self.readonly = false;
     self.selectedItem = null;
     self.searchText = null;
     self.querySearch = querySearch;
     self.vegetables = loadVegetables();
-    self.selectedVegetables = [];
+    self.selectedVegetables = loadCluster();
     self.numberChips = [];
     self.numberChips2 = [];
     self.numberBuffer = '';
@@ -28,24 +28,36 @@
     };
 
     self.AssignCallServer = function (contact) {
-      clusterService.AssignCallServerToCluster(contact.id,$routeParams.id).then(function (response) {
+      clusterService.AssignCallServerToCluster(contact.id, $routeParams.id).then(function (response) {
+        $scope.showStatus = !response;
         if (!response) {
-          alert("error");
-          self.selectedVegetables.remove(contact);
+          $scope.status = "Fail to Add Call Server - " + contact.Name;
+          $route.reload();
+        }
+        else{
+          addedList.push(contact);
         }
       }, function (error) {
-        alert(error);
+        $scope.showStatus = true;
+        $scope.status = "Fail to Add Call Server - " + contact.Name;
+        $route.reload();
       });
     };
 
     self.DeleteCallServer = function (mastertask) {
       clusterService.DeleteCallServerFromCluster($routeParams.id, mastertask.TaskId).then(function (response) {
-        if (!response)
-          alert("error");
+        $scope.showStatus = !response;
+        if (!response) {
+          $route.reload();
+        }
       }, function (error) {
-        alert(error);
+        $scope.showStatus = true;
+        $route.reload();
       });
     };
+
+    $scope.status = {};
+    $scope.showStatus = false;
 
 
     /**
@@ -98,34 +110,22 @@
       });
     }
 
-    function loadVegetables1() {
-      var veggies = [
-        {
-          'Name': 'Broccoli',
-          'InternalMainIP': 'Brassica'
-        },
-        {
-          'Name': 'Cabbage',
-          'InternalMainIP': 'Brassica'
-        },
-        {
-          'Name': 'Carrot',
-          'InternalMainIP': 'Umbelliferous'
-        },
-        {
-          'Name': 'Lettuce',
-          'InternalMainIP': 'Composite'
-        },
-        {
-          'Name': 'Spinach',
-          'InternalMainIP': 'Goosefoot'
-        }
-      ];
-      return veggies.map(function (veg) {
-        veg._lowername = veg.Name.toLowerCase();
-        veg._lowertype = veg.InternalMainIP.toLowerCase();
-        return veg;
+    function loadCluster() {
+      clusterService.GetCluster($routeParams.id).then(function (veggies) {
+        self.selectedVegetables = veggies.CallServer.map(function (c, index) {
+          var contact = {
+            Name: c.Name,
+            InternalMainIP: c.InternalMainIP,
+            id: c.id,
+          };
+          contact._lowername = c.Name.toLowerCase();
+          contact._lowertype = c.InternalMainIP.toLowerCase();
+          return contact;
+        });
+
+      }, function (error) {
+
       });
-    }
+    };
   }
 })();

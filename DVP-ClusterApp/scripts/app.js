@@ -46,6 +46,11 @@ app.config(function ($routeProvider) {
     templateUrl: 'partials/clusterConfig.html',
     controller: 'CustomInputDemoCtrl'
 
+  }).when("/cluster/configlist", {
+
+    templateUrl: 'partials/clusterConfigList.html',
+    controller: 'ClusterListController'
+
   }).when("/callserver/list", {
     templateUrl: 'partials/callList.html',
     controller: 'CallListController'
