@@ -6,6 +6,11 @@
 
   var FollowMeConfigController = function($scope, dvpHandler, sharedResPABXUser, $mdDialog, $location)
   {
+    if(!sharedResPABXUser.PABXUser.UserUuid)
+    {
+      $location.url('/pabxUsers');
+    }
+
     $scope.fmRingType = sharedResPABXUser.PABXUser.FollowMeMechanism;
     $scope.query = {
       limit: 5,
@@ -13,6 +18,11 @@
     };
 
     $scope.dataReady = false;
+
+    $scope.onCancelPressed = function()
+    {
+      $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
+    };
 
     $scope.deleteFM = function(ev, fmRecId)
     {

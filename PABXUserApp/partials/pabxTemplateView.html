@@ -1,47 +1,6 @@
-<!--<md-dialog aria-label="Add New Template"  ng-cloak>
-  <form>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>Add New Template</h2>
-        <span flex></span>
-      </div>
-    </md-toolbar>
-    <md-dialog-content>
-      <div class="md-dialog-content">
-        <md-card flex>
-          <md-card-content layout="column">
-            <md-input-container class="md-block" flex>
-              <label>Divert Number</label>
-              <input name="userName" ng-model="destinationNumber">
-            </md-input-container>
-
-            <md-input-container class="md-block" flex>
-              <label>Number Type</label>
-              <md-select name="numType" ng-model="numberType" ng-model-options="{trackBy: '$value'}">
-                <md-option value="PBXUSER">PBX USER</md-option>
-                <md-option value="USER">USER</md-option>
-                <md-option value="GATEWAY">GATEWAY</md-option>
-              </md-select>
-            </md-input-container>
-
-          </md-card-content>
-        </md-card>
-      </div>
-    </md-dialog-content>
-    <md-dialog-actions layout="row">
-      <md-button ng-click="cancel()">
-        Cancel
-      </md-button>
-      <md-button ng-click="saveTemplate()">
-        Add
-      </md-button>
-    </md-dialog-actions>
-  </form>
-</md-dialog>-->
-
 <div>
   <md-toolbar class="md-table-toolbar md-default">
-    <div class="custBackground1 md-toolbar-tools" layout="row">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
       <div layout-align="left" flex="70">PABX User Template</div>
     </div>
   </md-toolbar>
@@ -84,10 +43,11 @@
     <md-card-content>
       <form name="addTemplateForm">
       <md-toolbar class="md-table-toolbar md-default">
-        <div class="custBackground2 md-toolbar-tools" layout="row">
+        <div class="custBackground4 md-toolbar-tools" layout="row">
           <div layout-align="left" flex="70">New Template</div>
         </div>
       </md-toolbar>
+      </br>
 
       <div layout-gt-sm="row">
         <md-input-container flex-gt-sm>
@@ -105,17 +65,23 @@
         <div flex="5"></div>
         <md-input-container flex-gt-sm>
           <label>Destination Number</label>
-          <input name="destNum" ng-model="destinationNumber" required="">
-          <div ng-messages="addTemplateForm.destType.$error">
+          <input name="destinationNum" ng-model="destinationNumber" required="" ng-pattern="/^[0-9]*$/">
+          <div ng-messages="addTemplateForm.destinationNum.$error">
             <div ng-message="required">This field is required</div>
+            <div ng-message="pattern">Destination number should be numeric</div>
           </div>
         </md-input-container>
       </div>
-      <div layout="row" layout-align="right" flex="30">
-        <div layout-align="left"><md-button class="btn1" ng-click="saveTemplate()" ng-disabled="addTemplateForm.$invalid">Add New</md-button></div>
+      <div layout="row">
+        <div flex="90"></div>
+        <div layout-align="right"><md-button class="btn1" ng-click="saveTemplate()" ng-disabled="addTemplateForm.$invalid">Add New</md-button></div>
       </div>
       </form>
     </md-card-content>
   </md-card>
+  <div layout="row">
+    <div flex="90"></div>
+    <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+  </div>
 
 </div>

@@ -5,8 +5,14 @@
 (function() {
   var app = angular.module("pabxUserApp");
 
-  function PABXTemplateController($scope, $mdDialog, dvpHandler, sharedResPABXUser)
+  function PABXTemplateController($scope, $mdDialog, dvpHandler, sharedResPABXUser, $location)
   {
+
+    if(!sharedResPABXUser.PABXUser.UserUuid)
+    {
+      $location.url('/pabxUsers');
+    }
+
 
     $scope.query = {
       limit: 5,
@@ -14,6 +20,11 @@
     };
 
     $scope.dataReady = false;
+
+    $scope.onCancelPressed = function()
+    {
+      $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
+    };
 
     $scope.deleteTemplate = function(ev, templId)
     {

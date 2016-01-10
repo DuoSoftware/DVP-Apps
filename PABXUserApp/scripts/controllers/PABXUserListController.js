@@ -5,7 +5,7 @@
 (function() {
   var app = angular.module("pabxUserApp");
 
-  var PABXUserListController = function ($scope, dvpHandler, sharedResPABXUser, $location, $mdDialog)
+  var PABXUserListController = function ($scope, dvpHandler, sharedResPABXUser, $location, $mdDialog, $mdToast)
   {
       $scope.query = {
         limit: 5,
@@ -13,6 +13,19 @@
       };
 
       $scope.dataReady = false;
+
+    var last = {
+      bottom: false,
+      top: true,
+      left: false,
+      right: true
+    };
+    $scope.toastPosition = angular.extend({},last);
+    $scope.getToastPosition = function() {
+      return Object.keys($scope.toastPosition)
+        .filter(function(pos) { return $scope.toastPosition[pos]; })
+        .join(' ');
+    };
 
     function PickUserController($scope, $mdDialog, dvpHandler)
     {
@@ -25,6 +38,7 @@
       });
       $scope.onContinue = function()
       {
+        sharedResPABXUser.PABXUser = {};
         sharedResPABXUser.PABXUser.UserUuid = $scope.selectedUserUuid;
         sharedResPABXUser.PABXUser.IsEdit = false;
         $mdDialog.hide();
@@ -47,7 +61,7 @@
       })
         .then(function(answer)
         {
-           $location.url("/pabxUser/123");
+           $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
         }, function()
         {
 
@@ -89,22 +103,51 @@
       {
           usrObj.IsEdit = true;
           sharedResPABXUser.PABXUser = usrObj;
-          $location.url("/pabxUser/123");
+          $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
       };
 
       $scope.reloadUserList = function()
       {
         var onGetPABXUserListSuccess = function(data)
         {
-          $scope.pabxUsrList = data.Result;
-          $scope.total = data.Result.length;
+          if(data.IsSuccess)
+          {
+            $scope.pabxUsrList = data.Result;
+            $scope.total = data.Result.length;
+          }
+          else
+          {
+            var errMsg = data.CustomMessage;
+
+            if(data.Exception)
+            {
+              errMsg = data.Exception.Message;
+            }
+            $mdToast.show(
+              $mdToast.simple()
+                .textContent(errMsg)
+                .position($scope.getToastPosition())
+                .hideDelay(5000)
+            );
+          }
+
           $scope.dataReady = true;
+
         };
 
         var onGetPABXUserListError = function(err)
         {
-          console.log('Error occurred : ' + err);
-          $scope.serviceErr = "Could not load pabx users";
+          var errMsg = "Error occurred while getting pabx user list";
+          if(err.statusText)
+          {
+            errMsg = err.statusText;
+          }
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(errMsg)
+              .position($scope.getToastPosition())
+              .hideDelay(5000)
+          );
           $scope.dataReady = true;
         };
 

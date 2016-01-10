@@ -1,6 +1,6 @@
 <div>
   <md-toolbar class="md-table-toolbar md-default">
-    <div class="custBackground1 md-toolbar-tools" layout="row">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
       <div layout-align="left" flex="70">Forwarding Configuration</div>
     </div>
   </md-toolbar>
@@ -40,47 +40,68 @@
     </table>
   </md-table-container>
 
+  <form name="newForwardingForm">
   <md-card layout-padding class="custBackground2">
     <md-card-content>
       <md-toolbar class="md-table-toolbar md-default">
-        <div class="custBackground2 md-toolbar-tools" layout="row">
-          <div layout-align="left" flex="70">New Forwarding Configurationn</div>
+        <div class="custBackground4 md-toolbar-tools" layout="row">
+          <div layout-align="left" flex="70">New Forwarding Configuration</div>
         </div>
       </md-toolbar>
-
+      </br>
       <div layout-gt-sm="row">
         <md-input-container flex-gt-sm>
           <label>Destination Type</label>
-          <md-select name="userStatus" ng-model="numberType" ng-model-options="{trackBy: '$value'}">
+          <md-select name="userStatus" ng-model="numberType" ng-model-options="{trackBy: '$value'}" required="">
             <md-option value="PBXUSER">PBXUSER</md-option>
             <md-option value="USER">USER</md-option>
             <md-option value="GATEWAY">GATEWAY</md-option>
+            <div ng-messages="newForwardingForm.userStatus.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
           </md-select>
         </md-input-container>
         <div flex="5"></div>
         <md-input-container flex-gt-sm>
           <label>Destination Number</label>
-          <input name="destNum" ng-model="destinationNumber">
+          <input name="destNum" ng-model="destinationNumber" required="" ng-pattern="/^[0-9]*$/">
+          <div ng-messages="newForwardingForm.destNum.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="pattern">Destination number should be numeric</div>
+          </div>
         </md-input-container>
       </div>
       <div layout-gt-sm="row">
         <md-input-container flex-gt-sm>
           <label>Disconnect Reason</label>
-          <md-select name="disconReasosn" ng-model="disconReason" ng-model-options="{trackBy: '$value'}">
+          <md-select name="disconReasosn" ng-model="disconReason" ng-model-options="{trackBy: '$value'}" required="">
             <md-option value="NO_ANSWER">No Answer</md-option>
             <md-option value="BUSY">Busy</md-option>
           </md-select>
+          <div ng-messages="newForwardingForm.disconReasosn.$error">
+            <div ng-message="required">This field is required</div>
+          </div>
         </md-input-container>
         <div flex="5"></div>
         <md-input-container flex-gt-sm>
           <label>Ring Timeout</label>
-          <input name="ringTime" ng-model="ringTimeout">
+          <input name="ringTimeout" ng-model="ringTimeout" required="" ng-pattern="/^[0-9]*$/">
+          <div ng-messages="newForwardingForm.ringTimeout.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="pattern">Destination number should be numeric</div>
+          </div>
         </md-input-container>
       </div>
-      <div layout="row" layout-align="right" flex="30">
-        <div layout-align="left"><md-button class="btn1" ng-click="saveFWD()">Add New</md-button></div>
+      <div layout="row">
+        <div flex="90"></div>
+        <div layout-align="right"><md-button class="btn1" ng-click="saveFWD()" ng-disabled="newForwardingForm.$invalid">Add New</md-button></div>
       </div>
     </md-card-content>
   </md-card>
+  </form>
+  <div layout="row">
+    <div flex="90"></div>
+    <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+  </div>
 
 </div>

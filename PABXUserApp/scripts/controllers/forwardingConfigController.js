@@ -6,7 +6,17 @@
 
   var ForwardingConfigController = function($scope, dvpHandler, sharedResPABXUser, $mdDialog, $location)
   {
+    if(!sharedResPABXUser.PABXUser.UserUuid)
+    {
+      $location.url('/pabxUsers');
+    }
+
     $scope.dataReady = false;
+
+    $scope.onCancelPressed = function()
+    {
+      $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
+    };
 
     $scope.deleteFWD = function(ev, fwdRecId)
     {
