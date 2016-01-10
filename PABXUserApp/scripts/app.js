@@ -20,6 +20,14 @@
         templateUrl: 'partials/followMeConfigView.html',
         controller: 'FollowMeConfigController'
       })
+      .when("/pabxUser/:userUuid/forwarding", {
+        templateUrl: 'partials/forwardingConfigView.html',
+        controller: 'ForwardingConfigController'
+      })
+      .when("/pabxUser/:userUuid/template", {
+        templateUrl: 'partials/pabxTemplateView.html',
+        controller: 'PABXTemplateController'
+      })
       .otherwise({redirectTo:"/pabxUsers"});
 
   })

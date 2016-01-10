@@ -24,14 +24,39 @@
         $scope.attribData=response.data.Result;
       }
 
+    }
 
+    var onGrpAttribComplete = function (response) {
+      console.log(JSON.stringify(response.data.Result));
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+        dbcontroller.GIDst=false;
+        console.log("Got as Attributes "+JSON.stringify(response.data.Result));
+        $scope.attribData=response.data.Result;
+        var tempArr=[];
+        for( var i= 0,len=response.data.Result.ResAttributeGroups.length;i<len;i++)
+        {
+          tempArr.push(response.data.Result.ResAttributeGroups[i].ResAttribute);
 
+          if(i==len-1 )
+          {
+            $scope.attribData=tempArr;
+          }
+        }
+
+      }
 
     }
+
     var onError = function(reason)
     {
       $scope.isDisabled = false;
       $scope.error=reason;
+      commoncontroller.showAlert("ERROR",reason);
     }
 
     var onAttributeDeleteComplete = function (response) {
@@ -43,7 +68,7 @@
       }
       else
       {
-
+        commoncontroller.showAlert("Delete","Attribute removed successfully!");
         var val = 0;
         for (var i = 0, len = $scope.attribData.length; i < len; i++) {
 
@@ -56,25 +81,30 @@
         }
         $scope.isDisabled = false;
         $scope.attribData.splice(val, 1);
+
       }
     }
 
+    $scope.loadAttc=function(){
+   if(dbcontroller.GIDst )
+   {
+     console.log("GID is in");
+     console.log("GID "+dbcontroller.GID);
+     console.log("GID status "+dbcontroller.GIDst);
+     dbcontroller.GIDst=false;
+     dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onGrpAttribComplete,onError);
+     $scope.gTopic="Attributes assigned to Group "+dbcontroller.GID;
+   }
+   else
+   {
+     $scope.gTopic="Attribute Viewer";
+     console.log("NO GID");
+     console.log("GID "+dbcontroller.GID);
+     console.log("GID status "+dbcontroller.GIDst);
+     dbcontroller.getAttributeList().then(onAttribComplete,onError);
+   }
+ };
 
-    if(dbcontroller.GIDst )
-    {
-      console.log("GID is in");
-      console.log("GID "+dbcontroller.GID);
-      console.log("GID status "+dbcontroller.GIDst);
-      dbcontroller.GIDst=false;
-      dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onAttribComplete,onError);
-    }
-    else
-    {
-      console.log("NO GID");
-      console.log("GID "+dbcontroller.GID);
-      console.log("GID status "+dbcontroller.GIDst);
-      dbcontroller.getAttributeList().then(onAttribComplete,onError);
-    }
 
 
 
@@ -101,18 +131,24 @@
 
 
     }
-
+    $scope.addNewAttrib = function()
+    {
+      commoncontroller.showAdvanced("NewController","partials/new.html",true);
+      //$location.path("/newattrib");
+    }
     $scope.ViewAttribute = function(Attb)
     {
       dbcontroller.Attribobj=Attb;
       console.log(dbcontroller.Attribobj);
-      $location.path("/viewattrib");
+
+      commoncontroller.showAdvanced('EditController','partials/edit.html',false);
+      //$location.path("/viewattrib");
     }
 
 
 
 
-
+    $scope.loadAttc();
   };
 
   app.controller("AttributeController",AttributeController);

@@ -1,8 +1,8 @@
 <div>
 <md-toolbar class="md-table-toolbar md-default">
-  <div class="custBackground1 md-toolbar-tools" layout="row">
-    <div flex="80">PABX Users</div>
-    <div flex="20"><md-button class="btn1"> New </md-button></div>
+  <div class="custBackground4 md-toolbar-tools" layout="row">
+    <div flex="90">PABX Users</div>
+    <div><md-button class="btn3" ng-click="onNewPressed($event)"> New </md-button></div>
   </div>
 </md-toolbar>
 
@@ -32,7 +32,7 @@
           <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
             <md-icon md-svg-src="../ResourceApp-Material/img/edit26.svg"></md-icon>
           </md-button>
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="delete">
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeleteUser($event, item.UserUuid)">
             <md-icon md-svg-src="../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
           </md-button>
         </div>

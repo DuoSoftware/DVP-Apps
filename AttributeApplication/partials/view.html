@@ -29,8 +29,14 @@
             <td >{{DataObj.Status}}</td>
         </tr>
         <tr>
+          <td><md-button class="md-primary md-raised" ng-click="ShowEdit()" flex="100" flex-gt-md="auto"ng-disabled="isDisabled">EDIT</td>
+           <!-- <td ><md-button class="md-raised md-primary" ng-click="ShowEdit()">EDIT</md-button></td>-->
+          <td></td>
+          <td><md-button class="md-primary md-raised" ng-click="Erase()" flex="100" flex-gt-md="auto"ng-disabled="isDisabled">CANCLE</td>
+        </tr>
+        <tr>
+          <td></td>
 
-            <td ><md-button class="md-raised md-primary" ng-click="ShowEdit()">EDIT</md-button></td>
         </tr>
         </tbody>
     </table>

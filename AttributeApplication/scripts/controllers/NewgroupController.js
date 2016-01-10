@@ -7,7 +7,7 @@
 (function () {
   var app= angular.module("attributeapp");
 
-  var NewgroupController = function ($scope,dbcontroller,$location,$mdDialog) {
+  var NewgroupController = function ($scope,dbcontroller,$location,$mdDialog,commoncontroller,$route) {
 
     $scope.isDisabled = false;
 
@@ -15,7 +15,15 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
+      $mdDialog.hide();
       console.log(reason);
+      commoncontroller.showAlert("ERROR",reason);
+      $route.reload();
+
+    }
+    $scope.HideDialog= function () {
+      $mdDialog.hide();
+
     }
     var onGroupAddingCompleted = function (response) {
 
@@ -27,7 +35,11 @@
       {
         $scope.isDisabled = false;
         $scope.AddData = response.data.Result;
-        $location.path("/group");
+        commoncontroller.showAlert("SUCCESS","New Group added successfully !");
+        $mdDialog.hide();
+
+        $route.reload();
+
       }
     }
 
@@ -35,6 +47,7 @@
       $scope.isDisabled = true;
       dbcontroller.NewGroup(GroupName,OtherData,Percentage).then(onGroupAddingCompleted,onError);
     }
+
 
 
   }
