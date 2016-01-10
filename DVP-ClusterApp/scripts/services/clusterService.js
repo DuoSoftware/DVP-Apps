@@ -173,7 +173,7 @@ clusterModule.factory("clusterService", function ($http, $log) {
   //////////////////************** Cluster Configurations **************/////////////////
 
   var assignCallServerToCluster = function (callServerId,cloudId) {
-    return $http.post("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{}).then(function (response) {
+    return $http.post("http://localhost:3636/DVP/API/6.0/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{}).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
       } else {
@@ -192,7 +192,45 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });*/
   };
 
+//////////////////************** Network Configurations **************/////////////////
 
+  var getNetworks = function () {
+
+    return $http.get("http://localhost:3636/DVP/API/6.0/CloudConfiguration/Networks").then(function (response) {
+
+      if (response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      } else {
+
+        return {};
+      }
+
+
+    });
+  };
+
+  var assignNetworkToCluster = function (networkId,cloudId) {
+    return $http.post("http://localhost:3636/DVP/API/6.0/CloudConfiguration/Network/"+networkId+"/SetTelcoNetworkToCloud/"+cloudId,{}).then(function (response) {
+      if (response.data && response.data.IsSuccess) {
+        return response.data.IsSuccess;
+      } else {
+        return false;
+      }
+    });
+  };
+
+  var deleteNetworkFromCluster = function (callServerId,cloudId) {
+    /*return $http.post("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{}).then(function (response) {
+     if (response.data && response.data.IsSuccess) {
+     return response.data.IsSuccess;
+     } else {
+     return false;
+     }
+     });*/
+  };
 
   return {
 
@@ -210,7 +248,10 @@ clusterModule.factory("clusterService", function ($http, $log) {
     DeleteCallServer: deleteCallServer,
     CallServer: {},
     AssignCallServerToCluster:assignCallServerToCluster,
-    DeleteCallServerFromCluster:deleteCallServerFromCluster
+    DeleteCallServerFromCluster:deleteCallServerFromCluster,
+    GetNetworks:getNetworks,
+    AssignNetworkToCluster:assignNetworkToCluster,
+    DeleteNetworkFromCluster:deleteNetworkFromCluster
 
 
   }

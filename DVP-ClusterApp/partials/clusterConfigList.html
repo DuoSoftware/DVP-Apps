@@ -14,12 +14,9 @@
     <tr class="md-table-header" md-row>
       <th md-column>Name</th>
       <th md-column>Cloud Model</th>
-      <th md-column>Class</th>
-      <th md-column>Type</th>
-      <th md-column>Category</th>
-      <th md-column>Activate</th>
-      <th md-column>Call Servers</th>
 
+      <th md-column>Call Servers</th>
+      <th md-column>Networks</th>
     </tr>
     </thead>
     <tbody md-body>
@@ -35,33 +32,19 @@
           <span ng-switch-when="3">Advanced</span>
         </div>
       </td>
-      <td md-cell>{{cluster.Class}}</td>
-      <td md-cell>{{cluster.Type}}</td>
-      <td md-cell>{{cluster.Category}}</td>
+
       <td md-cell>
-        <md-checkbox ng-disabled="true" ng-checked="cluster.Activate"></md-checkbox>
+        <div layout="row" ng-repeat="callServer in cluster.CallServer" >
+          <div style="text-align: left;border: thin ridge #C0C0C0 ;width: 100%;">{{callServer.Name}}</div>
+          <div style="text-align: center;border: thin ridge #C0C0C0 ;width: 100%;">{{callServer.InternalMainIP}}</div>
+        </div>
       </td>
-      <td md-cell >
-
-        <table md-table md-progress="promise" width="100%" ng-show="dataReady">
-          <thead md-head>
-          <tr class="md-table-header" md-row>
-            <th md-column>Name</th>
-            <th md-column>Cloud Model</th>
-          </tr>
-          </thead>
-          <tbody md-body>
-          <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
-              ng-repeat="callServer in clusters.CallServer">
-            <td md-cell>{{cluster.Name}}</td>
-            <td md-cell>{{cluster.id}}</td>
-          </tr>
-          </tbody>
-        </table>
+      <td md-cell>
+        <div layout="row" ng-repeat="callServer in cluster.Network" >
+          <div style="text-align: left;border: thin ridge #C0C0C0 ;width: 100%;">{{callServer.Network}}</div>
+          <div style="text-align: center;border: thin ridge #C0C0C0 ;width: 100%;">{{callServer.NATIP}}</div>
+        </div>
       </td>
-    </tr>
-
-    </td>
     </tr>
     </tbody>
   </table>
