@@ -17,16 +17,19 @@
   <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>-->
 
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
 
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="bower_components/angular-messages/angular-messages.js"></script>
-  <link href="bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
-  <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-aria/angular-aria.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-material/angular-material.js"></script>
+  <script src="../bower_components/angular-material-icons/angular-material-icons.js"></script>
+  <link href="../bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" type="text/css"/>
+
+  <link href="../bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="../bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+
 
 
 
@@ -46,6 +49,7 @@
   <script src="scripts/controllers/TestazCntrl.js"></script>
   <script src="scripts/controllers/MapController.js"></script>
   <script src="scripts/controllers/AssignAttributesToGroup.js"></script>
+  <script src="scripts/controllers/MapTestController.js"></script>
 
 
 
@@ -57,11 +61,26 @@
 
 <body>
 
-<h1>Attribute Viewer</h1>
+<h1 align="center">Attribute Viewer</h1>
+<div layout="row" layout-align="center">
 
-<div ng-view="">
+
+    <md-button  class="md-raised md-primary"  href='#/attribute' flex="100">ATTRIBUTE</md-button>
+    <md-button class="md-raised md-primary" href='#/group' flex="100">GROUP</md-button>
 
 
+</div>
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content>
+        <md-content class="md-padding">
+          <div  ng-view=""> </div>
+        </md-content>
+      </md-card-content>
+    </md-card>
+  </div>
 </div>
 
 

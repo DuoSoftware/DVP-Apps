@@ -1,36 +1,86 @@
+<form name="newAttribForm">
+  <!--  <md-data-table-toolbar>
+      <h2 class="md-title">Add New Attribute Details</h2>
 
-<md-data-table-toolbar>
-    <h2 class="md-title">Add New Attribute Details</h2>
+    </md-data-table-toolbar>
+    <md-data-table-container>
 
-</md-data-table-toolbar>
-<md-data-table-container>
-
-    <table md-data-table  md-progress="deferred">
+      <table md-data-table  md-progress="deferred">
 
         <tbody>
         <tr>
-            <td><h3 >Attribute Details</h3></td>
-            <td></td>
+          <td><h3 >Attribute Details</h3></td>
+          <td></td>
         </tr>
 
         <tr>
-            <td>Attribute</td>
-            <td ><input type="text" ng-model="Attribute" /></td>
+          <td>Attribute</td>
+          <td ><input type="text"  name = "Attribute" ng-model="Attribute" align="left" required/>
+
+            <span style="color:red" ng-show="newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid">
+  <span ng-show="newAttribForm.Attribute.$error.required">Attribute is required.</span>
+  </span>
+
+          </td>
 
         </tr>
         <tr>
-            <td>OtherData</td>
-            <td ><input type="text" ng-model="OtherData" /></td>
+          <td>OtherData</td>
+          <td ><input type="text" name="otherData" ng-model="OtherData" required/>
+
+            <span style="color:red" ng-show="newAttribForm.otherData.$dirty && newAttribForm.otherData.$invalid">
+  <span ng-show="newAttribForm.otherData.$error.required">OtherData is required.</span>
+
+          </td>
         </tr>
 
         <tr>
 
-            <td ><md-button class="md-raised md-primary" ng-click="AddNew(Attribute,OtherData)" ng-disabled="isDisabled">Save</md-button></td>
+          <td ><md-button class="md-raised md-primary" ng-click="AddNew(Attribute,OtherData)" ng-disabled="isDisabled || newAttribForm.otherData.$dirty &&newAttribForm.otherData.$invalid ||
+  newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid">Save</md-button><md-button class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled">Cancel</md-button></td>
         </tr>
         </tbody>
-    </table>
+      </table>
 
-</md-data-table-container>
+    </md-data-table-container>-->
+
+  <md-toolbar class="md-table-toolbar md-default">
+    <label style="padding: 5% 0% 5% 10% ">New Attribute</label>
+  </md-toolbar>
+
+  <md-content layout-gt-sm="row" layout-padding >
+    <div>
+      <md-input-container>
+        <label style="color: blue" >Attribute</label>
+        <input type="text"  name = "Attribute" ng-model="Attribute" align="left" required/>
+
+          <span style="color:red" ng-show="newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid">
+
+</span>
+      </md-input-container>
+      <md-input-container>
+        <label style="color: blue">OtherData</label>
+        <input type="text" name="otherData" ng-model="OtherData" required/>
+
+        <span style="color:red" ng-show="newAttribForm.otherData.$dirty && newAttribForm.otherData.$invalid"></span>
+
+      </md-input-container>
+    </div>
+  </md-content>
+  <md-content  layout-gt-sm="row" >
+
+    <md-input-container >
+      <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNew(Attribute,OtherData)" ng-disabled="isDisabled || newAttribForm.otherData.$dirty &&newAttribForm.otherData.$invalid ||
+  newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid || !OtherData.length || !Attribute.length"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></td>
+
+    </md-input-container>
+
+
+  </md-content>
+
+
+</form>
+
 
 
 

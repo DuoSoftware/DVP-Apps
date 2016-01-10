@@ -1,7 +1,7 @@
 
 <div ng-controller="MapController as ctrl" layout="column" class="chipsdemoBasicUsage">
 
-    <md-data-table-toolbar>
+    <!--<md-data-table-toolbar>
         <h2 class="md-title">Assign Attributes To Group</h2>
 
     </md-data-table-toolbar>
@@ -19,41 +19,131 @@
                 <td >{{DataObj.GroupId}}</td>
             </tr>
             <tr>
-                <td>GroupName</td>
-                <td >{{DataObj.GroupName}}</td>
+              <td>GroupName</td>
+              <td ><input type="text" ng-model="editObj.GroupName"  placeholder="{{DataObj.GroupName}}"/></td>
 
             </tr>
             <tr>
-                <td>Attributes</td>
-                <td ><md-chips ng-model="ctrl.selectedAttributes" md-autocomplete-snap
-                               md-transform-chip="ctrl.transformChip($chip)"
-                               md-require-match="ctrl.autocompleteDemoRequireMatch">
-                    <md-autocomplete
-                            md-selected-item="ctrl.selectedItem"
-                            md-search-text="ctrl.searchText"
-                            md-items="item in ctrl.querySearch(ctrl.searchText)"
-                            md-item-text="item.Attribute"
-                            placeholder="Search for a Attributes">
-                        <span md-highlight-text="ctrl.searchText">{{item.Attribute}}</span>
-                    </md-autocomplete>
-                    <md-chip-template>
+              <td>OtherData</td>
+              <td ><input type="text" ng-model="editObj.OtherData" placeholder="{{DataObj.OtherData}}"/></td>
+            </tr>
+            <tr>
+              <td>Percentage</td>
+              <td ><input type="text" ng-model="editObj.Percentage" placeholder="{{DataObj.Percentage}}"/></td>
+            </tr>
+            <tr>
+              <td>Attributes</td>
+              <td ><md-chips  ng-model="ctrl.groupTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-autocomplete-snap
+                             md-transform-chip="ctrl.transformChip($chip)"
+                             md-require-match="ctrl.autocompleteDemoRequireMatch">
+                <md-autocomplete
+                  md-selected-item="ctrl.selectedItem"
+                  md-search-text="ctrl.searchText"
+                  md-items="item in ctrl.querySearch(ctrl.searchText)"
+                  md-item-text="item.Attribute"
+                  placeholder="Search for a Attributes">
+                  <span md-highlight-text="ctrl.searchText">{{item.Attribute}}</span>
+                </md-autocomplete>
+                <md-chip-template>
         <span>
-          <strong>{{$chip.Attribute}}</strong>
+         <strong>{{$chip.Attribute}}</strong>
+          <em>(attribute)</em>
 
         </span>
-                    </md-chip-template>
+                </md-chip-template>
 
-                </md-chips></td>
+              </md-chips></td>
+
             </tr>
 
             <tr>
 
-                <td ><md-button class="md-raised md-primary" ng-click="ctrl.SaveData(DataObj.GroupId)" ng-disabled="isDisabled">Save</md-button></td>
+                <td ><md-button class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled">Save</md-button></td>
             </tr>
             </tbody>
         </table>
 
-    </md-data-table-container>
+    </md-data-table-container>-->
+
+  <form name="editGrpForm">
+
+
+    <md-toolbar class="md-table-toolbar md-default">
+      <label style="padding: 5% 0% 5% 10% ">Edit Group</label>
+    </md-toolbar>
+
+    <md-content layout-gt-sm="row" layout-padding >
+      <div>
+
+        <md-input-container class="md-block" flex-gt-xs>
+          <label style="color: blue">Group ID</label>
+          <input ng-model="DataObj.GroupId" disabled style="color: gray">
+        </md-input-container>
+
+        <md-input-container>
+          <label style="color: blue" >Group Name</label>
+          <input type="text"  name = "GroupName" ng-model="editObj.GroupName" align="left"  required />
+
+          <span style="color:red" ng-show="editGrpForm.GroupName.$dirty && editGrpForm.GroupName.$invalid">
+
+</span>
+        </md-input-container>
+        <md-input-container>
+          <label style="color: blue">OtherData</label>
+          <input type="text" name="otherData" ng-model="editObj.OtherData"  required/>
+
+          <span style="color:red" ng-show="editGrpForm.otherData.$dirty && editGrpForm.otherData.$invalid"></span>
+
+        </md-input-container>
+
+        </md-input-container>
+        <md-input-container>
+          <label style="color: blue">Percentage</label>
+          <input type="number" name="Percentage" min="0" max="100" ng-model="editObj.Percentage"  required/>
+
+          <span style="color:red" ng-show="editGrpForm.Percentage.$dirty && editGrpForm.Percentage.$invalid"></span>
+
+        </md-input-container>
+        <md-input-container>
+          <label style="color: blue">Attributes</label>
+          <md-chips  ng-model="ctrl.groupTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-autocomplete-snap
+                     md-transform-chip="ctrl.transformChip($chip)"
+                     md-require-match="ctrl.autocompleteDemoRequireMatch">
+            <md-autocomplete
+              md-selected-item="ctrl.selectedItem"
+              md-search-text="ctrl.searchText"
+              md-items="item in ctrl.querySearch(ctrl.searchText)"
+              md-item-text="item.Attribute"
+              placeholder="Search for a Attributes">
+              <span md-highlight-text="ctrl.searchText">{{item.Attribute}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+        <span>
+         <strong>{{$chip.Attribute}}</strong>
+          <em>(attribute)</em>
+
+        </span>
+            </md-chip-template>
+
+          </md-chips>
+
+
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content  layout-gt-sm="row" >
+
+      <md-input-container  >
+        <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.otherData.$dirty &&editGrpForm.otherData.$invalid || editGrpForm.Percentage.$dirty &&editGrpForm.Percentage.$invalid ||
+  editGrpForm.GroupName.$dirty && editGrpForm.GroupName.$invalid || !editObj.OtherData.length || !editObj.GroupName.length "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
+
+      </md-input-container>
+
+
+    </md-content>
+
+
+  </form>
 
 
 </div>

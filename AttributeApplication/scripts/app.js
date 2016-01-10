@@ -3,11 +3,11 @@
  */
 (function() {
     console.log("hit app");
-    var app = angular.module("attributeapp", ["ngRoute","ngMaterial"]);
+    var app = angular.module("attributeapp", ["ngRoute","ngMaterial","md.data.table"]);
 
 
     app.config(function($routeProvider) {
-        $routeProvider.when("/main", {
+        $routeProvider.when("/attribute", {
 
             templateUrl: "partials/main.html",
             controller: "MainController"
@@ -45,8 +45,8 @@
 
             })
             .when("/editgroup",{
-                templateUrl: "partials/editgroup.html",
-                controller: "EditgroupController"
+                templateUrl: "partials/assignattributestogroup.html",
+                controller: "MapController"
 
 
             })
@@ -63,13 +63,13 @@
 
             })
             .when("/testa",{
-                templateUrl: "partials/testaz.html",
-                controller: "MapTestController"
+                templateUrl: "partials/main.html",
+                controller: "MainController"
 
 
             })
             .otherwise({
-                redirectTo: "/main"
+                redirectTo: "/attribute"
             });
     });
 
