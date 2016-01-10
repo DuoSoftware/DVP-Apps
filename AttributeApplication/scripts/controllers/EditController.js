@@ -2,46 +2,81 @@
  * Created by Pawan on 12/14/2015.
  */
 (function () {
-    var app= angular.module("attributeapp");
+  var app= angular.module("attributeapp");
 
-    var EditController = function ($scope,dbcontroller,$location,$mdDialog) {
 
-        console.log("now "+dbcontroller.Attribobj.AttributeId);
+  var EditController = function ($scope,dbcontroller,commoncontroller,$location,$mdDialog,$route) {
+    $scope.editObj={};
+    $scope.DataObj=dbcontroller.Attribobj;
 
-        var onUpdateComplete = function(data)
-        {
-            $location.path("/attribute");
-        }
+    $scope.editObj.Attribute=$scope.DataObj.Attribute;
+    $scope.editObj.OtherData=$scope.DataObj.OtherData;
 
-        var onError = function (resaon)
-        {
-            $scope.error = reason;
-        }
 
-        $scope.SaveUpdated = function(AttributeId,Attribute,OtherData)
-        {
-            dbcontroller.updateAttribute(AttributeId,Attribute,OtherData).then(onUpdateComplete,onError);
 
-        }
 
-        $scope.showConfirm = function(ev) {
-            // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.confirm()
-                .title('Would you like to save these changes ?')
-                .textContent('All the changes will be added to Database')
-                .ariaLabel('Lucky day')
-                .targetEvent(ev)
-                .ok('Done')
-                .cancel('Cancel');
-            $mdDialog.show(confirm).then(function() {
-                $scope.SaveUpdated(DataObj.AttributeId,$scope.Attribute,$scope.OtherData);
 
-            }, function() {
-                alert("Error in updating");
-            });
-        };
+    $scope.isDisabled = false;
+    console.log("now "+dbcontroller.Attribobj.AttributeId);
 
-        $scope.DataObj=dbcontroller.Attribobj;
+    var onUpdateComplete = function(response)
+    {
+      console.log("HIT");
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+        $scope.isDisabled = false;
+        console.log("Updated......................");
+        //$location.path("/attribute");
+        //this.reload();
+        $scope.isDisabled = true;
+        $route.reload();
+      }
     }
-    app.controller("EditController",EditController);
+
+    var onError = function (reason)
+    {
+      $scope.isDisabled = false;
+      $scope.error = reason;
+      commoncontroller.showAlert("Error",reason);
+      console.log(reason);
+    }
+
+    $scope.SaveUpdated = function(AttributeId)
+    {
+      $scope.isDisabled = true;
+
+      $scope.editObj.AttributeId=AttributeId;
+      console.log("Attribute ID : "+$scope.editObj.AttributeId);
+      console.log("Edit Object "+JSON.stringify($scope.editObj));
+      var title="Update attribute details ";
+      var content= "Do you want to Save changes ? ";
+      console.log(content) ;
+      commoncontroller.showConfirm(title,"Save","Save","Cancel",content,function(obj){
+
+        dbcontroller.updateAttribute($scope.editObj).then(onUpdateComplete,onError);
+
+
+      }, function(){
+
+        //$scope.showAlert("title","lable","ok","content");
+        $scope.isDisabled = false;
+
+      },$scope.editObj);
+
+
+
+    }
+
+    $scope.Erase = function () {
+      console.log("Hit");
+      $mdDialog.hide();
+    }
+
+
+  }
+  app.controller("EditController",EditController);
 }())

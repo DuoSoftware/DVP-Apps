@@ -18,21 +18,46 @@
         </tr>
         <tr>
             <td>GroupName</td>
-            <td ><input type="text" ng-model="GroupName"  placeholder="{{GDataObj.GroupName}}"/></td>
+            <td ><input type="text" ng-model="editObj.GroupName"  placeholder="{{DataObj.GroupName}}"/></td>
 
         </tr>
         <tr>
             <td>OtherData</td>
-            <td ><input type="text" ng-model="OtherData" placeholder="{{GDataObj.OtherData}}"/></td>
+            <td ><input type="text" ng-model="editObj.OtherData" placeholder="{{GDataObj.OtherData}}"/></td>
         </tr>
         <tr>
             <td>Percentage</td>
-            <td ><input type="text" ng-model="Percentage" placeholder="{{GDataObj.Percentage}}"/></td>
+            <td ><input type="text" ng-model="editObj.Percentage" placeholder="{{GDataObj.Percentage}}"/></td>
+        </tr>
+
+        <tr>
+          <td>Attributes</td>
+          <td ><md-chips  ng-model="ctrl.groupTasks" md-on-add="ctrl.OnChipAdd($chip)" md-on-remove="ctrl.OnChipDelete($chip)" md-autocomplete-snap
+                          md-transform-chip="ctrl.transformChip($chip)"
+                          md-require-match="ctrl.autocompleteDemoRequireMatch">
+            <md-autocomplete
+              md-selected-item="ctrl.selectedItem"
+              md-search-text="ctrl.searchText"
+              md-items="item in ctrl.querySearch(ctrl.searchText)"
+              md-item-text="item.Attribute"
+              placeholder="Search for a Attributes">
+              <span md-highlight-text="ctrl.searchText">{{item.Attribute}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+        <span>
+         <strong>{{$chip.Attribute}}</strong>
+          <em>(attribute)</em>
+
+        </span>
+            </md-chip-template>
+
+          </md-chips></td>
+
         </tr>
 
         <tr>
 
-            <td ><md-button class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId,GroupName,OtherData,Percentage)">Save</md-button></td>
+            <td ><md-button class="md-raised md-primary" ng-disabled="isDisabled" ng-click="SaveUpdated(GDataObj.GroupId)" >Save</md-button></td>
         </tr>
         </tbody>
     </table>

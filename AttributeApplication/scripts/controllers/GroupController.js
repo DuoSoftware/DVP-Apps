@@ -8,44 +8,88 @@
 
     var app =   angular.module("attributeapp");
 
-    var GroupController= function ($scope,dbcontroller,$location) {
+    var GroupController= function ($scope,dbcontroller,$location,commoncontroller) {
 
-        var onGroupComplete = function (data) {
+        var onGroupComplete = function (response) {
 
-            $scope.grps=data.Result;
+          if(response.data.Exception)
+          {
+            onError(response.data.Exception.Message);
+          }
+          else
+          {
+            $scope.grps=response.data.Result;
+
+          }
+
 
         }
-        var onError = function(data)
+        var onError = function(reason)
         {
-            $scope.error=data.Exception;
+            $scope.error=reason;
+          commoncontroller.showAlert("ERROR",reason);
         }
 
         var onGroupDeleteComplete = function (response) {
 
+
+          if(response.data.Exception)
+          {
+            onError(response.data.Exception.Message);
+          }
+          else
+          {
+            commoncontroller.showAlert("SUCCESS","Group Deleted successfully!");
             var val = 0;
             for (var i = 0, len = $scope.grps.length; i < len; i++) {
 
-                if($scope.grps[i].GroupId == response) {
-                    val = i;
-                    break;
+              if($scope.grps[i].GroupId == response.GroupId) {
+                val = i;
+                break;
 
-                }
+              }
             }
 
             $scope.grps.splice(val, 1);
+          }
+
+
+
         }
 
         dbcontroller.getGroupList().then(onGroupComplete,onError);
 
         $scope.DeleteAttribute = function(GRP)
         {
+          var title="Delete Group ";
+          var content= "Do you want to delete "+ GRP.GroupName;
+          commoncontroller.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
+
             dbcontroller.groupDelete(GRP).then(onGroupDeleteComplete,onError);
+
+
+          }, function(){
+
+            //$scope.showAlert("title","lable","ok","content");
+            $scope.isDisabled = false;
+
+          },GRP)
+
+
         }
+
+      $scope.addNewGroup = function()
+      {
+        commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+
+      }
+
         $scope.ViewAttribute = function(grpObj)
         {
             dbcontroller.GroupObj=grpObj;
             console.log(dbcontroller.GroupObj);
-            $location.path("/viewgroup");
+          //commoncontroller.showAdvanced("MapController","partials/assignattributestogroup.html",true);
+            $location.path("/editgroup");
         }
 
 

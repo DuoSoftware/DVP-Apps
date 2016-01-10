@@ -1,4 +1,78 @@
 
+<md-subheader class="md-no-sticky"><h2>{{gTopic}}</h2></md-subheader>
+<div><md-button class="md-icon-button" ng-click="addNewAttrib()" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
+
+
+<md-data-table-container>
+
+  <table md-table  md-progress="deferred">
+    <thead md-head>
+    <tr md-row>
+      <th md-column>Attribute ID</th>
+      <th md-column>Attribute Name</th>
+      <th md-column >OtherData</th>
+      <th md-column>Status</th>
+      <th md-column></th>
+
+
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="attrib in attribData">
+      <td md-cell>{{attrib.AttributeId}}</td>
+      <td md-cell>{{attrib.Attribute}}</td>
+      <td md-cell>{{attrib.OtherData}}</td>
+      <td md-cell>{{attrib.Status}}</td>
+      <td md-cell>
+        <md-button class="md-icon-button" ng-click="ViewAttribute(attrib)" class="md-raised md-primary"><md-icon md-svg-src="img/edit26.svg"></md-icon></md-button>
+        <md-button class="md-icon-button" ng-click="DeleteAttribute(attrib)" class="md-raised md-warn" ng-disabled="isDisabled" ><md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon></md-button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</md-data-table-container>
+
+
+
+
+
+
+
+<!--<md-list ng-cloak>
+  <md-subheader class="md-no-sticky"><h3>{{gTopic}}</h3></md-subheader>
+
+
+  <md-list-item ng-repeat="attrib in attribData">
+
+    <p>{{attrib.AttributeId}}</p>
+    <p>{{attrib.Attribute}}</p>
+    <p>{{attrib.OtherData}}</p>
+    <p>{{attrib.Status}}</p>
+
+      <p><md-button ng-click="ViewAttribute(attrib)" class="md-raised md-primary">View</md-button></p>
+     &lt;!&ndash; <p><md-button ng-click="DeleteAttribute(attrib)" class="md-raised md-warn">Delete</md-button></p>&ndash;&gt;
+      <p><md-button ng-click="DeleteAttribute(attrib)" class="md-raised md-warn" ng-disabled="isDisabled" >Delete</md-button></p>
+
+
+  </md-list-item>
+</md-list>-->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
 <md-data-table-toolbar>
     <h2 class="md-title">Attribute Manager</h2>
 </md-data-table-toolbar>
@@ -34,6 +108,7 @@
 
 </md-data-table-container>
 
+-->
 
 
 
