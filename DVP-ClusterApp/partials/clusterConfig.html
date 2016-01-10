@@ -1,0 +1,75 @@
+<md-card class="ui-main" ng-model="CallEditController">
+  <form name="projectForm" novalidate>
+    <div ng-cloak>
+      <md-content>
+        <md-list>
+          <md-subheader class="md-no-sticky">Call Servers</md-subheader>
+          <div ng-controller="CustomInputDemoCtrl as ctrl" layout="column" ng-cloak="" class="chipsdemoContactChips"
+               ng-app="ClusterManageApp">
+
+            <div ng-show="showStatus" style="vertical-align: middle">
+              <span style="color: red">{{status}}</span>
+            </div>
+            <md-content class="md-padding autocomplete" layout="column">
+
+              <md-chips ng-model="ctrl.selectedVegetables" md-on-add="ctrl.OnChipAdd($chip)"
+                        md-on-remove="ctrl.OnChipDelete($chip)"
+                        md-transform-chip="ctrl.transformChip($chip)"
+                        md-require-match="false">
+                <md-autocomplete
+                  md-selected-item="ctrl.selectedItem"
+                  md-search-text="ctrl.searchText"
+                  md-items="item in ctrl.querySearch(ctrl.searchText)"
+                  md-item-text="item.Name"
+                  placeholder="Search for a Call Server">
+                  <span md-highlight-text="ctrl.searchText">{{item.Name}} : {{item.InternalMainIP}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>
+                      <strong>{{$chip.Name}}</strong>
+                      <em>({{$chip.InternalMainIP}})</em>
+                    </span>
+                </md-chip-template>
+              </md-chips>
+
+              <md-list class="fixedRows">
+                <md-subheader class="md-no-sticky">Call Servers</md-subheader>
+                <md-list-item  class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.vegetables"
+                              ng-if="ctrl.selectedVegetables.indexOf(contact) < 0">
+
+                  <div class="md-list-item-text compact">
+                    <h3>{{contact.Name}}</h3>
+
+                    <p>{{contact.InternalMainIP}}</p>
+                  </div>
+                </md-list-item>
+                <md-list-item class="md-2-line contact-item selected" ng-repeat="contact in ctrl.selectedVegetables">
+                  <div class="md-list-item-text compact">
+                    <h3>{{contact.Name}}</h3>
+
+                    <h3>{{contact.id}}</h3>
+
+                    <p>{{contact.InternalMainIP}}</p>
+                  </div>
+                </md-list-item>
+              </md-list>
+
+            </md-content>
+
+          </div>
+
+
+          <md-divider></md-divider>
+
+
+          <md-subheader class="md-no-sticky">Networks</md-subheader>
+          <md-list-item class="md-3-line">
+
+          </md-list-item>
+
+        </md-list>
+      </md-content>
+    </div>
+    </md-card-content>
+  </form>
+</md-card>

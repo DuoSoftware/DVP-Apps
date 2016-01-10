@@ -1,0 +1,52 @@
+<md-dialog ng-controller="LoadBalancerController" class="ui-sub" aria-label="Create Campaign" ng-cloak>
+  <form name="projectForm"   novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Load Balancer </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div  class="ui-dialog-body" layout="column" ng-cloak>
+      <md-content class="ui-sub" layout-padding>
+        <form name="projectForm">
+          <md-input-container class="md-block">
+            <label>Type</label>
+            <input md-maxlength="30" required name="Type" ng-model="cluster.LoadBalancer.Type">
+            <div ng-messages="projectForm.Type.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>IP</label>
+            <input required name="MainIP" ng-pattern = "/^(\d{1,3}\.){3}(\d{1,3})$/" ng-model="cluster.LoadBalancer.MainIP">
+            <div ng-messages="projectForm.MainIP.$error">
+              <div ng-message="required">Please enter a valid IP address.</div>
+            </div>
+          </md-input-container>
+
+
+          <md-input-container class="md-block">
+            <label>Cluster ID</label>
+            <input required name="id" ng-model="cluster.id" ng-disabled="true">
+            <div ng-messages="projectForm.id.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+
+        </form>
+      </md-content>
+    </div>
+
+    <md-dialog-actions layout="row">
+      <md-button  ng-click="saveLoadBalancer($event)" ng-disabled="projectForm.$invalid" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,5 +1,5 @@
 
-var app = angular.module("ResourceApp",["ngMaterial","directivelibrary","ngRoute", "resourceService", "taskService"]);
+var app = angular.module("ResourceApp",["ngMaterial","directivelibrary","ngRoute","mdChips", "resourceService", "taskService", "attributeService"]);
 
 app.config(function($routeProvider){
 

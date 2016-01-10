@@ -1,5 +1,5 @@
 <div class="md-padding" id="popupContainer" ng-cloak>
-<md-card>
+<md-card ng-click="LoadChips(resourceTask)">
   <md-card-title >
     <md-card-title-text>
       <span class="md-headline">Task</span>
@@ -8,7 +8,7 @@
   </md-card-title>
 
   <md-card-content layout="row" layout-align="space-between">
-    <div class="md-media-lg card-media">
+    <div class="md-media-sm card-media">
       <md-input-container>
         <label>Concurrency</label>
         <input ng-model="resourceTask.Concurrency">
@@ -21,6 +21,9 @@
   </md-card-content>
 
   <md-card-actions layout="row" layout-align="end center">
+    <md-button  class="md-icon-button" ng-disabled="false" aria-label="Update" ng-click="AddSkill(resourceTask)">
+      <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+    </md-button>
     <md-button  class="md-icon-button" ng-disabled="false" aria-label="Update" ng-click="UpdateTask(resourceTask)">
       <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
     </md-button>
