@@ -26,6 +26,11 @@
           }
       };
 
+      $scope.onCancelPressed = function()
+      {
+          $location.url("/pabxUsers");
+      };
+
       $scope.onSavePressed = function()
       {
         if($scope.basicConfig.IsEdit)
@@ -135,7 +140,25 @@
       {
         if(data.Result)
         {
-            $scope.allowedNumbers = data.Result.AllowedNumbers;
+            if($scope.basicConfig.IsEdit)
+            {
+              $scope.allowedNumbers = data.Result.AllowedNumbers;
+            }
+            else
+            {
+              $mdDialog.show(
+                $mdDialog.alert()
+                  .parent(angular.element(document.querySelector('#popupContainer')))
+                  .clickOutsideToClose(true)
+                  .title('User already added')
+                  .textContent('please use the edit button to edit')
+                  .ariaLabel('Not a new user')
+                  .ok('Ok')
+              );
+
+              $location.url("/pabxUsers");
+            }
+
         }
 
       };
