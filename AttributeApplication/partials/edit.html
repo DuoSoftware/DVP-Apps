@@ -43,10 +43,10 @@
 
 
   <md-toolbar class="md-table-toolbar md-default">
-    <label style="padding: 5% 0% 5% 10% ">Edit Attribute</label>
+    <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">Edit Attribute</h4></label>
   </md-toolbar>
 
-  <md-content layout-gt-sm="row" layout-padding >
+  <md-content layout-gt-sm="row" layout-padding style="background-color: lightgrey" >
     <div>
 
       <md-input-container class="md-block" flex-gt-xs>
@@ -71,9 +71,9 @@
       </md-input-container>
     </div>
   </md-content>
-  <md-content  layout-gt-sm="row" >
+  <md-content  layout-gt-sm="row" style="background-color: lightgrey">
 
-    <md-input-container >
+    <md-input-container style="background-color: lightgrey;padding: 0% 0% 0% 70%">
       <md-button class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.AttributeId)" ng-disabled="isDisabled || newAttribForm.otherData.$dirty &&newAttribForm.otherData.$invalid ||
   newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid || !editObj.OtherData.length || !editObj.Attribute.length"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="Erase()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
 

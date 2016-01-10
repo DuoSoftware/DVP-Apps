@@ -69,14 +69,14 @@
 
 
     <md-toolbar class="md-table-toolbar md-default">
-      <label style="padding: 5% 0% 5% 10% ">Edit Group</label>
+      <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">Edit Group</h4></label>
     </md-toolbar>
 
-    <md-content layout-gt-sm="row" layout-padding >
+    <md-content layout-gt-sm="row" layout-padding style="background-color: #cccccc"">
       <div>
 
         <md-input-container class="md-block" flex-gt-xs>
-          <label style="color: blue">Group ID</label>
+          <label style="color: blue ">Group ID</label>
           <input ng-model="DataObj.GroupId" disabled style="color: gray">
         </md-input-container>
 
@@ -131,9 +131,9 @@
         </md-input-container>
       </div>
     </md-content>
-    <md-content  layout-gt-sm="row" >
+    <md-content  layout-gt-sm="row" style="background-color: #cccccc">
 
-      <md-input-container  >
+      <md-input-container style="padding: 0% 0% 0% 80%"   >
         <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.otherData.$dirty &&editGrpForm.otherData.$invalid || editGrpForm.Percentage.$dirty &&editGrpForm.Percentage.$invalid ||
   editGrpForm.GroupName.$dirty && editGrpForm.GroupName.$invalid || !editObj.OtherData.length || !editObj.GroupName.length "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
 
