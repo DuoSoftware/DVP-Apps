@@ -1,0 +1,34 @@
+<md-dialog aria-label="Pick User"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Select a user to add</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-card flex>
+          <md-card-content layout="column">
+
+            <md-input-container class="md-block" flex>
+              <label>User</label>
+              <md-select name="userPicker" ng-model="selectedUserUuid" ng-model-options="{trackBy: '$value'}">
+                <md-option ng-repeat="user in sipUserList" value="{{user.SipUserUuid}}">{{user.SipUsername}}</md-option>
+              </md-select>
+            </md-input-container>
+
+          </md-card-content>
+        </md-card>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="onCancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="onContinue()">
+        Continue
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

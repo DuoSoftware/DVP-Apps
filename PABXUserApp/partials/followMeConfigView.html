@@ -9,12 +9,12 @@
   <div layout-gt-sm="row" layout-align="start center">
     <md-input-container flex-gt-sm>
       <label>Follow Me Ring Type</label>
-      <md-select name="userStatus" ng-model="basicConfig.FMRingType" ng-model-options="{trackBy: '$value'}">
+      <md-select name="fmRingType" ng-model="fmRingType" ng-model-options="{trackBy: '$value'}">
         <md-option value="SEQUENTIAL">SEQUENTIAL</md-option>
         <md-option value="PARALLEL">PARALLEL</md-option>
       </md-select>
     </md-input-container>
-    <md-button class="btn1">Set</md-button>
+    <md-button class="btn1" ng-click="updateFMRingType()">Set</md-button>
   </div>
   </div>
 
@@ -28,23 +28,22 @@
     <table md-table md-progress="promise" ng-show="dataReady">
       <thead md-head>
       <tr md-row>
-        <th md-column>User UUID</th>
-        <th md-column>User Status</th>
-        <th md-column>Advanced Route Method</th>
+        <th md-column>Destination Number</th>
+        <th md-column>Destination Type</th>
+        <th md-column>Priority</th>
+        <th md-column>Ring Timeout</th>
       </tr>
       </thead>
       <tbody md-body>
-      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in pabxUsrList | limitTo: query.limit: (query.page - 1) * query.limit">
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in fmList | limitTo: query.limit: (query.page - 1) * query.limit">
 
-        <td md-cell>{{item.UserUuid}}</td>
-        <td md-cell>{{item.UserStatus}}</td>
-        <td md-cell>{{item.AdvancedRouteMethod}}</td>
+        <td md-cell>{{item.DestinationNumber}}</td>
+        <td md-cell>{{item.ObjCategory}}</td>
+        <td md-cell>{{item.Priority}}</td>
+        <td md-cell>{{item.RingTimeout}}</td>
         <td md-cell>
           <div layout="row">
-            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed()">
-              <md-icon md-svg-src="../ResourceApp-Material/img/edit26.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteFM($event, item.id)">
               <md-icon md-svg-src="../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
             </md-button>
           </div>
@@ -66,30 +65,31 @@
     <div layout-gt-sm="row">
       <md-input-container flex-gt-sm>
         <label>Destination Type</label>
-        <md-select name="userStatus" ng-model="basicConfig.FMDestType" ng-model-options="{trackBy: '$value'}">
+        <md-select name="userStatus" ng-model="numberType" ng-model-options="{trackBy: '$value'}">
           <md-option value="PBXUSER">PBXUSER</md-option>
+          <md-option value="USER">USER</md-option>
           <md-option value="GATEWAY">GATEWAY</md-option>
         </md-select>
       </md-input-container>
       <div flex="5"></div>
       <md-input-container flex-gt-sm>
         <label>Destination Number</label>
-        <input name="destNum" ng-model="basicConfig.DestNumber">
+        <input name="destNum" ng-model="destinationNumber">
       </md-input-container>
     </div>
     <div layout-gt-sm="row">
       <md-input-container flex-gt-sm>
         <label>Priority</label>
-        <input name="priority" ng-model="basicConfig.Priority">
+        <input name="priority" ng-model="priority">
       </md-input-container>
       <div flex="5"></div>
       <md-input-container flex-gt-sm>
         <label>Ring Time</label>
-        <input name="ringTime" ng-model="basicConfig.RingTime">
+        <input name="ringTime" ng-model="ringTimeout">
       </md-input-container>
     </div>
     <div layout="row" layout-align="right" flex="30">
-      <div layout-align="left"><md-button class="btn1">Add New</md-button></div>
+      <div layout-align="left"><md-button class="btn1" ng-click="saveFM()">Add New</md-button></div>
     </div>
     </md-card-content>
   </md-card>
