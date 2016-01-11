@@ -24,7 +24,7 @@
                   <form name="didForm">
                   <md-input-container>
                     <label>Did Number</label>
-                    <input type="text" class="form-control" required name="DidNumber" ng-pattern="/^[0-9]*$/" id="didNumber" placeholder="DID Number" ng-disabled="enableEdit" ng-model="didNumber.DidNumber">
+                    <input type="text" class="form-control" required name="DidNumber" ng-pattern="/^[0-9]*$/" placeholder="DID Number" ng-disabled="enableEdit" ng-model="didNumber.DidNumber">
                     <div ng-messages="didForm.DidNumber.$error">
                       <div ng-message="required">DidNumber is required.</div>
                       <div ng-message="pattern">Please enter a valid Number.</div>
@@ -41,7 +41,7 @@
                       <div ng-message="required">Extension is required.</div>
                     </div>
                   </md-input-container>
-                  <md-checkbox ng-model="didNumber.DidActive" class="form-control" ng-click="updateDidEnable()" aria-label="DID Active">
+                  <md-checkbox ng-model="didNumber.DidActive" ng-hide="true" class="form-control" ng-click="updateDidEnable()" aria-label="DID Active">
                   </md-checkbox>
                   </form>
                 </md-content>
@@ -52,9 +52,9 @@
                 Add
               </md-button>
               <md-button class="md-raised md-primary" ng-show="enableEdit" ng-disabled="didForm.Extension.$invalid || didForm.DidNumber.$invalid" ng-click="editDidNumber(didNumber)" style="margin-right:20px;">
-                Edit
+                Update
               </md-button>
-              <md-button class="md-raised md-primary" ng-click="answer('not useful')">
+              <md-button class="md-raised md-primary" ng-click="answer(false,'not useful','','')">
                 Cancel
               </md-button>
             </md-card-actions>
