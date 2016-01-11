@@ -182,14 +182,14 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
-  var deleteCallServerFromCluster = function (callServerId,cloudId) {
-    /*return $http.post("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{}).then(function (response) {
+  var deleteCallServerFromCluster = function (cloudId,callServerId) {
+    return $http.delete("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
       } else {
         return false;
       }
-    });*/
+    });
   };
 
 //////////////////************** Network Configurations **************/////////////////
@@ -222,14 +222,14 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
-  var deleteNetworkFromCluster = function (callServerId,cloudId) {
-    /*return $http.post("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{}).then(function (response) {
+  var deleteNetworkFromCluster = function (cloudId,networkId) {
+    return $http.delete("http://localhost:3636/DVP/API/6.0/CloudConfiguration/Network/"+networkId+"/SetTelcoNetworkToCloud/"+cloudId).then(function (response) {
      if (response.data && response.data.IsSuccess) {
      return response.data.IsSuccess;
      } else {
      return false;
      }
-     });*/
+     });
   };
 
   return {
