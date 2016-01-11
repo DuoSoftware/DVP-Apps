@@ -29,7 +29,7 @@
       <md-button  class="md-icon-button" ng-disabled="false" aria-label="Update" ng-click="AddSkill(resourceTask)">
         <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
       </md-button>
-      <md-button  class="md-icon-button" ng-disabled="false" aria-label="Update" ng-click="UpdateTask(resourceTask)">
+      <md-button  class="md-icon-button" ng-disabled="userForm.$invalid" aria-label="Update" ng-click="UpdateTask(resourceTask)">
         <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
       </md-button>
     </md-card-actions>

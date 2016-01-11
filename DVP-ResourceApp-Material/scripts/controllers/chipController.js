@@ -78,7 +78,7 @@
 
     self.OnChipSelect = function($chip){
 
-      alert("Select "+JSON.stringify($chip));
+      //alert("Select "+JSON.stringify($chip));
 
 
 
