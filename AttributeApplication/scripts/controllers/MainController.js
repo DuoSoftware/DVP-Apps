@@ -6,7 +6,7 @@
 
     var app= angular.module("attributeapp");
 
-    var MainController = function ($scope, $location) {
+    var MainController = function ($scope, $location,commoncontroller) {
 
         $scope.searchAttrib = function()
         {
@@ -14,7 +14,8 @@
         }
         $scope.addNewAttrib = function()
         {
-            $location.path("/newattrib");
+          commoncontroller.showAdvanced("NewController","partials/new.html",true);
+            //$location.path("/newattrib");
         }
         $scope.searchGroup = function()
         {
@@ -22,7 +23,8 @@
         }
         $scope.addNewGroup = function()
         {
-            $location.path("/newgroup");
+          commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+
         }
 
     };

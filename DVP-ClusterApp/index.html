@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" type="text/css"/>
   <link rel="stylesheet" href="css/clusterLayout.css" type="text/css"/>
+
 </head>
 
 <body>
@@ -42,22 +43,16 @@
   <div flex="10"></div>
   <div class="ui-main" flex="80">
     <md-card flex="auto" width="100" class="custBackground1">
-      <div class="main-fab">
-        <md-button class="md-fab md-accent" href="#/cluster/create">+</md-button>
-        <md-tooltip>Add Cluster</md-tooltip>
-      </div>
-      <md-toolbar layout="column" class="md-tall"><span flex="flex"></span>
 
-        <div class="md-toolbar-tools">
+      <md-toolbar layout="column" class="md-tall">
+        <span flex="flex"></span>
+        <div class="md-toolbar-tools"  >
           <div layout="row" flex="flex" class="fill-height">
-            <div ng-hide="toggleSearch" class="md-toolbar-item md-breadcrumb"><span>Cluster Manage App</span></div>
-            <span flex="flex" ng-hide="toggleSearch"></span>
-            <md-input-container flex="flex" style="padding-left:88px;" ng-show="toggleSearch">
-              <input type="text" ng-model="search"/>
-            </md-input-container>
-            <div layout="row" class="md-toolbar-item md-tools"><a href="href" ng-click="toggleSearch = !toggleSearch"
-                                                                  class="md-button md-default-theme"><i
-              class="ion-android-search"></i></a></div>
+            <section style="width: 100% " layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+              <md-button style="width: 25%" class="md-raised md-primary" href="#/cluster/list">Cluster Manage</md-button>
+              <md-button style="width: 25%"  class="md-raised md-primary" href="#/callserver/list">Call Server</md-button>
+              <md-button style="width: 25%"  class="md-raised md-primary" href="#/cluster/configlist">Configurations</md-button>
+            </section>
           </div>
         </div>
       </md-toolbar>
@@ -66,7 +61,7 @@
       </md-card-content>
     </md-card>
   </div>
-  <div flex="10"></div>
+  <div flex="10" ></div>
 
 </div>
 

@@ -3,15 +3,25 @@
  */
 (function () {
   var app= angular.module("attributeapp");
-  var editObj;
 
-  var EditController = function ($scope,dbcontroller,commoncontroller,$location,$mdDialog) {
+
+  var EditController = function ($scope,dbcontroller,commoncontroller,$location,$mdDialog,$route) {
+    $scope.editObj={};
+    $scope.DataObj=dbcontroller.Attribobj;
+
+    $scope.editObj.Attribute=$scope.DataObj.Attribute;
+    $scope.editObj.OtherData=$scope.DataObj.OtherData;
+
+
+
+
 
     $scope.isDisabled = false;
     console.log("now "+dbcontroller.Attribobj.AttributeId);
 
     var onUpdateComplete = function(response)
     {
+      console.log("HIT");
       if(response.data.Exception)
       {
         onError(response.data.Exception.Message);
@@ -19,7 +29,11 @@
       else
       {
         $scope.isDisabled = false;
-        $location.path("/attribute");
+        console.log("Updated......................");
+        //$location.path("/attribute");
+        //this.reload();
+        $scope.isDisabled = true;
+        $route.reload();
       }
     }
 
@@ -27,6 +41,7 @@
     {
       $scope.isDisabled = false;
       $scope.error = reason;
+      commoncontroller.showAlert("Error",reason);
       console.log(reason);
     }
 
@@ -50,15 +65,18 @@
         //$scope.showAlert("title","lable","ok","content");
         $scope.isDisabled = false;
 
-      },editObj);
+      },$scope.editObj);
 
 
 
     }
 
+    $scope.Erase = function () {
+      console.log("Hit");
+      $mdDialog.hide();
+    }
 
 
-    $scope.DataObj=dbcontroller.Attribobj;
   }
   app.controller("EditController",EditController);
 }())
