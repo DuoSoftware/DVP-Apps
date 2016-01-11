@@ -11,7 +11,7 @@
   var dbcontroller = function ($http,$mdDialog,$mdMedia) {
 
     var getAttributeList = function () {
-      return $http.get("http://localhost:8831/DVP/API/6.0/ResourceManager/Attributes")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Attributes")
         .then(function (response) {
           return response;
         });
@@ -21,7 +21,7 @@
 
     var attribDelete = function (Attribute) {
 
-      return $http.delete("http://localhost:8831/DVP/API/6.0/ResourceManager/Attribute/"+Attribute.AttributeId)
+      return $http.delete("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+Attribute.AttributeId)
         .then(function (response) {
 
           response.AttributeId=Attribute.AttributeId;
@@ -43,7 +43,7 @@
 
 
       }
-      return $http.put("http://localhost:8831/DVP/API/6.0/ResourceManager/Attribute/"+edtObj.AttributeId,data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+edtObj.AttributeId,data)
         .then(function (response) {
 
           return response;
@@ -63,7 +63,7 @@
 
 
       }
-      return $http.post("http://localhost:8831/DVP/API/6.0/ResourceManager/Attribute",data)
+      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute",data)
         .then(function (response) {
 
           console.log(response);
@@ -72,7 +72,7 @@
     }
 
     var getGroupList = function () {
-      return $http.get("http://localhost:8831/DVP/API/6.0/ResourceManager/Groups")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Groups")
         .then(function (response) {
           return response;
         });
@@ -91,7 +91,7 @@
 
 
       }
-      return $http.put("http://localhost:8831/DVP/API/6.0/ResourceManager/Group/" + edtObj.GroupId, data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/" + edtObj.GroupId, data)
         .then(function (response) {
 
           return response;
@@ -100,7 +100,7 @@
 
     var groupDelete = function (group) {
 
-      return $http.delete("http://localhost:8831/DVP/API/6.0/ResourceManager/Group/"+group.GroupId)
+      return $http.delete("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+group.GroupId)
         .then(function (response) {
 
           response.GroupId= group.GroupId;
@@ -122,7 +122,7 @@
 
 
       }
-      return $http.post("http://localhost:8831/DVP/API/6.0/ResourceManager/Group",data)
+      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Group",data)
         .then(function (response) {
 
           return response;
@@ -137,18 +137,32 @@
 
 
       }
-      return $http.put("http://localhost:8831/DVP/API/6.0/ResourceManager/Group/"+GID+"/Attribute",data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+GID+"/Attribute",data)
         .then(function (response) {
 
           return response;
         });
+
+    };
+
+
+
+    var RemoveAttributeFromGroup = function (attributeId,groupId) {
+
+
+      return $http.delete("http://localhost:8832/DVP/API/6.0//ResourceManager/Group/"+groupId+"/Attribute/"+attributeId)
+        .then(function (response) {
+
+          return response;
+        });
+
 
     }
 
     var GetAttributesOfGroup = function (GrpID) {
 
 
-      return $http.get("http://localhost:8831/DVP/API/6.0/ResourceManager/Group/"+GrpID+"/Attribute")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+GrpID+"/Attribute/Details")
         .then(function (response) {
           return response;
         });
@@ -173,6 +187,10 @@
 
 
 
+
+
+
+
     return{
       getAttributeList:getAttributeList,
       attribDelete:attribDelete,
@@ -188,7 +206,8 @@
       GID:GID,
       GetAttributesOfGroup:GetAttributesOfGroup,
       GIDst:GIDst,
-      showConfirm:showConfirm
+      showConfirm:showConfirm,
+      RemoveAttributeFromGroup:RemoveAttributeFromGroup
 
     };
   };

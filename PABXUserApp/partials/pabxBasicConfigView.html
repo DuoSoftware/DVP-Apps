@@ -1,10 +1,11 @@
 <div>
   <md-toolbar class="md-table-toolbar md-default">
-    <div class="custBackground1 md-toolbar-tools" layout="row">
-      <div layout-align="left" flex="70">PABX Basic Configuration</div>
-      <div layout="row" layout-align="right" flex="30">
-        <div layout-align="left"><md-button class="btn1">Follow Me</md-button></div>
-        <div layout-align="right"><md-button class="btn1">Forwarding</md-button></div>
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">PABX Basic Configuration</div>
+      <div layout="row" layout-align="right">
+        <div><md-button class="btn3" ng-click="onMenuButtonPressed(1)" ng-disabled="!basicConfig.IsEdit">Template</md-button></div>
+        <div><md-button class="btn3" ng-click="onMenuButtonPressed(2)" ng-disabled="!basicConfig.IsEdit">Follow Me</md-button></div>
+        <div><md-button class="btn3" ng-click="onMenuButtonPressed(3)" ng-disabled="!basicConfig.IsEdit">Forwarding</md-button></div>
       </div>
 
     </div>
@@ -16,31 +17,43 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>PABX User Name</label>
-            <input name="userName" ng-model="basicConfig.UserName">
+            <input name="userName" ng-model="basicConfig.UserName" ng-disabled="basicConfig.IsEdit" required>
+            <div ng-messages="pabxBasicConfForm.userName.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
           </md-input-container>
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>PIN Number</label>
-            <input name="pinNumber" ng-model="basicConfig.Pin">
+            <input name="pinNumber" ng-model="basicConfig.Pin" ng-pattern="/^[0-9]*$/">
+            <div ng-messages="pabxBasicConfForm.pinNumber.$error">
+              <div ng-message="pattern">Pin number should be numeric</div>
+            </div>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>User Status</label>
-            <md-select name="userStatus" ng-model="basicConfig.UserStatus" ng-model-options="{trackBy: '$value'}">
+            <md-select name="usrStatus" ng-model="basicConfig.UserStatus" ng-model-options="{trackBy: '$value'}" required>
               <md-option value="DND">Do Not Disturb</md-option>
               <md-option value="AVAILABLE">Available</md-option>
               <md-option value="CALL_DIVERT">Call Divert</md-option>
             </md-select>
+            <div ng-messages="pabxBasicConfForm.usrStatus.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
           </md-input-container>
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Advanced Route Method</label>
-            <md-select name="advRouteMethod" ng-model="basicConfig.AdvancedRouteMethod" ng-model-options="{trackBy: '$value'}">
+            <md-select name="advRouteMethod" ng-model="basicConfig.AdvancedRouteMethod" ng-model-options="{trackBy: '$value'}" required>
               <md-option value="NONE">Default</md-option>
               <md-option value="FOLLOW_ME">Follow Me</md-option>
               <md-option value="FORWARDING">Conditional Forward</md-option>
             </md-select>
+            <div ng-messages="pabxBasicConfForm.advRouteMethod.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
@@ -51,10 +64,15 @@
             </md-select>
           </md-input-container>
           <div flex="5"></div>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Divert Number</label>
-            <input name="divertNumber" ng-model="basicConfig.DivertNumber">
-          </md-input-container>
+          <div layout="row" flex-gt-sm>
+            <md-input-container flex-gt-sm class="md-block">
+              <label>Divert Number</label>
+              <md-select name="divertNumber" ng-model="basicConfig.ActiveTemplate" ng-model-options="{trackBy: '$value'}" ng-disabled="!basicConfig.IsEdit">
+                <md-option ng-repeat="templ in pabxTemplList" value="{{templ.id}}">{{templ.CallDivertNumber}}</md-option>
+              </md-select>
+            </md-input-container>
+
+          </div>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
@@ -67,15 +85,15 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Day Greeting</label>
-            <md-select name="userStatus" ng-model="basicConfig.DayGreetingFile" ng-model-options="{trackBy: '$value'}">
-              <md-option ng-repeat="dayGreetItem in fileList" value="{{dayGreetItem.id}}">{{dayGreetItem.Name}}</md-option>
+            <md-select name="dayGreeting" ng-model="basicConfig.DayGreetingFile" ng-model-options="{trackBy: '$value'}">
+              <md-option ng-repeat="dayGreetItem in fileList" value="{{dayGreetItem.id}}">{{dayGreetItem.DisplayName}}</md-option>
             </md-select>
           </md-input-container>
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Night Greeting</label>
-            <md-select name="userStatus" ng-model="basicConfig.NightGreetingFile" ng-model-options="{trackBy: '$value'}">
-              <md-option ng-repeat="nightGreetItem in fileList" value="{{nightGreetItem.id}}">{{nightGreetItem.Name}}</md-option>
+            <md-select name="nightGreeting" ng-model="basicConfig.NightGreetingFile" ng-model-options="{trackBy: '$value'}">
+              <md-option ng-repeat="nightGreetItem in fileList" value="{{nightGreetItem.id}}">{{nightGreetItem.DisplayName}}</md-option>
             </md-select>
           </md-input-container>
         </div>
@@ -99,12 +117,13 @@
         <div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Allowed Numbers</label>
-            <md-chips ng-model="basicConfig.AllowedNumbers"></md-chips>
+            <md-chips name="allowedNums" ng-model="allowedNumbers"></md-chips>
           </md-input-container>
         </div>
-        <div layout="row" layout-align="right" flex="30">
-          <div layout-align="left"><md-button class="btn1">Save</md-button></div>
-          <div layout-align="right"><md-button class="btn1">Cancel</md-button></div>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="pabxBasicConfForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
         </div>
 
 

@@ -1,29 +1,28 @@
+<md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>Group Manager</h2></md-subheader>
+<div><md-button class="md-icon-button" ng-click="addNewGroup()" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
 
-<md-data-table-toolbar>
-    <h2 class="md-title">Group Manager</h2>
-</md-data-table-toolbar>
 <md-data-table-container>
 
-    <table md-data-table  md-progress="deferred">
-        <thead>
-        <tr>
-            <th>GroupId</th>
-            <th>GroupName</th>
-            <th>OtherData</th>
-            <th>Percentage</th>
+    <table md-table  md-progress="deferred" >
+      <thead md-head style="background-color: #cccccc">
+        <tr md-row>
+            <th md-column style="color: #323232"><h3>Group ID</h3></th>
+            <th md-column style="color: #323232"><h3>Group Name</h3></th>
+            <th md-column style="color: #323232"><h3>Other Data</h3></th>
+            <th md-column style="color: #323232"><h3>Percentage</h3></th>
 
 
         </tr>
         </thead>
-        <tbody>
-        <tr layout-align="center center" md-auto-select ng-repeat="grp in grps ">
-            <td>{{grp.GroupId}}</td>
-            <td>{{grp.GroupName}}</td>
-            <td>{{grp.OtherData}}</td>
-            <td>{{grp.Percentage}}</td>
-            <td>
-                <md-button ng-click="ViewAttribute(grp)" class="md-raised md-primary">View</md-button>
-                <md-button ng-click="DeleteAttribute(grp)" class="md-raised md-warn">Delete</md-button>
+        <tbody md-body>
+        <tr md-row layout-align="center center" md-auto-select ng-repeat="grp in grps ">
+            <td md-cell>{{grp.GroupId}}</td>
+            <td md-cell>{{grp.GroupName}}</td>
+            <td md-cell>{{grp.OtherData}}</td>
+            <td md-cell>{{grp.Percentage}}</td>
+            <td md-cell>
+                <md-button class="md-icon-button" ng-click="ViewAttribute(grp)" class="md-raised md-primary"><md-icon md-svg-src="img/edit26.svg"></md-icon></md-button>
+                <md-button class="md-icon-button" ng-click="DeleteAttribute(grp)" class="md-raised md-warn"><md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon></md-button>
 
             </td>
 

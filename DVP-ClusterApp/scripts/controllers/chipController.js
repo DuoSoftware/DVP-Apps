@@ -1,194 +1,264 @@
-/**
- * Created by a on 12/15/2015.
- */
 (function () {
   'use strict';
   angular
     .module('ClusterManageApp')
-    .controller('BasicDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($scope, $routeParams, $timeout, $q, resource, task) {
+    .controller('CallServerChipsController', DemoCtrl);
+  function DemoCtrl($scope, $routeParams, clusterService) {
     var self = this;
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////
-
-    self.autocompleteDemoRequireMatch = true;
-    self.transformChip = transformChip;
+    self.readonly = false;
     self.selectedItem = null;
     self.searchText = null;
-    self.querySearch = querySearch;
+    self.searchCallServer = searchCallServer;
+    self.selectedCallServers = [];
+    self.callServers = loadCallServers();
+    self.numberChips = [];
+    self.numberChips2 = [];
+    self.numberBuffer = '';
+    self.autocompleteDemoRequireMatch = false;
+    self.transformCallServer = transformCallServer;
 
+    $scope.status = {};
+    $scope.showStatus = false;
 
-    self.resourceTasks;
-    self.masterTasks;
+    self.OnCallServerAdd = function (chip) {
+      self.AssignCallServer(chip);
+      return chip;
+    };
 
+    self.OnCallServerDelete = function ($chip) {
+      self.DeleteCallServer($chip);
+    };
 
-    function transformChip(chip) {
+    self.AssignCallServer = function (contact) {
+      clusterService.AssignCallServerToCluster(contact.id, $routeParams.id).then(function (response) {
+        $scope.showStatus = !response;
+        if (!response) {
+          $scope.status = "Fail to Add Call Server - " + contact.Name;
+          $route.reload();
+        }
+        else {
 
+        }
+      }, function (error) {
+        $scope.showStatus = true;
+        $scope.status = "Fail to Add Call Server - " + contact.Name;
+        $route.reload();
+      });
+    };
+
+    self.DeleteCallServer = function (mastertask) {
+      clusterService.DeleteCallServerFromCluster($routeParams.id, mastertask.TaskId).then(function (response) {
+        $scope.showStatus = !response;
+        if (!response) {
+          $route.reload();
+        }
+      }, function (error) {
+        $scope.showStatus = true;
+        $route.reload();
+      });
+    };
+
+    function transformCallServer(chip) {
+      // If it is an object, it's already a known chip
       if (angular.isObject(chip)) {
         return chip;
       }
-      return { name: chip, type: 'new' }
+      // Otherwise, create a new one
+      return {Name: chip, InternalMainIP: 'new'}
     }
 
-
-
-    function querySearch (query) {
-      var results = query ? self.masterTasks.filter(createFilterFor(query)) : [];
+    function searchCallServer(query) {
+      var results = query ? self.callServers.filter(createFilterForCallServer(query)) : [];
       return results;
     }
 
-
-    function createFilterFor(query) {
+    function createFilterForCallServer(query) {
       var lowercaseQuery = angular.lowercase(query);
-      return function filterFn(task) {
-        return (task._lowername.indexOf(lowercaseQuery) === 0) ;
+      return function filterFn(callServer) {
+        return (callServer._lowername.indexOf(lowercaseQuery) === 0) ||
+          (callServer._lowertype.indexOf(lowercaseQuery) === 0);
       };
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////
+    function loadCallServers() {
 
-
-    self.getSelectedChipIndex = function(event) {
-      var selectedChip = angular.element(event.currentTarget).controller('mdChips').selectedChip;
-      //alert(selectedChip);
-    }
-
-    self.OnChipAdd = function($chip){
-      //alert("Add " + $chip.TaskName);
-
-
-        self.AssignTask($chip);
-        return $chip;
-
-
-    }
-
-
-    self.OnChipDelete = function($chip){
-      //alert("Delete " + $chip);
-
-
-      self.DeleteTask($chip);
-
-
-    }
-
-    self.OnChipSelect = function($chip){
-      //alert("Select "+$chip);
-
-
-
-    }
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-
-    function loadResourceTasks() {
-      resource.GetTasksAssignedToResource($routeParams.id).then(function (response) {
-        self.resourceTasks = response.map(function(c,index){
-
-          var item = c.ResTask.ResTaskInfo;
-          item.TaskId= c.ResTask.TaskId;
-          item._lowername= item.TaskName.toLowerCase();
-          return item;
-
+      clusterService.GetCallServers().then(function (response) {
+        self.callServers = response.map(function (c) {
+          var contact = {
+            Name: c.Name,
+            InternalMainIP: c.InternalMainIP,
+            id: c.id,
+          };
+          contact._lowername = c.Name.toLowerCase();
+          contact._lowertype = c.InternalMainIP.toLowerCase();
+          return contact;
         });
-        /*
-         map(function (c, index) {
-         var cParts = c.split(' ');
-         var contact = {
-         name: c,
-         email: cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() + '@example.com',
-         image: 'http://lorempixel.com/50/50/people?' + index
-         };
-         contact._lowername = contact.name.toLowerCase();
-         return contact;
-         });
+        loadCluster();
+      });
+    }
 
-         */
+    function loadCluster() {
+      clusterService.GetCluster($routeParams.id).then(function (response) {
+        self.selectedCallServers = response.CallServer.map(function (c, index) {
+          var contact = {
+            Name: c.Name,
+            InternalMainIP: c.InternalMainIP,
+            id: c.id,
+          };
+          contact._lowername = c.Name.toLowerCase();
+          contact._lowertype = c.InternalMainIP.toLowerCase();
+          return contact;
+        });
+
+
+        for (var j = self.callServers.length; j--;) {
+          for (var i = self.selectedCallServers.length; i--;) {
+            if (self.selectedCallServers[i]) {
+              if (self.selectedCallServers[i].id === self.callServers[j].id) {
+                self.selectedCallServers.splice(i,1);
+                self.selectedCallServers.push(self.callServers[j]);
+              }
+            }
+          }
+        }
+
+
+      }, function (error) {
 
       });
     };
 
-
-
-    function loadMasterTasks() {
-
-      // resource.user = {};
-      task.GetTasks().then(function (response) {
-        self.masterTasks = response.map(function(c,index){
-
-          var item = c.ResTaskInfo;
-          item.TaskId= c.TaskId;
-          item._lowername= item.TaskName.toLowerCase();
-          return item;
-
-        });
-      });
-
-    };
-
-
-
-
-    self.AssignTask = function(mastertask){
-
-      //mastertask = JSON.parse(mastertask);
-      ////att.Concurrency,att.RefInfo,att.OtherData
-
-
-      var concurrencyObj = {};
-
-
-      resource.AssignTaskToResource($routeParams.id,mastertask.TaskId,concurrencyObj).then(function (response) {
-
-        //$route.reload();
-
-      }, function (error) {
-        alert(error);
-      });
-
-
-    }
-
-
-    self.DeleteTask = function(mastertask){
-
-     // mastertask = JSON.parse(mastertask);
-      ////att.Concurrency,att.RefInfo,att.OtherData
-
-
-      var concurrencyObj = {};
-
-
-      resource.DeleteTaskToResource($routeParams.id,mastertask.TaskId,concurrencyObj).then(function (response) {
-
-
-
-      }, function (error) {
-        alert(error);
-      });
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-    loadResourceTasks();
-    loadMasterTasks();
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   }
 })();
+
+(function () {
+  'use strict';
+  angular
+    .module('ClusterManageApp')
+    .controller('NetworkChipsController', DemoCtrl);
+  function DemoCtrl($scope, $routeParams, clusterService) {
+    var self = this;
+    self.readonly = false;
+    self.selectedItem = null;
+    self.searchText = null;
+    self.autocompleteDemoRequireMatch = false;
+
+    $scope.status = {};
+    $scope.showStatus = false;
+
+    self.searchNetwork = searchNetwork;
+    self.networks = loadNetworks();
+    self.transformNetwork = transformNetwork;
+    self.selectedNetworks = [];
+
+    self.OnNetworkAdd = function (chip) {
+      self.AssignNetwork(chip);
+      return chip;
+    };
+
+    self.OnNetworkDelete = function ($chip) {
+      self.DeleteNetwork($chip);
+    };
+
+    self.AssignNetwork = function (contact) {
+      clusterService.AssignNetworkToCluster(contact.id, $routeParams.id).then(function (response) {
+        $scope.showStatus = !response;
+        if (!response) {
+          $scope.status = "Fail to Add Network - " + contact.Network;
+          $route.reload();
+        }
+        else {
+
+        }
+      }, function (error) {
+        $scope.showStatus = true;
+        $scope.status = "Fail to Add Network - " + contact.Network;
+        $route.reload();
+      });
+    };
+
+    self.DeleteNetwork = function (mastertask) {
+      clusterService.DeleteNetworkFromCluster($routeParams.id, mastertask.TaskId).then(function (response) {
+        $scope.showStatus = !response;
+        if (!response) {
+          $route.reload();
+        }
+      }, function (error) {
+        $scope.showStatus = true;
+        $route.reload();
+      });
+    };
+
+    function transformNetwork(chip) {
+      // If it is an object, it's already a known chip
+      if (angular.isObject(chip)) {
+        return chip;
+      }
+      // Otherwise, create a new one
+      return {Network: chip, NATIP: 'new'}
+    }
+
+    function searchNetwork(query) {
+      var results = query ? self.networks.filter(createFilterForNetwork(query)) : [];
+      return results;
+    }
+
+    function createFilterForNetwork(query) {
+      var lowercaseQuery = angular.lowercase(query);
+      return function filterFn(network) {
+        return (network._lowername.indexOf(lowercaseQuery) === 0) ||
+          (network._lowertype.indexOf(lowercaseQuery) === 0);
+      };
+    }
+
+    function loadNetworks() {
+
+      clusterService.GetNetworks().then(function (response) {
+        self.networks = response.map(function (c) {
+          var contact = {
+            Network: c.Network,
+            NATIP: c.NATIP,
+            id: c.id,
+          };
+          contact._lowername = c.Network.toLowerCase();
+          contact._lowertype = c.NATIP.toLowerCase();
+          return contact;
+        });
+        loadAddedNetworks();
+      });
+    }
+
+    function loadAddedNetworks() {
+      clusterService.GetCluster($routeParams.id).then(function (response) {
+        self.selectedNetworks = response.Network.map(function (c, index) {
+          var contact = {
+            Network: c.Network,
+            NATIP: c.NATIP,
+            id: c.id,
+          };
+          contact._lowername = c.Network.toLowerCase();
+          contact._lowertype = c.NATIP.toLowerCase();
+          return contact;
+        });
+
+
+        for (var j = self.networks.length; j--;) {
+          for (var i = self.selectedNetworks.length; i--;) {
+            if (self.selectedNetworks[i]) {
+              if (self.selectedNetworks[i].id === self.networks[j].id) {
+                self.selectedNetworks.splice(i,1);
+                self.selectedNetworks.push(self.networks[j]);
+              }
+            }
+          }
+        }
+
+      }, function (error) {
+
+      });
+    };
+
+  }
+})();
+
+

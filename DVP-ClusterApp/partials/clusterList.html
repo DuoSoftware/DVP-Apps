@@ -1,4 +1,8 @@
 <md-table-container>
+  <div class="main-fab">
+    <md-button class="md-fab md-accent" href="#/cluster/create">+</md-button>
+    <md-tooltip>Add Cluster</md-tooltip>
+  </div>
   <div class="divTable" layout="row" layout-align="center center" ng-hide="dataReady">
     <div layout="column" layout-align="center center">
       <h4>loading data</h4>
@@ -15,6 +19,7 @@
       <th  md-column>Category</th>
       <th  md-column>Activate</th>
       <th  md-column>Edit</th>
+      <th md-column>Config</th>
       <th  md-column>Delete</th>
     </tr>
     </thead>
@@ -40,6 +45,11 @@
       <td  md-cell>
         <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewCluster(cluster.id)">
           <md-icon md-svg-src="img/edit26.svg"></md-icon>
+        </md-button>
+      </td>
+      <td  md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="clusterConfigure(cluster.id)">
+          <md-icon md-svg-src="img/settings49.svg"></md-icon>
         </md-button>
       </td>
       <td md-cell>
