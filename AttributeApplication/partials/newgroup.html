@@ -40,10 +40,10 @@
 
 
   <md-toolbar class="md-table-toolbar md-default">
-    <label style="padding: 5% 0% 5% 10% ">New Group</label>
+    <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">New Group</h4></label>
   </md-toolbar>
 
-  <md-content layout-gt-sm="row" layout-padding >
+  <md-content layout-gt-sm="row" layout-padding style="background-color: lightgrey"  >
     <div>
       <md-input-container>
         <label style="color: blue" >Group Name</label>
@@ -61,21 +61,26 @@
 
       </md-input-container>
 
-      <md-input-container>
-        <label style="color: blue">Percentage</label>
-        <input type="number" name="Percentage" min="0" max="100" ng-model="Percentage" placeholder="0" required/>
 
-        <span style="color:red" ng-show="newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid"></span>
-
-      </md-input-container>
     </div>
   </md-content>
-  <md-content  layout-gt-sm="row" >
+  <md-content layout-gt-sm="row" layout-padding style="background-color: lightgrey">
+    <md-input-container>
+      <label style="color: blue">Percentage</label>
+      <input type="number" name="Percentage" min="0" max="100" ng-model="Percentage" required ng-pattern="/^(?:100|[1-9]?[0-9])$/"/>
+
+      <span style="color:red" ng-show="newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid"></span>
+
+    </md-input-container>
+  </md-content>
+  <md-content layout-gt-sm="row" layout-padding style="background-color: lightgrey;padding: 0% 0% 0% 60%""  >
 
     <md-input-container >
-      <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNewGroup(GroupName,OtherData,Percentage)" ng-disabled="isDisabled || newGrpForm.otherData.$dirty && newGrpForm.otherData.$invalid ||
-  newGrpForm.Group.$dirty && newGrpForm.Group.$invalid || newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid|| !OtherData.length || !GroupName.length "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></md-button>
+      <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNewGroup(GroupName,OtherData,Percentage)" ng-disabled="isDisabled || newGrpForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></md-button>
 
+      <!--/*newGrpForm.otherData.$dirty && newGrpForm.otherData.$invalid ||
+      newGrpForm.Group.$dirty && newGrpForm.Group.$invalid || !newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid || !OtherData.length || !GroupName.length */
+    -->
     </md-input-container>
 
 

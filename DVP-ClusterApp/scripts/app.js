@@ -35,12 +35,6 @@ app.config(function ($routeProvider) {
     controller: 'ClusterViewController'
 
 
-  }).when("/cluster/:id/tasklist", {
-
-    templateUrl: 'partials/clusterTaskList.html',
-    controller: 'ClusterTaskListController'
-
-
   }).when("/cluster/config", {
 
     templateUrl: 'partials/clusterConfig.html',

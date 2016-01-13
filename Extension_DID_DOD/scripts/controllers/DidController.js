@@ -42,9 +42,11 @@
         fullscreen: useFullScreen
       })
         .then(function(answer) {
-          $scope.showAlert(answer.tittle, answer.button, answer.content);
-          if (answer.isSuccess) {
-            $scope.loadData();
+          if(answer != "") {
+            $scope.showAlert(answer.tittle, answer.button, answer.content);
+            if (answer.isSuccess) {
+              $scope.loadData();
+            }
           }
         }, function() {
           $scope.status = 'You cancelled the dialog.';
@@ -100,6 +102,20 @@
 
 
 function DialogBoxDidController($scope, sipUser, $mdDialog) {
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(isSuccess,tittle,button,content) {
+    ans = "";
+    if(tittle != "not useful") {
+      ans = {isSuccess: isSuccess, tittle: tittle, button: button, content: content};
+    }
+    $mdDialog.hide(ans);
+  };
+
   var onDidActiveUpdateComplete = function(data){
     if(data.IsSuccess){
       $scope.DidActiveSuccess = true;
@@ -125,7 +141,7 @@ function DialogBoxDidController($scope, sipUser, $mdDialog) {
   };
   var onAddDidComplete = function(data){
     if(data.IsSuccess){
-      sipUser.updateDidWithExtension("1#1",$scope.didNumber.DidNumber,$scope.didNumber.Extension).then(onAssignExtComplete,onError("edit DID"));
+      sipUser.updateDidWithExtension("1#1",$scope.didNumber.DidNumber,$scope.didNumber.Extension).then(onAssignExtComplete,function(){onError("edit DID")});
     }else{
       $scope.error = data.Exception;
       $scope.answer(false,"Error","OK", "Add DID Failed.");
@@ -143,32 +159,22 @@ function DialogBoxDidController($scope, sipUser, $mdDialog) {
     $scope.enableEdit = false;
   }
   $scope.accessToken = 1;
-  sipUser.getExtensions($scope.accessToken).then(onGetExtensionComplete,onError("fetch the extension"));
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-  $scope.answer = function(isSuccess,tittle,button,content) {
-    ans = {isSuccess: isSuccess, tittle: tittle, button: button, content: content};
-    $mdDialog.hide(ans);
-  };
+  sipUser.getExtensions($scope.accessToken).then(onGetExtensionComplete,function(){onError("fetch the extension")});
 
   $scope.addDidNumber = function(didInfo){
     $scope.didNumber = didInfo;
     if($scope.didNumber.DidActive == null){
       $scope.didNumber.DidActive = false;
     }
-    sipUser.addDidNumber("1#1",$scope.didNumber).then(onAddDidComplete,onError("add the DID"));
+    sipUser.addDidNumber("1#1",$scope.didNumber).then(onAddDidComplete,function(){onError("add the DID")});
   };
   $scope.editDidNumber = function(didInfo){
     $scope.didNumber = didInfo;
     if(isDidActiveUpdate){
-      sipUser.updateDidState("1#1",$scope.didNumber.DidNumber,$scope.didNumber.DidActive).then(onDidActiveUpdateComplete,onError("Update DID"));
+      sipUser.updateDidState("1#1",$scope.didNumber.DidNumber,$scope.didNumber.DidActive).then(onDidActiveUpdateComplete,function(){onError("Update DID")});
     }
     if(isExtensionUpdate){
-      sipUser.updateDidWithExtension("1#1",$scope.didNumber.DidNumber,$scope.didNumber.Extension).then(onAssignExtComplete,onError("edit DID"));
+      sipUser.updateDidWithExtension("1#1",$scope.didNumber.DidNumber,$scope.didNumber.Extension).then(onAssignExtComplete,function(){onError("edit DID")});
     }
   };
   var isExtensionUpdate = false;
