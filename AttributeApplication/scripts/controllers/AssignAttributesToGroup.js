@@ -34,6 +34,9 @@
     $scope.DataObj=dbcontroller.GroupObj;
     $scope.editObj.GroupName=$scope.DataObj.GroupName;
     $scope.editObj.OtherData=$scope.DataObj.OtherData;
+    $scope.editObj.GroupClass=$scope.DataObj.GroupClass;
+    $scope.editObj.GroupType=$scope.DataObj.GroupType;
+    $scope.editObj.GroupCategory=$scope.DataObj.GroupCategory;
     $scope.editObj.Percentage=$scope.DataObj.Percentage;
 
 

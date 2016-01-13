@@ -15,14 +15,13 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      $mdDialog.hide();
       console.log(reason);
       commoncontroller.showAlert("ERROR",reason);
-      $route.reload();
+
 
     }
     $scope.HideDialog= function () {
-      $mdDialog.hide();
+     $location.path("/group");
 
     }
     var onGroupAddingCompleted = function (response) {
@@ -36,16 +35,14 @@
         $scope.isDisabled = false;
         $scope.AddData = response.data.Result;
         commoncontroller.showAlert("SUCCESS","New Group added successfully !");
-        $mdDialog.hide();
-
-        $route.reload();
+        $location.path("/group");
 
       }
     }
 
-    $scope.AddNewGroup = function (GroupName,OtherData,Percentage) {
+    $scope.AddNewGroup = function (grpObj) {
       $scope.isDisabled = true;
-      dbcontroller.NewGroup(GroupName,OtherData,Percentage).then(onGroupAddingCompleted,onError);
+      dbcontroller.NewGroup(grpObj).then(onGroupAddingCompleted,onError);
     }
 
 

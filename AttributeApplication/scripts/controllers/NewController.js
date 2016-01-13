@@ -12,12 +12,12 @@
     {
       $scope.isDisabled = false;
       console.log("new saving error "+reason);
-      $mdDialog.hide();
-      $route.reload();
+      commoncontroller.showAlert("Error",reason);
+     // $location.path("/attribute");
     }
 
     $scope.HideDialog= function () {
-      $mdDialog.hide();
+      $location.path("/attribute");
     }
 
     var onAttribAddingCompleted = function (response) {
@@ -32,16 +32,17 @@
       {
         $scope.isDisabled = false;
         $scope.AddData= response.Result;
-        $mdDialog.hide();
+
         commoncontroller.showAlert("SUCCESS","Attribute Added successfully!");
-        $route.reload();
+        $location.path("/attribute");
       }
 
     }
 
-    $scope.AddNew = function (Attribute,Otherdata) {
+    $scope.AddNew = function (obj) {
       $scope.isDisabled = true;
-      dbcontroller.NewAttribute(Attribute,Otherdata).then(onAttribAddingCompleted,onError);
+      console.log("Adding ............... "+JSON.stringify(obj));
+      dbcontroller.NewAttribute(obj).then(onAttribAddingCompleted,onError);
     }
 
 
