@@ -171,6 +171,17 @@
 
       dvpHandler.getPABXUser(sharedResPABXUser.PABXUser.UserUuid).then(onGetPABXUserSuccess, onGetPABXUserError);
       dvpHandler.getGreetingFileMetadata(sharedResPABXUser.PABXUser.UserUuid).then(onGetGreetingFileSuccess, onGetGreetingFileError);
+      dvpHandler.getSchedules().then(function(data)
+      {
+        if(data.IsSuccess)
+        {
+          $scope.scheduleList = data.Result;
+        }
+
+      }, function(err)
+      {
+
+      });
 
       $scope.reloadDivertNumbers();
   };
