@@ -1,0 +1,33 @@
+<div class="md-padding" id="popupContainer" ng-cloak>
+  <md-card>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Tasks</span>
+        <span class="md-subhead">{{resource.ResourceName}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content layout="column" layout-align="space-between">
+      <div flex="25" flex-sm="50" flex-xs="50" layout="row"  layout-wrap>
+        <task  ng-repeat="resourceTask in resourceTasks" resourceTask="resourceTask"></task>
+      </div>
+    </md-card-content>
+    <md-card-content layout="row" layout-align="space-between">
+      <md-chips ng-model="Attributes" md-require-match=true md-on-remove="OnChipDelete($chip)" >
+        <md-chip-template>
+          <strong>{{$chip.Attribute}}</strong>
+          <em>({{$chip.Percentage}})</em>
+        </md-chip-template>
+      </md-chips>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/{{resource.ResourceId}}/edit">
+        <md-icon md-svg-src="img/ic_arrow_back_24px.svg"/>
+      </md-button>
+    </md-card-actions>
+
+  </md-card>
+</div>
+

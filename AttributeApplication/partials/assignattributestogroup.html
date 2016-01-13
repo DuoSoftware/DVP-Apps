@@ -99,7 +99,7 @@
         </md-input-container>
         <md-input-container>
           <label style="color: blue">Percentage</label>
-          <input type="number" name="Percentage" min="0" max="100" ng-model="editObj.Percentage"  required/>
+          <input type="number" name="Percentage" min="0" max="100" ng-model="editObj.Percentage"  required ng-pattern="/^(?:100|[1-9]?[0-9])$/"/>
 
           <span style="color:red" ng-show="editGrpForm.Percentage.$dirty && editGrpForm.Percentage.$invalid"></span>
 
@@ -134,8 +134,7 @@
     <md-content  layout-gt-sm="row" style="background-color: #cccccc">
 
       <md-input-container style="padding: 0% 0% 0% 80%"   >
-        <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.otherData.$dirty &&editGrpForm.otherData.$invalid || editGrpForm.Percentage.$dirty &&editGrpForm.Percentage.$invalid ||
-  editGrpForm.GroupName.$dirty && editGrpForm.GroupName.$invalid || !editObj.OtherData.length || !editObj.GroupName.length "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
+        <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.$invalid"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
 
       </md-input-container>
 
