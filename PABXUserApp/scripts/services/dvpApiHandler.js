@@ -181,11 +181,25 @@
       })
     };
 
+    var getSchedules = function()
+    {
+      return $http({
+        method: 'GET',
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedules/byCompany',
+        headers: {
+          'authorization': 'hhhh'
+        }
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     var getGreetingFileMetadata = function(refId)
     {
       return $http({
         method: 'GET',
-        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/' + refId + '/CALLSERVER/PABX/GREETING',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/' + refId + '/PABX/USER/GREETING',
         headers: {
           'authorization': 'hhhh'
         }
@@ -270,7 +284,8 @@
       deleteFollowMe: deleteFollowMe,
       getForwardingConfigList: getForwardingConfigList,
       saveForwardingConfig: saveForwardingConfig,
-      deleteForwarding: deleteForwarding
+      deleteForwarding: deleteForwarding,
+      getSchedules: getSchedules
     };
   };
 

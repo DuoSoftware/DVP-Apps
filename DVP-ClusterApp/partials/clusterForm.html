@@ -11,12 +11,16 @@
         </div>
       </md-input-container>
 
+      <label>Cloud Model</label>
       <md-input-container class="md-block">
+
         <div >
-          <label>Cloud Model</label>
-          <md-select name="CloudModel" ng-model="cluster.CloudModel" ng-model-options="{trackBy: '$value'}">
-            <md-option ng-value="model.CloudModel" ng-repeat="model in cModels">{{ model.name }}</md-option>
-          </md-select>
+
+          <md-radio-group ng-model="cluster.CloudModel">
+            <md-radio-button value="1" >Basic</md-radio-button>
+            <md-radio-button value="2"> Intermediate </md-radio-button>
+            <md-radio-button value="3">Advanced</md-radio-button>
+          </md-radio-group>
         </div>
       </md-input-container>
 

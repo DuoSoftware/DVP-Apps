@@ -11,7 +11,7 @@
   var dbcontroller = function ($http,$mdDialog,$mdMedia) {
 
     var getAttributeList = function () {
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Attributes")
         .then(function (response) {
           return response;
         });
@@ -21,7 +21,7 @@
 
     var attribDelete = function (Attribute) {
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId)
+      return $http.delete("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+Attribute.AttributeId)
         .then(function (response) {
 
           response.AttributeId=Attribute.AttributeId;
@@ -32,18 +32,8 @@
 
     var updateAttribute = function (edtObj) {
 
-      var data ={
-        OtherData:edtObj.OtherData,
-        AttributeId:edtObj.AttributeId,
-        Attribute:edtObj.Attribute,
-        AttClass:"clz",
-        AttType:"typ",
-        AttCategory:"cat"
 
-
-
-      }
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+edtObj.AttributeId,edtObj)
         .then(function (response) {
 
           return response;
@@ -51,17 +41,10 @@
     }
 
 
-    var NewAttribute = function(Attribute,OtherData)
+    var NewAttribute = function(data)
     {
-      var data ={
-        OtherData:OtherData,
-        Attribute:Attribute,
-        AttClass:"clz",
-        AttType:"typ",
-        AttCategory:"cat"
 
-      }
-      return $http.post("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",data)
+      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute",data)
         .then(function (response) {
 
           console.log(response);
@@ -70,7 +53,7 @@
     }
 
     var getGroupList = function () {
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Groups")
         .then(function (response) {
           return response;
         });
@@ -78,18 +61,8 @@
 
     var updateGroup = function (edtObj) {
 
-      var data = {
-        OtherData: edtObj.OtherData,
-        GroupId: edtObj.GroupId,
-        GroupName: edtObj.GroupName,
-        GroupClass: "clz",
-        GroupType: "typ",
-        GroupCategory: "cat",
-        Percentage: edtObj.Percentage
 
-
-      }
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId, data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/" + edtObj.GroupId, edtObj)
         .then(function (response) {
 
           return response;
@@ -98,7 +71,7 @@
 
     var groupDelete = function (group) {
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId)
+      return $http.delete("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+group.GroupId)
         .then(function (response) {
 
           response.GroupId= group.GroupId;
@@ -107,20 +80,10 @@
 
     };
 
-    var NewGroup = function(GroupName,OtherData,Percentage)
+    var NewGroup = function(grpObj)
     {
-      var data ={
-        OtherData:OtherData,
-        GroupName:GroupName,
-        GroupClass: "clz",
-        GroupType: "typ",
-        GroupCategory: "cat",
-        Percentage:Percentage
 
-
-
-      }
-      return $http.post("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",data)
+      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Group",grpObj)
         .then(function (response) {
 
           return response;
@@ -135,7 +98,7 @@
 
 
       }
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+GID+"/Attribute",data)
         .then(function (response) {
 
           return response;
@@ -143,10 +106,12 @@
 
     };
 
+
+
     var RemoveAttributeFromGroup = function (attributeId,groupId) {
 
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0//ResourceManager/Group/"+groupId+"/Attribute/"+attributeId)
+      return $http.delete("http://localhost:8832/DVP/API/6.0//ResourceManager/Group/"+groupId+"/Attribute/"+attributeId)
         .then(function (response) {
 
           return response;
@@ -158,7 +123,7 @@
     var GetAttributesOfGroup = function (GrpID) {
 
 
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details")
+      return $http.get("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/"+GrpID+"/Attribute/Details")
         .then(function (response) {
           return response;
         });

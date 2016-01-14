@@ -1,4 +1,4 @@
-var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages", "clusterServiceModule"]);
+var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages", "clusterServiceModule","networkServiceModule"]);
 
 app.config(function ($routeProvider) {
 
@@ -45,18 +45,16 @@ app.config(function ($routeProvider) {
     templateUrl: 'partials/clusterConfigList.html',
     controller: 'ClusterListController'
 
-  }).when("/callserver/list", {
-    templateUrl: 'partials/callList.html',
-    controller: 'CallListController'
-  }).
-    when("/callserver/create", {
-      templateUrl: 'partials/callAdd.html',
-      controller: 'CallEditController'
-
-    }).when("/callserver/:id/edit", {
-      templateUrl: 'partials/callEdit.html',
-      controller: 'CallEditController'
-    }).otherwise({
+  }).when("/network/list", {
+    templateUrl: 'partials/network/networkList.html',
+    controller: 'NetworkListController'
+  }).when("/network/create", {
+    templateUrl: 'partials/network/networkAdd.html',
+    controller: 'NetworkEditController'
+  }).when("/network/:id/edit", {
+    templateUrl: 'partials/network/networkEdit.html',
+    controller: 'NetworkEditController'
+  }).otherwise({
       templateUrl: 'partials/clusterList.html',
       controller: 'ClusterListController'
     });

@@ -22,7 +22,7 @@
 
               <md-input-container class="md-block">
                 <label>Load Balancer</label>
-                <input required name="loadBalancerIp" ng-disabled="true" ng-model="cluster.LoadBalancer.MainIP">
+                <input  name="loadBalancerIp" ng-readonly="true" ng-model="cluster.LoadBalancer.MainIP">
                 <div ng-messages="projectForm.loadBalancerIp.$error">
                   <div ng-message="required">This is required.</div>
                 </div>

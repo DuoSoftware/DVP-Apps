@@ -133,15 +133,16 @@
     }
     $scope.addNewAttrib = function()
     {
-      commoncontroller.showAdvanced("NewController","partials/new.html",true);
-      //$location.path("/newattrib");
+      //commoncontroller.showAdvanced("NewController","partials/new.html",true);
+      $location.path("/newattrib");
     }
     $scope.ViewAttribute = function(Attb)
     {
       dbcontroller.Attribobj=Attb;
       console.log(dbcontroller.Attribobj);
 
-      commoncontroller.showAdvanced('EditController','partials/edit.html',false);
+      //commoncontroller.showAdvanced('EditController','partials/edit.html',false);
+      $location.path("/editattrib");
       //$location.path("/viewattrib");
     }
 
