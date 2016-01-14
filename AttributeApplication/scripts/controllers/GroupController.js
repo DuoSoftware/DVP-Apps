@@ -80,7 +80,8 @@
 
       $scope.addNewGroup = function()
       {
-        commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+        //commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+        $location.path("/newgroup");
 
       }
 

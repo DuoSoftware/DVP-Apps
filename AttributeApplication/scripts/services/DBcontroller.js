@@ -32,18 +32,8 @@
 
     var updateAttribute = function (edtObj) {
 
-      var data ={
-        OtherData:edtObj.OtherData,
-        AttributeId:edtObj.AttributeId,
-        Attribute:edtObj.Attribute,
-        AttClass:"clz",
-        AttType:"typ",
-        AttCategory:"cat"
 
-
-
-      }
-      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+edtObj.AttributeId,data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute/"+edtObj.AttributeId,edtObj)
         .then(function (response) {
 
           return response;
@@ -51,18 +41,9 @@
     }
 
 
-    var NewAttribute = function(Attribute,OtherData)
+    var NewAttribute = function(data)
     {
-      var data ={
-        OtherData:OtherData,
-        Attribute:Attribute,
-        AttClass:"clz",
-        AttType:"typ",
-        AttCategory:"cat"
 
-
-
-      }
       return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Attribute",data)
         .then(function (response) {
 
@@ -80,18 +61,8 @@
 
     var updateGroup = function (edtObj) {
 
-      var data = {
-        OtherData: edtObj.OtherData,
-        GroupId: edtObj.GroupId,
-        GroupName: edtObj.GroupName,
-        GroupClass: "clz",
-        GroupType: "typ",
-        GroupCategory: "cat",
-        Percentage: edtObj.Percentage
 
-
-      }
-      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/" + edtObj.GroupId, data)
+      return $http.put("http://localhost:8832/DVP/API/6.0/ResourceManager/Group/" + edtObj.GroupId, edtObj)
         .then(function (response) {
 
           return response;
@@ -109,20 +80,10 @@
 
     };
 
-    var NewGroup = function(GroupName,OtherData,Percentage)
+    var NewGroup = function(grpObj)
     {
-      var data ={
-        OtherData:OtherData,
-        GroupName:GroupName,
-        GroupClass: "clz",
-        GroupType: "typ",
-        GroupCategory: "cat",
-        Percentage:Percentage
 
-
-
-      }
-      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Group",data)
+      return $http.post("http://localhost:8832/DVP/API/6.0/ResourceManager/Group",grpObj)
         .then(function (response) {
 
           return response;
