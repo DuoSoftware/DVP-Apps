@@ -1,11 +1,11 @@
 <div>
   <md-toolbar class="md-table-toolbar md-default">
     <div class="custBackground4 md-toolbar-tools" layout="row">
-      <div flex="90">PABX Users</div>
+      <div flex="90">SIP User List</div>
       <div><md-button class="btn3" ng-click="onNewPressed($event)"> New </md-button></div>
     </div>
   </md-toolbar>
-
+  <div><md-button class="btn3" ng-click="onNewPressed($event)"> New </md-button></div>
   <md-table-container>
     <div layout="row" layout-align="center center" ng-hide="dataReady">
       <div layout="column" layout-align="center center">
@@ -16,24 +16,25 @@
     <table md-table md-progress="promise" ng-show="dataReady">
       <thead md-head>
       <tr md-row>
-        <th md-column>User Name</th>
-        <th md-column>User Status</th>
-        <th md-column>Advanced Route Method</th>
+        <th md-column>Sip Username</th>
+        <th md-column>Enabled</th>
+        <th md-column>Email Address</th>
       </tr>
       </thead>
       <tbody md-body>
-      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in pabxUsrList | limitTo: query.limit: (query.page - 1) * query.limit">
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in sipUsrList | limitTo: query.limit: (query.page - 1) * query.limit">
 
-        <td md-cell>{{item.UserName}}</td>
-        <td md-cell>{{item.UserStatus}}</td>
-        <td md-cell>{{item.AdvancedRouteMethod}}</td>
+        <td md-cell>{{item.SipUsername}}</td>
+        <td md-cell><md-checkbox md-no-ink aria-label="userEnabled" ng-model="item.Enabled" class="custBackground3 md-primary" ng-disabled="true">
+        </md-checkbox></td>
+        <td md-cell>{{item.EmailAddress}}</td>
         <td md-cell>
           <div layout="row">
             <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
-              <md-icon md-svg-src="../ResourceApp-Material/img/edit26.svg"></md-icon>
+              <md-icon md-svg-src="../img/edit26.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeleteUser($event, item.UserUuid)">
-              <md-icon md-svg-src="../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
+              <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
             </md-button>
           </div>
         </td>
