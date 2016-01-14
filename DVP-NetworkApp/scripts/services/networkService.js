@@ -38,7 +38,7 @@ clusterModule.factory("networkService", function ($http, $log) {
   var updateNetwork = function (network) {
     return $http({
       method: 'put',
-      url: 'http://localhost:3636/DVP/API/6.0/CloudConfiguration/Cloud/' + network.id,
+      url: 'http://localhost:3636/DVP/API/6.0/CloudConfiguration/Network/' + network.id,
       headers: {
         'authorization': '1#1'
       },

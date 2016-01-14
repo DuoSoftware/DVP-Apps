@@ -2,27 +2,33 @@
 <html ng-app="NetworkManageApp">
 
 <head lang="en">
-  <title>Cluster App</title>
+  <title>Network App</title>
   <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" type="text/css"/>
   <link rel="stylesheet" href="css/clusterLayout.css" type="text/css"/>
 
 </head>
 
-<body>
-<div class="main-fab">
-  <md-button class="md-fab md-accent" href="#/network/create">+</md-button>
-  <md-tooltip>Add Network</md-tooltip>
-</div>
-<div layout="row">
-  <div flex="10"></div>
-  <div class="ui-main" flex="80">
+<body layout="column">
+
+<md-toolbar flex="33">
+
+</md-toolbar>
+
+<div layout-align="center start" layout="row">
+  <md-content class="md-whiteframe-z2 move-up" flex="66">
+    <div class="main-fab">
+      <md-button class="md-fab md-accent" href="#/network/create">+</md-button>
+      <md-tooltip>Add Network</md-tooltip>
+    </div>
     <md-card flex="auto" width="100" class="custBackground1">
 
       <md-toolbar layout="column" class="md-tall">
         <span flex="flex"></span>
-        <div class="md-toolbar-tools"  >
+
+        <div class="md-toolbar-tools">
           <div layout="row" flex="flex" class="fill-height">
+
             <section style="width: 100% " layout="row" layout-sm="column" layout-align="center center" layout-wrap>
               <span> Network Manage App</span>
             </section>
@@ -34,9 +40,8 @@
       <md-card-content ng-view>
       </md-card-content>
     </md-card>
-  </div>
-  <div flex="10" ></div>
 
+  </md-content>
 </div>
 
 

@@ -1,13 +1,27 @@
 var app = angular.module("NetworkManageApp");
 
-app.controller("NetworkListController", function ($scope, $location, $mdDialog, $log, networkService) {
+app.controller("NetworkListController", function ($scope, $location, $mdDialog, $log, $filter, networkService) {
 
-  $scope.network={};
+  $scope.logOrder = function (order) {
+    console.log('order: ', order);
+  };
+
+  $scope.userNatworks = [];
+  $scope.TelcoNetworks = [];
+  $scope.network = {};
 
   $scope.query = {
+    order: 'Network',
     limit: 5,
     page: 1
   };
+
+  $scope.queryTelco = {
+    order: 'Network',
+    limit: 5,
+    page: 1
+  };
+
 
   $scope.dataReady = false;
 
@@ -45,7 +59,10 @@ app.controller("NetworkListController", function ($scope, $location, $mdDialog, 
       $log.debug("GetNetworks: response" + response);
       $scope.dataReady = true;
       $scope.networks = response;
-      $scope.total = response.length;
+      $scope.userNatworks = $filter('filter')(response, {Type: "USER"});
+      $scope.TelcoNetworks = $filter('filter')(response, {Type: "TELCO"});
+      $scope.total = $scope.userNatworks.length;
+      $scope.totalTELCO = $scope.TelcoNetworks.length;
 
     }, function (error) {
       $log.debug("GetNetworks err");
@@ -97,7 +114,8 @@ app.controller("NetworkListController", function ($scope, $location, $mdDialog, 
 
 app.controller("NetworkEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, networkService) {
 
-  $scope.network={};
+  $scope.editMode=false;
+  $scope.network = {};
 
   $scope.NetType = [
     {Type: "USER", name: 'USER'},
@@ -134,6 +152,7 @@ app.controller("NetworkEditController", function ($scope, $routeParams, $mdDialo
 
   $scope.loadNetwork = function () {
     if ($routeParams.id) {
+      $scope.editMode=true;
       networkService.GetNetwork($routeParams.id).then(function (response) {
         $scope.network = response;
 

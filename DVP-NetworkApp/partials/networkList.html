@@ -8,21 +8,24 @@
 
 <md-table-container>
 
-<div layout="column" flex layout-fill ng-cloak>
+<div layout="column" flex layout-fill ng-cloak >
   <md-toolbar md-scroll-shrink>
     <div class="md-toolbar-tools">Networks List</div>
   </md-toolbar>
-  <md-content style="height: 600px;" md-theme="altTheme">
+  <md-content style="height: 100%; " md-theme="altTheme" >
+
     <section>
       <md-subheader class="md-primary">TELCO</md-subheader>
       <md-list layout-padding>
         <md-list-item class="md-3-line">
 
 
+
+
             <table md-table md-progress="promise" width="100%" ng-show="dataReady">
-              <thead md-head>
+              <thead md-head md-order="queryTelco.order" md-on-reorder="queryTelco.order">
               <tr class="md-table-header" md-row>
-                <th md-column>Network</th>
+                <th md-column md-order-by="Network" >Network</th>
                 <th md-column>Mask</th>
                 <th md-column>NAT IP</th>
                 <th md-column>Owner</th>
@@ -34,10 +37,10 @@
               </thead>
               <tbody md-body>
               <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
-                  ng-repeat="network in networks | limitTo: query.limit: (query.page - 1) * query.limit"
-                  ng-if="network.Type=='TELCO'">
+                  ng-repeat="network in TelcoNetworks | orderBy: queryTelco.order|limitTo: queryTelco.limit: (queryTelco.page - 1) * queryTelco.limit"
+                  >
 
-                <td md-cell>{{network.Network}}</td>
+                <td md-cell >{{network.Network}}</td>
                 <td md-cell>{{network.Mask}}</td>
                 <td md-cell>{{network.NATIP}}</td>
                 <td md-cell>{{network.Owner}}</td>
@@ -63,6 +66,7 @@
 
 
         </md-list-item>
+        <md-table-pagination md-limit="queryTelco.limit" md-page="queryTelco.page" md-total={{totalTELCO}}></md-table-pagination>
       </md-list>
     </section>
     <section>
@@ -71,9 +75,9 @@
         <md-list-item class="md-3-line">
 
           <table md-table md-progress="promise" width="100%" ng-show="dataReady">
-            <thead md-head>
+            <thead md-head md-order="query.order" md-on-reorder="query.order">
             <tr class="md-table-header" md-row>
-              <th md-column>Network</th>
+              <th md-column md-order-by="Network">Network</th>
               <th md-column>Mask</th>
               <th md-column>NAT IP</th>
               <th md-column>Owner</th>
@@ -85,8 +89,8 @@
             </thead>
             <tbody md-body>
             <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
-                ng-repeat="network in networks | limitTo: query.limit: (query.page - 1) * query.limit"
-                ng-if="network.Type=='USER'">
+                ng-repeat="network in userNatworks | orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit"
+                ng-if="network.Type=='USER'" >
 
               <td md-cell>{{network.Network}}</td>
               <td md-cell>{{network.Mask}}</td>
@@ -113,14 +117,16 @@
           </table>
 
         </md-list-item>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
       </md-list>
     </section>
+    </br>
   </md-content>
 </div>
 
 </md-table-container>
 
-<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+
 
 
 

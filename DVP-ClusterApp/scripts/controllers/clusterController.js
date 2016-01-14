@@ -3,6 +3,7 @@ var app = angular.module("ClusterManageApp");
 app.controller("ClusterListController", function ($scope, $location, $mdDialog, $log, clusterService) {
 
   $scope.query = {
+    order:"Name",
     limit: 5,
     page: 1
   };
@@ -289,7 +290,8 @@ app.controller("CallListController", function ($scope, $routeParams, $mdDialog, 
   };
 
   $scope.query = {
-    limit: 5,
+    order:"Name",
+    limit: 10,
     page: 1
   };
   $scope.dataReady = false;

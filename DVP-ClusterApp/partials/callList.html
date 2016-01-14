@@ -9,10 +9,11 @@
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
   </div>
+
   <table md-table md-progress="promise" width="100%" ng-show="dataReady">
-    <thead md-head>
+    <thead md-head  md-order="query.order" md-on-reorder="query.order">
     <tr class="md-table-header" md-row>
-      <th md-column>Name</th>
+      <th md-column md-order-by="Name">Name</th>
       <th md-column>Code</th>
       <th md-column>Internal IP</th>
       <th md-column>Class</th>
@@ -25,7 +26,7 @@
     </thead>
     <tbody md-body>
     <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
-        ng-repeat="callServer in callServers | limitTo: query.limit: (query.page - 1) * query.limit">
+        ng-repeat="callServer in callServers |  orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit">
 
       <td md-cell>{{callServer.Name}}</td>
       <td md-cell>

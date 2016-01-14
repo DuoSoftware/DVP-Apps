@@ -1,3 +1,8 @@
+.move-up {
+  position: relative;
+  top: -60px;
+  z-index: 99;
+}
 .ui-main{
   background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
   background-image:    -moz-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
