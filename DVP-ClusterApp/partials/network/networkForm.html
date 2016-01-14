@@ -32,6 +32,8 @@
         </div>
       </md-input-container>
 
+
+
       <md-input-container class="md-block">
         <label>Owner</label>
         <input  md-maxlength="30" ng-readonly="true"  name="Owner" ng-model="network.Owner">
@@ -42,41 +44,12 @@
         </div>
       </md-input-container>
 
-      <div layout-gt-sm="row">
-        <label>City</label>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>City</label>
-          <input ng-model="user.city">
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>State</label>
-          <md-select ng-model="user.state">
-            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-              {{state.abbrev}}
-            </md-option>
-          </md-select>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Postal Code</label>
-          <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
-                 required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-          <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-            <div ng-message="required" class="my-message">You must supply a postal code.</div>
-            <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-              code.
-            </div>
-            <div ng-message="md-maxlength" class="my-message">
-              Don't use the long version silly...we don't need to be that specific...
-            </div>
-          </div>
-        </md-input-container>
-      </div>
       <md-input-container class="md-block" >
+        <label>Network Type</label>
         <md-select  ng-disabled="editMode"  name="Type" ng-model="network.Type"  ng-model-options="{trackBy: '$value'}"  >
           <md-option ng-value="t.Type" selected ng-repeat="t in NetType">{{ t.name }}</md-option>
         </md-select>
       </md-input-container>
-
 
 
     </form>

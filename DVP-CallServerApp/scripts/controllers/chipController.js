@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-    .module('NetworkManageApp')
+    .module('ClusterManageApp')
     .controller('CallServerChipsController', DemoCtrl);
   function DemoCtrl($scope, $routeParams, clusterService) {
     var self = this;
@@ -157,7 +157,7 @@
 (function () {
   'use strict';
   angular
-    .module('NetworkManageApp')
+    .module('ClusterManageApp')
     .controller('NetworkChipsController', DemoCtrl);
   function DemoCtrl($scope, $routeParams, clusterService) {
     var self = this;

@@ -8,6 +8,12 @@
 
 <md-table-container>
 
+
+  <div class="main-fab">
+    <md-button class="md-fab md-accent" href="#/network/create">+</md-button>
+    <md-tooltip>Add Network</md-tooltip>
+  </div>
+
 <div layout="column" flex layout-fill ng-cloak >
   <md-toolbar md-scroll-shrink>
     <div class="md-toolbar-tools">Networks List</div>
@@ -18,9 +24,6 @@
       <md-subheader class="md-primary">TELCO</md-subheader>
       <md-list layout-padding>
         <md-list-item class="md-3-line">
-
-
-
 
             <table md-table md-progress="promise" width="100%" ng-show="dataReady">
               <thead md-head md-order="queryTelco.order" md-on-reorder="queryTelco.order">

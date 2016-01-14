@@ -5,7 +5,7 @@
 
 // Code goes here
 
-var app = angular.module("NetworkManageApp");
+var app = angular.module("ClusterManageApp");
 
 
 

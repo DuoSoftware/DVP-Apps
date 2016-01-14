@@ -168,7 +168,6 @@ app.controller("ClusterEditController", function ($scope, $routeParams, $mdDialo
 
 });
 
-
 app.controller("ClusterViewController", function ($scope, $mdDialog, $routeParams, resource) {
 
 
@@ -260,7 +259,45 @@ app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDial
   };
 });
 
-app.controller("CallListController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
+app.controller("ClusterConfigController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
+});
+
+app.controller("NetworkListController", function ($scope, $location, $mdDialog, $log, $filter, networkService) {
+
+  $scope.logOrder = function (order) {
+    console.log('order: ', order);
+  };
+
+  $scope.userNatworks = [];
+  $scope.TelcoNetworks = [];
+  $scope.network = {};
+
+  $scope.query = {
+    order: 'Network',
+    limit: 5,
+    page: 1
+  };
+
+  $scope.queryTelco = {
+    order: 'Network',
+    limit: 5,
+    page: 1
+  };
+
+
+  $scope.dataReady = false;
+
+  $scope.showAlert = function (tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
 
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
@@ -277,55 +314,45 @@ app.controller("CallListController", function ($scope, $routeParams, $mdDialog, 
     });
   };
 
-  $scope.showAlert = function (tittle, label, button, content) {
+  $scope.GetNetworks = function () {
 
-    $mdDialog.show(
-      $mdDialog.alert()
-        .parent(angular.element(document.querySelector('#popupContainer')))
-        .clickOutsideToClose(true)
-        .title(tittle)
-        .textContent(content)
-        .ok(button)
-    );
-  };
+    networkService.GetNetworks().then(function (response) {
 
-  $scope.query = {
-    order:"Name",
-    limit: 10,
-    page: 1
-  };
-  $scope.dataReady = false;
-
-  $scope.loadCallServer = function () {
-
-    clusterService.GetCallServers().then(function (response) {
-
-      $log.debug("GetCallServers: response" + response);
+      $log.debug("GetNetworks: response" + response);
       $scope.dataReady = true;
-      $scope.callServers = response;
-      $scope.total = response.length;
+      $scope.networks = response;
+      $scope.userNatworks = $filter('filter')(response, {Type: "USER"});
+      $scope.TelcoNetworks = $filter('filter')(response, {Type: "TELCO"});
+      $scope.total = $scope.userNatworks.length;
+      $scope.totalTELCO = $scope.TelcoNetworks.length;
 
     }, function (error) {
-      $log.debug("GetCallServers err");
+      $log.debug("GetNetworks err");
       $scope.showAlert("Error", "Error", "ok", "There is an error ");
     });
 
   };
 
-  $scope.viewCallServer = function (callServerId) {
+  $scope.networkConfigure = function (networkId) {
 
-    $location.path('/callserver/' + callServerId + '/edit');
+    $location.path('/networkConfigure/' + networkId + '/edit');
 
   };
 
-  $scope.deleteCallServer = function (callServer) {
+  $scope.viewNetwork = function (networkId) {
 
-    $scope.showConfirm("Delete Cluster", "Delete", "ok", "cancel", "Do you want to delete " + callServer.Name, function (obj) {
+    $location.path('/network/' + networkId + '/edit');
 
-      clusterService.DeleteCallServer(callServer).then(function (response) {
+  };
+
+  $scope.deleteNetwork = function (networkObj) {
+
+    $scope.showConfirm("Delete Cluster", "Delete", "ok", "cancel", "Do you want to delete " + networkObj.Network, function (obj) {
+
+      networkService.DeleteNetwork(networkObj).then(function (response) {
         if (response) {
-          $scope.loadCallServer();
-          $scope.showAlert("Deleted", "Deleted", "ok", "Call Server " + obj.Name + " Deleted successfully");
+          $scope.GetNetworks();
+          $scope.showAlert("Deleted", "Deleted", "ok", "Cluster " + obj.Network + " Deleted successfully");
         }
         else
           $scope.showAlert("Error", "Error", "ok", "There is an error ");
@@ -335,23 +362,43 @@ app.controller("CallListController", function ($scope, $routeParams, $mdDialog, 
 
     }, function () {
 
-    }, callServer)
+    }, networkObj)
   };
 
-  $scope.loadCallServer();
+  $scope.GetNetworks();
+
+  /*
+   angular.element(document).ready(function () {
+   campaignService.getOngoingCampaigns().then(onGetSuccess, onError);
+   });*/
 
 });
 
-app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
+app.controller("NetworkEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, networkService) {
 
-  $scope.callServer = {};
+  $scope.editMode=false;
+  $scope.network = {};
 
+  $scope.NetType = [
+    {Type: "USER", name: 'USER'},
+    {Type: "TELCO", name: 'TELCO'},
 
-  $scope.codes = [
-    {Code: 1, name: 'Basic'},
-    {Code: 2, name: 'Intermediate'},
-    {Code: 3, name: 'Advanced'},
   ];
+
+  $scope.createCluster = function () {
+    networkService.CreateNetwork($scope.network).then(function (response) {
+      if (response) {
+        $scope.showAlert("Cluster Created", "Cluster Created", "ok", "Network created successfully " + $scope.network.Network);
+        $location.path('/network/list');
+      } else {
+        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      }
+
+    }, function (error) {
+      $log.debug("onGetSuccess3");
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
 
   $scope.showAlert = function (tittle, label, button, content) {
 
@@ -365,26 +412,23 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
     );
   };
 
-  $scope.createCallServer = function () {
+  $scope.loadNetwork = function () {
+    if ($routeParams.id) {
+      $scope.editMode=true;
+      networkService.GetNetwork($routeParams.id).then(function (response) {
+        $scope.network = response;
 
-    clusterService.CreateCallServer($scope.callServer).then(function (response) {
-      if (response) {
-        $scope.showAlert("Call Server Created", "Call Server Created", "ok", "Call Server created successfully " + $scope.callServer.Name);
-        $location.path('/callserver/list');
-      } else {
+      }, function (error) {
         $scope.showAlert("Error", "Error", "ok", "There is an error ");
-      }
-    }, function (error) {
-      $log.debug("onGetSuccess3");
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    });
+      });
+    }
   };
 
-  $scope.updateResource = function () {
+  $scope.updateNetwork = function () {
 
-    clusterService.UpdateCallServer($scope.callServer).then(function (response) {
+    networkService.UpdateNetwork($scope.network).then(function (response) {
       if (response) {
-        $scope.showAlert("Call Server Updated", "Call Server Updated", "ok", "Call Server Updated successfully " + $scope.callServer.Name);
+        $scope.showAlert("Cluster Updated", "Cluster Updated", "ok", "Network Updated successfully " + $scope.network.Network);
       }
       else
         $scope.showAlert("Error", "Error", "ok", "There is an error ");
@@ -394,22 +438,9 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
     });
   };
 
-  $scope.loadResource = function () {
-    clusterService.GetCallServer($routeParams.id).then(function (response) {
-      $scope.callServer = response;
-      clusterService.CallServer = $scope.callServer;
-    }, function (error) {
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    });
-  };
-
-  angular.element(document).ready(function () {
-    $scope.loadResource();
-  });
+  $scope.loadNetwork();
 
 });
 
-app.controller("ClusterConfigController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
-});
 
 
