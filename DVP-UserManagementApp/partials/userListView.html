@@ -1,0 +1,47 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">PABX Users</div>
+      <div><md-button class="btn3" ng-click="onNewPressed($event)"> New </md-button></div>
+    </div>
+  </md-toolbar>
+
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="dataReady">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="dataReady">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>User Name</th>
+        <th md-column>User Status</th>
+        <th md-column>Advanced Route Method</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in pabxUsrList | limitTo: query.limit: (query.page - 1) * query.limit">
+
+        <td md-cell>{{item.UserName}}</td>
+        <td md-cell>{{item.UserStatus}}</td>
+        <td md-cell>{{item.AdvancedRouteMethod}}</td>
+        <td md-cell>
+          <div layout="row">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
+              <md-icon md-svg-src="../ResourceApp-Material/img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeleteUser($event, item.UserUuid)">
+              <md-icon md-svg-src="../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+</div>
+
+
