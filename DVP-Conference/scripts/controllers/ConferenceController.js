@@ -93,9 +93,283 @@ app.controller("ConferenceViewController", function($scope, $location,$mdDialog,
 });
 
 
-app.controller("ConferenceUserController", function($scope, $location,$mdDialog, conference){
+app.controller("ConferenceUserController", function($scope, $location,$mdDialog,$log,$timeout,$q,$routeParams,  conference, sipuser){
 
-  $scope.conference = conference.Conference
+
+
+  $scope.loadResource = function() {
+    conference.GetConference($routeParams.id).then(function (response) {
+      $scope.conference = response;
+      conference.Conference = response;
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+  };
+
+
+  $scope.loadResource();
+
+
+
+
+  $scope.simulateQuery = false;
+  $scope.isDisabled    = false;
+  $scope.itemFound = false;
+  // list of `state` value/display objects
+
+  $scope.sipUsers = [];
+  $scope.conferenceUsers = [];
+  $scope.querySearch   = querySearch;
+  $scope.selectedItemChange = selectedItemChange;
+  $scope.searchTextChange   = searchTextChange;
+  $scope.newState = newState;
+  $scope.selectedItem = undefined;
+
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
+
+  $scope.showConfirm = function(tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
+
+    var confirm = $mdDialog.confirm()
+      .title(tittle)
+      .textContent(content)
+      .ok(okbutton)
+      .cancel(cancelbutton);
+    $mdDialog.show(confirm).then(function() {
+      OkCallback(okObj);
+    }, function() {
+      CancelCallBack();
+    });
+  };
+
+
+
+  function newState(state) {
+    //alert(JSON.stringify( $scope.selectedItem ));
+
+    if($scope.selectedItem){
+
+      var user = {};
+      user.SipUACEndpointId = $scope.selectedItem.id;
+
+      $scope.AddUserToConference(user);
+
+
+    }else{
+
+
+      if($scope.searchText) {
+        var user = {};
+        user.Destination = $scope.searchText;
+        user.JoinType = "Outbound";
+        //user.SipUACEndpointId = $scope.selectedItem.id;
+
+        $scope.AddUserToConference(user);
+      }
+
+    }
+
+  }
+
+  function querySearch (query) {
+    var results = query ? $scope.sipUsers.filter( createFilterFor(query) ) : $scope.sipUsers,
+      deferred;
+    if ($scope.simulateQuery) {
+      deferred = $q.defer();
+      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+      return deferred.promise;
+    } else {
+      return results;
+    }
+  }
+  function searchTextChange(text) {
+    $log.info('Text changed to ' + text);
+  }
+  function selectedItemChange(item) {
+    $log.info('Item changed to ' + JSON.stringify(item));
+    $scope.selectedItem = item;
+
+    if(item){
+      $scope.itemFound = true;
+    }else{
+
+      $scope.itemFound = false;
+    }
+  }
+
+  function createFilterFor(query) {
+    var lowercaseQuery = angular.lowercase(query);
+    return function filterFn(user) {
+      return (user._lowername.indexOf(lowercaseQuery) === 0);
+    };
+  }
+
+
+  $scope.LoadSipUsers = function(){
+
+
+    // resource.user = {};
+    sipuser.GetSipUsers().then(function (response) {
+      $scope.sipUsers = response.map(function(c,index){
+
+        var item = c;
+        item._lowername= c.SipUsername.toLowerCase();
+        return item;
+
+      });
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+
+  };
+
+
+  $scope.AddUserToConference = function(user) {
+
+
+    // resource.user = {};
+    conference.AddUserToConference($routeParams.id, user).then(function (response) {
+
+      if(response) {
+        $scope.showAlert("Add user", "Add user", "ok", "User added successfully");
+        $scope.LoadConferenceUsers();
+      }else{
+
+        $scope.showAlert("Error","Error","ok","There is an error ");
+
+      }
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+  $scope.DeleteConferenceUser= function(user) {
+
+
+    // resource.user = {};
+    conference.DeleteConferenceUser(user.id).then(function (response) {
+
+      //$scope.showAlert("Add user", "Add user", "ok","User added successfully");
+      $scope.LoadConferenceUsers();
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+
+
+  $scope.UpdateConferenceUser= function(user) {
+
+
+    // resource.user = {};
+    conference.UpdateConferenceUser(user.id, user).then(function (response) {
+
+      //$scope.showAlert("Add user", "Add user", "ok","User added successfully");
+      //$scope.LoadConferenceUsers();
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+  $scope.UpdateConferenceUserModes= function(user) {
+
+
+    var modes = {};
+
+    modes.Def =  user.Def;
+    modes.Mute =  user.Mute;
+    modes.Mod = user.Mod;
+
+
+    // resource.user = {};
+    conference.UpdateConferenceUserModes(user.id, modes).then(function (response) {
+
+      //$scope.showAlert("Add user", "Add user", "ok","User added successfully");
+      //$scope.LoadConferenceUsers();
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+
+
+
+
+
+
+  $scope.LoadConferenceUsers = function() {
+
+    // resource.user = {};
+    conference.GetConferenceUsers($routeParams.id).then(function (response) {
+      $scope.conferenceUsers = response.map(function(c,index){
+
+        var item = c;
+
+        if(c.SipUACEndpoint){
+
+          c.Name = c.SipUACEndpoint.SipUsername;
+          c.Email = c.SipUACEndpoint.EmailAddress;
+
+        }else{
+
+          c.Name = c.Destination;
+          c.Email = "user@external.com";
+
+
+        }
+
+
+        return item;
+
+      });
+
+
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+  };
+
+
+
+
+  $scope.LoadConferenceUsers();
+  $scope.LoadSipUsers();
+
+
+
 
 });
 
