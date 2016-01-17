@@ -14,13 +14,13 @@
     <md-tooltip>Add Network</md-tooltip>
   </div>
 
-<div layout="column" flex layout-fill ng-cloak >
+<div  layout="column" flex layout-fill ng-cloak >
   <md-toolbar md-scroll-shrink>
     <div class="md-toolbar-tools">Networks List</div>
   </md-toolbar>
   <md-content style="height: 100%; " md-theme="altTheme" >
 
-    <section>
+    <section class="ui-main">
       <md-subheader class="md-primary">TELCO</md-subheader>
       <md-list layout-padding>
         <md-list-item class="md-3-line">
@@ -72,7 +72,7 @@
         <md-table-pagination md-limit="queryTelco.limit" md-page="queryTelco.page" md-total={{totalTELCO}}></md-table-pagination>
       </md-list>
     </section>
-    <section>
+    <section class="ui-main">
       <md-subheader class="md-warn">USER</md-subheader>
       <md-list layout="column" layout-padding>
         <md-list-item class="md-3-line">

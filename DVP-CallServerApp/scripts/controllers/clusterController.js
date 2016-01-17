@@ -105,6 +105,7 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
     );
   };
 
+
   $scope.createCallServer = function () {
 
     clusterService.CreateCallServer($scope.callServer).then(function (response) {
@@ -136,10 +137,10 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
 
   $scope.loadCallServer = function () {
     /*clusterService.GetIpAddresses().then(function (response) {
-      $scope.ipAddress = response;
-    }, function (error) {
-      $scope.showAlert("Error", "Error", "ok", "Fail to get IP Address List.");
-    });*/
+     $scope.ipAddress = response;
+     }, function (error) {
+     $scope.showAlert("Error", "Error", "ok", "Fail to get IP Address List.");
+     });*/
 
     if ($routeParams.id) {
       clusterService.GetCallServer($routeParams.id).then(function (response) {
@@ -164,7 +165,7 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
       fullscreen: useFullScreen,
     })
       .then(function (answer) {
-        if(answer.IsSuccess)
+        if (answer.IsSuccess)
           $scope.updateCallServer();
       }, function () {
         $scope.status = 'You cancelled the dialog.';
@@ -217,6 +218,10 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
       });
 
 
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
     };
   }
 
@@ -314,6 +319,11 @@ app.controller("ProfileEditController", function ($scope, $routeParams, $mdDialo
 
   $scope.profile = {};
 
+  $scope.IsVisible = false;
+  $scope.ShowHide = function () {
+    //If DIV is visible it will be hidden and vice versa.
+    $scope.IsVisible = $scope.IsVisible ? false : true;
+  };
 
   $scope.showAlert = function (tittle, label, button, content) {
 
@@ -331,7 +341,7 @@ app.controller("ProfileEditController", function ($scope, $routeParams, $mdDialo
 
     clusterService.CreateProfile($scope.profile).then(function (response) {
       if (response) {
-        $scope.showAlert("Profile Created", "Profile Created", "ok", "Profile - "+ $scope.profile.ProfileName+" created successfully " );
+        $scope.showAlert("Profile Created", "Profile Created", "ok", "Profile - " + $scope.profile.ProfileName + " created successfully ");
         $location.path('/profile/list');
       } else {
         $scope.showAlert("Error", "Error", "ok", "There is an error ");
@@ -343,16 +353,42 @@ app.controller("ProfileEditController", function ($scope, $routeParams, $mdDialo
   };
 
   $scope.updateProfile = function () {
-
     clusterService.UpdateProfile($scope.profile).then(function (response) {
       if (response) {
-        $scope.showAlert("Profile Updated", "Profile Updated", "ok", "Profile - "+ $scope.profile.ProfileName+" Updated successfully." );
+        $scope.showAlert("Profile Updated", "Profile Updated", "ok", "Profile - " + $scope.profile.ProfileName + " Updated successfully.");
       }
       else
-        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+        $scope.showAlert("Error", "Error", "ok", "Fail To Update Profile.");
 
     }, function (error) {
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      $scope.showAlert("Error", "Error", "ok", "Fail To Update Profile.");
+    });
+
+  };
+
+  $scope.assignSipProfileToCallServer = function () {
+    clusterService.AssignSipProfileToCallServer($scope.profile).then(function (response) {
+      if (response) {
+        $scope.showAlert("Profile Updated", "Profile Updated", "ok", "Profile - " + $scope.profile.ProfileName + " Assign To Call Server.");
+      }
+      else
+        $scope.showAlert("Error", "Error", "ok", "Fail To Assign Call Server.");
+
+    }, function (error) {
+      $scope.showAlert("Error", "Error", "ok", "Fail To Assign Call Server.");
+    });
+  };
+
+  $scope.assignSipProfiletoEndUser = function () {
+    clusterService.AssignSipProfiletoEndUser($scope.profile).then(function (response) {
+      if (response) {
+        $scope.showAlert("Profile Updated", "Profile Updated", "ok", "Profile - " + $scope.profile.ProfileName + " Assign To End User.");
+      }
+      else
+        $scope.showAlert("Error", "Error", "ok", "Fail To Assign End User.");
+
+    }, function (error) {
+      $scope.showAlert("Error", "Error", "ok", "Fail To Assign End User.");
     });
   };
 
@@ -376,13 +412,35 @@ app.controller("ProfileEditController", function ($scope, $routeParams, $mdDialo
 
   };
 
+  $scope.loadCallServer = function () {
+    if ($routeParams.id) {
+      clusterService.GetCallServers().then(function (response) {
+        $scope.callServers = response;
+      }, function (error) {
+        $log.debug("GetCallServers err");
+        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      });
+    }
+  };
+
+  $scope.loadEndUsers = function () {
+    if ($routeParams.id) {
+      clusterService.GetEndUsers().then(function (response) {
+        $scope.endUsers = response;
+      }, function (error) {
+        $log.debug("loadEndUsers err");
+        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      });
+    }
+  };
 
   $scope.loadProfile();
+  $scope.loadCallServer();
+  $scope.loadEndUsers();
 
 });
 
-app.controller("IPAddressController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
-
+app.controller("ToastCtrl", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
 
 
 });

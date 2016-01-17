@@ -198,6 +198,32 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
+  var assignSipProfileToCallServer = function (profile) {
+    return $http({
+      method: 'post',
+      url: 'http://localhost:3636/DVP/API/6.0/CloudConfiguration/Profile/'+profile.id +'/SetProfileToCallServer/'+profile.CallServer,
+      headers: {
+        'authorization': '1#1'
+      },
+      data: profile
+    }).then(function (response) {
+      return response.data.IsSuccess;
+    });
+  };
+
+  var assignSipProfiletoEndUser = function (profile) {
+    return $http({
+      method: 'post',
+      url: 'http://localhost:3636/DVP/API/6.0/CloudConfiguration/Profile/'+profile.id +'/SetProfileToEndUser/'+profile.EndUser,
+      headers: {
+        'authorization': '1#1'
+      },
+      data: profile
+    }).then(function (response) {
+      return response.data.IsSuccess;
+    });
+  };
+
   //////////////////************** IPAddresses **************/////////////////
   var createIpAddress = function (profile) {
     return $http({
@@ -230,9 +256,29 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
+  //////////////////************** End Users **************/////////////////
+  var getEndUsers = function () {
+
+    return $http.get("http://localhost:3636/DVP/API/6.0/CloudConfiguration/CloudEndUsers").then(function (response) {
+
+      if (response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      } else {
+
+        return {};
+      }
+
+
+    });
+  };
+
 
   return {
 
+    GetEndUsers:getEndUsers,
     CreateIpAddress:createIpAddress,
     GetIpAddresses:getIpAddresses,
     IpAddress:{},
@@ -241,6 +287,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
     CreateProfile: createProfile,
     UpdateProfile: updateProfile,
     DeleteProfile: deleteProfile,
+    AssignSipProfileToCallServer:assignSipProfileToCallServer,
+    AssignSipProfiletoEndUser:assignSipProfiletoEndUser,
     Profile: {},
     GetCallServer: getCallServer,
     GetCallServers: getCallServers,
