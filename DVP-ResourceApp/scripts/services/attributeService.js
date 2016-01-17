@@ -13,7 +13,7 @@ attributeModule.factory("attribute", function($http){
 
 
 
-    return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0//ResourceManager/Attributes").then(function(response){
+    return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Attributes").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -33,7 +33,7 @@ attributeModule.factory("attribute", function($http){
   var getTskAttributes = function(id){
 
 
-    return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/ResourceTask/" + id + "/Attributes").then(function(response) {
+    return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/ResourceTask/" + id + "/Attributes").then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -52,7 +52,7 @@ attributeModule.factory("attribute", function($http){
 
 
 
-    return $http.post("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/ResourceTask/" + taskId + "/Attribute/"+attrib.Attribute, attrib).then(function(response) {
+    return $http.post("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/ResourceTask/" + taskId + "/Attribute/"+attrib.Attribute, attrib).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -69,7 +69,7 @@ attributeModule.factory("attribute", function($http){
 
   var deleteAttributeToTask = function(id){
 
-    return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/ResourceTaskAttribute/"+id).then(function(response) {
+    return $http.delete("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/ResourceTaskAttribute/"+id).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;

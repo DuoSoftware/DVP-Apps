@@ -6,6 +6,11 @@
 
 var app = angular.module("ConferenceApp",["ngMaterial","ngMessages", "ngRoute", "conferenceService", "sipUserService"]);
 
+
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default');
+});
+
 app.config(function($routeProvider){
 
   $routeProvider.when("/",{

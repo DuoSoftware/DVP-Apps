@@ -8,6 +8,12 @@
         <span class="md-headline">Conference</span>
         <span class="md-subhead">{{conference.ConferenceName}}</span>
       </md-card-title-text>
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/conference/list">
+        <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/conference/{{conference.ConferenceName}}/users">
+        <md-icon md-svg-src="../img/crowd.svg"></md-icon>
+      </md-button>
       <md-card-title-media>
 
       </md-card-title-media>
@@ -17,14 +23,8 @@
         <div ng-include="'partials/conferenceForm.html'"></div>
 
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/conference/list">
-            <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/conference/{{conference.ConferenceName}}/users">
-            <md-icon md-svg-src="../img/crowd.svg"></md-icon>
-          </md-button>
 
-          <md-button class="md-icon-button"  aria-label="Add"  ng-disabled="userForm.$invalid" ng-click="updateConference()">
+         <md-button class="md-icon-button"  aria-label="Add"  ng-disabled="userForm.$invalid" ng-click="updateConference()">
             <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
           </md-button>
         </md-card-actions>
