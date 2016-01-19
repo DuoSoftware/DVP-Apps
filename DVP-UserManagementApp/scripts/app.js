@@ -12,9 +12,13 @@
         templateUrl: 'partials/userListView.html',
         controller: 'UserListController'
       })
-      .when("/groups", {
-        templateUrl: 'partials/groupListView.html',
-        controller: 'GroupListController'
+      .when("/group", {
+        templateUrl: 'partials/groupConfigurationView.html',
+        controller: 'GroupConfigurationController'
+      })
+      .when("/user", {
+        templateUrl: 'partials/userConfigurationView.html',
+        controller: 'UserConfigurationController'
       })
       .otherwise({redirectTo:"/users"});
 

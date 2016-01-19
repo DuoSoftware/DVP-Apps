@@ -1,12 +1,13 @@
 (function() {
   var app = angular.module("userManagementApp");
 
-  var UserListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
+  var UserListController = function ($scope, dvpHandler, sharedData, $location, $mdDialog, $mdToast)
   {
     $scope.query = {
       limit: 5,
       page: 1
     };
+
 
     $scope.dataReady = false;
 
@@ -23,65 +24,53 @@
         .join(' ');
     };
 
-    function PickUserController($scope, $mdDialog, dvpHandler)
+    $scope.onNewPressed = function()
     {
-      dvpHandler.getSIPUsers().then(function(data)
-      {
-        $scope.sipUserList = data.Result;
-      }, function(err)
-      {
-
-      });
-      $scope.onContinue = function()
-      {
-        sharedResPABXUser.PABXUser = {};
-        sharedResPABXUser.PABXUser.UserUuid = $scope.selectedUserUuid;
-        sharedResPABXUser.PABXUser.IsEdit = false;
-        $mdDialog.hide();
-      };
-      $scope.onCancel = function()
-      {
-        $mdDialog.cancel();
-      };
-    }
-
-    $scope.onNewPressed = function(ev)
-    {
-
-      $mdDialog.show({
-        controller: PickUserController,
-        templateUrl: '../PABXUserApp/partials/newUserSelectionView.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true
-      })
-        .then(function(answer)
-        {
-          $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
-        }, function()
-        {
-
-        });
+      sharedData.User.IsEdit = false;
+      $location.url("/user");
     };
 
-    $scope.onDeleteUser = function(ev, userUuid)
+    $scope.onGroupPressed = function()
+    {
+      $location.url("/group");
+    };
+
+    $scope.onDeleteUser = function(ev, username)
     {
       var confirm = $mdDialog.confirm()
-        .title('Delete PABX User')
-        .textContent('Warning - this operation will delete pabx user and all its configuration')
-        .ariaLabel('Delete User')
+        .title('Delete Sip User')
+        .textContent('Warning - Are you sure you want to delete sip user')
+        .ariaLabel('Delete Sip User')
         .targetEvent(ev)
         .ok('Delete')
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function()
         {
-          dvpHandler.deletePABXUser(userUuid)
+          dvpHandler.updateSipUserStatus(username, false)
             .then(function(data)
             {
               if(data.IsSuccess)
               {
                 $scope.reloadUserList();
+              }
+              else
+              {
+                var errMsg = data.CustomMessage;
+
+                if(data.Exception)
+                {
+                  errMsg = data.Exception.Message;
+                }
+                $mdDialog.show(
+                  $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Error occurred while deleting sip user')
+                    .textContent(errMsg)
+                    .ariaLabel('')
+                    .ok('Ok')
+                );
               }
 
             },
@@ -98,8 +87,8 @@
     $scope.onEditPressed = function(usrObj)
     {
       usrObj.IsEdit = true;
-      sharedResPABXUser.PABXUser = usrObj;
-      $location.url("/pabxUser/" + sharedResPABXUser.PABXUser.UserUuid);
+      sharedData.User = usrObj;
+      $location.url("/user");
     };
 
     $scope.reloadUserList = function()
