@@ -162,34 +162,6 @@ app.controller("ClusterEditController", function ($scope, $routeParams, $mdDialo
   };
 
 
-  angular.element(document).ready(function () {
-    $scope.loadResource();
-  });
-
-});
-
-app.controller("ClusterViewController", function ($scope, $mdDialog, $routeParams, resource) {
-
-
-  $scope.loadResource = function () {
-    resource.GetResource($routeParams.id).then(function (response) {
-      $scope.resource = response;
-      resource.User = response;
-    }, function (error) {
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    });
-  };
-
-
-  $scope.loadResource();
-
-
-});
-
-app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
-
-  $scope.cluster = clusterService.Cluster;
-
   $scope.showAdvanced = function (ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
@@ -201,7 +173,8 @@ app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDial
       fullscreen: useFullScreen,
     })
       .then(function (answer) {
-        $scope.status = 'You said the information was "' + answer + '".';
+        if(answer)
+          $scope.updateResource();
       }, function () {
         $scope.status = 'You cancelled the dialog.';
       });
@@ -213,6 +186,7 @@ app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDial
   };
 
   function DialogController($scope, $mdDialog, clusterService) {
+    $scope.cluster = clusterService.Cluster;
     $scope.showAlert = function (tittle, label, button, content) {
 
       $mdDialog.show(
@@ -238,13 +212,14 @@ app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDial
 
       $scope.cluster = clusterService.Cluster;
       clusterService.AddLoadBalancer($scope.cluster).then(function (response) {
-        $mdDialog.cancel();
+
         if (response) {
+          $mdDialog.hide(response);
           $scope.showAlert("Cluster Updated", "Cluster Updated", "ok", "Successfully Added Load Balancer.");
         }
         else {
           $scope.cluster.LoadBalancer.MainIP = "Error";
-
+          $mdDialog.cancel();
           $scope.showAlert("Error", "Error", "ok", "There is an error ");
         }
       }, function (error) {
@@ -257,7 +232,31 @@ app.controller("LoadBalancerController", function ($scope, $routeParams, $mdDial
 
     };
   };
+
+  angular.element(document).ready(function () {
+    $scope.loadResource();
+  });
+
 });
+
+app.controller("ClusterViewController", function ($scope, $mdDialog, $routeParams, resource) {
+
+
+  $scope.loadResource = function () {
+    resource.GetResource($routeParams.id).then(function (response) {
+      $scope.resource = response;
+      resource.User = response;
+    }, function (error) {
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
+
+
+  $scope.loadResource();
+
+
+});
+
 
 app.controller("ClusterConfigController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
 });

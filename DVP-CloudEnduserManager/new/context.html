@@ -1,0 +1,31 @@
+
+<md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>Context details</h2></md-subheader>
+<div><md-button class="md-icon-button" ng-click="addNewContext()" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
+
+<md-data-table-container >
+
+  <table md-table  md-progress="deferred" >
+    <thead md-head style="background-color: #cccccc">
+    <tr md-row>
+      <th md-column style="color: #323232"><h3>Context</h3></th>
+      <th md-column style="color: #323232"><h3>Context Category</h3> </th>
+
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="context in contextData">
+      <td md-cell>{{context.Context}}</td>
+      <td md-cell>{{context.ContextCat}}</td>
+
+      <td md-cell>
+        <md-button class="md-icon-button" ng-click="EditContext(context.Context)" class="md-raised md-primary"><md-icon md-svg-src="img/edit26.svg"></md-icon></md-button>
+        <md-button class="md-icon-button" ng-click="DeleteContext(context.Context)" class="md-raised md-warn" ng-disabled="isDisabled" ><md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon></md-button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</md-data-table-container>

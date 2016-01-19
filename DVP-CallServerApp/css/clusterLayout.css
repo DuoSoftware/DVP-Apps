@@ -1,3 +1,47 @@
+:root {
+  background-color:               #798681;
+}
+body {
+  background:         -webkit-gradient(
+    linear, left bottom, left top,
+    color-stop(0.70, rgba(0, 163, 163, 0.82)),
+    color-stop(0.30, rgba(121, 134, 129, 1)));
+  background:         -ms-linear-gradient(
+    bottom,
+    #798681 30%,
+    #00A3A3 70%);
+}
+@font-face {
+
+  font-family: FiraSans;
+  src: url('fonts/fira-sans/FiraSans-Regular.otf')format('woff');
+}
+@font-face {
+  font-family: FiraSansBold;
+  src: url('fonts/fira-sans/FiraSans-UltraLightItalic.otf')format('woff');
+}
+body {
+  font-family: FiraSans,Arial;
+  color:black;
+}
+#title, #subtitl {
+  font-family: FiraSansBold,Calibri;
+  text-shadow: 0.16em 0.16em 0.5em #AA5500;
+  color:blue;
+}
+h1,h2 {
+  text-shadow: 0.16em 0.16em 0.5em #AA5500;
+}
+
+nav a {
+  text-shadow: 0.16em 0.16em 0.5em #FFBB77;
+}
+.grad {
+  background: -webkit-linear-gradient(bottom,#00A3A3 20%, #798681 );
+  background: -ms-linear-gradient(bottom, #00A3A3 20%, #798681);
+  background: linear-gradient(bottom, #00A3A3 20%, #798681);
+}
+
 .move-up {
   position: relative;
   top: -60px;
@@ -5,14 +49,41 @@
 
 }
 .ui-main{
-  background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background: -webkit-linear-gradient(bottom, #008484 , rgba(121, 134, 129, 0.6));
+  background: -ms-linear-gradient(bottom, #008484 , rgba(121, 134, 129, 0.6));
+  background: linear-gradient(bottom, #008484 , rgba(121, 134, 129, 0.6));
+  /*background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
   background-image:    -moz-linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
-  background-image:         linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));
+  background-image:         linear-gradient(top, rgba(0,0,0,.5),rgba(0,0,0,.7));*/
 }
 .ui-sub{
-  background-color: rgba(130,130,130, 0.6);
+  background: -webkit-linear-gradient(bottom, rgba(121, 134, 129, 0.5), #008585);
+  background: -ms-linear-gradient(bottom, rgba(121, 134, 129, 0.5) , #008585);
+  background: linear-gradient(bottom, rgba(121, 134, 129, 0.5) , #008585);
 }
+.md-subheader {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 0 0 0;
+  position: relative;
+  background-color: rgba(121, 134, 129, 0.5);
+}
+.md-subheader .md-subheader-inner {
+  display: block;
+  padding: 16px; }
+.md-subheader .md-subheader-content {
+  display: block;
+  z-index: 1;
+  position: relative; }
 
+.md-inline-form md-switch {
+  margin-top: 18px;
+  margin-bottom: 19px; }
+md-card  {
+  background-color: rgba(63,81,181,.9);
+}
 .ui-dialog-body{
 
   margin: 10px 10px 10px 10px;

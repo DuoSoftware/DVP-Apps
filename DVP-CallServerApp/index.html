@@ -2,7 +2,7 @@
 <html ng-app="ClusterManageApp">
 
 <head lang="en">
-  <title>Cluster App</title>
+  <title>Call Server App</title>
   <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" type="text/css"/>
   <link rel="stylesheet" href="css/clusterLayout.css" type="text/css"/>
@@ -17,7 +17,7 @@
 
 </md-toolbar>
 
-<div layout-align="center start" layout="row">
+<div layout-align="center start" layout="row" >
   <md-content class="md-whiteframe-z2 move-up" flex="80">
 
     <md-card flex="auto" width="100%" class="custBackground1">
@@ -29,7 +29,7 @@
           <div layout="row" flex="flex" class="fill-height">
             <section style="width: 100% " layout="row" layout-sm="column" layout-align="center center" layout-wrap>
               <md-button style="width: 25%"  class="md-raised md-primary" href="#/callserver/list">Call Server</md-button>
-
+              <md-button style="width: 25%"  class="md-raised md-primary" href="#/profile/list">Profile</md-button>
             </section>
           </div>
         </div>
@@ -56,12 +56,14 @@
 <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
 <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+<script src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+
 
 
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/chipController.js"></script>
 <script src="scripts/controllers/clusterController.js"></script>
-<script src="scripts/services/clusterService.js"></script>
+<script src="scripts/services/callServerService.js"></script>
 <script src="scripts/directives/taskDirective.js"></script>
 
 

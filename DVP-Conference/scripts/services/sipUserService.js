@@ -26,9 +26,33 @@ taskModule.factory("sipuser", function($http){
   }
 
 
+  var getSipUsers= function(){
+
+    return $http.get("http://localhost:8086/DVP/API/6.0/SipUser/Users").then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+
+    });
+  }
+
+
+
+
+
   return{
 
-    GetExtensions : getExtensions
+    GetExtensions : getExtensions,
+    GetSipUsers : getSipUsers
 
 
   }

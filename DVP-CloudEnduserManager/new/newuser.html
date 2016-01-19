@@ -1,0 +1,63 @@
+<div layout="column"  flex-lt-md="80%">
+
+  <md-content layout-padding style="background-color: lightgrey"  >
+    <form name="newUserForm" >
+      <md-toolbar class="md-table-toolbar md-default">
+        <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">New Cloud User</h4></label>
+      </md-toolbar>
+
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Domain</label>
+          <input type="text"  name = "Domain" ng-model="newObj.Domain"  required />
+
+          <span style="color:red" ng-show="newUserForm.Domain.$dirty && newUserForm.Domain.$invalid">
+
+</span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <!--<label style="color: blue" >Provision</label>
+          <input type="text"  name = "Provision" ng-model="newObj.Provision"  required />
+
+          <span style="color:red" ng-show="newUserForm.Provision.$dirty && newUserForm.Provision.$invalid">
+
+</span>-->
+
+          <label>Provision</label>
+          <md-select name = "Provision" ng-model="newObj.Provision" ng-model-options="{trackBy: '$value'}" required>
+            <md-option value=1>Instance</md-option>
+            <md-option value=2>Profile</md-option>
+            <md-option value=3>Shared</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+      <div>
+        <md-input-container  name= "cluster" class="md-block" flex-gt-sm>
+          <label>Clusters</label>
+          <md-select ng-model="newObj.ClusterID" name = "ClusterId" required>
+            <md-option ng-repeat="cluster in Clusters" value="{{cluster.id}}" ng-model-options="{trackBy: '$value'}">
+              {{cluster.Name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 70%">
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNew()" ng-disabled="isDisabled || newUserForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></td>
+
+        </md-input-container>
+      </div>
+
+      </form>
+    </md-content>
+  </div>

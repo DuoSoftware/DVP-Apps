@@ -1,0 +1,53 @@
+<md-dialog  class="ui-sub" aria-label="Create Campaign" ng-cloak>
+  <form name="projectForm"   novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>IP Address </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div  class="ui-dialog-body" layout="column" ng-cloak>
+      <md-content class="ui-sub" layout-padding>
+        <form name="projectForm">
+          <md-input-container class="md-block">
+            <label>Main IP</label>
+            <input md-maxlength="15" required ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/" name="MainIP" ng-model="IPAddress.MainIP">
+
+            <div ng-messages="projectForm.MainIP.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The Main IP has to be less than 15 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Internal Ip</label>
+            <input md-maxlength="15" required ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/" name="IP" ng-model="IPAddress.IP">
+
+            <div ng-messages="projectForm.IP.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The IP has to be less than 15 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-checkbox aria-label="Disabled checked checkbox" ng-model="IPAddress.IsAllocated" ng-disabled="callServer.id"
+                         ng-init="IPAddress.IsAllocated=true">
+              Allocated
+            </md-checkbox>
+          </md-input-container>
+
+        </form>
+      </md-content>
+    </div>
+
+    <md-dialog-actions layout="row">
+      <md-button  ng-click="addIpAddress(IPAddress)" ng-disabled="projectForm.$invalid" style="margin-right:20px;">
+        Add
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
