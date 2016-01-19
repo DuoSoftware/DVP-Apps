@@ -1,0 +1,52 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">{{hLable}} LIMIT</div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+      <form name="limitForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Limit Name</label>
+            <input name="limitName" ng-maxlength="20" ng-model="limitInfo.LimitDescription" ng-disabled="edit" required>
+            <div ng-messages="limitForm.limitName.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="maxlength">Limit Name max length is 20</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Max Limit</label>
+            <input type="number"  name="maxLimit" ng-model="limitInfo.MaxCount" required ng-pattern="/^(?:100000|[1-9]?[0-9])$/">
+            <div ng-messages="limitForm.maxLimit.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Please enter a valid Number</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Status</label>
+            <md-switch ng-model="limitInfo.Enable" ng-change="checkStatusChanged()" aria-label="Switch 1">
+              {{ limitInfo.Enable }}
+            </md-switch>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="saveLimit()" ng-disabled="limitForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="hide()">Back</md-button></div>
+        </div>
+
+
+
+      </form>
+    </md-content>
+  </div>
+</div>
+
+
