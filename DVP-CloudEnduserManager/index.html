@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="attributeapp" style="background-color: #cccccc">
+<html ng-app="clduserapp" style="background-color: #cccccc">
 <head >
 
   <title>Attribute Management</title>
@@ -17,7 +17,7 @@
   <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
 
-  <!--<link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
+ <!-- <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
 
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-aria/angular-aria.js"></script>
@@ -28,8 +28,8 @@
   <link href="../bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" type="text/css"/>
 
   <link href="../bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
-  <script type="text/javascript" src="../bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>-->
-
+  <script type="text/javascript" src="../bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+-->
  <!-- <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 
   <script src="bower_components/angular/angular.js"></script>
@@ -47,9 +47,15 @@
 
 
   <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/MainController.js"></script>
-  <script src="scripts/services/DBcontroller.js"></script>
+  <script src="scripts/newCtrls/EnduserController.js"></script>
+  <script src="scripts/newCtrls/EditUserController.js"></script>
+  <script src="scripts/newSrv/DBservice.js"></script>
   <script src="scripts/services/CommonController.js"></script>
+  <script src="scripts/newCtrls/NewUserController.js"></script>
+  <script src="scripts/newCtrls/ContextController.js"></script>
+  <!--<script src="scripts/controllers/MainController.js"></script>
+  <script src="scripts/services/DBcontroller.js"></script>
+
   <script src="scripts/controllers/AttributeController.js"></script>
   <script src="scripts/controllers/ViewController.js"></script>
   <script src="scripts/controllers/EditController.js"></script>
@@ -61,7 +67,7 @@
   <script src="scripts/controllers/TestazCntrl.js"></script>
   <script src="scripts/controllers/MapController.js"></script>
   <script src="scripts/controllers/AssignAttributesToGroup.js"></script>
-  <script src="scripts/controllers/MapTestController.js"></script>
+  <script src="scripts/controllers/MapTestController.js"></script>-->
 
 
 
@@ -80,8 +86,8 @@
   <div flex="60"><md-card flex="auto" width="100" class="custBackground1">
     <md-card-content >
       <md-content class="md-padding" style="background-color: #cccccc">
-        <md-button  class="md-raised md-primary"  href='#/attribute' style="width: 45%; background-color: #323232 "  >ATTRIBUTE</md-button>
-        <md-button class="md-raised md-primary" href='#/group' style="width: 45%; background-color: #323232 " >GROUP</md-button>
+        <md-button  class="md-raised md-primary"  href='#/endusers' style="width: 45%; background-color: #323232 "  >Cloud User</md-button>
+        <md-button class="md-raised md-primary" href='#/contexts' style="width: 45%; background-color: #323232 " >CONTEXT</md-button>
       </md-content>
 
     </md-card-content>
