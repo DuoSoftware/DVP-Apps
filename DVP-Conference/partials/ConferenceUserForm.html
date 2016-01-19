@@ -1,0 +1,77 @@
+
+
+<form name="userForm">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Conference users</span>
+        <span class="md-subhead">{{conference.ConferenceName}}</span>
+      </md-card-title-text>
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/conference/{{conference.ConferenceName}}/edit">
+        <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
+      <md-card-title-media>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content  layout-align="space-between">
+      <div layout-gt-xs="row">
+        <md-autocomplete flex-gt-xs=""
+          ng-disabled="isDisabled"
+          md-no-cache="noCache"
+          md-selected-item="selectedItem"
+          md-search-text-change="searchTextChange(searchText)"
+          md-search-text="searchText"
+          md-selected-item-change="selectedItemChange(item)"
+          md-items="item in querySearch(searchText)"
+          md-item-text="item.SipUsername"
+          md-min-length="0"
+          placeholder="Internal User">
+          <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.SipUsername}}</span>
+          </md-item-template>
+          <md-not-found>
+            No states matching "{{searchText}}" were found. <a ng-click="newState(searchText)">Create a new one!</a>
+          </md-not-found>
+        </md-autocomplete>
+        <md-button class="md-icon-button" aria-label="Add"  ng-click="addUserOut(searchText)">
+          <md-icon md-svg-src="../img/smartphone-1.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Add"  ng-click="addUserIn(searchText)">
+          <md-icon md-svg-src="../img/smartphone-2.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-card-content>
+    <md-card-content>
+        <md-list>
+          <md-subheader class="md-no-sticky">Users</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="user in  conferenceUsers">
+            <md-icon class="md-avatar-icon" md-svg-icon="../img/silhouette83.svg"></md-icon>
+            <div class="md-list-item-text" layout="column" flex>
+              <h3>{{ user.Name }}</h3>
+              <h4>{{ user.Email  }}</h4>
+              <p>{{ user.JoinType }}</p>
+              <div layout="row">
+                <md-checkbox ng-model="user.Def" aria-label="Def" ng-change="UpdateConferenceUserModes(user)">
+                  <p>Def</p>
+                </md-checkbox>
+                <md-checkbox ng-model="user.Mute" aria-label="Mute" ng-change="UpdateConferenceUserModes(user)">
+                  <p>Mute</p>
+                </md-checkbox>
+                <md-checkbox ng-model="user.Mod" aria-label="Mod" ng-change="UpdateConferenceUserModes(user)">
+                  <p>Mod</p>
+                </md-checkbox>
+              </div>
+              <div layout="row">
+                <span flex> </span>
+                <md-button class="md-icon-button" aria-label="Delete"  ng-click="DeleteConferenceUser(user)">
+                  <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+                </md-button>
+              </div>
+            </div>
+          </md-list-item>
+        </md-list>
+    </md-card-content>
+  </md-card>
+</form>
+
+

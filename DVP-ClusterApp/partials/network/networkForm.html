@@ -1,0 +1,67 @@
+<div class="ui-sub" layout="column" ng-cloak>
+  <md-content class="ui-sub" layout-padding>
+    <form name="projectForm">
+      <md-input-container class="md-block">
+        <label>Network</label>
+        <input md-maxlength="30" required name="Network" ng-model="network.Network" ng-readonly="editMode">
+
+        <div ng-messages="projectForm.Network.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Mask Bits</label>
+        <input type="number" name="Mask" ng-model="network.Mask" min="0" max="30" required>
+        <div ng-messages="projectForm.Mask.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="max">Any number above 30 will be marked invalid.</div>
+          <div ng-message="min">Any number below 0 will be marked invalid.</div>
+        </div>
+
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>NAT IP</label>
+        <input md-maxlength="15" required ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/" name="NATIP" ng-model="network.NATIP">
+
+        <div ng-messages="projectForm.NATIP.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The NAT Ip has to be less than 15 characters long.</div>
+        </div>
+      </md-input-container>
+
+
+
+      <md-input-container class="md-block">
+        <label>Owner</label>
+        <input  md-maxlength="30" ng-readonly="true"  name="Owner" ng-model="network.Owner">
+
+        <div ng-messages="projectForm.Owner.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block" >
+        <label>Network Type</label>
+        <md-select  ng-disabled="editMode"  name="Type" ng-model="network.Type"  ng-model-options="{trackBy: '$value'}"  >
+          <md-option ng-value="t.Type" selected ng-repeat="t in NetType">{{ t.name }}</md-option>
+        </md-select>
+      </md-input-container>
+
+
+    </form>
+
+  </md-content>
+</div>
+
+
+
+
+
+
+
+
+
