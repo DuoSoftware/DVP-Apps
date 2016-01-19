@@ -1,0 +1,39 @@
+<form name="userForm">
+  <div class="md-padding" id="popupContainer" ng-cloak>
+    <md-card>
+      <md-card-title >
+        <md-card-title-text>
+          <span class="md-headline">Conference APP</span>
+        </md-card-title-text>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Add"  href="#/campaign/create">
+          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        </md-button>
+      </md-card-title>
+
+
+      <md-list ng-cloak>
+
+
+        <md-list-item ng-repeat="campaign in campaigns">
+
+          <p>{{ campaign.CampaignName }}</p>
+          <p>{{ campaign.CampaignMode }}</p>
+          <p>{{ campaign.CampaignChannel }}</p>
+          <p>{{ campaign.DialoutMechanism }}</p>
+
+
+
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="editCampaign(campaign.CampaignId)">
+            <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteCampaign(campaign)">
+            <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+          </md-button>
+
+        </md-list-item>
+      </md-list>
+
+
+    </md-card>
+  </div>
+</form>

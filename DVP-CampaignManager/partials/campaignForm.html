@@ -1,0 +1,111 @@
+
+<div layout="column" ng-cloak class="md-inline-form">
+  <div>
+    <md-content md-theme="docs-dark" layout-padding>
+      <div layout-gt-xs="row">
+
+
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Campaign Name Here" ng-required="true" ng-model="campaign.CampaignName" />
+          <div ng-messages="userForm.name.$error">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Extension</label>
+          <md-select ng-model="campaign.Extension">
+            <md-option ng-repeat="(index,ext) in extensions" value="{{ext.Extension}}" ng-selected="(index == 1) ? true:false" >
+              {{ext.Extension}}
+            </md-option>
+          </md-select>
+          <div ng-messages="userForm.extension.$error">
+            <div ng-message="required">Extension is required.</div>
+          </div>
+        </md-input-container>
+
+
+      </div>
+
+
+    <div layout-gt-xs="row">
+
+      <md-input-container class="md-block" flex-gt-xs="">
+        <label>Mechanism</label>
+        <md-select ng-model="campaign.DialoutMechanism">
+          <md-option ng-repeat="(index,mechanism) in mechanisms" value="{{mechanism}}" ng-selected="(index == 1) ? true:false">
+            {{mechanism}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-xs="">
+        <label>Class</label>
+        <input type="text" ng-model="campaign.Class" class="form-control" id="class" name="class" placeholder="What is the campaign class?" ng-required="true"/>
+        <div ng-messages="userForm.class.$error">
+          <div ng-message="required">Class is required.</div>
+        </div>
+      </md-input-container>
+
+    </div>
+
+
+  <div layout-gt-xs="row">
+    <md-input-container class="md-block" flex-gt-xs="">
+      <label>Type</label>
+      <input type="text" ng-model="campaign.Type" class="form-control" id="type" name="type" placeholder="What is the campaign type?" ng-required="true"/>
+      <div ng-messages="userForm.type.$error">
+        <div ng-message="required">Type is required.</div>
+      </div>
+
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-xs="">
+      <label>Category</label>
+      <input type="text" ng-model="campaign.Category" class="form-control" id="category" name="category" placeholder="What is the campaign category?" ng-required="true"/>
+      <div ng-messages="userForm.category.$error">
+        <div ng-message="required">Category is required.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Mode</label>
+          <md-select ng-model="campaign.CampaignMode">
+            <md-option ng-repeat="(index,mode) in modes" value="{{mode}}" ng-selected="(index == 1) ? true:false">
+              {{mode}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Channel</label>
+          <md-select ng-model="campaign.CampaignChannel">
+            <md-option ng-repeat="(index,chanel) in channels" value="{{chanel}}" ng-selected="(index == 1) ? true:false">
+              {{chanel}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+      </div>
+
+
+
+
+
+
+    </md-content>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
