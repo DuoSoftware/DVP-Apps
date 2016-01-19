@@ -15,15 +15,15 @@
                 controller: "ViewController"
             })
             .when("/apps",{
-                templateUrl: "partials/reloadApps.html",
+                templateUrl: "partials/apps.html",
                 controller: "AppsController"
             })
             .when("/edit",{
-                templateUrl:"partials/EditHoldMusic.html",
+                templateUrl:"partials/editApp.html",
                 controller: "EditAppController"
             })
             .when("/new",{
-                templateUrl:"partials/newTrunk.html",
+                templateUrl:"partials/newApplication.html",
             //templateUrl:"partials/test.html",
                 controller: "NewApplicationController"
             })
@@ -35,7 +35,7 @@
             .when("/app/:id/edit",{
 
 
-            templateUrl:"partials/EditHoldMusic.html",
+            templateUrl:"partials/editApp.html",
             controller: "EditAppController"
           })
 
