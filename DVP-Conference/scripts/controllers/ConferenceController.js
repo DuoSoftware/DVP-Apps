@@ -97,7 +97,7 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 
 
 
-  $scope.loadResource = function() {
+  $scope.loadConference = function() {
     conference.GetConference($routeParams.id).then(function (response) {
       $scope.conference = response;
       conference.Conference = response;
@@ -107,7 +107,7 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
   };
 
 
-  $scope.loadResource();
+  $scope.loadConference();
 
 
 
@@ -122,7 +122,7 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
   $scope.querySearch   = querySearch;
   $scope.selectedItemChange = selectedItemChange;
   $scope.searchTextChange   = searchTextChange;
-  $scope.newState = newState;
+
   $scope.selectedItem = undefined;
 
 
@@ -154,12 +154,16 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 
 
 
-  function newState(state) {
+  $scope.addUserOut = function(text) {
     //alert(JSON.stringify( $scope.selectedItem ));
+
+
+    var user = {};
+    user.JoinType = "Outbound";
 
     if($scope.selectedItem){
 
-      var user = {};
+
       user.SipUACEndpointId = $scope.selectedItem.id;
 
       $scope.AddUserToConference(user);
@@ -169,9 +173,9 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 
 
       if($scope.searchText) {
-        var user = {};
-        user.Destination = $scope.searchText;
-        user.JoinType = "Outbound";
+
+        user.Destination = text;
+
         //user.SipUACEndpointId = $scope.selectedItem.id;
 
         $scope.AddUserToConference(user);
@@ -180,6 +184,38 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
     }
 
   }
+
+  $scope.addUserIn = function(text) {
+    //alert(JSON.stringify( $scope.selectedItem ));
+
+    var user = {};
+    user.JoinType = "Inbound";
+
+    if($scope.selectedItem){
+
+
+      user.SipUACEndpointId = $scope.selectedItem.id;
+
+      $scope.AddUserToConference(user);
+
+
+    }else{
+
+
+      if($scope.searchText) {
+
+        user.Destination = text;
+
+        //user.SipUACEndpointId = $scope.selectedItem.id;
+
+        $scope.AddUserToConference(user);
+      }
+
+    }
+
+  }
+
+
 
   function querySearch (query) {
     var results = query ? $scope.sipUsers.filter( createFilterFor(query) ) : $scope.sipUsers,
@@ -374,13 +410,12 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 });
 
 
-
 app.controller("ConferenceEditController", function($scope, $location,$mdDialog,$routeParams,  conference){
 
 
   $scope.conference = {};
   $scope.edit = true;
-  $scope.now = new Date();
+  $scope.now = new Date().getTime();
 
   $scope.showAlert = function(tittle, label, button, content) {
 
@@ -417,7 +452,7 @@ app.controller("ConferenceEditController", function($scope, $location,$mdDialog,
       //$scope.resource = response;
 
       if(response)
-        $scope.showAlert("Conference Updated","Conference Updated","ok","Resource Updated successfully "+$scope.conference.ConferenceName);
+        $scope.showAlert("Conference Updated","Conference Updated","ok","Conference Updated successfully "+$scope.conference.ConferenceName);
       else
         $scope.showAlert("Error","Error","ok","There is an error ");
       //$location.path('/resource/'+resource.User.ResourceId+'/view');
@@ -472,13 +507,21 @@ app.controller("ConferenceCreateController", function($scope, $location,$mdDialo
 
   $scope.conference = {};
 
+
+
   $scope.createConference = function() {
     conference.CreateConference($scope.conference).then(function (response) {
       //$scope.resource = response;
 
+      if(response) {
 
-      $scope.showAlert("Conference Created","Conference Created","ok","Conference created successfully "+response.ConferenceName);
-      $location.path('/conference/list');
+        $scope.showAlert("Conference Created", "Conference Created", "ok", "Conference created successfully " + response.ConferenceName);
+        $location.path('/conference/list');
+      }else{
+
+        $scope.showAlert("Error","Error","ok","There is an error, Please check conference name availability");
+
+      }
 
 
 
@@ -502,6 +545,21 @@ app.controller("ConferenceCreateController", function($scope, $location,$mdDialo
   }
 
   $scope.LoadExtentions();
+
+
+  $scope.foundConference = false;
+
+  $scope.GetConference = function(confName) {
+    conference.GetConference(confName).then(function (response) {
+      if(response) {
+
+        $scope.foundConference = true;
+
+      }
+    }, function (error) {
+
+    });
+  };
 
 
 

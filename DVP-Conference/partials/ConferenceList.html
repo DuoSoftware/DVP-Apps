@@ -16,17 +16,11 @@
 
         <md-list-item ng-repeat="conference in conferences">
 
-
-
-
-          <!--{"ConferenceName":"conference","Description":"this is the conference","CompanyId":1,"TenantId":1,"ObjClass":"ConfClz","ObjType":"ConfTyp","ObjCategory":"ConfCat","Pin":null,"AllowAnonymousUser":false,"StartTime":"2016-01-12T06:30:00.000Z","EndTime":"2016-01-12T07:30:00.000Z","Domain":"conference.duosoftware.com","IsLocked":true,"MaxUser":12,"CurrentUsers":null,"createdAt":"2016-01-13T03:41:42.331Z","updatedAt":"2016-01-13T03:41:42.393Z","CloudEndUserId":null,"ExtensionId":2}-->
-
-
-
           <p>{{ conference.ConferenceName }}</p>
           <p>{{ conference.ObjClass }}</p>
-          <p>{{ conference.ObjType }}</p>
-          <p>{{ conference.ObjCategory }}</p>
+          <p>{{ conference.StartTime }}</p>
+
+
 
           <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewConference(conference.ConferenceName)">
             <md-icon md-svg-src="../img/edit26.svg"></md-icon>

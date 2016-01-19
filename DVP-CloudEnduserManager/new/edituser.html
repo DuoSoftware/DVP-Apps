@@ -1,0 +1,112 @@
+<div layout="column"  flex-lt-md="80%">
+
+  <md-content layout-padding style="background-color: lightgrey">
+
+    <form name="editUserForm">
+
+      <md-toolbar class="md-table-toolbar md-default">
+        <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">Edit Attribute</h4></label>
+      </md-toolbar>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label for="UserID" style="color: blue">Cloud User ID</label>
+          <input ng-model="editObj.id" readonly id="UserID" style="color: gray;">
+
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Domain</label>
+          <input type="text"  name = "Domain" ng-model="editObj.Domain"  required />
+
+          <span style="color:red" ng-show="editUserForm.Domain.$dirty && editUserForm.Domain.$invalid">
+
+</span>
+        </md-input-container>
+      </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <!--<label style="color: blue" >Provision</label>
+          <input type="text"  name = "Provision" ng-model="editObj.SIPConnectivityProvision"  required />
+
+          <span style="color:red" ng-show="editUserForm.Provision.$dirty && editUserForm.Provision.$invalid">
+
+</span>-->
+
+          <label>Provision</label>
+          <md-select name = "Provision" ng-model="editObj.SIPConnectivityProvision" ng-model-options="{trackBy: '$value'}" required>
+            <md-option value=1>Instance</md-option>
+            <md-option value=2>Profile</md-option>
+            <md-option value=3>Shared</md-option>
+          </md-select>
+
+
+
+
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Cluster ID</label>
+          <input type="text"  name = "ClusterId" ng-model="editObj.ClusterId"  style="color: gray;" readonly />
+
+         <!-- <label>Clusters</label>
+          <md-select ng-model="editObj.ClusterId" name = "ClusterId" readonly>
+            <md-option ng-repeat="cluster in Clusters" value="{{cluster.id}}" ng-model-options="{trackBy: '$value'}">
+              {{cluster.Name}}
+            </md-option>
+          </md-select>-->
+
+        </md-input-container>
+      </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Network ID</label>
+          <input type="text"  name = "NetworkId" ng-model="editObj.NetworkId"  style="color: gray;"readonly />
+
+
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >SipNetworkProfile ID</label>
+          <input type="text"  name = "SipNetworkProfileId" ng-model="editObj.SipNetworkProfileId"  style="color: gray;" readonly />
+
+
+        </md-input-container>
+      </div>
+
+
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container style="background-color: lightgrey;padding: 0% 0% 0% 70%">
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(editObj.id)" ng-disabled="isDisabled || editUserForm.$invalid"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="Erase()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
+
+        </md-input-container>
+
+
+
+      </div>
+
+
+    </form>
+
+  </md-content>
+
+</div>

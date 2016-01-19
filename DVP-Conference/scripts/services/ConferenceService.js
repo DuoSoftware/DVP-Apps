@@ -45,7 +45,7 @@ taskModule.factory("conference", function($http){
 
       }else{
 
-        return {};
+        return undefined;
       }
 
     });
@@ -106,7 +106,7 @@ taskModule.factory("conference", function($http){
 
       }else{
 
-        return {};
+        return undefined;
       }
 
     });
