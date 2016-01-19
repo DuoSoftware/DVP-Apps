@@ -1,0 +1,206 @@
+<div>
+  <h2 class="md-title">New MusicProfile</h2>
+</div>
+
+<div  >
+
+
+  <div ng-controller="NewMusicProfileController as ctrl " layout="column" ng-cloak flex-gt-sm="75">
+    <md-content layout-padding>
+      <form name="HoldMusicForm">
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Profile Name</label>
+            <input ng-model="newMusicProfile.Name" required  placeholder="" md-maxlength="30" required name="Name">
+            <div ng-messages="HoldMusicForm.Name.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Description</label>
+            <input ng-model="newMusicProfile.Description" placeholder="" name="Description">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Class</label>
+            <input ng-model="newMusicProfile.Class" placeholder="" name="Class">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Hold Music</label>
+            <input ng-model="newMusicProfile.MOH" placeholder="" name="MOH">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Announcement </label>
+            <input ng-model="newMusicProfile.Announcement " placeholder="" name="Announcement">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>FirstAnnounement </label>
+            <input ng-model="newMusicProfile.FirstAnnounement " placeholder="" name="FirstAnnounement">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>AnnouncementTime   </label>
+            <input ng-model="newMusicProfile.AnnouncementTime" placeholder="" ng-minlength="4" name="AnnouncementTime" ng-pattern="/^[0-9]{1,7}$/" >
+            <div ng-messages="HoldMusicForm.AnnouncementTime.$error">
+              <div ng-message="minlength">Enter the time from millisecond...</div>
+              <span  ng-show="HoldMusicForm.AnnouncementTime.$error.pattern">Not valid number!</span>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Type  </label>
+            <input ng-model="newMusicProfile.Type" placeholder="" name="Type ">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Category </label>
+            <input ng-model="newMusicProfile.Category" placeholder="" name="Category ">
+
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+
+          </md-input-container>
+        </div>
+
+
+          <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 70%" layout="row">
+
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
+              <md-icon md-svg-src="../HoldMusicApp/img/ic_arrow_back_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="HoldMusicForm.$invalid" aria-label="Add" ng-click="CreateNewMusicProfile()">
+              <md-icon md-svg-src="../HoldMusicApp/img/ic_save_24px.svg"></md-icon>
+            </md-button>
+
+          </md-input-container>
+
+      </form>
+
+    </md-content>
+  </div>
+
+</div>
+
+<!--<table md-data-table  md-progress="deferred">
+
+    <tbody>
+    <tr>
+        <td><h3 >New Application</h3></td>
+        <td></td>
+    </tr>
+  <tr>
+        <td>Developer ID</td>
+        <td ><input type="text" ng-model="newApplication.DeveloperID" ng-disabled ="editAppObj.AppDeveloperId" placeholder=""> </input></td>
+    </tr>
+
+     <tr>
+        <td>AppName</td>
+        <td ><input type="text" ng-model="newApplication.AppName" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>CompanyId</td>
+        <td ><input type="text" ng-model="newApplication.CompanyId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td ><input type="text" ng-model="newApplication.Description" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>MasterApplicationId</td>
+        <td ><input type="text" ng-model="newApplication.MasterApplicationId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjCategory</td>
+        <td ><input type="text" ng-model="newApplication.ObjCategory" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjClass</td>
+        <td ><input type="text" ng-model="newApplication.ObjClass" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjType</td>
+
+        <td>
+            <select name="singleSelect" ng-model="newApplication.ObjType" id="singleSelect" ng-model="data.singleSelect">
+                <option value="">---Please select---</option>
+                <option value="HTTAPI">HTTAPI</option>
+                <option value="SOCKET">SOCKET</option>
+                <option value="EXTENDED">EXTENDED</option>
+            </select><br>
+
+        </td>
+    </tr>
+    <tr>
+        <td>OtherData</td>
+        <td ><input type="text" ng-model="newApplication.OtherData" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>TenantId</td>
+        <td ><input type="text" ng-model="newApplication.TenantId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>Url</td>
+        <td ><input type="text" ng-model="newApplication.Url" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>TenantId</td>
+        <td ><input type="text" ng-model="newApplication.TenantId" placeholder=""> </input></td>
+    </tr>
+
+    <tr>
+        <td>STATUS</td>
+        <td>
+            <md-switch ng-model="newApplication.Availability" ng-disabled ="true" aria-label="Switch 1"> {{Availability}}</md-switch>
+        </td>
+    </tr>
+
+    </tbody>
+</table>-->
+<!--<table>
+    <tr>
+        <td> <div><md-button ng-click="CreateNewApp(newApplication)" class="md-raised md-primary">SAVE</md-button></div> </td>
+        <td> <div><md-button ng-click="CancelEdit()" class="md-raised md-primary">CANCEL</md-button></div> </td>
+        <td> <div><md-button ng-click="" class="md-raised md-primary">CLEAR</md-button></div> </td>
+
+    </tr>
+
+
+</table>-->
+
+

@@ -1,0 +1,35 @@
+<md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>End user details</h2></md-subheader>
+<div><md-button class="md-icon-button" ng-click="addNewUser()" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
+
+<md-data-table-container >
+
+  <table md-table  md-progress="deferred" >
+    <thead md-head style="background-color: #cccccc">
+    <tr md-row>
+      <th md-column style="color: #323232"><h3>Cloud User ID</h3></th>
+      <th md-column style="color: #323232"><h3>Domain</h3> </th>
+      <th md-column style="color: #323232"><h3>Provision</h3> </th>
+      <th md-column style="color: #323232"><h3>Cluster ID</h3> </th>
+
+
+
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="user in userData">
+      <td md-cell>{{user.id}}</td>
+      <td md-cell>{{user.Domain}}</td>
+      <td md-cell>{{user.SIPConnectivityProvision}}</td>
+      <td md-cell>{{user.ClusterId}}</td>
+      <td md-cell>
+        <md-button class="md-icon-button" ng-click="EditUser(user.id)" class="md-raised md-primary"><md-icon md-svg-src="img/edit26.svg"></md-icon></md-button>
+        <md-button class="md-icon-button" ng-click="DeleteUser(user.id)" class="md-raised md-warn" ng-disabled="isDisabled" ><md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon></md-button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</md-data-table-container>

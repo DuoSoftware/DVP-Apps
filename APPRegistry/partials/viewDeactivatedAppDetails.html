@@ -1,0 +1,116 @@
+
+
+    <md-data-table-toolbar>
+        <h2 class="md-title">View Application Details</h2>
+
+    </md-data-table-toolbar>
+    <md-data-table-container>
+        <table md-data-table  md-progress="deferred">
+
+            <tbody>
+            <tr>
+                <td><h3 >App Details</h3></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Developer ID</td>
+                <!--<td ><input type="text" ng-model="editApplication.DeveloperID" ng-click="warnChangDevId(editAppObj.AppDeveloperId)" placeholder="{{editAppObj.AppDeveloperId}}"> </input></td>-->
+                <td >{{xobj.AppDeveloperId}}</td>
+
+            </tr>
+
+            <tr>
+                <td>App ID</td>
+                <td >{{xobj.id}}</td>
+            </tr>
+            <tr>
+                <td>AppName</td>
+                <td >{{xobj.AppName}}"</td>
+            </tr>
+            <tr>
+                <td>CompanyId</td>
+                <td >{{xobj.CompanyId}}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td >{{xobj.Description}}</td>
+            </tr>
+            <tr>
+                <td>MasterApplicationId</td>
+                <td >{{xobj.MasterApplicationId}}</td>
+            </tr>
+            <tr>
+                <td>ObjCategory</td>
+                <td >{{xobj.ObjCategory}}</td>
+            </tr>
+            <tr>
+                <td>ObjClass</td>
+                <td >{{xobj.ObjClass}}</td>
+            </tr>
+            <tr>
+                <td>ObjType</td>
+                <td >{{xobj.ObjType}}</td>
+            </tr>
+            <tr>
+                <td>OtherData</td>
+                <td >{{xobj.OtherData}}</td>
+            </tr>
+            <tr>
+                <td>TenantId</td>
+                <td >{{xobj.TenantId}}</td>
+            </tr>
+            <tr>
+                <td>Url</td>
+                <td >{{xobj.Url}}</td>
+                <!--  <td ><input type="text" ng-model="editApplication.Url" ng-click="alert(editAppObj.Url)" data-tooltip="I am a tooltip" placeholder="{{editAppObj.Url}}"> </input></td>-->
+            </tr>
+            <tr>
+                <td>TenantId</td>
+                <td >{{xobj.TenantId}}</td>
+            </tr>
+
+            <!--   <tr>
+                   <td>Status</td>
+                   <td ><input type="text" ng-model="DataObj.Status" placeholder="{{DataObj.Status}}"> </input></td>
+
+               </tr>-->
+            <tr>
+                <td>STATUS</td>
+                <td>
+                    <md-switch ng-model="xobj.Availability" ng-disabled ="true" aria-label="Switch 1"> {{xobj.Availability }}</md-switch>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <md-button ng-click="answer('useful')" style="margin-right:20px;">
+                        OK
+                    </md-button>
+                </td>
+            </tr>
+            <!--   <tr>
+                   <md-button ng-click="ViewAttribute(attrib)" class="md-raised md-primary">View</md-button>
+                   <td ><md-button ng-click="" class="md-raised md-primary">SAVE</md-button></td>
+                   <td ><md-button ng-click="" class="md-raised md-primary">CANCEL</md-button></td>
+                   <td ><md-button ng-click="" class="md-raised md-primary">CLEAR</md-button></td>
+               </tr>-->
+            </tbody>
+        </table>
+        <!-- <table>
+             <tr>
+                 <td> <div><md-button ng-click="SaveApp(editApplication)" class="md-raised md-primary">SAVE</md-button></div> </td>
+                 <td> <div><md-button ng-click="CancelEdit()" class="md-raised md-primary">CANCEL</md-button></div> </td>
+                 <td> <div><md-button ng-click="" class="md-raised md-primary">CLEAR</md-button></div> </td>
+
+             </tr>
+
+
+         </table>-->
+
+
+    </md-data-table-container>
+
+
+

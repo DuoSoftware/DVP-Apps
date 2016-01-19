@@ -1,0 +1,223 @@
+<div>
+  <h2 class="md-title">New Application</h2>
+</div>
+
+<div  >
+
+
+  <div ng-controller="NewApplicationController as ctrl " layout="column" ng-cloak flex-gt-sm="75">
+    <md-content layout-padding>
+      <form name="NewApplicationForm">
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <p style="font-size: small; color: #C0CBCF" > Developer app <md-switch ng-model="newApplication.Developer" aria-label="Switch 1" ng-change="onChange(newApplication.Developer)" > {{message}}</md-switch></p>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>AppName</label>
+            <input ng-model="newApplication.AppName" required  placeholder="" md-maxlength="30" required name="AppName">
+            <div ng-messages="NewApplicationForm.AppName.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The App Name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Description</label>
+            <input ng-model="newApplication.Description" placeholder="">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Other Data</label>
+            <input ng-model="newApplication.OtherData" placeholder="">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Category</label>
+            <input ng-model="newApplication.ObjCategory" placeholder="">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Class</label>
+            <input ng-model="newApplication.ObjClass" placeholder="">
+          </md-input-container>
+        </div>
+
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <!--           <p style="font-size: small; color: #C0CBCF">Type
+          <select name="singleSelect" required ng-model="newApplication.ObjType" id="singleSelect" ng-model="data.singleSelect" style="width: 150px">
+                         <option value="">---Please select---</option>
+                         <option value="HTTAPI">HTTAPI</option>
+                         <option value="SOCKET">SOCKET</option>
+                         <option value="EXTENDED">EXTENDED</option>
+                       </select>-->
+              <md-input-container>
+                <label>Type</label>
+                <md-select ng-model="newApplication.ObjType" id="singleSelect" name="typeObj" required >
+                  <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">
+                    {{state.abbrev}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            <div ng-messages="NewApplicationForm.typeObj.$error">
+              <div ng-message="required">Please Select a value.</div>
+              </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Application Url</label>
+            <input name="Url" ng-model=newApplication.Url required  placeholder="{{newApplication.Url}}" ng-pattern="/^((?:http|ftp)s?:\/\/)(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|localhost|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[\/?]\S+)$/i">
+            <div ng-messages="NewApplicationForm.Url.$error">
+              <div ng-message="required">Please enter IP address.</div>
+              <div ng-message="pattern">Please enter a valid IP address.</div>
+            </div>
+
+            <!--<div ng-messages="pabxBasicConfForm.pinNumber.$error">
+              <div ng-message="pattern">Pin number should be numeric</div>
+            </div>-->
+          </md-input-container>
+
+        </div>
+
+
+
+            <p ng-show="hide" style="font-size: small; color: #C0CBCF" > Availability   <md-switch ng-model="newApplication.Availability" ng-disabled ="true" aria-label="Switch 2" style="font-size: small; color: #C0CBCF"> true</md-switch>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <!-- TEST URL-->
+
+
+            <!--<p style="font-size: small; color: #C0CBCF" >Test Url<md-button class="md-icon-button" ng-disabled="isDisabled" aria-label="Add" ng-click="testApplication(newAppId)">
+              <md-icon md-svg-src="../appregistry/img/ic_check_circle_24px.svg"></md-icon>
+
+            </md-button></p>
+            <p style="font-size: small; color: color" ng-disabled="false">{{msg}}</p>-->
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 70%" layout="row">
+
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
+              <md-icon md-svg-src="../appregistry/img/ic_arrow_back_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="NewApplicationForm.$invalid" aria-label="Add" ng-click="CreateNewApp()">
+              <md-icon md-svg-src="../appregistry/img/ic_save_24px.svg"></md-icon>
+            </md-button>
+
+          </md-input-container>
+        </div>
+      </form>
+
+    </md-content>
+  </div>
+
+</div>
+
+<!--<table md-data-table  md-progress="deferred">
+
+    <tbody>
+    <tr>
+        <td><h3 >New Application</h3></td>
+        <td></td>
+    </tr>
+  <tr>
+        <td>Developer ID</td>
+        <td ><input type="text" ng-model="newApplication.DeveloperID" ng-disabled ="editAppObj.AppDeveloperId" placeholder=""> </input></td>
+    </tr>
+
+     <tr>
+        <td>AppName</td>
+        <td ><input type="text" ng-model="newApplication.AppName" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>CompanyId</td>
+        <td ><input type="text" ng-model="newApplication.CompanyId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td ><input type="text" ng-model="newApplication.Description" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>MasterApplicationId</td>
+        <td ><input type="text" ng-model="newApplication.MasterApplicationId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjCategory</td>
+        <td ><input type="text" ng-model="newApplication.ObjCategory" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjClass</td>
+        <td ><input type="text" ng-model="newApplication.ObjClass" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>ObjType</td>
+
+        <td>
+            <select name="singleSelect" ng-model="newApplication.ObjType" id="singleSelect" ng-model="data.singleSelect">
+                <option value="">---Please select---</option>
+                <option value="HTTAPI">HTTAPI</option>
+                <option value="SOCKET">SOCKET</option>
+                <option value="EXTENDED">EXTENDED</option>
+            </select><br>
+
+        </td>
+    </tr>
+    <tr>
+        <td>OtherData</td>
+        <td ><input type="text" ng-model="newApplication.OtherData" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>TenantId</td>
+        <td ><input type="text" ng-model="newApplication.TenantId" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>Url</td>
+        <td ><input type="text" ng-model="newApplication.Url" placeholder=""> </input></td>
+    </tr>
+    <tr>
+        <td>TenantId</td>
+        <td ><input type="text" ng-model="newApplication.TenantId" placeholder=""> </input></td>
+    </tr>
+
+    <tr>
+        <td>STATUS</td>
+        <td>
+            <md-switch ng-model="newApplication.Availability" ng-disabled ="true" aria-label="Switch 1"> {{Availability}}</md-switch>
+        </td>
+    </tr>
+
+    </tbody>
+</table>-->
+<!--<table>
+    <tr>
+        <td> <div><md-button ng-click="CreateNewApp(newApplication)" class="md-raised md-primary">SAVE</md-button></div> </td>
+        <td> <div><md-button ng-click="CancelEdit()" class="md-raised md-primary">CANCEL</md-button></div> </td>
+        <td> <div><md-button ng-click="" class="md-raised md-primary">CLEAR</md-button></div> </td>
+
+    </tr>
+
+
+</table>-->
+
+
