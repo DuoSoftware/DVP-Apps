@@ -6,7 +6,7 @@
  */
 (function () {
 
-  var commoncontroller = function ($http,$mdDialog,$mdMedia) {
+  var commonservice = function ($http,$mdDialog,$mdMedia) {
 
 
 
@@ -70,7 +70,7 @@
   };
 
   var module = angular.module("clduserapp");
-  module.factory("commoncontroller",commoncontroller);
+  module.factory("commonservice",commonservice);
 }());
 
 

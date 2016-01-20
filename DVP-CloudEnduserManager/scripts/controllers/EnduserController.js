@@ -5,7 +5,7 @@
 
   var app =   angular.module("clduserapp");
 
-  var EnduserController = function ($scope,dbservice,commoncontroller,$location,$mdDialog,$mdMedia) {
+  var EnduserController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia) {
 
     $scope.isDisabled = false;
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -13,7 +13,7 @@
 
     $scope.addNewAttrib = function()
     {
-      //commoncontroller.showAdvanced("NewController","partials/new.html",true);
+      //commonservice.showAdvanced("NewController","partials/new.html",true);
       $location.path("/newattrib");
     }
 
@@ -21,7 +21,7 @@
     {
       //dbservice.Userobj=usrObj;
 
-      //commoncontroller.showAdvanced('EditController','partials/edit.html',false);
+      //commonservice.showAdvanced('EditController','partials/edit.html',false);
       $location.path("/edituser/"+usrObj);
 
     }
@@ -32,7 +32,7 @@
       var title="Delete Cloud User ";
       var content= "Do you want to delete "+ DelObj;
       console.log(content) ;
-      commoncontroller.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
+      commonservice.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
 
         dbservice.userDelete(DelObj).then(onUserDeleteComplete,onError);
 
@@ -53,7 +53,7 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      commoncontroller.showAlert("ERROR",reason);
+      commonservice.showAlert("ERROR",reason);
     }
 
     var onUserDeleteComplete = function (response) {
@@ -65,7 +65,7 @@
       }
       else
       {
-        commoncontroller.showAlert("Delete","User removed successfully!");
+        commonservice.showAlert("Delete","User removed successfully!");
         var val = 0;
         for (var i = 0, len = $scope.userData.length; i < len; i++) {
 

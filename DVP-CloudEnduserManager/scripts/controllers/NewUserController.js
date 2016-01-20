@@ -4,7 +4,7 @@
 (function () {
   var app =   angular.module("clduserapp");
 
-  var NewUserController = function ($scope,dbservice,commoncontroller,$location,$mdDialog,$mdMedia) {
+  var NewUserController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia) {
 
     $scope.isDisabled = true;
     $scope.newObj = {};
@@ -42,7 +42,7 @@
 
       $scope.isDisabled = false;
       $scope.error = reason;
-      commoncontroller.showAlert("Error", reason);
+      commonservice.showAlert("Error", reason);
       console.log(reason);
 
     }

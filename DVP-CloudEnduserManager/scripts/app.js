@@ -9,33 +9,40 @@
     app.config(function($routeProvider) {
         $routeProvider.when("/endusers", {
 
-            templateUrl: "new/enduser.html",
+            templateUrl: "partials/enduser.html",
             controller: "EnduserController"
         })
             .when("/edituser/:id",{
-                templateUrl: "new/edituser.html",
+                templateUrl: "partials/edituser.html",
                 controller: "EditUserController"
             })
 
             .when("/newuser",{
-                templateUrl: "new/newuser.html",
+                templateUrl: "partials/newuser.html",
                 controller: "NewUserController"
 
 
             })
             .when("/contexts",{
-                templateUrl: "new/context.html",
+                templateUrl: "partials/context.html",
                 controller: "ContextController"
 
 
             })
-          /*
-            .when("/newattrib",{
-                templateUrl: "partials/new.html",
-                controller: "NewController"
+
+            .when("/newcontext",{
+                templateUrl: "partials/newcontext.html",
+                controller: "NewContextController"
 
 
             })
+          .when("/editcontext/:context",{
+            templateUrl: "partials/editcontext.html",
+            controller: "EditContextController"
+
+
+          })
+          /*
             .when("/group",{
                 templateUrl: "partials/group.html",
                 controller: "GroupController"

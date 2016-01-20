@@ -5,7 +5,7 @@
 
   var app =   angular.module("clduserapp");
 
-  var EditUserController = function ($scope,dbservice,commoncontroller,$location,$mdDialog,$mdMedia,$routeParams) {
+  var EditUserController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia,$routeParams) {
 
     $scope.isDisabled = false;
     console.log("ID "+JSON.stringify($routeParams.id));
@@ -35,11 +35,15 @@
       else {
         console.log(JSON.stringify(response.data.Result));
         $scope.Clusters =response.data.Result;
-       // $scope.isDisabled = false;
+        // $scope.isDisabled = false;
         $scope.loadEditUser(parseInt($routeParams.id));
       }
 
 
+    }
+
+    $scope.hideView= function () {
+      $location.path("/contexts");
     }
 
     var onUpdateComplete = function(response)
@@ -70,10 +74,10 @@
       }
       else
       {
-       // console.log("ONLOAD   "+JSON.stringify(response));
+        // console.log("ONLOAD   "+JSON.stringify(response));
         $scope.isDisabled = false;
         $scope.editObj =response.data.Result;
-       // $location.path("/endusers");
+        // $location.path("/endusers");
         //$route.reload();
       }
 
@@ -83,7 +87,7 @@
     {
       $scope.isDisabled = false;
       $scope.error = reason;
-      commoncontroller.showAlert("Error",reason);
+      commonservice.showAlert("Error",reason);
       console.log(reason);
     }
 
@@ -95,7 +99,7 @@
       var title="Update Cloud User details ";
       var content= "Do you want to Save changes ? ";
       console.log(content) ;
-      commoncontroller.showConfirm(title,"Save","Save","Cancel",content,function(obj){
+      commonservice.showConfirm(title,"Save","Save","Cancel",content,function(obj){
 
         dbservice.updateUser($scope.editObj).then(onUpdateComplete,onError);
 
