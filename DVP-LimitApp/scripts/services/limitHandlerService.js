@@ -3,7 +3,8 @@
  */
 (function(){
   var limitHandler = function($http){
-    var GetAllLimits = function(accessToken){
+    var accessToken = "1#1";
+    var GetAllLimits = function(){
       return $http({
         method: 'GET',
         url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit/Info',
@@ -14,7 +15,7 @@
           return response.data;
         });
     };
-    var AddNewLimit = function(accessToken, limitInfo){
+    var AddNewLimit = function(limitInfo){
       return $http({
         method: 'POST',
         url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit',
@@ -27,7 +28,7 @@
           return response.data;
         });
     };
-    var ChangeLimitStatus = function(accessToken, limitId, status){
+    var ChangeLimitStatus = function(limitId, status){
       return $http({
         method: 'PUT',
         url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit/'+limitId+'/Activate/'+status,
@@ -39,7 +40,7 @@
           return response.data;
         });
     };
-    var UpdateMaxLimit = function(accessToken, limitId, maxLimit){
+    var UpdateMaxLimit = function(limitId, maxLimit){
       return $http({
         method: 'PUT',
         url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit/'+limitId+'/Max/'+maxLimit,
