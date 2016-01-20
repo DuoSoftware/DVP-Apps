@@ -75,6 +75,31 @@
 
     };
 
+    var newContext = function(newObj)
+    {
+      return $http.post("http://localhost:8086/DVP/API/6.0/SipUser/Context",newObj)
+        .then(function (response) {
+          return response;
+        });
+    };
+
+    var getContext = function (context) {
+      console.log("hitttttttt");
+      return $http.get("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+context)
+        .then(function (response) {
+          console.log("resp single Context  "+JSON.stringify(response));
+          return response;
+        });
+    };
+
+    var updateContext = function (contextObj) {
+      console.log("hitttttttt");
+      return $http.put("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+contextObj.Context,contextObj)
+        .then(function (response) {
+          return response;
+        });
+    };
+
 
     return{
       Userobj:Userobj,
@@ -84,7 +109,10 @@
       newUser:newUser,
       getUser:getUser,
       loadClusterDetails:loadClusterDetails,
-      getContextList:getContextList/*,
+      getContextList:getContextList,
+      newContext:newContext,
+      getContext:getContext,
+      updateContext:updateContext/*,
        updateAttribute:updateAttribute,
        NewAttribute:NewAttribute,
        getGroupList:getGroupList,
