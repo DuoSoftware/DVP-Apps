@@ -3,7 +3,7 @@
  */
 (function(){
   var app = angular.module("dvp-limitApp");
-  var limitController = function($scope, limitHandler, $mdDialog, $mdMedia){
+  var limitController = function($scope, limitHandler, $mdToast, $mdDialog, $mdMedia){
     $scope.query = {
       limit: 5,
       page: 1
@@ -29,8 +29,25 @@
       $scope.showAlert("Error", "OK", "There is an error");
     };
 
-    $scope.copyToClipboard = function(limitId){
-
+    var last = {
+      bottom: false,
+      top: true,
+      left: false,
+      right: true
+    };
+    $scope.toastPosition = angular.extend({},last);
+    $scope.getToastPosition = function() {
+      return Object.keys($scope.toastPosition)
+        .filter(function(pos) { return $scope.toastPosition[pos]; })
+        .join(' ');
+    };
+    $scope.showSimpleToast = function() {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent('LimitId copied to clipboard')
+          .position($scope.getToastPosition())
+          .hideDelay(3000)
+      );
     };
     $scope.showAlert = function(tittle, button, content) {
       $mdDialog.show(

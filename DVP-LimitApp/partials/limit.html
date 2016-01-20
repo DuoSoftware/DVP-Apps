@@ -29,8 +29,9 @@
       <tbody md-body>
       <tr md-row layout-align="center center" md-auto-select ng-repeat="item in limitDetails | orderBy:'+createdAt' | limitTo: query.limit: (query.page - 1) * query.limit">
         <td md-cell>{{item.LimitId | limitTo:14}}
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="copy" ngclipboard data-clipboard-text="{{item.LimitId}}">
-            <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="copy" ngclipboard data-clipboard-text="{{item.LimitId}}" ng-click="showSimpleToast()">
+            <md-tooltip md-direction="right">Copy</md-tooltip>
+            <md-icon md-svg-src="../img/copy.svg"></md-icon>
           </md-button>
         </td>
         <td md-cell>{{item.LimitDescription}}</td>
