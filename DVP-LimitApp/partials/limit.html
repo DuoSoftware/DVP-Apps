@@ -1,0 +1,57 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">LIMITS</div>
+      <div>
+        <md-button class="md-primary md-raised" ng-click="showLimitDialog($event, null)">
+          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="limitDetails">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="limitDetails">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>Limit Id</th>
+        <th md-column>Limit Name</th>
+        <th md-column>Max Limit</th>
+        <th md-column>Status</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in limitDetails | orderBy:'+createdAt' | limitTo: query.limit: (query.page - 1) * query.limit">
+        <td md-cell>{{item.LimitId | limitTo:14}}
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="copy" ngclipboard data-clipboard-text="{{item.LimitId}}" ng-click="showSimpleToast()">
+            <md-tooltip md-direction="right">Copy</md-tooltip>
+            <md-icon md-svg-src="../img/copy.svg"></md-icon>
+          </md-button>
+        </td>
+        <td md-cell>{{item.LimitDescription}}</td>
+        <td md-cell>{{item.MaxCount}}</td>
+        <td md-cell>{{item.Enable}}</td>
+        <td md-cell>
+          <div layout="row">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="showLimitDialog($event, item)">
+              <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="showConfirm($event, item.LimitId)">
+              <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+</div>
+
+

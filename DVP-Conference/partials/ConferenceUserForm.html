@@ -33,8 +33,11 @@
             No states matching "{{searchText}}" were found. <a ng-click="newState(searchText)">Create a new one!</a>
           </md-not-found>
         </md-autocomplete>
-        <md-button class="md-icon-button" aria-label="Add"  ng-click="newState(searchText)">
-          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        <md-button class="md-icon-button" aria-label="Add"  ng-click="addUserOut(searchText)">
+          <md-icon md-svg-src="../img/smartphone-1.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Add"  ng-click="addUserIn(searchText)">
+          <md-icon md-svg-src="../img/smartphone-2.svg"></md-icon>
         </md-button>
       </div>
     </md-card-content>
@@ -65,7 +68,6 @@
                 </md-button>
               </div>
             </div>
-
           </md-list-item>
         </md-list>
     </md-card-content>
