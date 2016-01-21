@@ -109,10 +109,10 @@
             var contact = {
               Name: c.Name,
               InternalMainIP: c.InternalMainIP,
-              id: c.id,
+              id: c.id
             };
             contact._lowername = c.Name.toLowerCase();
-            contact._lowertype = c.InternalMainIP.toLowerCase();
+            contact._lowertype = c.InternalMainIP;
             return contact;
           });
         }
@@ -130,7 +130,7 @@
               id: c.id,
             };
             contact._lowername = c.Name.toLowerCase();
-            contact._lowertype = c.InternalMainIP.toLowerCase();
+            contact._lowertype = c.InternalMainIP;
             return contact;
           });
 
