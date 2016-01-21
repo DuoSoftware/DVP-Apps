@@ -4,6 +4,7 @@
 
 
 
+
 app.controller("CampaignCreateController", function($scope, $location,$mdDialog, campaign,sipuser){
 
 
@@ -82,8 +83,6 @@ app.controller("CampaignCreateController", function($scope, $location,$mdDialog,
 
 
 
-
-
 app.controller("CampaignEditController", function($scope, $location,$mdDialog,$routeParams, campaign,sipuser){
 
 
@@ -94,6 +93,70 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
 
   $scope.campaign = {};
+  $scope.extensions;
+  $scope.config = {};
+
+
+  $scope.date = new Date();
+  $scope.minDate = $scope.date;
+  $scope.now = new Date();
+
+  $scope.GetCampaign= function(){
+
+    campaign.GetCampaign($routeParams.id).then(function (response) {
+      //$scope.resource = response;
+
+      if(response) {
+
+        //$location.path('/campaign/'+id+'/edit');
+        campaign.Campaign = response;
+        $scope.campaign = response;
+
+        if($scope.campaign.CampConfigurations ){
+
+
+          $scope.config = $scope.campaign.CampConfigurations;
+
+          $scope.config.StartDate = new Date($scope.config.StartDate);
+          $scope.config.EndDate = new Date($scope.config.EndDate);
+
+
+        }
+
+
+      }else{
+
+        $scope.showAlert("Error","Error","ok","There is an error, Error on get campaigns");
+
+      }
+
+    }, function (error) {
+
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+
+  }
+
+
+
+
+  $scope.LoadExtentions = function(){
+
+    // resource.user = {};
+    sipuser.GetExtensions().then(function (response) {
+      $scope.extensions = response;
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+  $scope.GetCampaign();
+  $scope.LoadExtentions();
+
 
 
   $scope.showAlert = function(tittle, label, button, content) {
@@ -128,16 +191,14 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
       if(response) {
 
-        $scope.showAlert("Update Created", "Update Created", "ok", "Update created successfully " + response.CampaignName);
-        $location.path('/campaign/list');
+        $scope.showAlert("Campaign Updated", "Campaign Updated", "ok", "Campaign Updated successfully " + campaignx.CampaignName);
+        //$location.path('/campaign/list');
 
       }else{
 
-        $scope.showAlert("Error","Error","ok","There is an error, Please check campaign name availability");
+        $scope.showAlert("Error","Error","ok","There is an error");
 
       }
-
-
 
     }, function (error) {
 
@@ -145,64 +206,78 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
     });
   };
 
+  $scope.updateCampaignConfig = function(id, campaignx) {
 
-  $scope.GetCampaign= function(){
 
-    campaign.GetCampaign($routeParams.id).then(function (response) {
-      //$scope.resource = response;
+    if($scope.campaign.CampConfigurations){
 
-      if(response) {
+      campaign.UpdateCampaignConfig(id, campaignx.ConfigureId, campaignx).then(function (response) {
+        //$scope.resource = response;
 
-        //$location.path('/campaign/'+id+'/edit');
-        campaign.Campaign = response;
-        $scope.campaign = response;
+        if(response) {
 
-      }else{
+          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + campaignx.CampaignName);
+          $route.reload();
+          //$location.path('/campaign/list');
 
-        $scope.showAlert("Error","Error","ok","There is an error, Error on get campaigns");
+        }else{
 
-      }
+          $scope.showAlert("Error","Error","ok","There is an error");
 
-    }, function (error) {
-
-      $scope.showAlert("Error","Error","ok","There is an error ");
-    });
+        }
 
 
 
-  }
+      }, function (error) {
 
-  $scope.GetCampaign();
-
-  $scope.LoadExtentions = function(){
-
-    // resource.user = {};
-    sipuser.GetExtensions().then(function (response) {
-      $scope.extensions = response;
-    }, function (error) {
-      $scope.showAlert("Error","Error","ok","There is an error ");
-    });
-
-
-  }
-
-  $scope.LoadExtentions();
+        $scope.showAlert("Error","Error","ok","There is an error ");
+      });
 
 
 
+
+    }else{
+
+
+      campaign.CreateCampaignConfig(id, campaignx).then(function (response) {
+        //$scope.resource = response;
+
+        if(response) {
+
+          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + campaignx.CampaignName);
+          $route.reload();
+          //$location.path('/campaign/list');
+
+        }else{
+
+          $scope.showAlert("Error","Error","ok","There is an error");
+
+        }
+
+
+
+      }, function (error) {
+
+        $scope.showAlert("Error","Error","ok","There is an error ");
+      });
+
+
+
+    }
+
+
+
+
+  };
 
 
 });
 
 
 
-
-
-
-
-
-
 app.controller("CampaignListController", function($scope, $location,$mdDialog, campaign){
+
+
 
 
 
@@ -255,26 +330,36 @@ app.controller("CampaignListController", function($scope, $location,$mdDialog, c
     });
   };
 
-  $scope.deleteCampaign = function(id) {
-    campaign.DeleteCampaign(id).then(function (response) {
-      //$scope.resource = response;
+  $scope.deleteCampaign = function(campObj) {
 
-      if(response) {
 
-        //$scope.showAlert("Update Created", "Update Created", "ok", "Update created successfully " + response.CampaignName);
-       // $scope.campaigns = response;
+    $scope.showConfirm("Delete Campaign", "Delete", "ok", "cancel", "Do you want to delete " + campObj.CampaignName, function (obj) {
 
-      }else{
+      campaign.DeleteCampaign(campObj.CampaignId).then(function (response) {
+        //$scope.resource = response;
 
-        $scope.showAlert("Error","Error","ok","There is an error, Error on deleting campaigns");
+        if (response) {
 
-      }
+          $scope.showAlert("Deleted", "Deleted", "ok", "Campaign " + obj.CampaignName + " Deleted successfully");
+          $scope.loadCampaign();
 
-    }, function (error) {
 
-      $scope.showAlert("Error","Error","ok","There is an error ");
-    });
+        } else {
+
+          $scope.showAlert("Error", "Error", "ok", "There is an error, Error on deleting campaigns");
+
+        }
+
+      }, function (error) {
+
+        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      });
+    }, campObj)
   };
+
+
+
+
 
 
   $scope.editCampaign= function(id){

@@ -2,9 +2,12 @@
   <md-card>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">New Campaign</span>
-        <span class="md-subhead">{{resource.CampaignName}}</span>
+        <span class="md-headline">Campaign Info</span>
+        <span class="md-subhead">{{campaign.CampaignName}}</span>
       </md-card-title-text>
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/campaign/list">
+        <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
       <md-card-title-media>
 
       </md-card-title-media>
@@ -12,9 +15,6 @@
     <md-card-content layout="column" layout-align="space-between">
       <div ng-include="'partials/campaignForm.html'"></div>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/campaign/list">
-          <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
-        </md-button>
         <md-button class="md-icon-button" ng-disabled="userForm.$invalid"  aria-label="Save"  ng-click="updateCampaign(campaign.CampaignId,campaign)">
           <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
         </md-button>
@@ -23,3 +23,33 @@
   </md-card>
 
 </form>
+
+
+
+<form name="configForm">
+  <md-card>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Campaign Config</span>
+        <span class="md-subhead">{{campaign.CampaignName}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+
+      </md-card-title-media>
+    </md-card-title>
+
+    <md-card-content layout="column" layout-align="space-between">
+      <div ng-include="'partials/campaignConfigForm.html'"></div>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="configForm.$invalid"  aria-label="Save"  ng-click="updateCampaignConfig(campaign.CampaignId,config)">
+          <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+
+</form>
+
+
+
