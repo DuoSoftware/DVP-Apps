@@ -410,7 +410,6 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 });
 
 
-
 app.controller("ConferenceEditController", function($scope, $location,$mdDialog,$routeParams,  conference){
 
 

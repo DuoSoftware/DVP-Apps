@@ -1,0 +1,99 @@
+<div layout="column"  flex-lt-md="80%">
+  <md-content layout-padding style="background-color: lightgrey"  >
+
+    <form name="editContextForm" >
+      <md-toolbar class="md-table-toolbar md-default">
+        <label style="padding:2% 0% 0% 5% ;  background-color: darkgray"><h4 style="color: #ffffff">Edit Context</h4></label>
+      </md-toolbar>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Context</label>
+          <input type="text"  name = "Context" ng-model="editObj.Context"  readonly required />
+
+          <span style="color:red" ng-show="editContextForm.Context.$dirty && newUserForm.Context.$invalid">
+
+</span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+
+          <label>Context Catagory</label>
+          <md-select name = "ContextCat" ng-model="editObj.ContextCat" ng-model-options="{trackBy: '$value'}" required>
+            <md-option value=INTERNAL>INTERNAL</md-option>
+            <md-option value=EXTERNAL>EXTERNAL</md-option>
+
+          </md-select>
+        </md-input-container>
+
+
+      </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Description</label>
+          <input type="text"  name = "Description" ng-model="editObj.Description"  required />
+
+          <span style="color:red" ng-show="editContextForm.Description.$dirty && editContextForm.Description.$invalid">
+
+</span>
+        </md-input-container>
+
+      </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Class</label>
+          <input type="text"  name = "ObjClass" ng-model="editObj.ObjClass"  readonly required />
+
+          <span style="color:red" ng-show="editContextForm.ObjClass.$dirty && editContextForm.ObjClass.$invalid">
+
+</span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Type</label>
+          <input type="text"  name = "ObjType" ng-model="editObj.ObjType"  readonly required />
+
+          <span style="color:red" ng-show="editContextForm.ObjType.$dirty && editContextForm.ObjType.$invalid">
+
+</span>
+        </md-input-container>
+
+
+      </div>
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Category</label>
+          <input type="text"  name = "ObjCategory" ng-model="editObj.ObjCategory"  readonly required />
+
+          <span style="color:red" ng-show="editContextForm.ObjCategory.$dirty && editContextForm.ObjCategory.$invalid">
+
+</span>
+        </md-input-container>
+
+      </div>
+      <div  layout-gt-sm="row">
+        <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 65%">
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="UpdateContext()" ng-disabled="isDisabled || editContextForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" ng-click="hideView()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></td>
+
+        </md-input-container>
+      </div>
+
+
+    </form>
+
+  </md-content>
+</div>
