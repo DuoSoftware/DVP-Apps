@@ -1,0 +1,69 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Attendant Transfer Configuration</div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group List" ng-click="onGroupPressed()">
+        <md-icon md-svg-src="../img/group2.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Group List
+        </md-tooltip>
+      </md-button></div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group List" ng-click="onUserPressed()">
+        <md-icon md-svg-src="../img/crowd.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Group List
+        </md-tooltip>
+      </md-button></div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+
+      <form name="attTransForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Internal Transfer Code</label>
+            <input name="internalTransCode" ng-model="transConfig.InternalTransfer" required>
+            <div ng-messages="attTransForm.internalTransCode.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>External Transfer Code</label>
+            <input name="externalTransCode" ng-model="transConfig.ExternalTransfer" required>
+            <div ng-messages="attTransForm.externalTransCode.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Group Transfer Code</label>
+            <input name="groupTransCode" ng-model="transConfig.GroupTransfer" required>
+            <div ng-messages="attTransForm.groupTransCode.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Conference Transfer Code</label>
+            <input name="conferenceTransCode" ng-model="transConfig.ConferenceTransfer" required>
+            <div ng-messages="attTransForm.conferenceTransCode.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <div flex="90"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="attTransForm.$invalid">Save</md-button></div>
+        </div>
+
+      </form>
+
+
+    </md-content>
+  </div>
+</div>

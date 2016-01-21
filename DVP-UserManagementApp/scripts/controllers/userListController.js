@@ -35,6 +35,11 @@
       $location.url("/group");
     };
 
+    $scope.onTransPressed = function()
+    {
+      $location.url("/attTransfer");
+    };
+
     $scope.onDeleteUser = function(ev, username)
     {
       var confirm = $mdDialog.confirm()

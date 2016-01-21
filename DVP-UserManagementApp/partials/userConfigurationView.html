@@ -15,7 +15,7 @@
           <div flex-gt-sm layout="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Sip Username</label>
-            <input name="sipUserName" ng-model="basicConfig.SipUsername" ng-disabled="basicConfig.IsEdit" ng-model-options="{ updateOn: 'blur' }" usernamecheck required>
+            <input name="sipUserName" ng-model="basicConfig.SipUsername" ng-disabled="IsEdit" ng-model-options="{ updateOn: 'blur' }" usernamecheck required>
             <div ng-messages="sipUserConfForm.sipUserName.$error">
               <div ng-message="required">This field is required</div>
               <div ng-message="usernamecheck">Username not validated</div>
@@ -52,7 +52,7 @@
           <div flex-gt-sm layout="row">
           <md-input-container class="md-block" flex>
             <label>Extension</label>
-            <input name="ext" ng-model="basicConfig.Extension" ng-model-options="{ updateOn: 'blur' }" extcheck required>
+            <input name="ext" ng-model="basicConfig.Extension" ng-model-options="{ updateOn: 'blur' }" extcheck required ng-disabled="IsEdit">
             <div ng-messages="sipUserConfForm.ext.$error">
               <div ng-message="required">This field is required</div>
               <div ng-message="extcheck">Extension number not validated</div>

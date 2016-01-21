@@ -9,6 +9,8 @@
   {
     $scope.endUserList = [{id:9, Domain:"sssss"}];
 
+    $scope.IsEdit = sharedData.User.IsEdit;
+
     var last = {
       bottom: false,
       top: true,
@@ -48,7 +50,7 @@
 
     $scope.onSavePressed = function()
     {
-      if(sharedData.IsEdit)
+      if(sharedData.User.IsEdit)
       {
         dvpHandler.updatePABXUser($scope.basicConfig).then(function(data1)
         {
@@ -73,13 +75,13 @@
           {
 
             var extObj = {
-              Extension: basicConfig.Extension,
-              ExtensionName: basicConfig.SipUsername,
+              Extension: $scope.basicConfig.Extension,
+              ExtensionName: $scope.basicConfig.SipUsername,
               ExtraData: "",
               AddUser: "",
               UpdateUser: "",
               Enabled: true,
-              ExtRefId: basicConfig.SipUsername,
+              ExtRefId: $scope.basicConfig.SipUsername,
               ObjCategory: "USER"
             };
 
@@ -199,7 +201,54 @@
       {
         if(data.IsSuccess)
         {
+          if(data.Result && data.Result.ExtensionId)
+          {
+            dvpHandler.getExtension(data.Result.ExtensionId).then(function(data1)
+            {
+              if(data1.IsSuccess)
+              {
+                if(data1.Result)
+                {
+                  $scope.basicConfig.Extension = data1.Result.Extension;
+                }
+
+              }
+              else
+              {
+                var errMsg = data1.CustomMessage;
+
+                if(data1.Exception)
+                {
+                  errMsg = 'Get sip user error : ' + data1.Exception.Message;
+                }
+                $mdToast.show(
+                  $mdToast.simple()
+                    .textContent(errMsg)
+                    .position($scope.getToastPosition())
+                    .hideDelay(5000)
+                );
+              }
+
+            }, function(err)
+            {
+              var errMsg = "Error occurred while getting sip user";
+              if(err.statusText)
+              {
+                errMsg = err.statusText;
+              }
+              $mdToast.show(
+                $mdToast.simple()
+                  .textContent(errMsg)
+                  .position($scope.getToastPosition())
+                  .hideDelay(5000)
+              );
+
+
+            });
+          }
+
           $scope.basicConfig = data.Result;
+
         }
         else
         {

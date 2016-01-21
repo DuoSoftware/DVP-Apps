@@ -20,6 +20,10 @@
         templateUrl: 'partials/userConfigurationView.html',
         controller: 'UserConfigurationController'
       })
+      .when("/attTransfer", {
+        templateUrl: 'partials/attendantTransferView.html',
+        controller: 'AttendantTransferController'
+      })
       .otherwise({redirectTo:"/users"});
 
   })

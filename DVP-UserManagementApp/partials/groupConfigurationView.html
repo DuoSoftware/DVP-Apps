@@ -2,8 +2,18 @@
   <md-toolbar class="md-table-toolbar md-default">
     <div class="custBackground4 md-toolbar-tools" layout="row">
       <div flex="90">Group Configuration</div>
-      <div layout="row" layout-align="right">
-      </div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group List" ng-click="onGroupPressed()">
+        <md-icon md-svg-src="../img/group2.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Group List
+        </md-tooltip>
+      </md-button></div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group List" ng-click="onTransPressed()">
+        <md-icon md-svg-src="../img/crowd.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Group List
+        </md-tooltip>
+      </md-button></div>
     </div>
   </md-toolbar>
   <div ng-cloak class="md-inline-form">
@@ -14,7 +24,7 @@
         <div layout-gt-sm="row">
           <md-input-container flex-gt-sm class="md-block">
             <label>Select a group for editing</label>
-            <md-select name="groupSelect" ng-model="basicConfig.Group" ng-model-options="{trackBy: '$value'}">
+            <md-select name="groupSelect" ng-model="basicConfig.id" ng-model-options="{trackBy: '$value'}" ng-change="onGroupChange()">
               <md-option ng-repeat="grp in groupList" value="{{grp.id}}">{{grp.GroupName}}</md-option>
             </md-select>
           </md-input-container>
@@ -24,12 +34,12 @@
         <div layout-gt-sm="row">
           <div flex-gt-sm><b>Configure Group</b></div>
           <div flex="5"></div>
-          <div layout-align="right"><md-button class="btn3">New</md-button></div>
+          <div layout-align="right"><md-button class="btn3" ng-click="onNewPressed()">New</md-button></div>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Group Name</label>
-            <input name="groupName" ng-model="basicConfig.Group" required>
+            <input name="groupName" ng-model="basicConfig.GroupName" required ng-disabled="IsEdit">
             <div ng-messages="groupConfForm.groupName.$error">
               <div ng-message="required">This field is required</div>
             </div>
@@ -42,74 +52,39 @@
             </md-select>
           </md-input-container>
         </div>
+        <br>
+        <br>
         <div layout-gt-sm="row">
-          <div flex-gt-sm layout="row">
-            <md-input-container class="md-block" flex>
-              <label>Extension</label>
-              <input name="ext" ng-model="basicConfig.Extension" ng-model-options="{ updateOn: 'blur' }" extcheck required>
-              <div ng-messages="sipUserConfForm.ext.$error">
-                <div ng-message="required">This field is required</div>
-                <div ng-message="extcheck">Extension number not validated</div>
-              </div>
-            </md-input-container>
-            <div>
-              <md-progress-circular class="paddingBottom1" md-mode="indeterminate" ng-show="sipUserConfForm.ext.$pending"></md-progress-circular>
-            </div>
+          <div><b>Add users to group</b></div>
+
           </div>
-          <div flex="5"></div>
-          <md-input-container flex-gt-sm class="md-block">
-            <label>PIN</label>
-            <input name="pin" ng-model="basicConfig.Pin">
-            <div ng-messages="sipUserConfForm.pin.$error">
-              <div ng-message="required">This field is required</div>
-            </div>
-          </md-input-container>
-        </div>
+        <br>
         <div layout-gt-sm="row">
-          <md-input-container flex-gt-sm class="md-block">
-            <label>Domain</label>
-            <md-select name="domain" ng-model="basicConfig.CloudEndUserId" ng-model-options="{trackBy: '$value'}">
-              <md-option ng-repeat="eu in endUserList" value="{{eu.id}}">{{eu.Domain}}</md-option>
-            </md-select>
-          </md-input-container>
-          <div flex="5"></div>
-          <div layout="row" flex-gt-sm>
-            <md-input-container flex-gt-sm class="md-block">
-              <label>Context</label>
-              <md-select name="context" ng-model="basicConfig.Context" ng-model-options="{trackBy: '$value'}">
-                <md-option ng-repeat="ctxt in contextList" value="{{ctxt.Context}}">{{ctxt.Context}}</md-option>
-              </md-select>
-            </md-input-container>
+          <div flex-gt-sm class="md-block">
+
+            <md-chips ng-model="currentGroupUsers" readonly="!IsEdit && !dataLoaded" md-on-add="onChipAdd($chip)" md-on-remove="onChipDelete($chip)" md-autocomplete-snap md-require-match="true">
+
+              <md-autocomplete
+                md-selected-item="selectedItem"
+                md-search-text="searchText"
+                md-items="item in querySearch(searchText)"
+                md-item-text="item.SipUsername"
+                placeholder="Sip Users">
+                <span md-highlight-text="searchText">{{item.SipUsername}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+              <span>
+                <strong>{{$chip.SipUsername}}</strong>
+              </span>
+              </md-chip-template>
+            </md-chips>
           </div>
-        </div>
-        <br>
-        <br>
-        <div layout-gt-sm="row">
-          <div><b>Attendant Transfer Configurations</b></div>
-        </div>
-        <br>
-        <div layout-gt-sm="row">
-          <md-checkbox md-no-ink aria-label="TransInternalEnable" ng-model="basicConfig.TransInternalEnable" ng-init="basicConfig.TransInternalEnable=false" class="md-primary" flex-gt-sm>
-            Internal
-          </md-checkbox>
-          <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="TransExternalEnable" ng-model="basicConfig.TransExternalEnable" ng-init="basicConfig.TransExternalEnable=false" class="md-primary" flex-gt-sm>
-            External
-          </md-checkbox>
-          <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="TransConferenceEnable" ng-model="basicConfig.TransConferenceEnable" ng-init="basicConfig.TransConferenceEnable=false" class="md-primary" flex-gt-sm>
-            Conference
-          </md-checkbox>
-          <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="TransGroupEnable" ng-model="basicConfig.TransGroupEnable"  ng-init="basicConfig.TransGroupEnable=false"class="md-primary" flex-gt-sm>
-            Group
-          </md-checkbox>
         </div>
         <br>
         <br>
         <div layout="row">
           <div flex="70"></div>
-          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="sipUserConfForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="groupConfForm.$invalid">Save</md-button></div>
           <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
         </div>
 
