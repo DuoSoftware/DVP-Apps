@@ -1,7 +1,7 @@
 /**
  * Created by a on 1/19/2016.
  */
-var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService"]);
+var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService", "scheduleService", "uploadService"]);
 
 app.config(function($routeProvider){
 
@@ -47,3 +47,21 @@ app.config(function($routeProvider){
 });
 
 
+
+app.directive("ngFileSelect",function(){
+
+  return {
+    link: function($scope,el){
+
+      el.bind("change", function(e){
+
+        $scope.file = (e.srcElement || e.target).files[0];
+        $scope.getFile();
+      })
+
+    }
+
+  }
+
+
+})
