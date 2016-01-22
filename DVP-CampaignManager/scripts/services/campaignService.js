@@ -88,9 +88,6 @@ service.factory("campaign", function($http){
   };
 
 
-
-
-
   var getCampaigns = function(){
 
     return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaigns/100").then(function(response){
@@ -110,7 +107,94 @@ service.factory("campaign", function($http){
     });
   };
 
+
+  var getReasons = function(){
+
+    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/Reasons").then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return [];
+      }
+
+
+    });
+  };
   ///{version}/CampaignManager/Campaign/{CampaignId}/Configuration
+
+
+  var getCallBacks = function(id){
+
+    ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
+
+    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/"+id+"/Callbacks").then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+
+    });
+  };
+
+
+  var deleteCallBacks = function(campId, cbId){
+
+    ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
+
+    ///CampaignManager/Campaign/:CampaignId/Callback/:CallBackId
+
+    return $http.delete("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/Callback/"+cbId).then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+
+    });
+  };
+
+  var updateCallBack = function(id, callback){
+
+    ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
+
+    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/"+id+"/Callback",callback).then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+
+    });
+  };
+
 
 
   var getCampaignConfig = function(id){
@@ -173,6 +257,66 @@ service.factory("campaign", function($http){
   };
 
 
+  var getCategories= function(){
+
+    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignCategorys").then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return [];
+      }
+
+    });
+
+  }
+
+
+  var createCategories= function(category){
+
+    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignCategory", category).then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return [];
+      }
+
+    });
+
+  }
+
+
+
+  var uploadNumbers= function(data){
+
+    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignNumbers", data).then(function(response){
+
+
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+    });
+
+  }
+
 
 
 
@@ -187,6 +331,13 @@ service.factory("campaign", function($http){
     CreateCampaignConfig: createCampaignConfig,
     UpdateCampaignConfig: updateCampaignConfig,
     GetCampaignConfig: getCampaignConfig,
+    GetCallBacks: getCallBacks,
+    UpdateCallBack: updateCallBack,
+    GetReasons:getReasons,
+    DeleteCallBacks:deleteCallBacks,
+    GetCategories: getCategories,
+    CreateCategories: createCategories,
+    UploadNumbers: uploadNumbers,
     Campaign: {}
 
 
