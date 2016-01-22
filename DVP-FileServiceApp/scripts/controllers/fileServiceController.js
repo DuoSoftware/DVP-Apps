@@ -40,7 +40,6 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
 
     clusterService.GetFiles().then(function (response) {
 
-      $log.debug("GetFiles: response" + response);
       $scope.dataReady = true;
       $scope.files = response;
       $scope.total = response.length;
@@ -79,79 +78,64 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
   };
 
   $scope.downloadFile = function (file) {
-
-    clusterService.DownloadFile(file.UniqueId).then(function (response) {
-      if (response) {
-        $scope.loadFileService();
-        $scope.showAlert("File Download", "File Download", "ok", "File " + file.Filename + " Download successfully");
-      }
-      else
-        $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    }, function (error) {
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    });
-
+      clusterService.DownloadFile(file.UniqueId,file.Filename);
   };
 
   $scope.loadFileService();
 
 });
 
-app.controller("FileEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, clusterService) {
+app.controller('FileEditController', ['$scope', 'FileUploader','clusterService', function($scope, FileUploader,clusterService) {
 
 
+  var uploader = $scope.uploader = new FileUploader({
+    url: clusterService.UploadUrl
+  });
 
+  // FILTERS
 
-  $scope.downloadFile = function(downloadPath) {
-
-    try{
-      $log.debug("GetFileServices err");
-      window.open(downloadPath, '_blank', '');
+  uploader.filters.push({
+    name: 'customFilter',
+    fn: function(item /*{File|FileLikeObject}*/, options) {
+      return this.queue.length < 10;
     }
-    catch(e){
-      $log.debug("GetFileServices errsfsfdsfzdfdfz");
-    }
+  });
+
+  // CALLBACKS
+
+  uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+    console.info('onWhenAddingFileFailed', item, filter, options);
+  };
+  uploader.onAfterAddingFile = function(fileItem) {
+    console.info('onAfterAddingFile', fileItem);
+  };
+  uploader.onAfterAddingAll = function(addedFileItems) {
+    console.info('onAfterAddingAll', addedFileItems);
+  };
+  uploader.onBeforeUploadItem = function(item) {
+    console.info('onBeforeUploadItem', item);
+  };
+  uploader.onProgressItem = function(fileItem, progress) {
+    console.info('onProgressItem', fileItem, progress);
+  };
+  uploader.onProgressAll = function(progress) {
+    console.info('onProgressAll', progress);
+  };
+  uploader.onSuccessItem = function(fileItem, response, status, headers) {
+    console.info('onSuccessItem', fileItem, response, status, headers);
+  };
+  uploader.onErrorItem = function(fileItem, response, status, headers) {
+    console.info('onErrorItem', fileItem, response, status, headers);
+  };
+  uploader.onCancelItem = function(fileItem, response, status, headers) {
+    console.info('onCancelItem', fileItem, response, status, headers);
+  };
+  uploader.onCompleteItem = function(fileItem, response, status, headers) {
+    console.info('onCompleteItem', fileItem, response, status, headers);
+  };
+  uploader.onCompleteAll = function() {
+    console.info('onCompleteAll');
   };
 
-  $scope.callServer = {};
-  $scope.IpAddress = {};
-
-  $scope.codes = [
-    {Code: 1, name: 'Basic'},
-    {Code: 2, name: 'Intermediate'},
-    {Code: 3, name: 'Advanced'},
-  ];
-
-  $scope.showAlert = function (tittle, label, button, content) {
-
-    $mdDialog.show(
-      $mdDialog.alert()
-        .parent(angular.element(document.querySelector('#popupContainer')))
-        .clickOutsideToClose(true)
-        .title(tittle)
-        .textContent(content)
-        .ok(button)
-    );
-  };
-
-
-  $scope.uploadFile = function () {
-
-    clusterService.CreateFile($scope.myFile).then(function (response) {
-      if (response) {
-        $scope.showAlert("File Upload", "File Upload", "ok", "File - ["+$scope.myFile.name+"] Uploaded." );
-        $location.path('/callserver/list');
-      } else {
-        $scope.showAlert("Error", "Error", "ok", "There is an error ");
-      }
-    }, function (error) {
-      $log.debug("onGetSuccess3");
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
-    });
-  };
-
-
-
-});
-
-
+  console.info('uploader', uploader);
+}]);

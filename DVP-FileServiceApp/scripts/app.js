@@ -1,4 +1,4 @@
-var app = angular.module("FileManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate", "fileServiceModule","angularFileUpload"]);
+var app = angular.module("FileManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate", "fileServiceModule","angularFileUpload","download"]);
 
 app.config(function ($routeProvider) {
 
@@ -8,12 +8,8 @@ app.config(function ($routeProvider) {
   })
     .when("/file/create", {
       templateUrl: 'partials/fileAdd.html',
-      controller: 'AppController'
+      controller: 'FileEditController'
 
-    })
-    .when("/file/:id/edit", {
-      templateUrl: 'partials/callEdit.html',
-      controller: 'CallEditController'
     })
     .otherwise({
       templateUrl: 'partials/fileList.html',
