@@ -68,7 +68,7 @@ nav a {
   line-height: 1em;
   margin: 0 0 0 0;
   position: relative;
-background-color: rgba(121, 134, 129, 0.5);
+  background-color: rgba(121, 134, 129, 0.5);
 }
 .md-subheader .md-subheader-inner {
   display: block;

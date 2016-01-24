@@ -2,6 +2,7 @@ var app = angular.module("ClusterManageApp");
 
 app.controller("CallListController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
 
+
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
 
@@ -82,7 +83,9 @@ app.controller("CallListController", function ($scope, $routeParams, $mdDialog, 
 
 });
 
-app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
+app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, clusterService) {
+
+
 
   $scope.callServer = {};
   $scope.IpAddress = {};
@@ -136,13 +139,20 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
   };
 
   $scope.loadCallServer = function () {
-    /*clusterService.GetIpAddresses().then(function (response) {
-     $scope.ipAddress = response;
-     }, function (error) {
-     $scope.showAlert("Error", "Error", "ok", "Fail to get IP Address List.");
-     });*/
+
 
     if ($routeParams.id) {
+      clusterService.GetIpAddresses().then(function (response) {
+        if (response) {
+          $scope.assignToCallServer = $filter('filter')(response, {CallServerId: $routeParams.id});
+          $scope.ipAddressAvailable = $filter('filter')($scope.assignToCallServer, {IsAllocated: false});
+          $scope.ipAddressSetToCallServer = $filter('filter')($scope.assignToCallServer, {IsAllocated: true});
+        }
+
+      }, function (error) {
+        $scope.showAlert("Error", "Error", "ok", "Fail to get IP Address List.");
+      });
+
       clusterService.GetCallServer($routeParams.id).then(function (response) {
         $scope.callServer = response;
         clusterService.CallServer = $scope.callServer;
@@ -153,8 +163,23 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
 
   };
 
+  $scope.deleteIpAddress = function () {
+
+    clusterService.DeleteIpAddress($scope.callServer).then(function (response) {
+      if (response) {
+        $scope.showAlert("Call Server Updated", "Call Server Updated", "ok", "Successfully Delete IP Address");
+      }
+      else
+        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+
+    }, function (error) {
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
+
 
   $scope.showAdvanced = function (ev) {
+
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
 
     $mdDialog.show({
@@ -220,7 +245,7 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
 
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
       $mdDialog.cancel();
     };
   }

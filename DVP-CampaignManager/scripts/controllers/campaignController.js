@@ -83,7 +83,7 @@ app.controller("CampaignCreateController", function($scope, $location,$mdDialog,
 
 
 
-app.controller("CampaignEditController", function($scope, $location,$mdDialog,$routeParams, campaign,sipuser){
+app.controller("CampaignEditController", function($scope, $location,$mdDialog,$routeParams, campaign,sipuser, schedule, fileReader){
 
 
   $scope.mechanisms = ["BLAST", "PREVIEW", "PREDICTIVE"];
@@ -95,11 +95,70 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
   $scope.campaign = {};
   $scope.extensions;
   $scope.config = {};
+  $scope.upload = {};
+  $scope.hideaddCallBack = true;
+  $scope.callBacks;
+
+  //$scope.fileUpload = {};
+
+
 
 
   $scope.date = new Date();
   $scope.minDate = $scope.date;
   $scope.now = new Date();
+
+
+  $scope.GetCallBacks= function(id){
+
+    campaign.GetCallBacks(id).then(function (response) {
+      //$scope.resource = response;
+
+      if(response) {
+
+        $scope.callBacks = response;
+
+      }else{
+
+        //$scope.showAlert("Error","Error","ok","There is an error, Error on get campaigns");
+
+      }
+
+    }, function (error) {
+
+      //$scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+  };
+
+  $scope.deleteCallback = function(id){
+
+
+
+    campaign.DeleteCallBacks($scope.campaign.CampaignId,id).then(function (response) {
+      //$scope.resource = response;
+
+      if(response) {
+
+
+        $scope.showAlert("Deleted", "Deleted", "ok", "Campaign Callback configurations deleted successfully");
+        $scope.GetCallBacks($scope.config.ConfigureId);
+
+
+      }else{
+
+        $scope.showAlert("Error","Error","ok","There is an error");
+
+      }
+
+    }, function (error) {
+
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+
+  }
 
   $scope.GetCampaign= function(){
 
@@ -120,6 +179,10 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
           $scope.config.StartDate = new Date($scope.config.StartDate);
           $scope.config.EndDate = new Date($scope.config.EndDate);
 
+          $scope.hideaddCallBack = false;
+
+          $scope.GetCallBacks($scope.config.ConfigureId);
+
 
         }
 
@@ -139,9 +202,6 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
   }
 
-
-
-
   $scope.LoadExtentions = function(){
 
     // resource.user = {};
@@ -153,11 +213,6 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
 
   }
-
-  $scope.GetCampaign();
-  $scope.LoadExtentions();
-
-
 
   $scope.showAlert = function(tittle, label, button, content) {
 
@@ -216,7 +271,7 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
         if(response) {
 
-          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + campaignx.CampaignName);
+          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + $scope.campaign.CampaignName);
           $route.reload();
           //$location.path('/campaign/list');
 
@@ -270,15 +325,141 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
   };
 
+  $scope.AddCallbackDialog = function(){
+
+
+    $mdDialog.show({
+      templateUrl: 'partials/callbackDialog.html',
+      clickOutsideToClose:true,
+      locals: {parent: $scope, configid: $scope.config.ConfigureId},
+      controller: "CallBackController",
+      bindToController: true,
+      fullscreen: true
+    })
+      .then(function(answer) {
+
+        $scope.status = 'You said the information was "' + answer + '".';
+
+        $scope.GetCallBacks($scope.config.ConfigureId);
+
+
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+
+
+  };
+
+  $scope.AddCategory = function(cat){
+
+    if(cat) {
+      var obj = {"CategoryName": cat}
+
+      campaign.CreateCategories(obj).then(function (response) {
+        //$scope.resource = response;
+
+        if(response) {
+
+          $scope.showAlert("Create category", "Create category", "ok", "Create category successfully ");
+          //$location.path('/campaign/list');
+          $scope.LoadCategories();
+
+        }else{
+
+          $scope.showAlert("Error","Error","ok","There is an error");
+
+        }
+
+      }, function (error) {
+
+        $scope.showAlert("Error","Error","ok","There is an error ");
+      });
+
+    }
+
+  };
+
+  $scope.LoadCategories = function(){
+
+    // resource.user = {};
+    campaign.GetCategories().then(function (response) {
+      $scope.Categorys = response;
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+
+  $scope.LoadSchedules = function(){
+
+    // resource.user = {};
+    schedule.GetSchedules().then(function (response) {
+      $scope.Schedules = response;
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
+
+  $scope.uploadNumbers = function(upload) {
+
+    upload.CampaignId = $scope.campaign.CampaignId;
+
+    campaign.UploadNumbers(upload).then(function (response) {
+      //$scope.resource = response;
+
+      if (response) {
+
+        $scope.showAlert("Number uploaded", "Number uploaded", "ok", "Number uploaded successfully ");
+        //$location.path('/campaign/list');
+
+      } else {
+
+        $scope.showAlert("Error", "Error", "ok", "There is an error");
+
+      }
+
+    }, function (error) {
+
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
+
+
+
+
+  $scope.GetCampaign();
+
+  $scope.LoadExtentions();
+
+  $scope.LoadCategories();
+
+  $scope.LoadSchedules();
+
+
+  $scope.getFile = function () {
+    $scope.progress = 0;
+    fileReader.readAsDataUrl($scope.file, $scope)
+      .then(function(result) {
+        $scope.imageSrc = result;
+      });
+  };
+
+  $scope.$on("fileProgress", function(e, progress) {
+    $scope.progress = progress.loaded / progress.total;
+  });
+
+
+
 
 });
 
 
 
 app.controller("CampaignListController", function($scope, $location,$mdDialog, campaign){
-
-
-
 
 
   $scope.campaigns;
@@ -375,5 +556,122 @@ app.controller("CampaignListController", function($scope, $location,$mdDialog, c
 
 
   $scope.loadCampaign();
+
+});
+
+
+app.controller("CallBackController",function($scope,  $mdDialog, campaign, configid){
+
+
+  $scope.callback = {};
+  $scope.reasons;
+
+
+
+  $scope.configid = configid;
+
+
+
+  $scope.showAlert = function(tittle, label, button, content) {
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
+
+  $scope.showConfirm = function(tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
+
+    var confirm = $mdDialog.confirm()
+      .title(tittle)
+      .textContent(content)
+      .ok(okbutton)
+      .cancel(cancelbutton);
+    $mdDialog.show(confirm).then(function() {
+      OkCallback(okObj);
+    }, function() {
+      CancelCallBack();
+    });
+  };
+
+  $scope.cancel = function(){
+
+    //alert(JSON.stringify(attributes));
+
+    $mdDialog.hide();
+
+  };
+
+
+
+
+
+  $scope.GetReasons = function(){
+
+
+
+    campaign.GetReasons().then(function (response) {
+      //$scope.resource = response;
+
+      if(response) {
+
+
+        $scope.reasons = response;
+
+
+      }else{
+
+        //$scope.showAlert("Error","Error","ok","There is an error");
+
+      }
+
+    }, function (error) {
+
+      //$scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+
+  }
+
+
+
+
+
+  $scope.AddCallBack = function(id, callback){
+
+
+
+    campaign.UpdateCallBack(id, callback).then(function (response) {
+      //$scope.resource = response;
+
+      if(response) {
+
+
+        $mdDialog.hide();
+
+
+      }else{
+
+        $scope.showAlert("Error","Error","ok","There is an error");
+
+      }
+
+    }, function (error) {
+
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+
+  }
+
+  $scope.GetReasons();
+
+
 
 });
