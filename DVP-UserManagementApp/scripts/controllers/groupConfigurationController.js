@@ -213,9 +213,9 @@
       return null;
     };
 
-    $scope.onTransPressed = function()
+    $scope.onUserListPressed = function()
     {
-      $location.url("/attTransfer");
+      $location.url("/users");
     };
 
     $scope.onNewPressed = function()
