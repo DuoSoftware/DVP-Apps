@@ -1,0 +1,99 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Actions</div>
+    </div>
+  </md-toolbar>
+
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="dataReady">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="dataReady">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>Event</th>
+        <th md-column>Name</th>
+        <th md-column>Action</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in actionList">
+
+        <td md-cell>{{item.OnEvent}}</td>
+        <td md-cell>{{item.Name}}</td>
+        <td md-cell>{{item.Action}}</td>
+        <td md-cell>
+          <div layout="row">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeletePressed($event, item.Name)">
+              <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <br>
+  <br>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+
+      <form name="actionConfigForm">
+          <div layout-gt-sm="row">
+            <div flex-gt-sm layout="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>On Event</label>
+                <input name="onEvent" ng-model="actionConfig.OnEvent" required ng-disabled="IsEdit">
+                <div ng-messages="actionConfigForm.onEvent.$error">
+                  <div ng-message="required">This field is required</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5"></div>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Name</label>
+              <input name="actionName" ng-model="actionConfig.Name" required>
+              <div ng-messages="actionConfigForm.actionName.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <div flex-gt-sm layout="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Action</label>
+                <md-select name="actionAction" ng-model="actionConfig.Action" ng-model-options="{trackBy: '$value'}" required>
+                  <md-option value="route">Route</md-option>
+                  <md-option value="play">Play</md-option>
+                  <md-option value="transfer">Transfer</md-option>
+                </md-select>
+                <div ng-messages="actionConfigForm.actionAction.$error">
+                  <div ng-message="required">This field is required</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5"></div>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Data</label>
+              <input name="actionData" ng-model="actionConfig.Data">
+            </md-input-container>
+          </div>
+          <br>
+          <br>
+          <div layout="row">
+            <div flex="70"></div>
+            <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="actionConfigForm.$invalid">Save</md-button></div>
+            <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+          </div>
+
+      </form>
+    </md-content>
+  </div>
+
+</div>
+
+

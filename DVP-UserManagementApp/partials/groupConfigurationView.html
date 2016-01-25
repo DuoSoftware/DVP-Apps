@@ -1,0 +1,91 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Group Configuration</div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group List" ng-click="onUserListPressed()">
+        <md-icon md-svg-src="../img/group2.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          User List
+        </md-tooltip>
+      </md-button></div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+
+      <form name="groupConfForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container flex-gt-sm class="md-block">
+            <label>Select a group for editing</label>
+            <md-select name="groupSelect" ng-model="basicConfig.id" ng-model-options="{trackBy: '$value'}" ng-change="onGroupChange()">
+              <md-option ng-repeat="grp in groupList" value="{{grp.id}}">{{grp.GroupName}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <br>
+        <br>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm><b>Configure Group</b></div>
+          <div flex="5"></div>
+          <div layout-align="right"><md-button class="btn3" ng-click="onNewPressed()">New</md-button></div>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Group Name</label>
+            <input name="groupName" ng-model="basicConfig.GroupName" required ng-disabled="IsEdit">
+            <div ng-messages="groupConfForm.groupName.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Domain</label>
+            <md-select name="groupSelect" ng-model="basicConfig.Domain">
+              <md-option ng-repeat="eu in endUserList">{{eu.Domain}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <br>
+        <br>
+        <div layout-gt-sm="row">
+          <div><b>Add users to group</b></div>
+
+          </div>
+        <br>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm class="md-block">
+
+            <md-chips ng-model="currentGroupUsers" readonly="!IsEdit && !dataLoaded" md-on-add="onChipAdd($chip)" md-on-remove="onChipDelete($chip)" md-autocomplete-snap md-require-match="true">
+
+              <md-autocomplete
+                md-selected-item="selectedItem"
+                md-search-text="searchText"
+                md-items="item in querySearch(searchText)"
+                md-item-text="item.SipUsername"
+                placeholder="Sip Users">
+                <span md-highlight-text="searchText">{{item.SipUsername}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+              <span>
+                <strong>{{$chip.SipUsername}}</strong>
+              </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="groupConfForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+        </div>
+
+      </form>
+
+
+    </md-content>
+  </div>
+</div>
+
