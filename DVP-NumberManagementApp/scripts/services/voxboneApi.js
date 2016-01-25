@@ -3,7 +3,10 @@
  */
 (function(){
   var voxboneApi = function($http){
-    var accessToken = "Basic d2FydW5hOkR1b1MxMjM=";
+    //var accessToken = "Basic d2FydW5hOkR1b1MxMjM=";
+    var uname = "waruna";
+    var pword = "DuoS123";
+    var accessToken = 'Basic ' + new Buffer(uname + ':' + pword).toString('base64');
     var GetCountryCodes = function(pageNumber, pageSize){
       return $http({
         method: 'GET',

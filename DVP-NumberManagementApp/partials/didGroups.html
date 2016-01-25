@@ -29,8 +29,8 @@
             </tr>
             </thead>
             <tbody md-body>
-            <tr md-row layout-align="center center" md-auto-select ng-repeat="didGroup in didGroups | limitTo: query.limit: (query.page - 1) * query.limit">
-              <td md-cell>{{didGroup.didGroupId}} </td>
+            <tr md-row layout-align="center center" ng-class="{'selected':$index == selectedRow}" md-auto-select ng-dblclick="onRawSelected($index, didGroup.didGroupId)" ng-repeat="didGroup in didGroups | limitTo: query.limit: (query.page - 1) * query.limit">
+              <td md-cell>{{didGroup.didGroupId}}</td>
               <td md-cell>{{didGroup.countryCodeA3}}</td>
               <td md-cell>{{didGroup.stateId}}</td>
               <td md-cell>{{didGroup.didType}}</td>
@@ -39,11 +39,21 @@
               <td md-cell>{{didGroup.stock}}</td>
               <td md-cell ng-repeat="feature in didGroup.features">
                 <div ng-switch="feature.name">
-                  <md-icon ng-switch-when="VoxIN" md-svg-src="../img/smartphone-2.svg"></md-icon>
-                  <md-icon ng-switch-when="VoxOUT" md-svg-src="../img/smartphone-1.svg"></md-icon>
-                  <md-icon ng-switch-when="VoxFax" md-svg-src="../img/smartphone-1.svg"></md-icon>
-                  <md-icon ng-switch-when="T.38" md-svg-src="../img/smartphone-1.svg"></md-icon>
-                  <md-icon ng-switch-when="VoxSMS" md-svg-src="../img/smartphone-1.svg"></md-icon>
+                  <md-icon ng-switch-when="VoxIN" md-svg-src="../img/smartphone-2.svg">
+                    <md-tooltip md-direction="right">{{feature.name}}</md-tooltip>
+                  </md-icon>
+                  <md-icon ng-switch-when="VoxOUT" md-svg-src="../img/smartphone-1.svg">
+                    <md-tooltip md-direction="right">{{feature.name}}</md-tooltip>
+                  </md-icon>
+                  <md-icon ng-switch-when="VoxFax" md-svg-src="../img/file98.svg"></md-icon>
+                  <md-tooltip md-direction="right">{{feature.name}}
+                  </md-tooltip>
+                  <md-icon ng-switch-when="T.38" md-svg-src="../img/file98.svg">
+                    <md-tooltip md-direction="right">{{feature.name}}</md-tooltip>
+                  </md-icon>
+                  <md-icon ng-switch-when="VoxSMS" md-svg-src="../img/smartphone-sms.svg">
+                    <md-tooltip md-direction="right">{{feature.name}}</md-tooltip>
+                  </md-icon>
                 </div>
               </td>
             </tr>
