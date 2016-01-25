@@ -83,7 +83,7 @@ app.controller("CampaignCreateController", function($scope, $location,$mdDialog,
 
 
 
-app.controller("CampaignEditController", function($scope, $location,$mdDialog,$routeParams, campaign,sipuser, schedule, fileReader){
+app.controller("CampaignEditController", function($scope, $location,$mdDialog, $log, $routeParams, campaign,sipuser, schedule, fileReader){
 
 
   $scope.mechanisms = ["BLAST", "PREVIEW", "PREDICTIVE"];
@@ -272,7 +272,7 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
         if(response) {
 
           $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + $scope.campaign.CampaignName);
-          $route.reload();
+          $scope.GetCampaign();
           //$location.path('/campaign/list');
 
         }else{
@@ -299,8 +299,8 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
         if(response) {
 
-          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + campaignx.CampaignName);
-          $route.reload();
+          $scope.showAlert("Campaign config updated", "Campaign config updated", "ok", "Campaign config updated successfully " + $scope.campaign.CampaignName);
+          $scope.GetCampaign();
           //$location.path('/campaign/list');
 
         }else{
@@ -383,7 +383,16 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
     // resource.user = {};
     campaign.GetCategories().then(function (response) {
-      $scope.Categorys = response;
+      $scope.Categorys = response.map(function(c,index){
+
+        var item = c;
+        item._lowername= item.CategoryName.toLowerCase();
+        return item;
+
+      });
+
+
+
     }, function (error) {
       $scope.showAlert("Error","Error","ok","There is an error ");
     });
@@ -406,6 +415,8 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
   $scope.uploadNumbers = function(upload) {
 
+
+
     upload.CampaignId = $scope.campaign.CampaignId;
 
     campaign.UploadNumbers(upload).then(function (response) {
@@ -413,8 +424,13 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
 
       if (response) {
 
+
         $scope.showAlert("Number uploaded", "Number uploaded", "ok", "Number uploaded successfully ");
-        //$location.path('/campaign/list');
+
+        this.form.reset();
+
+
+
 
       } else {
 
@@ -429,8 +445,6 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
   };
 
 
-
-
   $scope.GetCampaign();
 
   $scope.LoadExtentions();
@@ -440,17 +454,47 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog,$r
   $scope.LoadSchedules();
 
 
-  $scope.getFile = function () {
+  $scope.getFile = function (file) {
+    $scope.file = file;
     $scope.progress = 0;
-    fileReader.readAsDataUrl($scope.file, $scope)
+    fileReader.readAsText($scope.file, $scope)
       .then(function(result) {
-        $scope.imageSrc = result;
+        $scope.upload.Contacts = JSON.parse(result);
       });
   };
 
   $scope.$on("fileProgress", function(e, progress) {
-    $scope.progress = progress.loaded / progress.total;
+    $scope.progress = (progress.loaded / progress.total) * 100;
   });
+
+
+
+
+  $scope.querySearch = function(query) {
+    var results = query ? $scope.Categorys.filter($scope.createFilterFor(query)) : [];
+    return results;
+  }
+
+
+  $scope.createFilterFor = function(query) {
+    var lowercaseQuery = angular.lowercase(query);
+    return function filterFn(cat) {
+      return (cat._lowername.indexOf(lowercaseQuery) === 0);
+    };
+  }
+
+  $scope.searchTextChange = function(text) {
+    $log.info('Text changed to ' + text);
+  }
+  $scope.selectedItemChange = function(item) {
+    $log.info('Item changed to ' + JSON.stringify(item));
+    if(item){
+
+      $scope.upload.CategoryID = item.CategoryID;
+
+    }
+  }
+
 
 
 
@@ -521,7 +565,7 @@ app.controller("CampaignListController", function($scope, $location,$mdDialog, c
 
         if (response) {
 
-          $scope.showAlert("Deleted", "Deleted", "ok", "Campaign " + obj.CampaignName + " Deleted successfully");
+          $scope.showAlert("Deleted", "Deleted", "ok", "Campaign " + campObj.CampaignName + " Deleted successfully");
           $scope.loadCampaign();
 
 
