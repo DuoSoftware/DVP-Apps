@@ -1,0 +1,49 @@
+<md-table-container >
+
+  <div class="divTable" layout="row" layout-align="center center" ng-hide="dataReady">
+    <div layout="column" layout-align="center center">
+      <h4>loading data</h4>
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+  </div>
+
+  <table md-table md-progress="promise" width="100%" ng-show="dataReady">
+    <thead md-head  md-order="query.order" md-on-reorder="query.order">
+    <tr class="md-table-header" md-row>
+      <th md-column>ID</th>
+      <th md-column md-order-by="Name">File Name</th>
+      <th md-column>Version</th>
+      <th md-column>Delete</th>
+      <th md-column>Download</th>
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
+        ng-repeat="file in files |  orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit">
+
+      <td md-cell>{{file.UniqueId}}</td>
+      <td md-cell>{{file.Filename}}</td>
+      <td md-cell>{{file.Version}}</td>
+
+      <td md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
+                   ng-click="deleteFile(file)">
+          <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+        </md-button>
+      </td>
+      <td md-cell>
+           <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
+                   ng-click="downloadFile(file)">
+          <md-icon md-svg-src="img/download.svg"></md-icon>
+        </md-button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</md-table-container>
+<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+
+
+
+
+

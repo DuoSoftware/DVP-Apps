@@ -1,0 +1,31 @@
+
+<input id="fileInput" type="file" class="ng-hide"  ng-file-select="onFileSelect($files)">
+
+
+<md-button id="uploadButton" class="md-icon-button" ng-disabled="uploadForm.$invalid"  aria-label="Save">
+  <md-icon md-svg-src="../img/file98.svg"></md-icon>
+</md-button>
+
+<md-input-container  md-no-float>
+  <input id="textInput" ng-model="fileName" type="text" placeholder="No file chosen" ng-readonly="true">
+</md-input-container>
+
+
+
+  <md-button id="resetButton" class="md-icon-button" ng-disabled="uploadForm.$invalid"  aria-label="Save">
+    <md-icon md-svg-src="../img/ic_close_24px.svg"></md-icon>
+  </md-button>
+
+
+  <md-progress-linear md-mode="determinate" value="{{progress}}"></md-progress-linear>
+
+
+
+  <!--
+
+
+<md-button id="uploadButton" class="md-raised md-primary" aria-label="attach_file">
+  Choose file
+</md-button>
+
+    -->

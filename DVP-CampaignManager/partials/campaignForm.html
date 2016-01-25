@@ -15,8 +15,8 @@
 
         <md-input-container class="md-block" flex-gt-xs="">
           <label>Extension</label>
-          <md-select ng-model="campaign.Extension">
-            <md-option ng-repeat="(index,ext) in extensions" value="{{ext.Extension}}" ng-selected="(index == 1) ? true:false" >
+          <md-select ng-model="campaign.Extensions">
+            <md-option ng-repeat="(index,ext) in extensions" value="{{ext.Extension}}">
               {{ext.Extension}}
             </md-option>
           </md-select>

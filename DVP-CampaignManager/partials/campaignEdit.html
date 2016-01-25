@@ -1,10 +1,17 @@
+
+
+
+
 <form name="userForm">
   <md-card>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">New Campaign</span>
-        <span class="md-subhead">{{resource.CampaignName}}</span>
+        <span class="md-headline">Campaign info</span>
+        <span class="md-subhead">{{campaign.CampaignName}}</span>
       </md-card-title-text>
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/campaign/list">
+        <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
       <md-card-title-media>
 
       </md-card-title-media>
@@ -12,9 +19,6 @@
     <md-card-content layout="column" layout-align="space-between">
       <div ng-include="'partials/campaignForm.html'"></div>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/campaign/list">
-          <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
-        </md-button>
         <md-button class="md-icon-button" ng-disabled="userForm.$invalid"  aria-label="Save"  ng-click="updateCampaign(campaign.CampaignId,campaign)">
           <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
         </md-button>
@@ -23,3 +27,86 @@
   </md-card>
 
 </form>
+
+
+
+<form name="configForm">
+  <md-card>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Campaign config</span>
+        <span class="md-subhead">{{campaign.CampaignName}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+
+      </md-card-title-media>
+    </md-card-title>
+
+    <md-card-content layout="column" layout-align="space-between">
+      <div ng-include="'partials/campaignConfigForm.html'"></div>
+
+
+      <md-list ng-cloak>
+
+        <h4>CallBack configurations</h4>
+
+        <md-list-item ng-repeat="cb in callBacks">
+
+          <p>{{ cb.CampCallBackReasons.Reason }}</p>
+          <p>{{ cb.CallbackInterval }}</p>
+          <p>{{ cb.MaxCallBackCount }}</p>
+
+
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteCallback(cb.CallBackConfId)">
+            <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+          </md-button>
+
+        </md-list-item>
+      </md-list>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="configForm.$invalid"  aria-label="Save"  ng-click="updateCampaignConfig(campaign.CampaignId,config)">
+          <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+        </md-button>
+
+
+
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+
+</form>
+
+
+
+
+<form name="uploadForm">
+  <md-card>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Campaign number upload</span>
+        <span class="md-subhead">{{campaign.CampaignName}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+
+      </md-card-title-media>
+    </md-card-title>
+
+    <md-card-content layout="column" layout-align="space-between">
+      <div ng-include="'partials/campaignNumberUpload.html'"></div>
+
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="uploadForm.$invalid"  aria-label="Save"  ng-click="uploadNumbers(upload)">
+          <md-icon md-svg-src="../img/upload.svg"></md-icon>
+        </md-button>
+
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+
+</form>
+
+

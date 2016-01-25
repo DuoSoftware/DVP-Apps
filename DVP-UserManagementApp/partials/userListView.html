@@ -1,0 +1,63 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">SIP User List</div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Group" ng-click="onGroupPressed()">
+        <md-icon md-svg-src="../img/group2.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Group Configuration
+        </md-tooltip>
+      </md-button></div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="Transfer" ng-click="onTransPressed()">
+        <md-icon md-svg-src="../img/smartphone-tranfer.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          Attendant Transfer
+        </md-tooltip>
+      </md-button></div>
+    </div>
+  </md-toolbar>
+  <div>
+    <md-button class="md-fab md-mini custBackground3" aria-label="New User" ng-click="onNewPressed()">
+      <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+      <md-tooltip md-direction="bottom">
+        Add New User
+      </md-tooltip>
+    </md-button>
+    </div>
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="dataReady">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="dataReady">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>Sip Username</th>
+        <th md-column>Email Address</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in sipUsrList | filter : item.Enabled : true | limitTo: query.limit: (query.page - 1) * query.limit">
+
+        <td md-cell>{{item.SipUsername}}</td>
+        <td md-cell>{{item.EmailAddress}}</td>
+        <td md-cell>
+          <div layout="row">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
+              <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeleteUser($event, item.SipUsername)">
+              <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+</div>
+
+

@@ -417,6 +417,7 @@ app.controller("ConferenceEditController", function($scope, $location,$mdDialog,
   $scope.edit = true;
   $scope.now = new Date().getTime();
 
+
   $scope.showAlert = function(tittle, label, button, content) {
 
     $mdDialog.show(
