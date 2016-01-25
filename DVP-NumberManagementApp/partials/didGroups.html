@@ -1,0 +1,60 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">{{hLable}} DID GROUPS</div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+      <form name="didGroupsForm">
+
+        <md-table-container>
+          <div layout="row" layout-align="center center" ng-hide="didGroups">
+            <div layout="column" layout-align="center center">
+              <h4>loading data</h4>
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+          </div>
+          <table md-table md-progress="promise" ng-show="didGroups">
+            <thead md-head>
+            <tr md-row>
+              <th md-column>DID GroupId</th>
+              <th md-column>Country Code</th>
+              <th md-column>StateId</th>
+              <th md-column>DID Type</th>
+              <th md-column>City Name</th>
+              <th md-column>Area Code</th>
+              <th md-column>Stock</th>
+              <th md-column>Features</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row layout-align="center center" md-auto-select ng-repeat="didGroup in didGroups | limitTo: query.limit: (query.page - 1) * query.limit">
+              <td md-cell>{{didGroup.didGroupId}} </td>
+              <td md-cell>{{didGroup.countryCodeA3}}</td>
+              <td md-cell>{{didGroup.stateId}}</td>
+              <td md-cell>{{didGroup.didType}}</td>
+              <td md-cell>{{didGroup.cityName}}</td>
+              <td md-cell>{{didGroup.areaCode}}</td>
+              <td md-cell>{{didGroup.stock}}</td>
+              <td md-cell ng-repeat="feature in didGroup.features">
+                <div ng-switch="feature.name">
+                  <md-icon ng-switch-when="VoxIN" md-svg-src="../img/smartphone-2.svg"></md-icon>
+                  <md-icon ng-switch-when="VoxOUT" md-svg-src="../img/smartphone-1.svg"></md-icon>
+                  <md-icon ng-switch-when="VoxFax" md-svg-src="../img/smartphone-1.svg"></md-icon>
+                  <md-icon ng-switch-when="T.38" md-svg-src="../img/smartphone-1.svg"></md-icon>
+                  <md-icon ng-switch-when="VoxSMS" md-svg-src="../img/smartphone-1.svg"></md-icon>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}} md-on-paginate="onPaginate"></md-table-pagination>
+
+      </form>
+    </md-content>
+  </div>
+</div>
+
+

@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Voxbone Number Management</div>
+    </div>
+  </md-toolbar>
 
-</body>
-</html>
+  <div>
+    <md-autocomplete
+      md-selected-item="country"
+      md-search-text="searchText"
+      md-selected-item-change="showDidGroupDialog($event, item.countryCodeA3)"
+      md-items="item in querySearch(searchText)"
+      md-item-text="item.countryName"
+      md-min-length="0"
+      placeholder="Select Your Country">
+      <md-item-template>
+        <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.countryName}}</span>
+      </md-item-template>
+      <md-not-found>
+        No Country matching "{{ctrl.searchText}}" were found.
+      </md-not-found>
+    </md-autocomplete>
+  </div>
+</div>
+
+
