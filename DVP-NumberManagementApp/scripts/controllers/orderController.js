@@ -3,7 +3,7 @@
  */
 (function(){
   var app = angular.module("numberManagementApp");
-  var orderController = function($scope, voxboneApi, $mdDialog, $mdMedia){
+  var orderController = function($scope, $route, voxboneApi, $mdDialog, $mdMedia){
     var onInitiateOrderComplete = function(data){
       $scope.processing = false;
       if(data.IsSuccess){
@@ -27,7 +27,15 @@
           };
         });
       }else{
-        $scope.showAlert("Error", "OK", data.CustomMessage);
+        if(Array.isArray(data.Result)){
+          if(data.Result[0].apiErrorCode == "2"){
+            $scope.showConfirm(null, "Error", "OK", data.Result[0].apiErrorMessage);
+          }else {
+            $scope.showAlert("Error", "OK", data.Result[0].apiErrorMessage);
+          }
+        }else {
+          $scope.showAlert("Error", "OK", data.CustomMessage);
+        }
       }
     };
     var onError = function(){
@@ -59,6 +67,17 @@
           .ok(button)
       );
     };
+    $scope.showConfirm = function(ev, tittle, button, content) {
+      var confirm = $mdDialog.confirm()
+        .title(tittle)
+        .textContent(content)
+        .targetEvent(ev)
+        .ok(button);
+      $mdDialog.show(confirm).then(function() {
+        $route.reload();
+      }, function() {
+      });
+    };
     $scope.showDidGroupDialog = function(ev, countryCode) {
       if(countryCode) {
         $scope.order.countryCodeA3 = countryCode;
@@ -71,7 +90,8 @@
           clickOutsideToClose: true,
           fullscreen: useFullScreen,
           locals: {
-            countryCode: countryCode
+            countryCode: countryCode,
+            accessToken: $scope.accessToken
           }
         })
           .then(function (ans) {
@@ -89,20 +109,48 @@
         });
       }
     };
+    $scope.showVoxboneLoginDialog = function(ev) {
+      if(!$scope.accessToken) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+        $mdDialog.show({
+          controller: voxboneLoginDialogController,
+          templateUrl: 'partials/voxboneLogin.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: false,
+          fullscreen: useFullScreen
+        })
+          .then(function (ans) {
+            $scope.accessToken = ans;
+            $scope.loadData();
+          }, function () {
+          });
+        $scope.$watch(function () {
+          return $mdMedia('xs') || $mdMedia('sm');
+        }, function (wantsFullScreen) {
+          $scope.customFullscreen = (wantsFullScreen === true);
+        });
+      }
+    };
     $scope.onInitiateOrder = function(){
       $scope.processing = true;
-      voxboneApi.OrderDid($scope.order).then(onInitiateOrderComplete, onError);
+      voxboneApi.OrderDid($scope.accessToken, $scope.order).then(onInitiateOrderComplete, onError);
     };
     $scope.clearOrder = function(){
       $scope.order = {countryCodeA3:$scope.order.countryCodeA3};
     };
     $scope.loadData = function(){
-      voxboneApi.GetCountryCodes(0,500).then(onGetCountryCodesComplete, onError);
+      voxboneApi.GetCountryCodes($scope.accessToken, 0,500).then(onGetCountryCodesComplete, onError);
     };
-    $scope.loadData();
+    $scope.$on('$locationChangeStart', function( event ) {
+      $scope.userName = null;
+      $scope.password = null;
+      $scope.accessToken = null;
+    });
+    $scope.showVoxboneLoginDialog();
   };
 
-  function didGroupDialogController($scope, voxboneApi, $mdDialog, countryCode){
+  function didGroupDialogController($scope, voxboneApi, $mdDialog, countryCode, accessToken){
     var onFilterDidsFormTypeComplete = function(data){
       if(data.IsSuccess){
         var jResult = JSON.parse(data.Result);
@@ -191,7 +239,7 @@
       if(!$scope.query.loadedPages.inArray(page)) {
         angular.extend({}, $scope.query, {page: page, limit: limit});
         var qPage = page - 1;
-        voxboneApi.GetDidsForCountryCode(countryCode, qPage, limit).then(onGetDidsForCountryCodeComplete, onError);
+        voxboneApi.GetDidsForCountryCode(accessToken, countryCode, qPage, limit).then(onGetDidsForCountryCodeComplete, onError);
       }
     };
     $scope.FilterByDidType = function(didType){
@@ -202,7 +250,7 @@
         page: 1
       };
       var page = $scope.query.page - 1;
-      voxboneApi.FilterDidsFormType(didType, countryCode, page, $scope.query.limit).then(onFilterDidsFormTypeComplete, onError);
+      voxboneApi.FilterDidsFormType(accessToken, didType, countryCode, page, $scope.query.limit).then(onFilterDidsFormTypeComplete, onError);
     };
     $scope.loadDidGroups = function(){
       $scope.query = {
@@ -212,9 +260,25 @@
         page: 1
       };
       var page = $scope.query.page - 1;
-      voxboneApi.GetDidsForCountryCode(countryCode, page, $scope.query.limit).then(onGetDidsForCountryCodeComplete, onError);
+      voxboneApi.GetDidsForCountryCode(accessToken, countryCode, page, $scope.query.limit).then(onGetDidsForCountryCodeComplete, onError);
     };
     $scope.loadDidGroups();
+  };
+  function voxboneLoginDialogController($scope, Base64, $mdDialog){
+    $scope.userName = null;
+    $scope.password = null;
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(ans) {
+      $mdDialog.hide(ans);
+    };
+    $scope.createAuthToken = function(){
+      $scope.answer('Basic ' + Base64.encode($scope.userName + ':' + $scope.password));
+    };
   };
   app.controller("orderController", orderController);
 }());
