@@ -4,6 +4,7 @@
       <div layout-gt-xs="row">
 
 
+        <!--
         <md-input-container class="md-block" flex-gt-xs="">
           <label>Caller</label>
           <input type="text" class="form-control" id="caller" name="caller" placeholder="Caller Name Here" ng-required="true" ng-model="config.Caller" />
@@ -11,6 +12,31 @@
             <div ng-message="required">Name is required.</div>
           </div>
         </md-input-container>
+
+-->
+
+        <md-input-container flex-gt-xs="">
+          <label>Number</label>
+          <md-select ng-model="config.Caller" ng-required="true" id="callerselect">
+            <md-option ng-repeat="number in Numbers" value="{{number.PhoneNumber}}">
+              {{number.PhoneNumber}}
+            </md-option>
+          </md-select>
+
+          <div ng-messages="uploadForm.select.$error">
+            <div ng-message="required">This field is required</div>
+          </div>
+        </md-input-container>
+
+
+
+
+
+
+
+
+
+
 
         <div layout-gt-xs="row" flex-gt-xs="">
           <md-input-container class="md-block">

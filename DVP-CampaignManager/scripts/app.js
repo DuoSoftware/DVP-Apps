@@ -1,7 +1,7 @@
 /**
  * Created by a on 1/19/2016.
  */
-var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService", "scheduleService", "uploadService"]);
+var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService", "scheduleService", "uploadService", "phoneNumberService"]);
 
 app.config(function($routeProvider){
 
@@ -53,6 +53,7 @@ app.directive('apsUploadFile', apsUploadFile);
 
 function apsUploadFile() {
   var directive = {
+    transclude: true,
     restrict: 'E',
     templateUrl: 'partials/uploadButton.html',
     link: function apsUploadFileLink(scope, element, attrs) {
