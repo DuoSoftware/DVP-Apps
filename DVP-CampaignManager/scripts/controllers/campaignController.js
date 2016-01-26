@@ -83,7 +83,7 @@ app.controller("CampaignCreateController", function($scope, $location,$mdDialog,
 
 
 
-app.controller("CampaignEditController", function($scope, $location,$mdDialog, $log, $routeParams, campaign,sipuser, schedule, fileReader){
+app.controller("CampaignEditController", function($scope, $location,$mdDialog, $log, $routeParams, campaign,sipuser, schedule,number, fileReader){
 
 
   $scope.mechanisms = ["BLAST", "PREVIEW", "PREDICTIVE"];
@@ -400,6 +400,28 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog, $
 
   }
 
+  $scope.LoadNumbers = function(){
+
+    // resource.user = {};
+    number.GetNumbers().then(function (response) {
+      $scope.Numbers = response.map(function(c,index){
+
+        if(c.ObjCategory != "INBOUND")
+
+        var item = c;
+        item._lowername= item.ObjCategory.toLowerCase();
+        return item;
+
+      });
+
+
+
+    }, function (error) {
+      $scope.showAlert("Error","Error","ok","There is an error ");
+    });
+
+
+  }
 
   $scope.LoadSchedules = function(){
 
@@ -445,13 +467,17 @@ app.controller("CampaignEditController", function($scope, $location,$mdDialog, $
   };
 
 
-  $scope.GetCampaign();
 
-  $scope.LoadExtentions();
+    $scope.GetCampaign();
 
-  $scope.LoadCategories();
+    $scope.LoadExtentions();
 
-  $scope.LoadSchedules();
+    $scope.LoadCategories();
+
+    $scope.LoadSchedules();
+
+    $scope.LoadNumbers();
+
 
 
   $scope.getFile = function (file) {
