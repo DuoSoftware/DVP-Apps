@@ -90,7 +90,7 @@ service.factory("campaign", function($http){
 
   var getCampaigns = function(){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaigns/100").then(function(response){
+    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaigns/0").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -128,7 +128,6 @@ service.factory("campaign", function($http){
   };
   ///{version}/CampaignManager/Campaign/{CampaignId}/Configuration
 
-
   var getCallBacks = function(id){
 
     ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
@@ -149,7 +148,6 @@ service.factory("campaign", function($http){
 
     });
   };
-
 
   var deleteCallBacks = function(campId, cbId){
 
@@ -195,8 +193,6 @@ service.factory("campaign", function($http){
     });
   };
 
-
-
   var getCampaignConfig = function(id){
 
     return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id+"/Configurations").then(function(response){
@@ -215,7 +211,6 @@ service.factory("campaign", function($http){
 
     });
   };
-
 
   var createCampaignConfig = function(id, config){
 
@@ -236,7 +231,6 @@ service.factory("campaign", function($http){
     });
   };
 
-
   var updateCampaignConfig = function(id, configId, config){
 
     return $http.put("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id+"/Configuration/"+configId, config).then(function(response){
@@ -255,7 +249,6 @@ service.factory("campaign", function($http){
 
     });
   };
-
 
   var getCategories= function(){
 
@@ -276,7 +269,6 @@ service.factory("campaign", function($http){
 
   }
 
-
   var createCategories= function(category){
 
     return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignCategory", category).then(function(response){
@@ -296,8 +288,6 @@ service.factory("campaign", function($http){
 
   }
 
-
-
   var uploadNumbers= function(data){
 
     return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignNumbers", data).then(function(response){
@@ -316,9 +306,6 @@ service.factory("campaign", function($http){
     });
 
   }
-
-
-
 
 
   return{

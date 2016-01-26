@@ -1,5 +1,4 @@
-<input type="file" ng-file-select="onFileSelect($files)" >
-<progress value="{{progress}}"></progress>
+
 
 
 
@@ -70,6 +69,9 @@
         <md-button class="md-icon-button" ng-disabled="configForm.$invalid"  aria-label="Save"  ng-click="updateCampaignConfig(campaign.CampaignId,config)">
           <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
         </md-button>
+
+
+
       </md-card-actions>
     </md-card-content>
   </md-card>
@@ -100,6 +102,7 @@
         <md-button class="md-icon-button" ng-disabled="uploadForm.$invalid"  aria-label="Save"  ng-click="uploadNumbers(upload)">
           <md-icon md-svg-src="../img/upload.svg"></md-icon>
         </md-button>
+
       </md-card-actions>
     </md-card-content>
   </md-card>
