@@ -30,7 +30,7 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
   };
 
   $scope.query = {
-    order: "Name",
+    order: "Filename",
     limit: 10,
     page: 1
   };
@@ -48,6 +48,8 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
       $log.debug("GetFiles err");
       $scope.showAlert("Error", "Error", "ok", "There is an error ");
     });
+
+
 
   };
 
@@ -85,7 +87,7 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
 
 });
 
-app.controller('FileEditController', ['$scope', 'FileUploader','clusterService', function($scope, FileUploader,clusterService) {
+app.controller('FileEditController', ['$scope','$filter', 'FileUploader','clusterService', function($scope,$filter, FileUploader,clusterService) {
 
 
   var uploader = $scope.uploader = new FileUploader({
@@ -101,6 +103,8 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
     }
   });
 
+  //uploader.formData.push({'DuoType' : 'fax'});
+
   // CALLBACKS
 
   uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
@@ -113,7 +117,8 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
     console.info('onAfterAddingAll', addedFileItems);
   };
   uploader.onBeforeUploadItem = function(item) {
-    console.info('onBeforeUploadItem', item);
+    item.formData.push({'fileCategory' : $scope.file.category});
+       console.info('onBeforeUploadItem', item);
   };
   uploader.onProgressItem = function(fileItem, progress) {
     console.info('onProgressItem', fileItem, progress);
@@ -138,4 +143,18 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
   };
 
   console.info('uploader', uploader);
+
+  $scope.file = {};
+  $scope.loadFileService = function () {
+    clusterService.GetCatagories().then(function (response) {
+
+      $scope.Categorys = $filter('filter')(response, {Owner: "user"});
+
+    }, function (error) {
+      $log.debug("GetCatagories err");
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
+
+  $scope.loadFileService();
 }]);

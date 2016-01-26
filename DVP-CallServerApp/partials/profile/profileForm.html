@@ -107,13 +107,14 @@
 
 
       <div ng-show="profile.id">
-        <div style="background: rgba(34, 44, 30, 0.54)">
+        <div style="background: rgba(34, 44, 30, 0.54)" >
           <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="ShowHide()">
             <md-icon md-svg-src="img/settings49.svg"></md-icon>
-            <md-tooltip>Settings</md-tooltip>
-          </md-button>
+
+          </md-button><md-tooltip>Settings</md-tooltip>
         </div>
         <div ng-show="IsVisible" layout-gt-sm="row" style="background: rgba(34, 44, 30, 0.33)">
+
           <md-input-container class="md-block" flex-gt-sm>
             <div>
               <label>Call Server</label>
