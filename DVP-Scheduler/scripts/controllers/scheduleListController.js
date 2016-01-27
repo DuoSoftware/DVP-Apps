@@ -1,10 +1,10 @@
 /**
- * Created by dinusha on 1/22/2016.
+ * Created by dinusha on 1/26/2016.
  */
 (function() {
-  var app = angular.module("autoAttendantApp");
+  var app = angular.module("scheduleApp");
 
-  var AutoAttendantListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
+  var ScheduleListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
   {
     $scope.query = {
       limit: 5,
@@ -20,6 +20,7 @@
       left: false,
       right: true
     };
+
     $scope.toastPosition = angular.extend({},last);
     $scope.getToastPosition = function() {
       return Object.keys($scope.toastPosition)
@@ -96,13 +97,13 @@
       $location.url("/autoAttendant/" + aaObj.Name);
     };
 
-    $scope.reloadAutoAttList = function()
+    $scope.reloadScheduleList = function()
     {
-      dvpHandler.getAutoAttendants().then(function(data)
+      dvpHandler.getSchedules().then(function(data)
       {
         if(data.IsSuccess)
         {
-          $scope.autoAttList = data.Result;
+          $scope.scheduleList = data.Result;
           $scope.total = data.Result.length;
         }
         else
@@ -125,7 +126,7 @@
 
       }, function(err)
       {
-        var errMsg = "Error occurred while getting pabx user list";
+        var errMsg = "Error occurred while getting schedule list";
         if(err.statusText)
         {
           errMsg = err.statusText;
@@ -140,9 +141,9 @@
       });
     };
 
-    $scope.reloadAutoAttList();
+    $scope.reloadScheduleList();
 
   };
 
-  app.controller("AutoAttendantListController", AutoAttendantListController);
+  app.controller("ScheduleListController", ScheduleListController);
 }());

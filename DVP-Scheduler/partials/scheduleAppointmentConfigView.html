@@ -1,0 +1,124 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div layout-align="left" flex="70">Follow Me Configuration</div>
+    </div>
+  </md-toolbar>
+
+  <form name="updateFMRingTypeForm">
+    <div layout-padding>
+      <div layout-gt-sm="row" layout-align="start center">
+        <md-input-container flex-gt-sm>
+          <label>Schedule Configuration</label>
+          <md-select name="fmRingType" ng-model="fmRingType" ng-model-options="{trackBy: '$value'}" required="">
+            <md-option value="SEQUENTIAL">SEQUENTIAL</md-option>
+            <md-option value="PARALLEL">PARALLEL</md-option>
+          </md-select>
+          <div ng-messages="updateFMRingTypeForm.fmRingType.$error">
+          </div>
+        </md-input-container>
+        <md-button class="btn1" ng-click="updateFMRingType()" ng-disabled="updateFMRingTypeForm.$invalid">Set</md-button>
+      </div>
+    </div>
+  </form>
+
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="dataReady">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="dataReady">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>Destination Number</th>
+        <th md-column>Destination Type</th>
+        <th md-column>Priority</th>
+        <th md-column>Ring Timeout</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in fmList | limitTo: query.limit: (query.page - 1) * query.limit">
+
+        <td md-cell>{{item.DestinationNumber}}</td>
+        <td md-cell>{{item.ObjCategory}}</td>
+        <td md-cell>{{item.Priority}}</td>
+        <td md-cell>{{item.RingTimeout}}</td>
+        <td md-cell>
+          <div layout="row">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteFM($event, item.id)">
+              <md-icon md-svg-src="../ResourceApp-Material/img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+
+  <form name="newFMForm">
+    <md-card layout-padding class="custBackground2">
+      <md-card-content>
+        <md-toolbar class="md-table-toolbar md-default">
+          <div class="custBackground4 md-toolbar-tools" layout="row">
+            <div layout-align="left" flex="70">New Follow Me Configuration</div>
+          </div>
+        </md-toolbar>
+        </br>
+        <div layout-gt-sm="row">
+          <md-input-container flex-gt-sm>
+            <label>Destination Type</label>
+            <md-select name="destType" ng-model="numberType" ng-model-options="{trackBy: '$value'}" required="">
+              <md-option value="PBXUSER">PBXUSER</md-option>
+              <md-option value="USER">USER</md-option>
+              <md-option value="GATEWAY">GATEWAY</md-option>
+            </md-select>
+            <div ng-messages="newFMForm.destType.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container flex-gt-sm>
+            <label>Destination Number</label>
+            <input name="destNum" ng-model="destinationNumber" required="" ng-pattern="/^[0-9]*$/">
+            <div ng-messages="newFMForm.destNum.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Destination number should be numeric</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container flex-gt-sm>
+            <label>Priority</label>
+            <input name="priority" ng-model="priority" required="" ng-pattern="/^[0-9]*$/">
+            <div ng-messages="newFMForm.priority.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Destination number should be numeric</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container flex-gt-sm>
+            <label>Ring Time</label>
+            <input name="ringTimeout" ng-model="ringTimeout" required="" ng-pattern="/^[0-9]*$/">
+            <div ng-messages="newFMForm.ringTimeout.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Destination number should be numeric</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <div flex="90"></div>
+          <div layout-align="left"><md-button class="btn1" ng-click="saveFM()" ng-disabled="newFMForm.$invalid">Add New</md-button></div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </form>
+
+  <div layout="row">
+    <div flex="90"></div>
+    <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+  </div>
+
+</div>
