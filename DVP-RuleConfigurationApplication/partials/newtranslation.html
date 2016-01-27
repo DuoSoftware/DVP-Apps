@@ -1,0 +1,101 @@
+<div layout="column"  flex-lt-md="80%">
+  <md-content layout-padding style="background-color: lightgrey"  >
+    <form name="newTransForm" >
+      <md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>New Translation</h2></md-subheader>
+      <div layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Name</label>
+          <input type="text"  name = "Name" ng-model="newObj.TransName"  required />
+
+          <span style="color:red" ng-show="newTransForm.Name.$dirty && newTransForm.Name.$invalid"></span>
+        </md-input-container>
+
+      </div>
+      <div layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Description</label>
+          <input type="text"  name = "Description" ng-model="newObj.Description"   />
+
+          <span style="color:red" ng-show="newTransForm.Description.$dirty && newTransForm.Description.$invalid"></span>
+        </md-input-container>
+
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Left Add</label>
+          <input type="text"  name = "LAdd" ng-model="newObj.LAdd"   />
+
+          <span style="color:red" ng-show="newTransForm.LAdd.$dirty && newTransForm.LAdd.$invalid"></span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Left Remove</label>
+          <input type="number"  id="LR" name = "LRemove" ng-model="newObj.LRemove"   ng-init="LR=0"/>
+
+          <span style="color:red" ng-show="newTransForm.LRemove.$dirty && newTransForm.LRemove.$invalid"></span>
+        </md-input-container>
+
+
+      </div>
+      <div layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Right Add</label>
+          <input type="text"  name = "RAdd" ng-model="newObj.RAdd"   />
+
+          <span style="color:red" ng-show="newTransForm.RAdd.$dirty && newTransForm.RAdd.$invalid"></span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Right Remove</label>
+          <input type="number" id="RR" name = "RRemove" ng-model="newObj.RRemove"   />
+
+          <span style="color:red" ng-show="newTransForm.RRemove.$dirty && newTransForm.RRemove.$invalid"></span>
+        </md-input-container>
+
+      </div>
+      <div layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Replace</label>
+          <input type="text"  name = "Replace" ng-model="newObj.Replace"   />
+
+          <span style="color:red" ng-show="newTransForm.Replace.$dirty && newTransForm.Replace.$invalid"></span>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+
+      </div>
+
+      <div  layout-gt-sm="row">
+        <md-input-container  name= "Active" class="md-block" flex-gt-sm >
+          Active Status
+          <md-switch ng-model="newObj.Enabled" >
+
+          </md-switch>
+        </md-input-container>
+      </div>
+
+      <div  layout-gt-sm="row">
+        <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 80%">
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="saveTranslation()" ng-disabled="isDisabled || newTransForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" ng-click="hideView()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></td>
+
+        </md-input-container>
+      </div>
+
+
+    </form>
+  </md-content>
+
+</div>
