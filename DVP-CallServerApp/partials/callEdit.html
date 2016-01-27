@@ -14,37 +14,7 @@
         <md-card-content layout="column" layout-align="space-between">
           <div ng-include="'partials/callForm.html'"></div>
 
-          <div>
-            <md-content class="ui-sub">
-              <div layout-gt-sm="row">
 
-                <md-input-container class="md-block">
-                  <label>Internal Main IP</label>
-                  <input name="InternalMainIP" required ng-readonly="true" ng-model="callServer.InternalMainIP">
-                  <div ng-messages="projectForm.InternalMainIP.$error">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message="md-maxlength">The IP has to be less than 15 characters long.</div>
-                  </div>
-                </md-input-container>
-
-                <!--<md-input-container class="md-block">
-                  <div >
-                    <label>Internal IP</label>
-                    <md-select name="Code" ng-model="callServer.InternalMainIP"  ng-model-options="{trackBy: '$value'}">
-                      <md-option ng-value="c.IP" ng-repeat="c in ipAddress" ng-if="!c.IsAllocated">{{ c.IP }}</md-option>
-                    </md-select>
-                  </div>
-                </md-input-container>-->
-
-                <md-input-container class="md-block">
-                  <md-button  class="md-raised md-primary" ng-disabled="false" aria-label="Add" ng-click="showAdvanced($event)">
-                    <md-tooltip>Add IP Address</md-tooltip>
-                    <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
-                  </md-button>
-                </md-input-container>
-              </div>
-            </md-content>
-          </div>
 
           <md-card-actions layout="row" layout-align="end center">
             <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/callserver/list">

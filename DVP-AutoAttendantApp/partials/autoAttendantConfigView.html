@@ -1,0 +1,112 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Auto Attendant Configuration</div>
+      <div><md-button class="btn3" aria-label="Actions" ng-click="onActionPressed()" ng-disabled="!IsEdit">
+        Actions
+        <md-tooltip md-direction="bottom">
+          Actions
+        </md-tooltip>
+      </md-button></div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+
+      <form name="autoAttConfigForm">
+
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Name</label>
+              <input name="autoAttName" ng-model="basicConfig.Name" required ng-disabled="IsEdit">
+              <div ng-messages="autoAttConfigForm.autoAttName.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Code</label>
+            <input name="autoAttCode" ng-model="basicConfig.Code" required>
+            <div ng-messages="autoAttConfigForm.autoAttCode.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Extension</label>
+            <md-select name="extension" ng-model="basicConfig.Extention" ng-model-options="{trackBy: '$value'}" required>
+              <md-option ng-repeat="ext in extList" value="{{ext.Extension}}">{{ext.Extension}}</md-option>
+            </md-select>
+            <div ng-messages="autoAttConfigForm.extension.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Menu Sound</label>
+            <md-select name="menuSound" ng-model="basicConfig.MenuSound" ng-model-options="{trackBy: '$value'}">
+              <md-option ng-repeat="item in fileList" value="{{item.UniqueId}}">{{item.DisplayName}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Day Greeting</label>
+              <md-select name="dayGreeting" ng-model="basicConfig.DayGreeting" ng-model-options="{trackBy: '$value'}">
+                <md-option ng-repeat="item in fileList" value="{{item.UniqueId}}">{{item.DisplayName}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Night Greeting</label>
+            <md-select name="dayGreeting" ng-model="basicConfig.NightGreeting" ng-model-options="{trackBy: '$value'}">
+              <md-option ng-repeat="item in fileList" value="{{item.UniqueId}}">{{item.DisplayName}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Tries</label>
+            <input name="tries" ng-model="basicConfig.Tries" required ng-pattern="/^[0-9]*$/">
+            <div ng-messages="autoAttConfigForm.tries.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Must me a numeric value</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <div layout="row" flex-gt-sm>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>TimeOut</label>
+              <input name="timeout" ng-model="basicConfig.TimeOut" required ng-pattern="/^[0-9]*$/">
+              <div ng-messages="autoAttConfigForm.timeout.$error">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="pattern">Must me a numeric value</div>
+              </div>
+            </md-input-container>
+          </div>
+        </div>
+        <div layout-gt-sm="row">
+          <md-checkbox md-no-ink aria-label="EnableExtension" ng-model="basicConfig.EnableExtention" ng-init="basicConfig.EnableExtention=false" class="md-primary" flex-gt-sm>
+            Enable Extension
+          </md-checkbox>
+        </div>
+        <br>
+        <br>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="autoAttConfigForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+        </div>
+
+      </form>
+
+
+    </md-content>
+  </div>
+</div>
+

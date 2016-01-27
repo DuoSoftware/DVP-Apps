@@ -50,7 +50,7 @@
         <md-input-container class="md-block" flex-gt-xs="">
           <label>Start Time</label>
           <input type="datetime-local"  ng-min="{{now}}" ng-model="conference.StartTime" class="form-control" id="starttime" name="starttime" placeholder="Start Time" ng-required="true"/>
-          <div ng-messages="userForm.domain.$error">
+          <div ng-messages="userForm.starttime.$error">
             <div ng-message="required">Start Time is required.</div>
             <div ng-message="min">Start Time should be future.</div>
           </div>
@@ -58,7 +58,7 @@
         <md-input-container class="md-block" flex-gt-xs="">
           <label>End Time</label>
           <input type="datetime-local"  ng-min="{{conference.StartTime}}" ng-model="conference.EndTime" class="form-control" id="endtime" name="endtime" placeholder="End Time" ng-required="true"/>
-          <div ng-messages="userForm.domain.$error">
+          <div ng-messages="userForm.endtime.$error">
             <div ng-message="required">End Time is required.</div>
             <div ng-message="min">End time should be greater than start time</div>
           </div>

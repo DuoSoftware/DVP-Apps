@@ -256,6 +256,18 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
+  var deleteIpAddresses = function (ip) {
+    return $http({
+      method: 'delete',
+      url: 'http://localhost:3636/DVP/API/6.0/CloudConfiguration/IPAddress/' + ip.id,
+      headers: {
+        'authorization': '1#1'
+      }
+    }).then(function (response) {
+      return response.data.IsSuccess;
+    });
+  };
+
   //////////////////************** End Users **************/////////////////
   var getEndUsers = function () {
 
@@ -281,6 +293,7 @@ clusterModule.factory("clusterService", function ($http, $log) {
     GetEndUsers:getEndUsers,
     CreateIpAddress:createIpAddress,
     GetIpAddresses:getIpAddresses,
+    DeleteIpAddresses:deleteIpAddresses,
     IpAddress:{},
     GetProfile: getProfile,
     GetProfiles: getProfiles,
