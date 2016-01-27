@@ -4,7 +4,7 @@ var upload = angular.module("uploadService",[]);
 
 
 
-upload.factory("fileupload", function ($q) {
+upload.factory("fileReader", function ($q) {
 
 
 
@@ -51,8 +51,26 @@ upload.factory("fileupload", function ($q) {
       return deferred.promise;
     };
 
+
+
+  var readAsText = function (file, scope) {
+    var deferred = $q.defer();
+
+    var reader = getReader(deferred, scope);
+    reader.readAsText(file);
+
+    return deferred.promise;
+  };
+
+
+
+
+
+
+
     return {
-      readAsDataUrl: readAsDataURL
+      readAsDataUrl: readAsDataURL,
+      readAsText: readAsText
     };
 
 

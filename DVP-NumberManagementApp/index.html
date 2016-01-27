@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" type="text/css"/>
+  <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" type="text/css"/>
+  <link rel="stylesheet" href="css/custButtons.css" type="text/css"/>
 </head>
-<body>
+<body ng-app="numberManagementApp">
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content ng-view>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex="20"></div>
+
+</div>
+
+<!--Script References -->
+
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-material/angular-material.js"></script>
+<script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/services/voxboneApi.js"></script>
+<script src="scripts/auth/basicAuth.js"></script>
+<script src="scripts/controllers/orderController.js"></script>
 
 </body>
 </html>

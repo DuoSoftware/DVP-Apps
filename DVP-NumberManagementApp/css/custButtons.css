@@ -67,3 +67,9 @@
   width: 500px
 }
 
+.selected {
+  background-color:rgba(110, 110, 110, 0.96);
+  color:rgba(242, 242, 242, 0.96);
+  font-weight:bold;
+}
+

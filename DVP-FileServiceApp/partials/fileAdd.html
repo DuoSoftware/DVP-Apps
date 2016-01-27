@@ -1,24 +1,35 @@
-
-<div ng-controller="AppController" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter" ng-cloak>
+<div nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter" ng-cloak>
   <md-content>
     <md-list>
       <md-subheader class="md-no-sticky">Select files</md-subheader>
 
       <md-list-item class="md-2-line">
-        <div ng-show="uploader.isHTML5">
-          <!-- 3. nv-file-over uploader="link" over-class="className" -->
-          <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-            Base drop zone
-          </div>
-          <input type="file" nv-file-select="" uploader="uploader" multiple/><br/>
-        </div>
+        <div ng-show="uploader.isHTML5" class="well my-drop-zone" nv-file-over="" uploader="uploader">Drop zone</div>
       </md-list-item>
+      <md-divider></md-divider>
 
+
+      </br>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Category</label>
+          <md-select ng-model="file.category">
+            <md-option selected ng-repeat="c in Categorys" value="{{c.Category}}">
+              {{c.Category}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <div ng-show="uploader.isHTML5">
+            <input type="file" nv-file-select="" uploader="uploader" multiple/>
+          </div>
+        </md-input-container>
+      </div>
 
       <md-divider></md-divider>
       <md-subheader class="md-no-sticky">Upload queue. length: {{ uploader.queue.length }}</md-subheader>
       <md-list-item class="md-2-line">
-
         <table class="table">
           <thead>
           <tr>
@@ -60,41 +71,53 @@
           </tr>
           </tbody>
         </table>
-
       </md-list-item>
-
       <md-divider></md-divider>
 
-      <md-divider></md-divider>
-      <md-subheader class="md-no-sticky">Queue progress:</md-subheader>
-      <md-list-item class="md-2-line">
 
-        <div>
-          <div>
-            <div class="progress" style="">
-              <div class="progress-bar" role="progressbar"
-                   ng-style="{ 'width': uploader.progress + '%' }"></div>
-            </div>
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Queue progress.</label>
+
+          <div class="progress" style="">
+            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
           </div>
-          <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()"
-                  ng-disabled="!uploader.getNotUploadedItems().length">
-            <span class="glyphicon glyphicon-upload"></span> Upload all
-          </button>
-          <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()"
-                  ng-disabled="!uploader.isUploading">
-            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-          </button>
-          <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()"
-                  ng-disabled="!uploader.queue.length">
-            <span class="glyphicon glyphicon-trash"></span> Remove all
-          </button>
+        </md-input-container>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+
+            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()"
+                    ng-disabled="!uploader.getNotUploadedItems().length">
+              <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+
+            <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()"
+                    ng-disabled="!uploader.isUploading">
+              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()"
+                    ng-disabled="!uploader.queue.length">
+              <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+          </md-input-container>
         </div>
-
-      </md-list-item>
-
-      <md-divider></md-divider>
+      </div>
 
 
     </md-list>
+
   </md-content>
+
+  <md-card-content layout="column" layout-align="space-between">
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/file/list">
+        <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
+    </md-card-actions>
+  </md-card-content>
+
 </div>
