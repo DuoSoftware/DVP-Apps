@@ -4,7 +4,7 @@
 
 
 
-var app = angular.module("ConferenceApp",["ngMaterial","ngMessages", "ngRoute", "conferenceService", "sipUserService"]);
+var app = angular.module("ConferenceApp",["ngMaterial","ngMessages", "ngRoute", "conferenceService", "sipUserService",'md.data.table']);
 
 
 app.config(function($mdThemingProvider) {
