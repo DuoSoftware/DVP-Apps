@@ -160,7 +160,6 @@ app.controller('FileEditController', ['$scope','$filter', 'FileUploader','cluste
   $scope.loadFileService();
 }]);
 
-
 app.filter('groupBy', ['$parse', function ($parse) {
   return function (list, group_by) {
 
@@ -214,3 +213,41 @@ app.filter('groupBy', ['$parse', function ($parse) {
     return filtered;
   };
 }]);
+
+
+app.controller("demoController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log,$filter,$http,NgTableParams, clusterService) {
+
+  this.tableParams = new NgTableParams({ group: 'Category' },{ getData: function(params){
+
+    return $http({
+      method: 'get',
+      url: 'http://localhost:8081/DVP/API/6.0/FileService/Files',
+      headers: {
+        'authorization': '1#1'
+      }
+    }).then(function (response) {
+
+      //$filter('filter')(response, {Type: "USER"});
+
+          // Filtering
+       var orderedData = params.filter() ?
+       $filter('filter')(response.data.Result, params.filter()) :
+       response.data.Result;
+       // Sorting
+       orderedData = params.sorting() ?
+       $filter('orderBy')(orderedData, params.orderBy()) :
+       orderedData;
+       //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
+
+       /* set total for recalc pagination */
+       params.total(orderedData.length);
+      console.info(response.data.Result);
+      console.info(orderedData);
+      return  orderedData;
+    });
+  } });
+
+
+
+
+});
