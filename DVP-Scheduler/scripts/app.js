@@ -11,6 +11,10 @@
       when("/schedules", {
         templateUrl: 'partials/scheduleListView.html',
         controller: 'ScheduleListController'
+      }).
+      when("/schedule/:scheduleId/appointments", {
+        templateUrl: 'partials/appointmentConfigView.html',
+        controller: 'AppointmentConfigController'
       })
       .otherwise({redirectTo:"/schedules"});
 

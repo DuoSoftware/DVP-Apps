@@ -32,8 +32,12 @@
         <td md-cell>{{item.Action}}</td>
         <td md-cell>
           <div layout="row">
+            <div flex="40"></div>
             <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
               <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onAppointmentPressed(item)">
+              <md-icon id="appointmentIcon" md-svg-src="../img/schedule3.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeletePressed($event, item.id)">
               <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
@@ -48,14 +52,14 @@
   <br>
   <br>
   <div ng-cloak class="md-inline-form">
-    <md-content layout-padding class="custBackground2">
+    <md-card layout-padding class="custBackground2">
 
       <form name="scheduleConfigForm">
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Schedule Name</label>
-              <input name="scheduleName" ng-model="scheduleConfig.ScheduleName" required ng-disabled="IsEdit">
+              <input name="scheduleName" ng-model="scheduleConfig.ScheduleName" required ng-disabled="IsEdit || IsHide">
               <div ng-messages="scheduleConfig.scheduleName.$error">
                 <div ng-message="required">This field is required</div>
               </div>
@@ -64,14 +68,14 @@
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Action</label>
-            <input name="action" ng-model="scheduleConfig.Action">
+            <input name="action" ng-model="scheduleConfig.Action" ng-disabled="IsHide">
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Extra Data</label>
-              <input name="extraData" ng-model="scheduleConfig.ExtraData">
+              <input name="extraData" ng-model="scheduleConfig.ExtraData" ng-disabled="IsHide">
             </md-input-container>
           </div>
         </div>
@@ -84,7 +88,7 @@
         </div>
 
       </form>
-    </md-content>
+    </md-card>
   </div>
 </div>
 

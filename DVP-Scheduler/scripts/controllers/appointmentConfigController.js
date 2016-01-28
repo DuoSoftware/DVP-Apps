@@ -1,10 +1,11 @@
 /**
- * Created by dinusha on 1/26/2016.
+ * Created by dinusha on 1/27/2016.
  */
+
 (function() {
   var app = angular.module("scheduleApp");
 
-  var ScheduleListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
+  var AppointmentConfigController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast, $routeParams)
   {
     $scope.query = {
       limit: 5,
@@ -50,11 +51,11 @@
       $scope.scheduleConfig = {};
     };
 
-    $scope.onAppointmentPressed = function(scheduleObj)
+    $scope.onAppointmentPressed = function()
     {
       $scope.IsEdit = false;
       $scope.IsHide = true;
-      $location.url("/schedule/" + scheduleObj.id + "/appointments");
+      $location.url("/schedule/" + $scope.scheduleConfig.id + "/appointments");
       $scope.scheduleConfig = {};
     };
 
@@ -182,13 +183,13 @@
       $scope.scheduleConfig = $scope.tempSchedule;
     };
 
-    $scope.reloadScheduleList = function()
+    $scope.reloadAppointmentList = function()
     {
-      dvpHandler.getSchedules().then(function(data)
+      dvpHandler.getAppointments($routeParams.scheduleId).then(function(data)
       {
         if(data.IsSuccess)
         {
-          $scope.scheduleList = data.Result;
+          $scope.appointmentList = data.Result;
           $scope.total = data.Result.length;
         }
         else
@@ -211,7 +212,7 @@
 
       }, function(err)
       {
-        var errMsg = "Error occurred while getting schedule list";
+        var errMsg = "Error occurred while getting appointment list";
         if(err.statusText)
         {
           errMsg = err.statusText;
@@ -226,9 +227,9 @@
       });
     };
 
-    $scope.reloadScheduleList();
+    $scope.reloadAppointmentList();
 
   };
 
-  app.controller("ScheduleListController", ScheduleListController);
+  app.controller("AppointmentConfigController", AppointmentConfigController);
 }());
