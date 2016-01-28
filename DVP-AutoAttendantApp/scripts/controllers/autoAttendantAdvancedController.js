@@ -36,21 +36,21 @@
     $scope.onDeletePressed = function(ev, name)
     {
       var confirm = $mdDialog.confirm()
-        .title('Delete auto attendant')
-        .textContent('Warning - Are you sure you want to delete auto attendant record')
-        .ariaLabel('Delete Auto Attendant')
+        .title('Delete auto attendant action')
+        .textContent('Warning - Are you sure you want to delete auto attendant action record')
+        .ariaLabel('Delete Auto Attendant Action')
         .targetEvent(ev)
         .ok('Delete')
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function()
         {
-          dvpHandler.deleteAutoAttendant(name)
+          dvpHandler.deleteAction(sharedData.AutoAttendant.Name, name)
             .then(function(data)
             {
               if(data.IsSuccess)
               {
-                $scope.reloadAutoAttList();
+                $scope.reloadActionList();
               }
               else
               {
@@ -58,7 +58,7 @@
 
                 if(data.Exception)
                 {
-                  errMsg = 'Delete auto attendant error : ' + data.Exception.Message;
+                  errMsg = 'Delete auto attendant action error : ' + data.Exception.Message;
                 }
                 mdAleartDialog("ERROR", errMsg, "ERROR");
               }
@@ -66,7 +66,7 @@
             },
             function(err)
             {
-              mdAleartDialog("ERROR", 'Delete auto attendant error', "ERROR");
+              mdAleartDialog("ERROR", 'Delete auto attendant action error', "ERROR");
 
             })
         },

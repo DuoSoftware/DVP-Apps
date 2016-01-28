@@ -4,7 +4,7 @@
 (function() {
   var app = angular.module("autoAttendantApp");
 
-  var AutoAttendantListController = function ($scope, dvpHandler, sharedData, $location, $mdDialog, $mdToast)
+  var AutoAttendantListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
   {
     $scope.query = {
       limit: 5,

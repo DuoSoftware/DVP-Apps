@@ -42,7 +42,7 @@
       {
         commonservice.showAlert("Delete","Context removed successfully!");
         var val = 0;
-        for (var i = 0, len = $scope.userData.length; i < len; i++) {
+        for (var i = 0, len = $scope.contextData.length; i < len; i++) {
 
           if($scope.contextData[i].Context == response.Context) {
             val = i;
@@ -61,11 +61,12 @@
     {
       $scope.isDisabled = true;
       var title="Delete Context ";
-      var content= "Do you want to delete "+ context;
+      var content= "Do you want to delete "+ context.Context;
       console.log(content) ;
       commonservice.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
 
-        dbservice.userDelete(DelObj).then(onContextDeleteComplete,onError);
+
+        dbservice.deleteContext(context).then(onContextDeleteComplete,onError);
 
 
       }, function(){
