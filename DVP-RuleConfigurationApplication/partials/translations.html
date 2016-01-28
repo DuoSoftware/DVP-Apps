@@ -1,0 +1,48 @@
+
+<md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>Translation Details</h2></md-subheader>
+<div><md-button class="md-icon-button" href='#/newtranslation' class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
+
+<md-data-table-container >
+
+  <table md-table  md-progress="deferred" >
+    <thead md-head style="background-color: #cccccc">
+    <tr md-row>
+      <th md-column style="color: #323232"><h3>Name</h3></th>
+      <th md-column style="color: #323232"><h3>Left Add </h3> </th>
+      <th md-column style="color: #323232"><h3>Left Remove</h3> </th>
+      <th md-column style="color: #323232"><h3>Right Add</h3> </th>
+      <!--<th md-column style="color: #323232"><h3>Right Remove</h3> </th>-->
+      <!--<th md-column style="color: #323232"><h3>Replace</h3> </th>-->
+
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj">
+      <td md-cell>{{translation.TransName}}</td>
+      <td md-cell>{{translation.LAdd}}</td>
+      <td md-cell>{{translation.LRemove}}</td>
+      <td md-cell>{{translation.RAdd}}</td>
+     <!-- <td md-cell>{{translation.RRemove}}</td>-->
+      <!--<td md-cell>{{translation.Replace}}</td>-->
+      <td md-cell>
+        <div>
+
+         <md-button class="md-icon-button" class="md-raised md-warn" ng-disabled="isDisabled" ng-click="deleteTranslation(translation)"><md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon></md-button>
+
+        </div>
+
+
+
+      </td>
+      <td md-cell>
+
+      </td>
+
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</md-data-table-container>
+

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="clduserapp" style="background-color: #cccccc">
+<html ng-app="ruleapp" style="background-color: #cccccc">
 <head >
 
-  <title>Cloud user and Context Management</title>
+  <title>Rules and Translations Configuration</title>
 
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link href="bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
@@ -47,14 +47,21 @@
 
 
   <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/EnduserController.js"></script>
+  <!--<script src="scripts/controllers/EnduserController.js"></script>
   <script src="scripts/controllers/EditUserController.js"></script>
-  <script src="scripts/services/DBservice.js"></script>
+
   <script src="scripts/services/CommonService.js"></script>
   <script src="scripts/controllers/NewUserController.js"></script>
   <script src="scripts/controllers/ContextController.js"></script>
   <script src="scripts/controllers/NewContextController.js"></script>
-  <script src="scripts/controllers/EditContextController.js"></script>
+  <script src="scripts/controllers/EditContextController.js"></script>-->
+  <script src="scripts/services/CommonService.js"></script>
+  <script src="scripts/services/DBservice.js"></script>
+  <script src="scripts/controllers/RuleController.js"></script>
+  <script src="scripts/controllers/NewRuleController.js"></script>
+  <script src="scripts/controllers/EditRuleController.js"></script>
+  <script src="scripts/controllers/TranslationController.js"></script>
+  <script src="scripts/controllers/NewTranslationController.js"></script>
   <!--<script src="scripts/controllers/MainController.js"></script>
   <script src="scripts/services/DBcontroller.js"></script>
 
@@ -81,15 +88,15 @@
 
 <body style="background-color: #cccccc">
 
-<h1 align="center" >Cloud user and Context View</h1>
+<h1 align="center" >Rules and Translations Viewer</h1>
 <div layout="row" >
 
   <div flex="20"></div>
   <div flex="60"><md-card flex="auto" width="100" class="custBackground1">
     <md-card-content >
       <md-content class="md-padding" style="background-color: #cccccc">
-        <md-button  class="md-raised md-primary"  href='#/endusers' style="width: 45%; background-color: #323232 "  >Cloud User</md-button>
-        <md-button class="md-raised md-primary" href='#/contexts' style="width: 45%; background-color: #323232 " >CONTEXT</md-button>
+        <md-button  class="md-raised md-primary"  href='#/rules' style="width: 45%; background-color: #323232 "  >Rules</md-button>
+        <md-button class="md-raised md-primary" href='#/translations' style="width: 45%; background-color: #323232 " >TRANSLATIONS</md-button>
       </md-content>
 
     </md-card-content>

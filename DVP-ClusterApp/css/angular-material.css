@@ -12316,7 +12316,6 @@ md-progress-circular .md-spinner-wrapper.ng-hide .md-inner .md-right .md-half-ci
   100% {
     -webkit-transform: rotate(1080deg);
     transform: rotate(1080deg); } }
-
 md-progress-linear {
   display: block;
   position: relative;
@@ -12806,8 +12805,8 @@ md-radio-group.md-focused .md-checked .md-container:before {
 .md-select-menu-container.md-active md-select-menu > * {
   rgba(34, 44, 30, 0.54);
   opacity: 1;
-  background-color: rgba(34, 44, 30, 0.54);
-  
+  background-color: rgb(132, 128, 128);
+  border-radius: 6px;
   transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
   transition-duration: 150ms;
   transition-delay: 100ms;
@@ -12836,8 +12835,8 @@ md-select[disabled] .md-select-value {
 md-select:focus {
   outline: none; }
 md-select[disabled]:hover {
-  cursor: default; 
-} 
+  cursor: default;
+}
 md-select:not([disabled]):hover {
   cursor: pointer; }
 md-select:not([disabled]).ng-invalid.ng-dirty .md-select-value {

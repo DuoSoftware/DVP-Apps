@@ -6,6 +6,13 @@
         <span class="md-headline">Tasks</span>
         <span class="md-subhead">{{resource.ResourceName}}</span>
       </md-card-title-text>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/{{resource.ResourceId}}/edit">
+          <md-icon md-svg-src="img/ic_arrow_back_24px.svg"/>
+        </md-button>
+      </md-card-actions>
+
       <md-card-title-media>
       </md-card-title-media>
     </md-card-title>
@@ -22,11 +29,7 @@
         </md-chip-template>
       </md-chips>
     </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/{{resource.ResourceId}}/edit">
-        <md-icon md-svg-src="img/ic_arrow_back_24px.svg"/>
-      </md-button>
-    </md-card-actions>
+
 
   </md-card>
 </div>
