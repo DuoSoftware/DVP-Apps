@@ -381,12 +381,25 @@ a.md-button.md-accent.md-fab:not([disabled]):hover,.md-button.md-accent.md-fab:n
 }
 
 .progressAll {
-  height: 34px;
-  margin-top: 0px;
+  height: 26px;
+  margin-top: 4px;
   margin-bottom: 0px;
   overflow: hidden;
   background-color: #715F5F;
   border-radius: 6px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+md-option:focus {
+  color: #12062b;
+  background-color: rgba(126, 117, 117, 0.71);
+}
+
+md-option:hover {
+  color: #140640;
+  background-color: #655a5d;
+}
+md-content:hover {
+  color: #024005;
 }

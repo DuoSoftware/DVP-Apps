@@ -1,50 +1,64 @@
-<md-table-container >
+<div >
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">File List</span>
+        <!--<span class="md-subhead">Select files</span>-->
+      </md-card-title-text>
 
-  <div class="divTable" layout="row" layout-align="center center" ng-hide="dataReady">
-    <div layout="column" layout-align="center center">
-      <h4>loading data</h4>
-      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-    </div>
-  </div>
+    </md-card-title>
 
-  <table md-table md-progress="promise" width="100%" ng-show="dataReady">
-   <thead md-head  md-order="query.order" md-on-reorder="query.order">
-   <tr class="md-table-header" md-row>
-     <th md-column>Category</th>
-     <th md-column md-order-by="Filename">File Name</th>
-     <th md-column>Version</th>
-     <th md-column>Delete</th>
-     <th md-column>Download</th>
-   </tr>
-   </thead>
-   <tbody md-body>
+    <md-card-content layout="column" layout-align="space-between">
+      <div class="row">
+        <div class="col-md-5" ng-controller="FileListController as demo">
+          <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-hover">
+            <colgroup>
+              <col width="50%" />
+              <col width="5%" />
+              <col width="35%" />
+              <col width="5%" />
+              <col width="5%" />
+            </colgroup>
+            <tr class="ng-table-group" ng-repeat-start="group in $groups">
+              <td colspan="5">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                  <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                  <strong>{{ group.value }}</strong>
+                </a>
+              </td>
+            </tr>
+            <tr ng-hide="group.$hideRows" ng-repeat="file in group.data" ng-repeat-end>
+              <td  data-title="'Category'" groupable="'Category'" ng-if="false">
+                {{file.Category}}
+              </td>
+              <td sortable="'Filename'" filter="{Filename: 'text'}" data-title="'Filename'" >
+                {{file.Filename}}
+              </td>
+              <td sortable="'Version'" data-title="'Version'" >
+                {{file.Version}}
+              </td>
+              <td sortable="'UniqueId'" data-title="'UniqueId'">
+                {{file.UniqueId}}
+              </td>
+              <td>
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
+                           ng-click="deleteFile(file)">
+                  <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+                </md-button>
+              </td>
+              <td >
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
+                           ng-click="downloadFile(file)">
+                  <md-icon md-svg-src="img/download.svg"></md-icon>
+              </td>
+            </tr>
+          </table>
+        </div>
 
-   <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
-       ng-repeat="file in files |  orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit">
+      </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
 
-     <td md-cell>{{file.Category}}</td>
-     <td md-cell>{{file.Filename}}</td>
-     <td md-cell>{{file.Version}}</td>
-     <td md-cell>
-       <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
-                  ng-click="deleteFile(file)">
-         <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
-       </md-button>
-     </td>
-     <td md-cell>
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
-                  ng-click="downloadFile(file)">
-         <md-icon md-svg-src="img/download.svg"></md-icon>
-       </md-button>
-     </td>
-   </tr>
-   </tbody>
- </table>
-
-</md-table-container>
-<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
-
-
-
-
-
+    </md-card-actions>
+  </md-card>
+</div>

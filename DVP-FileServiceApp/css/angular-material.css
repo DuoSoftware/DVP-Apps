@@ -12926,8 +12926,9 @@ md-select-menu.md-reverse {
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse; }
 md-select-menu:not(.md-overflow) md-content {
-  padding-top: 8px;
-  padding-bottom: 8px; }
+  padding-top: 0px;
+  padding-bottom: 0px;
+  }
 html[dir=rtl] md-select-menu {
   -webkit-transform-origin: right top;
   transform-origin: right top;
