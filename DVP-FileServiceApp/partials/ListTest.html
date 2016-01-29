@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6" ng-controller="demoController as demo">
+    <h3>ngTable directive</h3>
+    <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-hover">
+      <colgroup>
+        <col width="60%" />
+        <col width="20%" />
+        <col width="20%" />
+      </colgroup>
+      <tr class="ng-table-group" ng-repeat-start="group in $groups">
+        <td colspan="3">
+          <a href="" ng-click="group.$hideRows = !group.$hideRows">
+            <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+            <strong>{{ group.value }}</strong>
+          </a>
+        </td>
+      </tr>
+      <tr ng-hide="group.$hideRows" ng-repeat="user in group.data" ng-repeat-end>
+        <td data-title="'Category'" groupable="'Category'" ng-if="false">
+          {{user.Category}}
+        </td>
+        <td filter="{Filename: 'text'}" data-title="'Filename'" groupable="'Filename'">
+          {{user.Filename}}
+        </td>
+        <td data-title="'Version'" groupable="'Version'">
+          {{user.Version}}
+        </td>
+        <td data-title="'UniqueId'">
+          {{user.UniqueId}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
