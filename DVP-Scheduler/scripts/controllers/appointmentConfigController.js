@@ -5,14 +5,22 @@
 (function() {
   var app = angular.module("scheduleApp");
 
-  var AppointmentConfigController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast, $routeParams)
+  var AppointmentConfigController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast, $routeParams, $anchorScroll)
   {
     $scope.query = {
       limit: 5,
       page: 1
     };
 
-    $scope.IsHide = true;
+    $scope.appConfig = {
+      ScheduleId : $routeParams.scheduleId
+    };
+
+    $scope.appointmentStatus = 'New Appointment';
+
+    $scope.IsHide = false;
+
+    $scope.appConfig.RecurrencePattern = 'NONE';
 
 
     $scope.dataReady = false;
@@ -48,28 +56,41 @@
     {
       $scope.IsEdit = false;
       $scope.IsHide = false;
-      $scope.scheduleConfig = {};
+      $scope.appointmentStatus = 'New Appointment';
+      $scope.appConfig = {
+        ScheduleId : $routeParams.scheduleId
+      };
+
+      var old = $location.hash();
+      $location.hash('edit');
+      $anchorScroll();
+      $location.hash(old);
     };
 
-    $scope.onAppointmentPressed = function()
+    $scope.validateDays = function()
     {
-      $scope.IsEdit = false;
-      $scope.IsHide = true;
-      $location.url("/schedule/" + $scope.scheduleConfig.id + "/appointments");
-      $scope.scheduleConfig = {};
+      if($scope.IsHide)
+      {
+        return true;
+      }
+      else
+      {
+        return ($scope.appConfig.RecurrencePattern === 'NONE' || $scope.appConfig.RecurrencePattern == 'DAILY');
+      }
     };
+
 
     $scope.onSavePressed = function()
     {
       if($scope.IsEdit)
       {
         //update
-        dvpHandler.updateSchedule($scope.scheduleConfig).then(function(data)
+        dvpHandler.updateAppointment($scope.appConfig).then(function(data)
         {
           if(data.IsSuccess)
           {
-            mdAleartDialog("SUCCESS", "Schedule updated successfully", "SUCCESS");
-            $scope.reloadScheduleList();
+            mdAleartDialog("SUCCESS", "Appointment updated successfully", "SUCCESS");
+            $scope.reloadAppointmentList();
           }
           else
           {
@@ -86,7 +107,7 @@
 
         }, function(err)
         {
-          var errMsg = "Error occurred while updating schedule";
+          var errMsg = "Error occurred while updating appointment";
           if(err.statusText)
           {
             errMsg = err.statusText;
@@ -98,13 +119,15 @@
       else
       {
         //save
-        dvpHandler.saveSchedule($scope.scheduleConfig).then(function(data)
+        dvpHandler.saveAppointment($scope.appConfig).then(function(data)
         {
           if(data.IsSuccess)
           {
-            mdAleartDialog("SUCCESS", "Schedule saved successfully", "SUCCESS");
-            $scope.scheduleConfig = {};
-            $scope.reloadScheduleList();
+            mdAleartDialog("SUCCESS", "Appointment saved successfully", "SUCCESS");
+            $scope.appConfig = {
+              ScheduleId : $routeParams.scheduleId
+            };
+            $scope.reloadAppointmentList();
           }
           else
           {
@@ -121,7 +144,7 @@
 
         }, function(err)
         {
-          var errMsg = "Error occurred while saving schedule";
+          var errMsg = "Error occurred while saving appointment";
           if(err.statusText)
           {
             errMsg = err.statusText;
@@ -131,26 +154,26 @@
         });
 
       }
-    }
+    };
 
-    $scope.onDeletePressed = function(ev, scheduleId)
+    $scope.onDeletePressed = function(ev, appointmentId)
     {
       var confirm = $mdDialog.confirm()
-        .title('Delete schedule')
-        .textContent('Warning - Are you sure you want to delete schedule record')
-        .ariaLabel('Delete Schedule')
+        .title('Delete appointment')
+        .textContent('Warning - Are you sure you want to delete appointment')
+        .ariaLabel('Delete Appointment')
         .targetEvent(ev)
         .ok('Delete')
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function()
         {
-          dvpHandler.deleteSchedule(scheduleId)
+          dvpHandler.deleteAppointment(appointmentId)
             .then(function(data)
             {
               if(data.IsSuccess)
               {
-                $scope.reloadScheduleList();
+                $scope.reloadAppointmentList();
               }
               else
               {
@@ -158,7 +181,7 @@
 
                 if(data.Exception)
                 {
-                  errMsg = 'Delete schedule error : ' + data.Exception.Message;
+                  errMsg = 'Delete appointment error : ' + data.Exception.Message;
                 }
                 mdAleartDialog("ERROR", errMsg, "ERROR");
               }
@@ -166,7 +189,7 @@
             },
             function(err)
             {
-              mdAleartDialog("ERROR", 'Delete schedule error', "ERROR");
+              mdAleartDialog("ERROR", 'Delete appointment error', "ERROR");
             })
         },
         function() {
@@ -174,13 +197,85 @@
 
     };
 
-    $scope.onEditPressed = function(scheduleObj)
+    var DaysOfWeekConverter = function(daysOfWeek)
+    {
+      var arr = daysOfWeek.split(',');
+
+      var daysObj = {
+        Monday : false,
+        Tuesday: false,
+        Wednesday: false,
+        Thursday: false,
+        Friday: false,
+        Saturday: false,
+        Sunday: false
+      };
+
+      if(daysOfWeek.indexOf('Monday') !== -1)
+      {
+        daysObj.Monday = true;
+      }
+      if(daysOfWeek.indexOf('Tuesday') !== -1)
+      {
+        daysObj.Tuesday = true;
+      }
+      if(daysOfWeek.indexOf('Wednesday') !== -1)
+      {
+        daysObj.Wednesday = true;
+      }
+      if(daysOfWeek.indexOf('Thursday') !== -1)
+      {
+        daysObj.Thursday = true;
+      }
+      if(daysOfWeek.indexOf('Friday') !== -1)
+      {
+        daysObj.Friday = true;
+      }
+      if(daysOfWeek.indexOf('Saturday') !== -1)
+      {
+        daysObj.Saturday = true;
+      }
+      if(daysOfWeek.indexOf('Sunday') !== -1)
+      {
+        daysObj.Sunday = true;
+      }
+
+      return daysObj;
+    };
+
+    $scope.onEditPressed = function(appointmentObj)
     {
       $scope.IsEdit = true;
       $scope.IsHide = false;
-      $scope.tempSchedule = {};
-      angular.copy(scheduleObj, $scope.tempSchedule);
-      $scope.scheduleConfig = $scope.tempSchedule;
+      $scope.appointmentStatus = 'Edit Appointment : ' + appointmentObj.AppointmentName;
+      $scope.tempApp = {};
+      if(appointmentObj.StartDate)
+      {
+        appointmentObj.StartDate = new Date(appointmentObj.StartDate);
+      }
+      if(appointmentObj.EndDate)
+      {
+        appointmentObj.EndDate = new Date(appointmentObj.EndDate);
+      }
+      if(appointmentObj.StartTime)
+      {
+        appointmentObj.StartTime = new Date(appointmentObj.StartTime);
+      }
+      if(appointmentObj.EndTime)
+      {
+        appointmentObj.EndTime = new Date(appointmentObj.EndTime);
+      }
+
+
+      appointmentObj.DaysOfWeek = DaysOfWeekConverter(appointmentObj.DaysOfWeek);
+
+      angular.copy(appointmentObj, $scope.tempApp);
+      $scope.appConfig = $scope.tempApp;
+      var old = $location.hash();
+
+      $location.hash('edit');
+      $anchorScroll();
+      $location.hash(old);
     };
 
     $scope.reloadAppointmentList = function()
@@ -228,6 +323,11 @@
     };
 
     $scope.reloadAppointmentList();
+
+    $scope.onCancelPressed = function()
+    {
+      $location.url("/schedules");
+    };
 
   };
 

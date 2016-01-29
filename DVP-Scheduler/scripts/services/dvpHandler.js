@@ -49,6 +49,36 @@
       })
     };
 
+    var saveAppointment = function(appInfo)
+    {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/Appointment',
+        headers: {
+          'authorization': 'hhhh'
+        },
+        data: appInfo
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
+    var updateAppointment = function(appInfo)
+    {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/Appointment/' + appInfo.id,
+        headers: {
+          'authorization': 'hhhh'
+        },
+        data: appInfo
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     var updateSchedule = function(scheduleInfo)
     {
       return $http({
@@ -78,13 +108,30 @@
       })
     };
 
+    var deleteAppointment = function(appointmentId)
+    {
+      return $http({
+        method: 'DELETE',
+        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Appointment/' + appointmentId,
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
 
     return {
       getSchedules: getSchedules,
       saveSchedule: saveSchedule,
       updateSchedule: updateSchedule,
       deleteSchedule: deleteSchedule,
-      getAppointments: getAppointments
+      getAppointments: getAppointments,
+      saveAppointment: saveAppointment,
+      updateAppointment: updateAppointment,
+      deleteAppointment: deleteAppointment
     };
   };
 

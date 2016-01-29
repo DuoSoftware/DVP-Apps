@@ -52,15 +52,15 @@
   <br>
   <br>
   <div ng-cloak class="md-inline-form">
-    <md-card layout-padding class="custBackground2">
+    <md-card id="edit" layout-padding class="custBackground2">
 
       <form name="scheduleConfigForm">
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Schedule Name</label>
-              <input name="scheduleName" ng-model="scheduleConfig.ScheduleName" required ng-disabled="IsEdit || IsHide">
-              <div ng-messages="scheduleConfig.scheduleName.$error">
+              <input name="scheduleName" ng-model="scheduleConfig.ScheduleName" required ng-disabled="IsEdit">
+              <div ng-messages="scheduleConfigForm.scheduleName.$error">
                 <div ng-message="required">This field is required</div>
               </div>
             </md-input-container>
@@ -68,23 +68,22 @@
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Action</label>
-            <input name="action" ng-model="scheduleConfig.Action" ng-disabled="IsHide">
+            <input name="action" ng-model="scheduleConfig.Action">
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Extra Data</label>
-              <input name="extraData" ng-model="scheduleConfig.ExtraData" ng-disabled="IsHide">
+              <input name="extraData" ng-model="scheduleConfig.ExtraData">
             </md-input-container>
           </div>
         </div>
         <br>
         <br>
         <div layout="row">
-          <div flex="70"></div>
-          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="actionConfigForm.$invalid">Save</md-button></div>
-          <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+          <div flex="90"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="scheduleConfigForm.$invalid">Save</md-button></div>
         </div>
 
       </form>

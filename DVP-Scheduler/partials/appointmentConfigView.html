@@ -53,6 +53,9 @@
     <md-card layout-padding class="custBackground2">
 
       <form name="appointmentConfigForm">
+        <a id="edit"></a>
+        <div><b>{{appointmentStatus}}</b></div>
+        <br>
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
@@ -63,71 +66,98 @@
               </div>
             </md-input-container>
           </div>
+          <div flex="5"></div>
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Action</label>
+              <input name="action" ng-model="appConfig.Action" ng-disabled="IsHide">
+              <div ng-messages="appointmentConfigForm.appointmentName.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+          </div>
         </div>
+        <hr>
+        <br>
         <div>Recurrence Patterns</div>
+        <br>
         <div layout-gt-sm="row">
-          <md-radio-group ng-model="rdbGrp" flex-gt-sm layout="row">
-            <md-radio-button value="1" class="md-primary">No Recurrence</md-radio-button>
-            <md-radio-button value="2"> Recurrence Daily </md-radio-button>
-            <md-radio-button value="3">Recurrence Weekly</md-radio-button>
+          <div flex-gt-sm layout="row">
+          <md-radio-group ng-model="appConfig.RecurrencePattern" layout="row" flex>
+            <md-radio-button flex value="NONE">None</md-radio-button>
+            <md-radio-button flex value="DAILY">Daily</md-radio-button>
+            <md-radio-button flex value="WEEKLY">Weekly</md-radio-button>
           </md-radio-group>
+          </div>
         </div>
+        <hr>
+        <br>
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Start Date</label>
-              <input type="date" name="startDate" ng-model="appConfig.StartDate" placeholder="yyyy-MM-dd" />
+              <input type="date" name="startDate" ng-model="appConfig.StartDate" placeholder="yyyy-MM-dd" ng-disabled="IsHide"/>
             </md-input-container>
           </div>
           <div flex="5"></div>
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>End Date</label>
-              <input type="date" name="endDate" ng-model="appConfig.EndDate" placeholder="yyyy-MM-dd" />
+              <input type="date" name="endDate" ng-model="appConfig.EndDate" placeholder="yyyy-MM-dd" ng-disabled="IsHide"/>
             </md-input-container>
-
           </div>
-
         </div>
 
         <div layout-gt-sm="row">
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Start Time</label>
-              <input type="time" name="startTime" ng-model="appConfig.StartTime" placeholder="hh:mm" />
+              <input type="time" name="startTime" ng-model="appConfig.StartTime" placeholder="hh:mm" ng-disabled="IsHide"/>
             </md-input-container>
           </div>
           <div flex="5"></div>
           <div flex-gt-sm layout="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>End Time</label>
-              <input type="time" name="endTime" ng-model="appConfig.EndTime" placeholder="hh:mm" />
+              <input type="time" name="endTime" ng-model="appConfig.EndTime" placeholder="hh:mm" ng-disabled="IsHide"/>
             </md-input-container>
           </div>
         </div>
 
+        <hr>
+        <br>
+
         <div>Days of Week</div>
 
-
-
-        <div layout-gt-sm="row" layout-padding="5">
-          <md-checkbox md-no-ink aria-label="Monday" ng-model="appConfig.DaysOfWeek.Monday" class="md-primary" flex-gt-sm>
+        <div layout-gt-sm="row">
+          <md-checkbox md-no-ink aria-label="Monday" ng-model="appConfig.DaysOfWeek.Monday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
             Monday
           </md-checkbox>
           <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="Tuesday" ng-model="appConfig.DaysOfWeek.Tuesday" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="Tuesday" ng-model="appConfig.DaysOfWeek.Tuesday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
             Tuesday
           </md-checkbox>
           <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="Wednesday" ng-model="appConfig.DaysOfWeek.Wednesday" class="md-primary" flex-gt-sm>
+          <md-checkbox md-no-ink aria-label="Wednesday" ng-model="appConfig.DaysOfWeek.Wednesday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
             Wednesday
           </md-checkbox>
-          <div flex="5"></div>
-          <md-checkbox md-no-ink aria-label="Thursday" ng-model="appConfig.DaysOfWeek.Thursday" class="md-primary" flex-gt-sm>
+        </div>
+        <div layout-gt-sm="row">
+          <md-checkbox md-no-ink aria-label="Thursday" ng-model="appConfig.DaysOfWeek.Thursday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
             Thursday
           </md-checkbox>
-          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Friday" class="md-primary" flex-gt-sm>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Friday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
             Friday
+          </md-checkbox>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Saturday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Saturday
+          </md-checkbox>
+        </div>
+        <div layout="row">
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Sunday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Sunday
           </md-checkbox>
         </div>
 
