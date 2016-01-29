@@ -100,6 +100,14 @@
         });
     };
 
+    var deleteContext = function (contextObj) {
+
+      return $http.delete("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+contextObj.Context)
+        .then(function (response) {
+          return response;
+        });
+
+    };
 
     return{
       Userobj:Userobj,
@@ -112,7 +120,8 @@
       getContextList:getContextList,
       newContext:newContext,
       getContext:getContext,
-      updateContext:updateContext/*,
+      updateContext:updateContext,
+      deleteContext:deleteContext/*,
        updateAttribute:updateAttribute,
        NewAttribute:NewAttribute,
        getGroupList:getGroupList,

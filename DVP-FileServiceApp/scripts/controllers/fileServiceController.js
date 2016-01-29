@@ -1,6 +1,6 @@
 var app = angular.module("FileManageApp");
 
-app.controller("FileListController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log, clusterService) {
+app.controller("FileListController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log,$filter, clusterService) {
 
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
@@ -10,6 +10,7 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
       .textContent(content)
       .ok(okbutton)
       .cancel(cancelbutton);
+
     $mdDialog.show(confirm).then(function () {
       OkCallback(okObj);
     }, function () {
@@ -30,7 +31,7 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
   };
 
   $scope.query = {
-    order: "Name",
+    order: ["Category","Filename"],
     limit: 10,
     page: 1
   };
@@ -48,6 +49,8 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
       $log.debug("GetFiles err");
       $scope.showAlert("Error", "Error", "ok", "There is an error ");
     });
+
+
 
   };
 
@@ -85,7 +88,7 @@ app.controller("FileListController", function ($scope, $routeParams, $mdDialog, 
 
 });
 
-app.controller('FileEditController', ['$scope', 'FileUploader','clusterService', function($scope, FileUploader,clusterService) {
+app.controller('FileEditController', ['$scope','$filter', 'FileUploader','clusterService', function($scope,$filter, FileUploader,clusterService) {
 
 
   var uploader = $scope.uploader = new FileUploader({
@@ -101,6 +104,8 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
     }
   });
 
+  //uploader.formData.push({'DuoType' : 'fax'});
+
   // CALLBACKS
 
   uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
@@ -113,7 +118,8 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
     console.info('onAfterAddingAll', addedFileItems);
   };
   uploader.onBeforeUploadItem = function(item) {
-    console.info('onBeforeUploadItem', item);
+    item.formData.push({'fileCategory' : $scope.file.category});
+       console.info('onBeforeUploadItem', item);
   };
   uploader.onProgressItem = function(fileItem, progress) {
     console.info('onProgressItem', fileItem, progress);
@@ -138,4 +144,110 @@ app.controller('FileEditController', ['$scope', 'FileUploader','clusterService',
   };
 
   console.info('uploader', uploader);
+
+  $scope.file = {};
+  $scope.loadFileService = function () {
+    clusterService.GetCatagories().then(function (response) {
+
+      $scope.Categorys = $filter('filter')(response, {Owner: "user"});
+
+    }, function (error) {
+      $log.debug("GetCatagories err");
+      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+    });
+  };
+
+  $scope.loadFileService();
 }]);
+
+app.filter('groupBy', ['$parse', function ($parse) {
+  return function (list, group_by) {
+
+    var filtered = [];
+    var prev_item = null;
+    var group_changed = false;
+    // this is a new field which is added to each item where we append "_CHANGED"
+    // to indicate a field change in the list
+    //was var new_field = group_by + '_CHANGED'; - JB 12/17/2013
+    var new_field = 'group_by_CHANGED';
+
+    // loop through each item in the list
+    angular.forEach(list, function (item) {
+
+      group_changed = false;
+
+      // if not the first item
+      if (prev_item !== null) {
+
+        // check if any of the group by field changed
+
+        //force group_by into Array
+        group_by = angular.isArray(group_by) ? group_by : [group_by];
+
+        //check each group by parameter
+        for (var i = 0, len = group_by.length; i < len; i++) {
+          if ($parse(group_by[i])(prev_item) !== $parse(group_by[i])(item)) {
+            group_changed = true;
+          }
+        }
+
+
+      }// otherwise we have the first item in the list which is new
+      else {
+        group_changed = true;
+      }
+
+      // if the group changed, then add a new field to the item
+      // to indicate this
+      if (group_changed) {
+        item[new_field] = true;
+      } else {
+        item[new_field] = false;
+      }
+
+      filtered.push(item);
+      prev_item = item;
+
+    });
+
+    return filtered;
+  };
+}]);
+
+
+app.controller("demoController", function ($scope, $routeParams, $mdDialog, $mdMedia, $location, $log,$filter,$http,NgTableParams, clusterService) {
+
+  this.tableParams = new NgTableParams({ group: 'Category' },{ getData: function(params){
+
+    return $http({
+      method: 'get',
+      url: 'http://localhost:8081/DVP/API/6.0/FileService/Files',
+      headers: {
+        'authorization': '1#1'
+      }
+    }).then(function (response) {
+
+      //$filter('filter')(response, {Type: "USER"});
+
+          // Filtering
+       var orderedData = params.filter() ?
+       $filter('filter')(response.data.Result, params.filter()) :
+       response.data.Result;
+       // Sorting
+       orderedData = params.sorting() ?
+       $filter('orderBy')(orderedData, params.orderBy()) :
+       orderedData;
+       //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
+
+       /* set total for recalc pagination */
+       params.total(orderedData.length);
+      console.info(response.data.Result);
+      console.info(orderedData);
+      return  orderedData;
+    });
+  } });
+
+
+
+
+});

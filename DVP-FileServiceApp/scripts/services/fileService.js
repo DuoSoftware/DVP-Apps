@@ -11,7 +11,7 @@ fileModule.factory("clusterService", function ($http, download) {
     var downloadFile = function (id,fileName) {
 
 
-        download.fromDataURL("http://localhost:8081/DVP/API/6.0/FileService/File/Download/"+id, fileName);
+        download.fromDataURL("http://localhost:8081/DVP/API/6.0/FileService/File/Download/"+id+"/"+fileName, fileName);
 
        /* return $http.get("http://localhost:8081/DVP/API/6.0/FileService/File/Download/"+id).then(function (response) {
 
@@ -55,12 +55,20 @@ fileModule.factory("clusterService", function ($http, download) {
         });
     };
 
+  var getCatagories = function () {
+
+    return $http.get('http://localhost:8081/DVP/API/6.0/FileService/File/Categories').then(function (response) {
+      return response.data.Result;
+    });
+
+  };
 
     return {
 
         DownloadFile: downloadFile,
         GetFiles: getFiles,
         DeleteFile: deleteFile,
+        GetCatagories:getCatagories,
         UploadUrl : "http://localhost:8081/DVP/API/6.0/FileService/File/Upload",
         File: {}
 

@@ -8,6 +8,14 @@
         <span class="md-headline">Resource</span>
         <span class="md-subhead">{{resource.ResourceName}}</span>
       </md-card-title-text>
+
+      <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/list">
+        <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  href="#/resource/{{resource.ResourceId}}/tasklist">
+        <md-icon md-svg-src="img/settings49.svg"></md-icon>
+      </md-button>
+
       <md-card-title-media>
 
       </md-card-title-media>
@@ -34,12 +42,6 @@
         </div>
 
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/resource/list">
-            <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button"  ng-disabled="false" aria-label="Add"  href="#/resource/{{resource.ResourceId}}/tasklist">
-            <md-icon md-svg-src="img/settings49.svg"></md-icon>
-          </md-button>
           <md-button class="md-icon-button"  aria-label="Add"  ng-disabled="userForm.$invalid" ng-click="updateResource()">
             <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
           </md-button>
