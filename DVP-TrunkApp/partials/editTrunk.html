@@ -1,0 +1,217 @@
+<div  >
+
+
+  <div  layout="column" ng-cloak flex-gt-sm="100">
+    <md-content layout-padding>
+      <form name="EditTrunkForm">
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Trunk ID</label>
+            <input ng-model="editTrunkObj.id" required  placeholder="{{editTrunkObj.id}}" md-maxlength="30" required name="TrunkCode" ng-disabled="true">
+         <!--   <div ng-messages="EditTrunkForm.TrunkCode.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+            </div>-->
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Trunk CODE</label>
+            <input ng-model="editTrunkObj.TrunkCode" required  placeholder="{{editTrunkObj.TrunkCode}}" md-maxlength="30" required name="TrunkCode"  ng-disabled="true">
+            <!--<div ng-messages="EditTrunkForm.TrunkCode.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+            </div>-->
+          </md-input-container>
+
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Trunk Name</label>
+            <input ng-model="editTrunkObj.TrunkName" required  placeholder="{{editTrunkObj.TrunkName}}" md-maxlength="30" required name="TrunkName">
+            <div ng-messages="EditTrunkForm.TrunkName.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Gateway</label>
+            <input name="IpUrl" ng-model=editTrunkObj.IpUrl required  placeholder="{{editTrunkObj.IpUrl}}" ng-pattern="/^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$/">
+            <div ng-messages="EditTrunkForm.IpUrl.$error">
+              <div ng-message="required">Please enter IP address.</div>
+              <div ng-message="pattern">Please enter a valid IP address.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+
+        <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 80%" layout="row">
+
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
+            <md-icon md-svg-src="../TrunkApp/img/ic_arrow_back_24px.svg"></md-icon>
+          </md-button>
+          <!--ng-disabled="EditTrunkForm.$invalid" <md-button class="md-icon-button" ng-disabled="NewTrunkForm.$invalid" aria-label="Add" ng-click="testLoadData()" ng-hide="trunkSaveStatus">-->
+          <md-button class="md-icon-button"  aria-label="Add" ng-click="UpdateTrunk()">
+            <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+          </md-button>
+
+        </md-input-container>
+
+
+      </form>
+
+
+      <form name="NewTrunkAdvanceForm" ng-hide=isDisabled>
+
+        <fieldset>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="20">
+              <md-input-container>
+                <label>Clude</label>
+                <md-select ng-model="editTrunkObj.LoadBalancerId" id="singleSelect" name="lb" ng-change="activatLBButton(newTrunk)" ng-model-options="{trackBy: '$value'}"  >
+                  <md-option ng-repeat="cloude in editCloude" value="{{cloude.id}}">
+                    {{cloude.Name}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <!--   <div ng-messages="NewTrunkForm.lb.$error">
+                   <div ng-message="required">Please Select a value.</div>
+                 </div>-->
+            </md-input-container>
+
+            <!--  <md-input-container class="md-block" flex-gt-sm="5" ng-hide="true">
+                <input ng-model="loadBalancer.id" required  placeholder="{{loadBalancer.id}}" md-maxlength="30">
+              </md-input-container>-->
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button" aria-label="Add_4" ng-disabled="LBDissable" ng-click="setCloude()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateLBTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+
+              <!--    <md-button class="md-icon-button"  aria-label="status_4_1"  ng-hide="updateLBErrorDissable">
+                    <md-icon md-svg-src="../TrunkApp/img/ic_close_24px.svg"></md-icon>
+                  </md-button>-->
+
+
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateLBErrorDissable">Cloude Not Updated..!</p>
+
+            </md-input-container>
+
+          <!--</div>
+
+          <div layout-gt-sm="row">-->
+            <md-input-container class="md-block" flex-gt-sm="20">
+              <md-input-container>
+                <label>External Profile</label>
+                <md-select ng-model="editTrunkObj.ProfileId" id="singleSelect" name="exProfile"  ng-model-options="{trackBy: '$value'}" >
+                  <md-option ng-repeat="exProf in editProfile" ng-if="exProf.ObjType=='EXTERNAL'"  value="{{exProf.id}}">
+                    {{exProf.ProfileName}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <!--  <div ng-messages="NewTrunkForm.exProfile.$error">
+                  <div ng-message="required">Please Select a value.</div>
+                </div>-->
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button"  aria-label="Add_3"  ng-click="setExternalProfile()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <!--       <md-input-container class="md-block" flex-gt-sm="15">
+
+                     <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateLBErrorDissable">External Profile Not Updated..!</p>
+
+                   </md-input-container>-->
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateExtTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateExtErrorDissable">External Profile Not Updated..!</p>
+
+            </md-input-container>
+
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="20">
+              <md-input-container>
+                <label>Number Translation</label>
+                <md-select ng-model="editTrunkObj.TranslationId" id="singleSelect" name="translation " ng-change="activateTranslationButton(newTrunk.translation)" ng-model-options="{trackBy: '$value'}">
+                  <md-option ng-repeat="numTrans in editTranslation" value="{{numTrans.id}}">
+                    {{numTrans.TransName}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <!--<div ng-messages="NewTrunkForm.translation.$error">-->
+              <!--<div ng-message="required">Please Select a value.</div>-->
+              <!--</div>-->
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button"  aria-label="Add_1"  ng-disabled="TranslationDissable" ng-click="setNumberTranslation()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateTrnsTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="10">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateTrnsErrorDissable">Number Translation Not Updated..!</p>
+
+            </md-input-container>
+
+          </div>
+        </fieldset>
+      </form>
+
+      <!--<md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 80%" layout="row">
+
+        &lt;!&ndash;<md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
+          <md-icon md-svg-src="../TrunkApp/img/ic_arrow_back_24px.svg"></md-icon>
+        </md-button>&ndash;&gt;
+        &lt;!&ndash;ng-disabled="EditTrunkForm.$invalid" <md-button class="md-icon-button" ng-disabled="NewTrunkForm.$invalid" aria-label="Add" ng-click="testLoadData()" ng-hide="trunkSaveStatus">&ndash;&gt;
+        <md-button aria-label="Add" ng-click="ViewTrunkNumbers(editTrunkObj.id)">
+         &lt;!&ndash; <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>&ndash;&gt; View Numbers
+        </md-button>
+
+      </md-input-container>-->
+
+
+    </md-content>
+  </div>
+
+</div>

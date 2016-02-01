@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="trunkApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Trunk Application</title>
+
+  <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
+  <!--  <link rel="stylesheet" type="text/css" href="css/child_app_styles.min.css">
+    <link rel="stylesheet" href="css/directive_library.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">-->
+
+  <!--<link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">-->
+  <!--<link rel="stylesheet" type="text/css" href="../bower_components/angular-material-icons/angular-material-icons.css" />
+  <script src="../bower_components/angular-material-icons/angular-material-icons.js"></script>-->
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-aria/angular-aria.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-material/angular-material.js"></script>
+  <script src="../bower_components/angular-messages/angular-messages.js"></script>
+  <link href="../bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/IndexController.js"></script>
+  <script src="scripts/TrunkController.js"></script>
+  <script src="scripts/NewTrunkController.js"></script>
+  <script src="scripts/EditTrunkController.js"></script>
+  <script src="scripts/DeleteTrunkController.js"></script>
+  <script src="scripts/PhoneNumberController.js"></script>
+  <script src="scripts/NewPhoneNumberController.js"></script>
+ <!-- <script src="scripts/ViewNumbersOfTrunkController.js"></script>-->
+  <script src="scripts/EditPhoneNumberController.js"></script>
+
+  <script src="scripts/services/BackendController.js"></script>
+  <script src="scripts/services/CommonController.js"></script>
+
+
+ <!-- <script src="scripts/ReloadAppsController.js"></script>
+  <script src="scripts/MainController.js"></script>
+
+
+-->
+  <!--<script src="scripts/services/TostController.js"></script>
+
+
+  <script src="scripts/ViewDeactivatedAppDetailsController.js"></script>-->
+
+
+  <!--   <script src="DBController.js"></script>
+    <script src="AttributeController.js"></script>
+    <script src="EditAttributeController.js"></script>
+    <script src="NewAttributeController.js"></script>
+-->
+</head>
+<body ng-controller="IndexController">
+
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content>
+        <md-content class="md-padding">
+          <md-tabs class="md-accent" md-align-tabs="top" md-selected="selectedIndex">
+            <md-tab id="tab_trunk">
+              <a href="#/trunk">View 1</a>
+              <md-tab-label>Trunk</md-tab-label>
+            </md-tab>
+            <md-tab id="tab_phoneNumber">
+              <a href="#/phoneNumber">View 1</a>
+              <md-tab-label>Phone Number</md-tab-label>
+            </md-tab>
+          </md-tabs>
+          <ng-view></ng-view>
+        </md-content>
+
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex="20"></div>
+
+</div>
+
+
+</body>
+</html>

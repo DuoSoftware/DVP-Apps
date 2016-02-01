@@ -1,0 +1,216 @@
+<div  >
+
+
+  <div  layout="column" ng-cloak flex-gt-sm="75">
+    <md-content layout-padding>
+      <form name="NewPhoneNumberForm">
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm >
+            <label>PhoneNumber</label>
+            <input ng-model="newNumber.PhoneNumber" required  placeholder="" md-maxlength="30" required name="PhoneNumber" ng-pattern="/^[0-9]+$/">
+            <div ng-messages="NewPhoneNumberForm.PhoneNumber.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The PhoneNumber has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <p style="font-size: small; color: #C0CBCF" > <md-switch ng-model="newNumber.Enable" aria-label="Switch 1" ng-change="onChange(newNumber.Enable)" > {{message}}</md-switch></p>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container>
+              <label>Number Type</label>
+              <md-select ng-model="newNumber.ObjType" id="singleSelect" name="ObjType" required >
+                <md-option ng-repeat="numberType in numberType" value="{{numberType.abbrev}}">
+                  {{numberType.abbrev}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <div ng-messages="NewApplicationForm.ObjType.$error">
+              <div ng-message="required">Please Select a value.</div>
+            </div>
+          </md-input-container>
+        <!--</div>-->
+
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+      <!--  <div layout-gt-sm="row">-->
+          <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container>
+              <label>Direction</label>
+              <md-select ng-model="newNumber.ObjCategory" id="singleSelect" name="ObjCategory" required >
+                <md-option ng-repeat="direction in direction" value="{{direction.abbrev}}">
+                  {{direction.abbrev}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <div ng-messages="NewApplicationForm.ObjCategory.$error">
+              <div ng-message="required">Please Select a value.</div>
+            </div>
+          </md-input-container>
+          </div>
+
+       <!-- </div>-->
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="35">
+            <md-input-container>
+              <label>Trunk</label>
+              <md-select ng-model="newNumber.TrunkId" id="singleSelect" name="lb" required ng-model-options="{trackBy: '$value'}"  >
+                <md-option ng-repeat="trunk in TrunkObj" ng-if="trunk.Enable==true" value="{{trunk.id}}">
+                  {{trunk.TrunkName}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <div ng-messages="NewApplicationForm.ObjCategory.$error">
+              <div ng-message="required">Please Select a value.</div>
+            </div>
+          </md-input-container>
+          <!--</div>-->
+        </div>
+
+        <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 80%" layout="row">
+
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
+            <md-icon md-svg-src="../TrunkApp/img/ic_arrow_back_24px.svg"></md-icon>
+          </md-button>
+          <!-- <md-button class="md-icon-button" ng-disabled="NewTrunkForm.$invalid" aria-label="Add" ng-click="testLoadData()" ng-hide="trunkSaveStatus">-->
+          <md-button class="md-icon-button" ng-disabled="NewPhoneNumberForm.$invalid" aria-label="Add" ng-click="createNewNumber()" ng-hide="trunkSaveStatus">
+            <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+          </md-button>
+
+        </md-input-container>
+
+      </form>
+
+<!--ng-hide=isDisabled-->
+     <form name="NewNumberAdvanceForm" >
+
+        <fieldset>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="35">
+              <md-input-container>
+                <label>Inbound Limit</label>
+                <md-select ng-model="newNumber.InboundLimitId" id="singleSelect" name="inLmt" ng-change="activatInLmtButton(newNumber.InboundLimitId)" ng-model-options="{trackBy: '$value'}"  >
+                  <md-option ng-repeat="inLimit in limitObj" ng-if="inLimit.Enable==true" value="{{inLimit.LimitId}}">
+                    {{inLimit.LimitDescription}} - ( {{inLimit.MaxCount}} )
+                  </md-option>
+                </md-select>
+              </md-input-container>
+               <div ng-messages="NewNumberAdvanceForm.inLmt.$error">
+                   <div ng-message="required">Please Select a value.</div>
+                 </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button" aria-label="Add_4" ng-disabled="LBDissable" ng-click="setInboundLimit()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateinLmtTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateinLmtErrorDissable">Inbound Limit Not Updated..!</p>
+
+            </md-input-container>
+
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="35">
+              <md-input-container>
+                <label>Outbound Limit</label>
+                <md-select ng-model="newNumber.OutboundLimitId" id="singleSelect" name="outLmt" ng-change="activateOutLmtButton(newNumber.OutboundLimitId)" ng-model-options="{trackBy: '$value'}" >
+                  <md-option ng-repeat="outLimit in limitObj " ng-if="outLimit.Enable==true"  value="{{outLimit.LimitId}}">
+                    {{outLimit.LimitDescription}} - ( {{outLimit.MaxCount}} )
+                  </md-option>
+                </md-select>
+              </md-input-container>
+             <div ng-messages="NewNumberAdvanceForm.outLmt.$error">
+                  <div ng-message="required">Please Select a value.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button"  aria-label="Add_3" ng-disabled="ExtProfDissable" ng-click="setOutboundLimit()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateOutLmtTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateOutLmtErrorDissable">Outbound Limit Not Updated..!</p>
+
+            </md-input-container>
+
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="35">
+              <md-input-container>
+                <label>Both Limit</label>
+                <md-select ng-model="newNumber.BothLimitId" id="singleSelect" name="bthLmt " ng-change="activateBothLmtButton(newNumber.BothLimitId)" ng-model-options="{trackBy: '$value'}">
+                  <md-option ng-repeat="bothLimit in limitObj" ng-if="bothLimit.Enable==true" value="{{bothLimit.LimitId}}">
+                    {{bothLimit.LimitDescription}} - ( {{bothLimit.MaxCount}} )
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <div ng-messages="NewNumberAdvanceForm.bthLmt.$error">
+              <div ng-message="required">Please Select a value.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button"  aria-label="Add_1"  ng-disabled="TranslationDissable" ng-click="setBothLimit()">
+                <md-icon md-svg-src="../TrunkApp/img/ic_save_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+              <md-button class="md-icon-button"  aria-label="status_4"  ng-hide="updateBothLmtTrueDissable">
+                <md-icon md-svg-src="../TrunkApp/img/ic_done_24px.svg"></md-icon>
+              </md-button>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="15">
+
+              <p style="color: red; font-size: x-small;border-color: red" ng-hide="updateBothLmtErrorDissable">Both Limit Not Updated..!</p>
+
+            </md-input-container>
+
+          </div>
+        </fieldset>
+      </form>
+
+    </md-content>
+  </div>
+
+</div>
+

@@ -1,0 +1,168 @@
+
+<md-data-table-toolbar>
+  <h2 class="md-title">Hold Music List</h2>
+</md-data-table-toolbar>
+<md-data-table-container>
+
+  <!-- ic_add_24px.svg
+ <p><md-button ng-click="NewApplication()" class="md-raised md-primary">NEW</md-button></p>-->
+  <!--<md-button class="md-icon-button" aria-label="Edit" ng-click="NewApplication()">
+    <md-icon md-svg-src="../appregistry/img/ic_add_24px.svg"></md-icon>
+  </md-button>
+
+  <md-list ng-control ng-controller="AppsController" ng-cloak flex-gt-sm="80">
+    <md-list-item align="left">
+      <p flex-gt-sm style="font-style:normal">AppName</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>MasterAppId</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>ObjType</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>Availability</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p></p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p></p>
+    </md-list-item>
+    <md-list-item ng-repeat="application in appData">
+      &lt;!&ndash; <img alt="{{ application.name }}" />&ndash;&gt;
+      <p flex-gt-sm>{{ application.AppName }}</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>{{ application.MasterApplicationId }}</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>{{ application.ObjType}}</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <p flex-gt-sm>{{ application.Availability}}</p>
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <md-button class="md-icon-button" aria-label="Edit" ng-click="EditApp(application)">
+        <md-icon md-svg-src="../appregistry/img/edit26.svg"></md-icon>
+      </md-button>
+     &lt;!&ndash; <p flex-gt-sm><md-button ng-click="EditApp(application)" class="md-raised md-primary">Edit</md-button></p>&ndash;&gt;
+      <div flex="5" hide-xs hide-sm>
+        &lt;!&ndash; Spacer //&ndash;&gt;
+      </div>
+      <md-button class="md-icon-button" aria-label="Edit" ng-click="DeleteApplication(application.id)">
+        <md-icon md-svg-src="../appregistry/img/ic_delete_24px.svg"></md-icon>
+      </md-button>
+      &lt;!&ndash;<p flex-gt-sm><md-button ng-click="DeleteApplication(application.id)" class="md-raised md-warn">Delete</md-button></p>&ndash;&gt;
+      &lt;!&ndash;<md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': person.newMessage}"></md-icon>&ndash;&gt;
+    </md-list-item>
+
+  </md-list>
+  <div ng-controller="AppsController" layout="column" ng-cloak flex-gt-sm="50">
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>AppName</label>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Master App ID</label>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>ObjType</label>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Availability</label>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label></label>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label></label>
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row" layout-align="center center" md-auto-select ng-repeat="application in appData ">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>AppName</label>
+        <input ng-model="application.AppName" placeholder="{{appData.AppName}}">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Master App ID</label>
+        <input ng-model="application.MasterApplicationId" placeholder="{{application.MasterApplicationId}}">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>ObjType</label>
+        <input ng-model="application.ObjType" placeholder="{{application.ObjType}}">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Availability</label>
+        <input ng-model="application.Availability" placeholder="{{application.Availability}}">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label></label>
+        <md-button ng-click="EditApp(application)" class="md-raised md-primary">Edit</md-button>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label></label>
+        <md-button ng-click="DeleteApplication(application.id)" class="md-raised md-warn">Delete</md-button>
+      </md-input-container>
+    </div>
+  </div>-->
+
+
+ <table md-data-table  md-progress="deferred" width="90%">
+       <thead>
+       <tr height="30px">
+           <td >
+             <md-button class="md-icon-button" aria-label="Edit" ng-click="NewApplication()">
+               <md-icon md-svg-src="../HoldMusicApp/img/ic_add_24px.svg"></md-icon>
+             </md-button>
+
+
+           </td>
+       </tr>
+       <tr align="left">
+           <th>Name</th>
+           <th>Type </th>
+           <th>Category </th>
+
+
+
+       </tr>
+       </thead>
+       <tbody>
+       <tr  md-auto-select ng-repeat="holdMusicData in musicData ">
+          <td>{{holdMusicData.Name}}</td>
+           <td>{{holdMusicData.Type}}</td>
+           <td>{{holdMusicData.Category }}</td>
+           <!--<td>{{holdMusicData.Availability}}</td>-->
+           <td>
+             <md-button class="md-icon-button" aria-label="Edit" ng-click="EditTrunk(holdMusicData)">
+               <md-icon md-svg-src="../HoldMusicApp/img/edit26.svg"></md-icon>
+             </md-button>
+
+           </td>
+         <td>
+
+             <md-button class="md-icon-button" aria-label="Edit" ng-click="DeleteMusicProfile(holdMusicData.Name)">
+               <md-icon md-svg-src="../HoldMusicApp/img/ic_delete_24px.svg"></md-icon>
+             </md-button>
+
+           </td>
+
+
+       </tr>
+  </tbody>
+   </table>
+</br>
+
+
+</md-data-table-container>
