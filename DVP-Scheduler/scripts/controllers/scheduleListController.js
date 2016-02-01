@@ -4,14 +4,12 @@
 (function() {
   var app = angular.module("scheduleApp");
 
-  var ScheduleListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast)
+  var ScheduleListController = function ($scope, dvpHandler, $location, $mdDialog, $mdToast, $anchorScroll)
   {
     $scope.query = {
       limit: 5,
       page: 1
     };
-
-    $scope.IsHide = true;
 
 
     $scope.dataReady = false;
@@ -45,15 +43,17 @@
 
     $scope.onNewPressed = function()
     {
+      var old = $location.hash();
       $scope.IsEdit = false;
-      $scope.IsHide = false;
       $scope.scheduleConfig = {};
+      $location.hash('edit');
+      $anchorScroll();
+      $location.hash(old);
     };
 
     $scope.onAppointmentPressed = function(scheduleObj)
     {
       $scope.IsEdit = false;
-      $scope.IsHide = true;
       $location.url("/schedule/" + scheduleObj.id + "/appointments");
       $scope.scheduleConfig = {};
     };
@@ -97,7 +97,8 @@
       else
       {
         //save
-        dvpHandler.saveSchedule($scope.scheduleConfig).then(function(data)
+        $scope.appConfig.ScheduleId =
+        dvpHandler.saveAppointment($scope.scheduleConfig).then(function(data)
         {
           if(data.IsSuccess)
           {
@@ -175,11 +176,14 @@
 
     $scope.onEditPressed = function(scheduleObj)
     {
+      var old = $location.hash();
       $scope.IsEdit = true;
-      $scope.IsHide = false;
       $scope.tempSchedule = {};
       angular.copy(scheduleObj, $scope.tempSchedule);
       $scope.scheduleConfig = $scope.tempSchedule;
+      $location.hash('edit');
+      $anchorScroll();
+      $location.hash(old);
     };
 
     $scope.reloadScheduleList = function()
@@ -229,6 +233,8 @@
     $scope.reloadScheduleList();
 
   };
+
+
 
   app.controller("ScheduleListController", ScheduleListController);
 }());

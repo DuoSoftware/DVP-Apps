@@ -53,7 +53,7 @@
     }
 
     function querySearch (query) {
-      var results = query ? self.allAttributes.filter(createFilterFor(query)) : [];
+      var results = query ? self.allAttributes .filter(createFilterFor(query)) : [];
       return results;
     }
 
@@ -75,7 +75,7 @@
 
         //var ResArray = response.data.Result.slice();
 
-        self.allAttributes = response.data.Result.map(function (c,index) {
+        self.allAttributes  = response.data.Result.map(function (c,index) {
 
           var item = c;
           console.log("ITM   "+JSON.stringify(c));

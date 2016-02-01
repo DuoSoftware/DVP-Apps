@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-md-6" ng-controller="demoController as demo">
-    <h3>ngTable directive</h3>
     <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-hover">
       <colgroup>
         <col width="60%" />
@@ -8,7 +7,7 @@
         <col width="20%" />
       </colgroup>
       <tr class="ng-table-group" ng-repeat-start="group in $groups">
-        <td colspan="3">
+        <td colspan="5">
           <a href="" ng-click="group.$hideRows = !group.$hideRows">
             <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
             <strong>{{ group.value }}</strong>
@@ -27,6 +26,17 @@
         </td>
         <td data-title="'UniqueId'">
           {{user.UniqueId}}
+        </td>
+        <td>
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
+                     ng-click="deleteFile(file)">
+            <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+          </md-button>
+        </td>
+        <td >
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
+                     ng-click="downloadFile(file)">
+            <md-icon md-svg-src="img/download.svg"></md-icon>
         </td>
       </tr>
     </table>

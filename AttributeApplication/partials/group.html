@@ -6,8 +6,8 @@
     <table md-table  md-progress="deferred" >
       <thead md-head style="background-color: #cccccc">
         <tr md-row>
-            <th md-column style="color: #323232"><h3>Group ID</h3></th>
-            <th md-column style="color: #323232"><h3>Group Name</h3></th>
+            <th md-column style="color: #323232"><h3>ID</h3></th>
+            <th md-column style="color: #323232"><h3>Name</h3></th>
             <th md-column style="color: #323232"><h3>Other Data</h3></th>
             <th md-column style="color: #323232"><h3>Percentage</h3></th>
 
@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody md-body>
-        <tr md-row layout-align="center center" md-auto-select ng-repeat="grp in grps ">
+        <tr md-row layout-align="center center" md-auto-select ng-repeat="grp in grps | limitTo: query.limit: (query.page - 1) * query.limit ">
             <td md-cell>{{grp.GroupId}}</td>
             <td md-cell>{{grp.GroupName}}</td>
             <td md-cell>{{grp.OtherData}}</td>
@@ -32,6 +32,8 @@
     </table>
 
 </md-data-table-container>
+
+<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
 
 
 
