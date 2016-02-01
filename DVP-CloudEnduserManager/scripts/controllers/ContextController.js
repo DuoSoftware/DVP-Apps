@@ -9,6 +9,15 @@
   var ContextController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia) {
 
     console.log("hitaa");
+
+
+    var onError = function(reason)
+    {
+      $scope.isDisabled = false;
+      $scope.error=reason;
+      commonservice.showAlert("ERROR",reason);
+    }
+
     var onContextComplete = function (response) {
 
       if(response.data.Exception)
@@ -22,14 +31,6 @@
       }
 
     }
-
-    var onError = function(reason)
-    {
-      $scope.isDisabled = false;
-      $scope.error=reason;
-      commonservice.showAlert("ERROR",reason);
-    }
-
 
     var onContextDeleteComplete = function (response) {
 
