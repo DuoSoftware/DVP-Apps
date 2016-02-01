@@ -17,7 +17,7 @@
     </tr>
     </thead>
     <tbody md-body>
-    <tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj">
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj | limitTo: query.limit: (query.page - 1) * query.limit">
       <td md-cell>{{translation.TransName}}</td>
       <td md-cell>{{translation.LAdd}}</td>
       <td md-cell>{{translation.LRemove}}</td>
@@ -45,4 +45,5 @@
   </table>
 
 </md-data-table-container>
+<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
 

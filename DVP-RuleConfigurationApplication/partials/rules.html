@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody md-body>
-            <tr md-row layout-align="center center" md-auto-select ng-repeat="rule in inRuleData">
+            <tr md-row layout-align="center center" md-auto-select ng-repeat="rule in inRuleData | limitTo: inQuery.limit: (inQuery.page - 1) * inQuery.limit">
               <td md-cell>{{rule.DNIS}}</td>
               <td md-cell>{{rule.RegExPattern}}</td>
               <td md-cell>{{rule.Priority}}</td>
@@ -37,6 +37,7 @@
           </table>
 
         </md-data-table-container>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{inTotal}}></md-table-pagination>
 
 
 
@@ -60,7 +61,7 @@
             </tr>
             </thead>
             <tbody md-body>
-            <tr md-row layout-align="center center" md-auto-select ng-repeat="rule in outRuleData">
+            <tr md-row layout-align="center center" md-auto-select ng-repeat="rule in outRuleData | limitTo: outQuery.limit: (outQuery.page - 1) * outQuery.limit">
               <td md-cell>{{rule.DNIS}}</td>
               <td md-cell>{{rule.RegExPattern}}</td>
               <td md-cell>{{rule.Priority}}</td>
@@ -79,7 +80,7 @@
 
         </md-data-table-container>
 
-
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{outTotal}}></md-table-pagination>
 
       </md-tab>
 

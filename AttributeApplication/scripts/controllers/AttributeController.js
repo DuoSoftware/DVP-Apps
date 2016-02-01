@@ -7,6 +7,11 @@
 
   var AttributeController= function ($scope,dbcontroller,commoncontroller,$location,$mdDialog,$mdMedia) {
 
+    $scope.query = {
+      limit: 5,
+      page: 1
+    };
+
     $scope.isDisabled = false;
 
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -21,10 +26,11 @@
       {
         dbcontroller.GIDst=false;
         console.log("Got as Attributes "+JSON.stringify(response.data.Result));
+        $scope.total = response.data.Result.length;
         $scope.attribData=response.data.Result;
       }
 
-    }
+    };
 
     var onGrpAttribComplete = function (response) {
       console.log(JSON.stringify(response.data.Result));
@@ -44,6 +50,7 @@
 
           if(i==len-1 )
           {
+            $scope.total = response.data.Result.length;
             $scope.attribData=tempArr;
           }
         }

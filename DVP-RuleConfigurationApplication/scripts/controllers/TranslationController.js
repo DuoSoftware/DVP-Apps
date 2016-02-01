@@ -7,12 +7,17 @@
 
   var TranslationController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia)
   {
+    $scope.query = {
+      limit: 5,
+      page: 1
+    };
+
     var onError = function(reason)
     {
       $scope.isDisabled = false;
       $scope.error=reason;
       commonservice.showAlert("ERROR",reason);
-    }
+    };
     var onTransLoadComplete = function (response) {
 
       console.log("on Complete "+JSON.stringify(response));
@@ -25,9 +30,10 @@
       {
         console.log("Got trans "+JSON.stringify(response.data.Result));
         $scope.transObj=response.data.Result;
+        $scope.total = response.data.Result.length;
       }
 
-    }
+    };
 
     var onTranslationDelCompleted = function (response) {
 
@@ -53,25 +59,25 @@
         $scope.transObj.splice(val, 1);
 
       }
-    }
+    };
 
     $scope.loadTranslations = function () {
 
       console.log("Trans hit");
       dbservice.loadTranslations().then(onTransLoadComplete,onError);
-    }
+    };
 
     $scope.editTranslation = function (translation) {
 
       $location.path("/edittranslation/"+translation.id);
-    }
+    };
 
     $scope.deleteTranslation = function (translation) {
       dbservice.deleteTranslation(translation).then(onTranslationDelCompleted,onError);
-    }
+    };
 
     $scope.loadTranslations();
 
-  }
+  };
   app.controller("TranslationController",TranslationController);
 }());

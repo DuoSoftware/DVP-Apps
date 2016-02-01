@@ -7,6 +7,12 @@
 
   var EnduserController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia) {
 
+    $scope.query = {
+      limit: 5,
+      page: 1
+    };
+
+
     $scope.isDisabled = false;
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
@@ -54,7 +60,7 @@
       $scope.isDisabled = false;
       $scope.error=reason;
       commonservice.showAlert("ERROR",reason);
-    }
+    };
 
     var onUserDeleteComplete = function (response) {
 
@@ -80,7 +86,7 @@
         $scope.userData.splice(val, 1);
 
       }
-    }
+    };
 
     var onUserComplete = function (response) {
       console.log("GOT RESULT   "+JSON.stringify(response.data.Result));
@@ -90,8 +96,8 @@
       }
       else
       {
-        console.log("Got as Attributes "+JSON.stringify(response.data.Result));
         $scope.userData=response.data.Result;
+        $scope.total = response.data.Result.length;
       }
 
     }
