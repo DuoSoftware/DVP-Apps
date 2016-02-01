@@ -103,7 +103,7 @@
       loadEmergencyNumbers:loadEmergencyNumbers,
       addEmgNumber:addEmgNumber,
       delEmgNumber:delEmgNumber
-      
+
 
     };
 

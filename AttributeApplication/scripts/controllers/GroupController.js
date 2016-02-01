@@ -10,6 +10,11 @@
 
     var GroupController= function ($scope,dbcontroller,$location,commoncontroller) {
 
+
+      $scope.query = {
+        limit: 5,
+        page: 1
+      };
         var onGroupComplete = function (response) {
 
           if(response.data.Exception)
@@ -19,6 +24,7 @@
           else
           {
             $scope.grps=response.data.Result;
+            $scope.total = response.data.Result.length;
 
           }
 
@@ -88,6 +94,7 @@
         $scope.ViewAttribute = function(grpObj)
         {
             dbcontroller.GroupObj=grpObj;
+
             console.log(dbcontroller.GroupObj);
           //commoncontroller.showAdvanced("MapController","partials/assignattributestogroup.html",true);
             $location.path("/editgroup");

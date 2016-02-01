@@ -8,12 +8,21 @@
 
   var RuleController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia)
   {
+
+    $scope.inQuery = {
+      limit: 5,
+      page: 1
+    };
+    $scope.outQuery = {
+      limit: 5,
+      page: 1
+    };
     var onError = function(reason)
     {
       $scope.isDisabled = false;
       $scope.error=reason;
       commonservice.showAlert("ERROR",reason);
-    }
+    };
     var onInLoadComplete = function (response) {
 
       if(response.data.Exception)
@@ -24,9 +33,10 @@
       {
 
         $scope.inRuleData=response.data.Result;
+        $scope.inTotal = response.data.Result.length;
       }
 
-    }
+    };
     var onOutLoadComplete = function (response) {
 
       if(response.data.Exception)
@@ -37,9 +47,10 @@
       {
 
         $scope.outRuleData=response.data.Result;
+        $scope.outTotal = response.data.Result.length;
       }
 
-    }
+    };
     var onINRuleDeleteComplete = function (response) {
 
 
@@ -64,7 +75,7 @@
         $scope.inRuleData.splice(val, 1);
 
       }
-    }
+    };
     var onOUTRuleDeleteComplete = function (response) {
 
 
@@ -89,16 +100,16 @@
         $scope.outRuleData.splice(val, 1);
 
       }
-    }
+    };
 
     $scope.loadInboundRules = function()
     {
       dbservice.getInRuleList().then(onInLoadComplete,onError);
-    }
+    };
     $scope.loadOutboundRules = function()
     {
       dbservice.getOutRuleList().then(onOutLoadComplete,onError);
-    }
+    };
 
     $scope.addRule= function(direction)
     {
@@ -140,6 +151,6 @@
     $scope.loadInboundRules();
     $scope.loadOutboundRules();
 
-  }
+  };
   app.controller("RuleController",RuleController);
 }());

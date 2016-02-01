@@ -121,20 +121,7 @@
       newContext:newContext,
       getContext:getContext,
       updateContext:updateContext,
-      deleteContext:deleteContext/*,
-       updateAttribute:updateAttribute,
-       NewAttribute:NewAttribute,
-       getGroupList:getGroupList,
-       GroupObj:GroupObj,
-       updateGroup:updateGroup,
-       groupDelete:groupDelete,
-       NewGroup:NewGroup,
-       AddAttributesToGroup:AddAttributesToGroup,
-       GID:GID,
-       GetAttributesOfGroup:GetAttributesOfGroup,
-       GIDst:GIDst,
-       showConfirm:showConfirm,
-       RemoveAttributeFromGroup:RemoveAttributeFromGroup*/
+      deleteContext:deleteContext
 
     };
 

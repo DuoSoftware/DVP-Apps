@@ -8,7 +8,10 @@
 
   var ContextController = function ($scope,dbservice,commonservice,$location,$mdDialog,$mdMedia) {
 
-    console.log("hitaa");
+    $scope.query = {
+      limit: 5,
+      page: 1
+    };
 
 
     var onError = function(reason)
@@ -16,7 +19,7 @@
       $scope.isDisabled = false;
       $scope.error=reason;
       commonservice.showAlert("ERROR",reason);
-    }
+    };
 
     var onContextComplete = function (response) {
 
@@ -28,9 +31,10 @@
       {
 
         $scope.contextData=response.data.Result;
+        $scope.total = response.data.Result.length;
       }
 
-    }
+    };
 
     var onContextDeleteComplete = function (response) {
 
@@ -56,7 +60,7 @@
         $scope.contextData.splice(val, 1);
 
       }
-    }
+    };
 
     $scope.DeleteContext= function(context)
     {
@@ -80,22 +84,22 @@
 
 
 
-    }
+    };
 
 
 
 
     $scope.EditContext = function (context) {
       $location.path("/editcontext/"+context);
-    }
+    };
 
 
     $scope.loadContexts = function () {
 
       dbservice.getContextList().then(onContextComplete,onError);
-    }
+    };
 
     $scope.loadContexts();
-  }
+  };
   app.controller("ContextController",ContextController);
 }());
