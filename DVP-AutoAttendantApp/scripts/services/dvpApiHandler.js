@@ -92,6 +92,20 @@
       })
     };
 
+    var deleteAction = function(autoAttName, actionId)
+    {
+      return $http({
+        method: 'DELETE',
+        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + autoAttName + '/Action/' + actionId,
+        headers: {
+          'authorization': 'hhhh'
+        }
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     var getExtensions = function()
     {
       return $http({
@@ -128,7 +142,8 @@
       updateAutoAttendants: updateAutoAttendants,
       getAutoAttendant: getAutoAttendant,
       deleteAutoAttendant: deleteAutoAttendant,
-      setAction: setAction
+      setAction: setAction,
+      deleteAction: deleteAction
     };
   };
 

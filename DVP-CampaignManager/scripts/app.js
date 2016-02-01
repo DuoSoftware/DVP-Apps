@@ -1,7 +1,7 @@
 /**
  * Created by a on 1/19/2016.
  */
-var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService", "scheduleService", "uploadService", "phoneNumberService"]);
+var app = angular.module("CampaignApp", ["ngMaterial","ngMessages", "ngRoute","campaignService", "sipUserService", "scheduleService", "uploadService", "phoneNumberService", 'md.data.table']);
 
 app.config(function($routeProvider){
 
