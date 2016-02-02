@@ -35,7 +35,7 @@
       }, function (error) {
         $scope.showStatus = true;
         $scope.status = "Fail to Delete IP Address - " + IPAddress.IP;
-        $route.reload();
+        loadCallServers();
       });
 
     };
@@ -98,7 +98,7 @@
         if (response) {
 
           var assignToCallServer = $filter('filter')(response, {CallServerId: $routeParams.id});
-          var ipAddressAvailable = $filter('filter')(assignToCallServer, {IsAllocated: false});
+          /*var ipAddressAvailable = $filter('filter')(assignToCallServer, {IsAllocated: false});*/
           var selectedCallServer = $filter('filter')(assignToCallServer, {IsAllocated: true});
 
           self.ipAddresss = assignToCallServer.map(function (v) {

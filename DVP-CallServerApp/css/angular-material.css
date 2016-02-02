@@ -11354,7 +11354,8 @@ md-input-container .md-input {
   border-style: solid;
   width: 100%;
   box-sizing: border-box;
-  float: left; }
+  float: left;
+  }
 html[dir=rtl] md-input-container .md-input {
   float: right;
   unicode-bidi: embed; }
