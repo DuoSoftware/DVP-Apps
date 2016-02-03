@@ -35,21 +35,6 @@
     </table>
 
 </md-data-table-container>-->
-<<<<<<< HEAD
-
-<form name="newGrpForm">
-
-
-  <md-toolbar class="md-table-toolbar md-default">
-    <label style="padding: 5% 0% 5% 10% ">New Group</label>
-  </md-toolbar>
-
-  <md-content layout-gt-sm="row" layout-padding >
-    <div>
-      <md-input-container>
-        <label style="color: blue" >Group Name</label>
-        <input type="text"  name = "Group" ng-model="GroupName" align="left" required/>
-=======
 <div layout="column"  flex-lt-md="80%">
   <md-content layout-padding style="background-color: lightgrey"  >
 
@@ -66,44 +51,10 @@
         <md-input-container class="md-block" flex-gt-sm>
           <label style="color: blue" >Group Name</label>
           <input type="text"  name = "Group" ng-model="newGrp.GroupName" align="left" required/>
->>>>>>> Development
 
           <span style="color:red" ng-show="newGrpForm.Group.$dirty && newGrpForm.Group.$invalid">
 
 </span>
-<<<<<<< HEAD
-      </md-input-container>
-      <md-input-container>
-        <label style="color: blue">OtherData</label>
-        <input type="text" name="otherData" ng-model="OtherData" required/>
-
-        <span style="color:red" ng-show="newGrpForm.otherData.$dirty && newGrpForm.otherData.$invalid"></span>
-
-      </md-input-container>
-
-      <md-input-container>
-        <label style="color: blue">Percentage</label>
-        <input type="number" name="Percentage" min="0" max="100" ng-model="Percentage" placeholder="0" required/>
-
-        <span style="color:red" ng-show="newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid"></span>
-
-      </md-input-container>
-    </div>
-  </md-content>
-  <md-content  layout-gt-sm="row" >
-
-    <md-input-container >
-      <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNewGroup(GroupName,OtherData,Percentage)" ng-disabled="isDisabled || newGrpForm.otherData.$dirty && newGrpForm.otherData.$invalid ||
-  newGrpForm.Group.$dirty && newGrpForm.Group.$invalid || newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid|| !OtherData.length || !GroupName.length "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></md-button>
-
-    </md-input-container>
-
-
-  </md-content>
-
-
-</form>
-=======
         </md-input-container>
 
         <div flex="5" hide-xs hide-sm>
@@ -187,7 +138,6 @@
   </md-content>
 </div>
 
->>>>>>> Development
 
 
 
