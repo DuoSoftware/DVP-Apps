@@ -36,8 +36,6 @@
     </table>
 
 </md-data-table-container>-->
-<<<<<<< HEAD
-=======
 <div layout="column"  flex-lt-md="80%">
 
   <md-content layout-padding style="background-color: lightgrey">
@@ -137,52 +135,6 @@
   </md-content>
 
 </div>
->>>>>>> Development
 
 
 
-<form name="editAttribForm">
-
-
-  <md-toolbar class="md-table-toolbar md-default">
-    <label style="padding: 5% 0% 5% 10% ">Edit Attribute</label>
-  </md-toolbar>
-
-  <md-content layout-gt-sm="row" layout-padding >
-    <div>
-
-      <md-input-container class="md-block" flex-gt-xs>
-        <label style="color: blue">Attribute ID</label>
-        <input ng-model="DataObj.AttributeId" disabled style="color: gray">
-      </md-input-container>
-
-      <md-input-container>
-        <label style="color: blue" >Attribute</label>
-        <input type="text"  name = "Attribute" ng-model="editObj.Attribute" align="left"  required />
-
-          <span style="color:red" ng-show="newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid">
-
-</span>
-      </md-input-container>
-      <md-input-container>
-        <label style="color: blue">OtherData</label>
-        <input type="text" name="otherData" ng-model="editObj.OtherData"  required/>
-
-        <span style="color:red" ng-show="newAttribForm.otherData.$dirty && newAttribForm.otherData.$invalid"></span>
-
-      </md-input-container>
-    </div>
-  </md-content>
-  <md-content  layout-gt-sm="row" >
-
-    <md-input-container >
-      <md-button class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.AttributeId)" ng-disabled="isDisabled || newAttribForm.otherData.$dirty &&newAttribForm.otherData.$invalid ||
-  newAttribForm.Attribute.$dirty && newAttribForm.Attribute.$invalid || !editObj.OtherData.length || !editObj.Attribute.length"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="Erase()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
-
-    </md-input-container>
-
-
-  </md-content>
-
-
-</form>

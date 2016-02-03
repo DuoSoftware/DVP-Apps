@@ -10,20 +10,6 @@
 
     var GroupController= function ($scope,dbcontroller,$location,commoncontroller) {
 
-<<<<<<< HEAD
-        var onGroupComplete = function (response) {
-
-          if(response.data.Exception)
-          {
-            onError(response.data.Exception.Message);
-          }
-          else
-          {
-            $scope.grps=response.data.Result;
-
-          }
-
-=======
 
       $scope.query = {
         limit: 5,
@@ -42,7 +28,6 @@
 
           }
 
->>>>>>> Development
 
         }
         var onError = function(reason)
@@ -101,12 +86,8 @@
 
       $scope.addNewGroup = function()
       {
-<<<<<<< HEAD
-        commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
-=======
         //commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
         $location.path("/newgroup");
->>>>>>> Development
 
       }
 
