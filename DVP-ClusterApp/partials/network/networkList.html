@@ -1,0 +1,137 @@
+
+<div class="divTable" layout="row" layout-align="center center" ng-hide="dataReady">
+  <div layout="column" layout-align="center center">
+    <h4>loading data</h4>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+</div>
+
+<md-table-container>
+
+
+  <div class="main-fab">
+    <md-button class="md-fab md-accent" href="#/network/create">+</md-button>
+    <md-tooltip>Add Network</md-tooltip>
+  </div>
+
+<div  layout="column" flex layout-fill ng-cloak >
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">Networks List</div>
+  </md-toolbar>
+  <md-content style="height: 100%; " md-theme="altTheme" >
+
+    <section class="ui-main">
+      <md-subheader class="md-primary">TELCO</md-subheader>
+      <md-list layout-padding>
+        <md-list-item class="md-3-line">
+
+            <table md-table md-progress="promise" width="100%" ng-show="dataReady">
+              <thead md-head md-order="queryTelco.order" md-on-reorder="queryTelco.order">
+              <tr class="md-table-header" md-row>
+                <th md-column md-order-by="Network" >Network</th>
+                <th md-column>Mask</th>
+                <th md-column>NAT IP</th>
+                <th md-column>Owner</th>
+                <th md-column>Type</th>
+                <th md-column>Edit</th>
+                <!--<th md-column>Config</th>-->
+                <th md-column>Delete</th>
+              </tr>
+              </thead>
+              <tbody md-body>
+              <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
+                  ng-repeat="network in TelcoNetworks | orderBy: queryTelco.order|limitTo: queryTelco.limit: (queryTelco.page - 1) * queryTelco.limit"
+                  >
+
+                <td md-cell >{{network.Network}}</td>
+                <td md-cell>{{network.Mask}}</td>
+                <td md-cell>{{network.NATIP}}</td>
+                <td md-cell>{{network.Owner}}</td>
+                <td md-cell>{{network.Type}}</td>
+                <td md-cell>
+                  <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewNetwork(network.id)">
+                    <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+                  </md-button>
+                </td>
+                <!--<td md-cell>
+                  <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="networkConfigure(network.id)">
+                    <md-icon md-svg-src="../img/settings49.svg"></md-icon>
+                  </md-button>
+                </td>-->
+                <td md-cell>
+                  <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteNetwork(network)">
+                    <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+                  </md-button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+
+        </md-list-item>
+        <md-table-pagination md-limit="queryTelco.limit" md-page="queryTelco.page" md-total={{totalTELCO}}></md-table-pagination>
+      </md-list>
+    </section>
+    <section class="ui-main">
+      <md-subheader class="md-warn">USER</md-subheader>
+      <md-list layout="column" layout-padding>
+        <md-list-item class="md-3-line">
+
+          <table md-table md-progress="promise" width="100%" ng-show="dataReady">
+            <thead md-head md-order="query.order" md-on-reorder="query.order">
+            <tr class="md-table-header" md-row>
+              <th md-column md-order-by="Network">Network</th>
+              <th md-column>Mask</th>
+              <th md-column>NAT IP</th>
+              <th md-column>Owner</th>
+              <th md-column>Type</th>
+              <th md-column>Edit</th>
+              <!--<th md-column>Config</th>-->
+              <th md-column>Delete</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
+                ng-repeat="network in userNatworks | orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit"
+                ng-if="network.Type=='USER'" >
+
+              <td md-cell>{{network.Network}}</td>
+              <td md-cell>{{network.Mask}}</td>
+              <td md-cell>{{network.NATIP}}</td>
+              <td md-cell>{{network.Owner}}</td>
+              <td md-cell>{{network.Type}}</td>
+              <td md-cell>
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="viewNetwork(network.id)">
+                  <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+                </md-button>
+              </td>
+              <!--<td md-cell>
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="networkConfigure(network.id)">
+                  <md-icon md-svg-src="../img/settings49.svg"></md-icon>
+                </md-button>
+              </td>-->
+              <td md-cell>
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="deleteNetwork(network)">
+                  <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+                </md-button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </md-list-item>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+      </md-list>
+    </section>
+    </br>
+  </md-content>
+</div>
+
+</md-table-container>
+
+
+
+
+
+
+

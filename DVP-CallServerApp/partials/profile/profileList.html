@@ -1,0 +1,68 @@
+<md-table-container>
+  <div class="main-fab">
+    <md-button class="md-fab md-accent" href="#/profile/create">+</md-button>
+    <md-tooltip>Add Profile</md-tooltip>
+  </div>
+  <div class="divTable" layout="row" layout-align="center center" ng-hide="dataReady">
+    <div layout="column" layout-align="center center">
+      <h4>loading data</h4>
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+  </div>
+
+  <table md-table md-progress="promise" width="100%" ng-show="dataReady">
+    <thead md-head  md-order="query.order" md-on-reorder="query.order">
+
+
+    <tr class="md-table-header" md-row>
+      <th md-column md-order-by="ProfileName">Profile Name</th>
+      <th md-column>Main IP</th>
+      <th md-column>Internal Ip</th>
+      <th md-column>Internal Rtp Ip</th>
+      <th md-column>External Ip</th>
+      <th md-column>External Rtp Ip</th>
+      <th md-column>Port</th>
+      <th md-column>Class</th>
+      <th md-column>Type</th>
+      <th md-column>Category</th>
+      <th md-column>Edit</th>
+      <th md-column>Delete</th>
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr class="md-table-header-row" md-auto-select ng-class-odd="'odd'" ng-class-even="'even'"
+        ng-repeat="profile in profiles |  orderBy: query.order| limitTo: query.limit: (query.page - 1) * query.limit">
+
+      <td md-cell>{{profile.ProfileName}}</td>
+      <td md-cell>{{profile.MainIp}}</td>
+      <td md-cell>{{profile.InternalIp}}</td>
+      <td md-cell>{{profile.InternalRtpIp}}</td>
+      <td md-cell>{{profile.ExternalIp}}</td>
+      <td md-cell>{{profile.ExternalRtpIp}}</td>
+      <td md-cell>{{profile.Port}}</td>
+      <td md-cell>{{profile.ObjClass}}</td>
+      <td md-cell>{{profile.ObjType}}</td>
+      <td md-cell>{{profile.ObjCategory}}</td>
+
+      <td md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
+                   ng-click="editProfile(profile.id)">
+          <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+        </md-button>
+      </td>
+      <td md-cell>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
+                   ng-click="deleteProfile(profile)">
+          <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+        </md-button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</md-table-container>
+<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+
+
+
+
+

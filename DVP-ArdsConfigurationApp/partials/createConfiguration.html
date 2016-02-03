@@ -1,0 +1,166 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Create ARDS Configuration</div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+      <form name="createConfigForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Server Type</label>
+            <input name="serverType" ng-model="metaData.ServerType" required>
+            <div ng-messages="createConfigForm.serverType.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Request Type</label>
+            <md-select name="requestTypes" ng-model="metaData.RequestType" ng-model-options="{trackBy: '$value'}" required>
+              <md-option ng-repeat="task in tasks" value="{{task.ResTaskInfo.TaskType}}">
+                {{task.ResTaskInfo.TaskType}}
+              </md-option>
+            </md-select>
+            <div ng-messages="createConfigForm.requestTypes.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Request Handling</label>
+            <md-select name="requestHandling" ng-model="metaData.ReqHandlingAlgo" ng-model-options="{trackBy: '$value'}" required>
+              <md-option value="QUEUE">QUEUE</md-option>
+              <md-option value="DIRECT">DIRECT</md-option>
+            </md-select>
+            <div ng-messages="createConfigForm.requestHandling.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Request Selection</label>
+            <md-select name="requestSelection" ng-model="metaData.ReqSelectionAlgo" ng-model-options="{trackBy: '$value'}" required>
+              <md-option value="LONGESTWAITING">LONGESTWAITING</md-option>
+            </md-select>
+            <div ng-messages="createConfigForm.requestSelection.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Resource Serving</label>
+            <md-select name="resourceServing" ng-model="metaData.ServingAlgo" ng-model-options="{trackBy: '$value'}" required>
+              <md-option value="DIRECT">DIRECT</md-option>
+              <md-option value="CALLBACK">CALLBACK</md-option>
+            </md-select>
+            <div ng-messages="createConfigForm.resourceServing.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <div layout="row" flex-gt-sm>
+            <md-input-container flex-gt-sm class="md-block">
+              <label>Resource Handling</label>
+              <md-select name="resourceHandling" ng-model="metaData.HandlingAlgo" ng-model-options="{trackBy: '$value'}" required>
+                <md-option value="SINGLE">SINGLE</md-option>
+                <md-option value="MULTIPLE">MULTIPLE</md-option>
+              </md-select>
+              <div ng-messages="createConfigForm.resourceHandling.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+
+          </div>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Resource Selection</label>
+            <md-select name="resourceSelection" ng-model="metaData.SelectionAlgo" ng-model-options="{trackBy: '$value'}" required>
+              <md-option value="BASIC">BASIC</md-option>
+              <md-option value="WEIGHTBASE">WEIGHTBASE</md-option>
+            </md-select>
+            <div ng-messages="createConfigForm.resourceSelection.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Max Reserved Time</label>
+            <input type="number"  name="maxReservedTime" ng-model="metaData.MaxReservedTime" required ng-pattern="/^(?:100|[1-9]?[0-9])$/">
+            <div ng-messages="createConfigForm.maxReservedTime.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Please enter a valid Number</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Max Afterwork Time</label>
+            <input type="number"  name="maxAfterworkTime" ng-model="metaData.MaxAfterWorkTime" required ng-pattern="/^(?:100|[1-9]?[0-9])$/">
+            <div ng-messages="createConfigForm.maxAfterworkTime.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Please enter a valid Number</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Max Reject Count</label>
+            <input type="number"  name="maxRejectCount" ng-model="metaData.MaxRejectCount" required ng-pattern="/^(?:100|[1-9]?[0-9])$/">
+            <div ng-messages="createConfigForm.maxRejectCount.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Please enter a valid Number</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <div layout="column" flex-gt-sm ng-cloak>
+          <md-content class="md-padding autocomplete" layout="column">
+            <md-contact-chips
+              ng-model="attributeGroups"
+              md-contacts="querySearch($query)"
+              md-contact-name="GroupName"
+              md-contact-email="GroupType"
+              md-require-match="true"
+              md-highlight-flags="i"
+              filter-selected="true"
+              placeholder="Attribute Groups">
+            </md-contact-chips>
+            <md-list class="fixedRows">
+              <md-list-item class="md-2-line contact-item" ng-repeat=" group in groups" ng-if="attributeGroups.indexOf(group) < 0">
+                <div class="md-list-item-text compact">
+                  <h3>{{group.GroupName}}</h3>
+                  <p>{{group.GroupType}}</p>
+                </div>
+              </md-list-item>
+              <md-list-item class="md-2-line contact-item selected" ng-repeat="group in attributeGroups">
+                <div class="md-list-item-text compact">
+                  <h3>{{group.GroupName}}</h3>
+                  <p>{{group.GroupType}}</p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+          </div>
+        </div>
+        <div layout="row">
+          <div flex="100"></div>
+          <div layout="row" layout-align="center center" ng-hide="!processing">
+            <div layout="column" layout-align="center center">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+          </div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="saveMetaData()" ng-disabled="createConfigForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="backToMain()">Back</md-button></div>
+        </div>
+
+
+
+      </form>
+    </md-content>
+  </div>
+</div>

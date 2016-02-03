@@ -1,0 +1,72 @@
+<form name="userForm">
+  <div class="md-padding" id="popupContainer" ng-cloak>
+    <md-card>
+      <md-card-title >
+        <md-card-title-text>
+          <span class="md-headline">Conference APP</span>
+        </md-card-title-text>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Add"  href="#/conference/create">
+          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        </md-button>
+      </md-card-title>
+
+
+
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead md-head md-order="confOrder" md-on-reorder="onReorder">
+          <tr md-row>
+            <th md-column md-order-by="ConferenceName"><span>Name</span></th>
+            <th md-column>Class</th>
+            <th md-column>Start Time</th>
+            <th md-column></th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row md-select="conference" md-select-id="{{conference.ConferenceId}}" md-auto-select ng-repeat="conference in conferences | orderBy: confOrder">
+            <td md-cell>{{conference.ConferenceName}}</td>
+            <td md-cell>{{conference.ObjClass}}</td>
+            <td md-cell>{{conference.StartTime}}</td>
+            <td md-cell>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewConference(conference.ConferenceName)">
+                <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+              </md-button>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteConference(conference)">
+                <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+              </md-button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+
+
+
+<!--
+
+      <md-list ng-cloak>
+
+
+        <md-list-item ng-repeat="conference in conferences">
+
+          <p>{{ conference.ConferenceName }}</p>
+          <p>{{ conference.ObjClass }}</p>
+          <p>{{ conference.StartTime }}</p>
+
+
+
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewConference(conference.ConferenceName)">
+            <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteConference(conference)">
+            <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+          </md-button>
+
+        </md-list-item>
+      </md-list>
+-->
+
+    </md-card>
+  </div>
+</form>

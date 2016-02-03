@@ -1,0 +1,32 @@
+<div id="popupContainer" ng-cloak>
+
+  <form name="projectForm" novalidate>
+    <div>
+      <md-card class="ui-main">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Call Server - {{callServer.Name}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content layout="column" layout-align="space-between">
+          <div ng-include="'partials/callForm.html'"></div>
+
+
+
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/callserver/list">
+              <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="projectForm.$invalid" aria-label="Add"
+                       ng-click="updateCallServer()">
+              <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card-content>
+      </md-card>
+    </div>
+  </form>
+</div>

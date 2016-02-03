@@ -10,6 +10,7 @@
 
     var GroupController= function ($scope,dbcontroller,$location,commoncontroller) {
 
+<<<<<<< HEAD
         var onGroupComplete = function (response) {
 
           if(response.data.Exception)
@@ -22,6 +23,26 @@
 
           }
 
+=======
+
+      $scope.query = {
+        limit: 5,
+        page: 1
+      };
+        var onGroupComplete = function (response) {
+
+          if(response.data.Exception)
+          {
+            onError(response.data.Exception.Message);
+          }
+          else
+          {
+            $scope.grps=response.data.Result;
+            $scope.total = response.data.Result.length;
+
+          }
+
+>>>>>>> Development
 
         }
         var onError = function(reason)
@@ -80,13 +101,19 @@
 
       $scope.addNewGroup = function()
       {
+<<<<<<< HEAD
         commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+=======
+        //commoncontroller.showAdvanced("NewgroupController","partials/newgroup.html",true);
+        $location.path("/newgroup");
+>>>>>>> Development
 
       }
 
         $scope.ViewAttribute = function(grpObj)
         {
             dbcontroller.GroupObj=grpObj;
+
             console.log(dbcontroller.GroupObj);
           //commoncontroller.showAdvanced("MapController","partials/assignattributestogroup.html",true);
             $location.path("/editgroup");

@@ -1,0 +1,37 @@
+<md-dialog aria-label="Pick User" class="customWidth1" ng-cloak>
+  <form name="selectUserForm">
+    <md-toolbar>
+      <div class="custBackground4 md-toolbar-tools">
+        <h2>Select a user to add</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content custBackground1">
+        <md-card>
+          <md-card-content layout="column" class="custBackground2">
+
+            <md-input-container class="md-block" flex>
+              <label>User</label>
+              <md-select name="userPicker" ng-model="selectedUserUuid" ng-model-options="{trackBy: '$value'}" required="">
+                <md-option ng-repeat="user in sipUserList" value="{{user.SipUserUuid}}">{{user.SipUsername}}</md-option>
+              </md-select>
+              <div ng-messages="selectUserForm.userPicker.$error">
+                <div ng-message="required">Please select a user to continue</div>
+              </div>
+            </md-input-container>
+
+          </md-card-content>
+        </md-card>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="custBackground1">
+      <md-button class="btn1" ng-click="onContinue()" ng-disabled="selectUserForm.$invalid">
+        Continue
+      </md-button>
+      <md-button class="btn2" ng-click="onCancel()">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

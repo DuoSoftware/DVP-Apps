@@ -1,0 +1,26 @@
+<form name="userForm">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">New Campaign</span>
+      </md-card-title-text>
+      <md-card-title-media>
+
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content layout="column" layout-align="space-between">
+      <div ng-include="'partials/campaignForm.html'"></div>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"  href="#/campaign/list">
+          <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-disabled="userForm.$invalid"  aria-label="Save"  ng-click="createCampaign(campaign)">
+          <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+
+</form>
+
+

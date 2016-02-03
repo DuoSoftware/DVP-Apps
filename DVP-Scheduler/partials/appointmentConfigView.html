@@ -1,0 +1,177 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Appointment Configuration</div>
+      <div><md-button class="md-fab md-mini custBackground3" aria-label="New Appointment Configuration" ng-click="onNewPressed()">
+        <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        <md-tooltip md-direction="bottom">
+          New Appointment
+        </md-tooltip>
+      </md-button></div>
+    </div>
+  </md-toolbar>
+
+  <md-table-container>
+    <div layout="row" layout-align="center center" ng-hide="dataReady">
+      <div layout="column" layout-align="center center">
+        <h4>loading data</h4>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <table md-table md-progress="promise" ng-show="dataReady">
+      <thead md-head>
+      <tr md-row>
+        <th md-column>Appointment Name</th>
+        <th md-column>Action</th>
+      </tr>
+      </thead>
+      <tbody md-body>
+      <tr md-row layout-align="center center" md-auto-select ng-repeat="item in appointmentList | limitTo: query.limit: (query.page - 1) * query.limit">
+
+        <td md-cell>{{item.AppointmentName}}</td>
+        <td md-cell>{{item.Action}}</td>
+        <td md-cell>
+          <div layout="row">
+            <div flex="40"></div>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="onEditPressed(item)">
+              <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="delete" ng-click="onDeletePressed($event, item.id)">
+              <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+  <br>
+  <br>
+
+  <div ng-cloak class="md-inline-form">
+    <md-card layout-padding class="custBackground2">
+
+      <form name="appointmentConfigForm">
+        <a id="edit"></a>
+        <div><b>{{appointmentStatus}}</b></div>
+        <br>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Appointment Name</label>
+              <input name="appointmentName" ng-model="appConfig.AppointmentName" required ng-disabled="IsEdit || IsHide">
+              <div ng-messages="appointmentConfigForm.appointmentName.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div flex="5"></div>
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Action</label>
+              <input name="action" ng-model="appConfig.Action" ng-disabled="IsHide">
+              <div ng-messages="appointmentConfigForm.appointmentName.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+          </div>
+        </div>
+        <hr>
+        <br>
+        <div>Recurrence Patterns</div>
+        <br>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+          <md-radio-group ng-model="appConfig.RecurrencePattern" layout="row" flex>
+            <md-radio-button flex value="NONE">None</md-radio-button>
+            <md-radio-button flex value="DAILY">Daily</md-radio-button>
+            <md-radio-button flex value="WEEKLY">Weekly</md-radio-button>
+          </md-radio-group>
+          </div>
+        </div>
+        <hr>
+        <br>
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Start Date</label>
+              <input type="date" name="startDate" ng-model="appConfig.StartDate" placeholder="yyyy-MM-dd" ng-disabled="IsHide"/>
+            </md-input-container>
+          </div>
+          <div flex="5"></div>
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>End Date</label>
+              <input type="date" name="endDate" ng-model="appConfig.EndDate" placeholder="yyyy-MM-dd" ng-disabled="IsHide"/>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Start Time</label>
+              <input type="time" name="startTime" ng-model="appConfig.StartTime" placeholder="hh:mm" ng-disabled="IsHide"/>
+            </md-input-container>
+          </div>
+          <div flex="5"></div>
+          <div flex-gt-sm layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>End Time</label>
+              <input type="time" name="endTime" ng-model="appConfig.EndTime" placeholder="hh:mm" ng-disabled="IsHide"/>
+            </md-input-container>
+          </div>
+        </div>
+
+        <hr>
+        <br>
+
+        <div>Days of Week</div>
+
+        <div layout-gt-sm="row">
+          <md-checkbox md-no-ink aria-label="Monday" ng-model="appConfig.DaysOfWeek.Monday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Monday
+          </md-checkbox>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Tuesday" ng-model="appConfig.DaysOfWeek.Tuesday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Tuesday
+          </md-checkbox>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Wednesday" ng-model="appConfig.DaysOfWeek.Wednesday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Wednesday
+          </md-checkbox>
+        </div>
+        <div layout-gt-sm="row">
+          <md-checkbox md-no-ink aria-label="Thursday" ng-model="appConfig.DaysOfWeek.Thursday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Thursday
+          </md-checkbox>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Friday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Friday
+          </md-checkbox>
+          <div flex="5"></div>
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Saturday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Saturday
+          </md-checkbox>
+        </div>
+        <div layout="row">
+          <md-checkbox md-no-ink aria-label="Friday" ng-model="appConfig.DaysOfWeek.Sunday" class="md-primary" flex-gt-sm ng-disabled="validateDays()">
+            Sunday
+          </md-checkbox>
+        </div>
+
+        <br>
+        <br>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="btn1" ng-click="onSavePressed()" ng-disabled="actionConfigForm.$invalid">Save</md-button></div>
+          <div layout-align="right"><md-button class="btn2" ng-click="onCancelPressed()">Back</md-button></div>
+        </div>
+
+      </form>
+    </md-card>
+  </div>
+</div>
+
+
