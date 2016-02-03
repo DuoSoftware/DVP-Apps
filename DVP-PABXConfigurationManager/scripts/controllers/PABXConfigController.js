@@ -76,6 +76,7 @@
       {
 
         //$scope.masterObj=response.data.Result;
+        commonservice.showAlert("PABX Global Configurations","Configurations successfully Updated");
         console.log(" Saves Master "+JSON.stringify(response));
       }
     };
@@ -127,6 +128,7 @@
       {
 
         //$scope.masterObj=response.data.Result;
+        commonservice.showAlert("PABX Feature codes","Configurations successfully Updated");
         console.log(" Saves General "+JSON.stringify(response));
       }
     };
@@ -193,6 +195,7 @@
     };
 
     $scope.saveMasterConfigs = function () {
+
       dbservice.updateMasterData($scope.masterObj).then(onMasterConfigSaveCompleted,onError);
     };
 
