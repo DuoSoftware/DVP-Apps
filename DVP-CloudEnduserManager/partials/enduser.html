@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody md-body>
-    <tr md-row layout-align="center center" md-auto-select ng-repeat="user in userData">
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="user in userData| limitTo: query.limit: (query.page - 1) * query.limit">
       <td md-cell>{{user.id}}</td>
       <td md-cell>{{user.Domain}}</td>
       <td md-cell>{{user.SIPConnectivityProvision}}</td>
@@ -33,3 +33,4 @@
   </table>
 
 </md-data-table-container>
+<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>

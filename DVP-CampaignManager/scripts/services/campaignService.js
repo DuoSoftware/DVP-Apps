@@ -9,7 +9,7 @@ service.factory("campaign", function($http){
 
   var createCampaign = function(campaign){
 
-    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign",campaign).then(function(response){
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign",campaign).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -30,7 +30,7 @@ service.factory("campaign", function($http){
 
   var updateCampaign = function(id, campaign){
 
-    return $http.put("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id,campaign).then(function(response){
+    return $http.put("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id,campaign).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -50,7 +50,7 @@ service.factory("campaign", function($http){
 
   var getCampaign = function(id){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id).then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -70,7 +70,7 @@ service.factory("campaign", function($http){
 
   var deleteCampaign = function(id){
 
-    return $http.delete("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id).then(function(response){
+    return $http.delete("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -90,7 +90,7 @@ service.factory("campaign", function($http){
 
   var getCampaigns = function(){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaigns/0").then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/0").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -110,7 +110,7 @@ service.factory("campaign", function($http){
 
   var getReasons = function(){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/Reasons").then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/Configuration/Reasons").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -132,7 +132,7 @@ service.factory("campaign", function($http){
 
     ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/"+id+"/Callbacks").then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/Configuration/"+id+"/Callbacks").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -155,7 +155,7 @@ service.factory("campaign", function($http){
 
     ///CampaignManager/Campaign/:CampaignId/Callback/:CallBackId
 
-    return $http.delete("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/Callback/"+cbId).then(function(response){
+    return $http.delete("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/Configuration/Callback/"+cbId).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -176,7 +176,7 @@ service.factory("campaign", function($http){
 
     ///{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback
 
-    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/Configuration/"+id+"/Callback",callback).then(function(response){
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/Configuration/"+id+"/Callback",callback).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -195,7 +195,7 @@ service.factory("campaign", function($http){
 
   var getCampaignConfig = function(id){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id+"/Configurations").then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id+"/Configurations").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -214,7 +214,7 @@ service.factory("campaign", function($http){
 
   var createCampaignConfig = function(id, config){
 
-    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id+"/Configuration", config).then(function(response){
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id+"/Configuration", config).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -233,7 +233,7 @@ service.factory("campaign", function($http){
 
   var updateCampaignConfig = function(id, configId, config){
 
-    return $http.put("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/Campaign/"+id+"/Configuration/"+configId, config).then(function(response){
+    return $http.put("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/"+id+"/Configuration/"+configId, config).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -252,7 +252,7 @@ service.factory("campaign", function($http){
 
   var getCategories= function(){
 
-    return $http.get("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignCategorys").then(function(response){
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/CampaignCategorys").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -271,7 +271,7 @@ service.factory("campaign", function($http){
 
   var createCategories= function(category){
 
-    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignCategory", category).then(function(response){
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/CampaignCategory", category).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -290,7 +290,7 @@ service.factory("campaign", function($http){
 
   var uploadNumbers= function(data){
 
-    return $http.post("http://127.0.0.1:8827/DVP/API/6.0/CampaignManager/CampaignNumbers", data).then(function(response){
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/CampaignNumbers", data).then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {

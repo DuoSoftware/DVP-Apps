@@ -9,31 +9,31 @@
     app.config(function($routeProvider) {
         $routeProvider
           .when("/rules",{
-            templateUrl: "partials/new/rules.html",
+            templateUrl: "partials/rules.html",
             controller: "RuleController"
 
 
           })
           .when("/newrule/:direction",{
-            templateUrl: "partials/new/newrule.html",
+            templateUrl: "partials/newrule.html",
             controller: "NewRuleController"
 
 
           })
           .when("/editrule/:id",{
-            templateUrl: "partials/new/editrule.html",
+            templateUrl: "partials/editrule.html",
             controller: "EditRuleController"
 
 
           }).
           when("/translations",{
-            templateUrl: "partials/new/translations.html",
+            templateUrl: "partials/translations.html",
             controller: "TranslationController"
 
 
           }).
           when("/newtranslation",{
-            templateUrl: "partials/new/newtranslation.html",
+            templateUrl: "partials/newtranslation.html",
             controller: "NewTranslationController"
 
 

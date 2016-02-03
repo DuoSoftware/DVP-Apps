@@ -28,7 +28,6 @@ body {
   text-shadow: 0.16em 0.16em 0.5em #AA5500;
   color: blue;
 }
-
 h1, h2 {
   text-shadow: 0.16em 0.16em 0.5em #AA5500;
 }
@@ -381,12 +380,53 @@ a.md-button.md-accent.md-fab:not([disabled]):hover,.md-button.md-accent.md-fab:n
 }
 
 .progressAll {
-  height: 34px;
-  margin-top: 0px;
+  height: 26px;
+  margin-top: 4px;
   margin-bottom: 0px;
   overflow: hidden;
   background-color: #715F5F;
   border-radius: 6px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+md-option:focus {
+  color: #12062b;
+  background-color: rgba(126, 117, 117, 0.71);
+}
+
+md-option:hover {
+  color: #140640;
+  background-color: #655a5d;
+}
+md-content:hover {
+  color: #024005;
+}
+.md-autocomplete-suggestions li:hover{
+  color: #140640;
+  background-color: #655a5d;
+}
+
+md-list-item.md-2-line .md-list-item-text, md-list-item.md-2-line > .md-no-style .md-list-item-text {
+  background-color: rgb(103, 93, 93);
+  border-radius: 50px;
+  text-align: center;
+}
+.md-autocomplete-suggestions-container.md-default-theme li, .md-autocomplete-suggestions-container li {
+            color: rgb(33,33,33);
+            background-color: rgba(105, 106, 107, 0.8);
+          }
+
+.md-select-menu-container.md-active md-select-menu > * {
+  opacity: 1;
+  background-color: rgb(132, 128, 128);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  transition-duration: 150ms;
+  transition-delay: 100ms;
+}
+
+menu md-option[selected] {
+  color: rgb(63,81,181);
+  background-color: rgb(64, 5, 9);
 }

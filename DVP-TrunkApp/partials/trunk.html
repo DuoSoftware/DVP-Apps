@@ -1,0 +1,49 @@
+<md-data-table-container>
+<table md-data-table  md-progress="deferred" width="90%">
+  <thead>
+  <tr height="30px">
+    <td >
+      <md-button class="md-icon-button" aria-label="Edit" ng-click="NewTrunk()">
+        <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+      </md-button>
+
+
+    </td>
+  </tr>
+  <tr align="left">
+    <th>Trunk Code</th>
+    <th>Trunk Name </th>
+    <th>Gateway </th>
+
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr  md-auto-select ng-repeat="trunkListData in trunkData " ng-if="trunkListData.Enable==true">
+    <td>{{trunkListData.TrunkCode}}</td>
+    <td>{{trunkListData.TrunkName}}</td>
+    <td>{{trunkListData.IpUrl }}</td>
+    <!--<td>{{holdMusicData.Availability}}</td>-->
+    <td>
+      <md-button class="md-icon-button" aria-label="Edit" ng-click="EditTrunkData(trunkListData)">
+        <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+      </md-button>
+
+    </td>
+    <td>
+
+      <md-button class="md-icon-button" aria-label="Edit" ng-click="DeleteTrunk(trunkListData)">
+        <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+      </md-button>
+
+    </td>
+
+
+  </tr>
+  </tbody>
+</table>
+</br>
+
+
+</md-data-table-container>

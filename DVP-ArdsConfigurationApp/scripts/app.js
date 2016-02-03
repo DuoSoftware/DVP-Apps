@@ -6,16 +6,16 @@
   app.config(function($routeProvider){
     $routeProvider
       .when('/ards/configuration/add',{
-        templateUrl: 'partials/createConfiguration',
-        controller: 'scripts/createConfigController'
+        templateUrl: "partials/createConfiguration.html",
+        controller: "createConfigController"
       })
-      .when('/ards/configuration/edit',{
-        templateUrl: 'partials/updateConfiguration',
-        controller: 'scripts/updateConfigController'
+      .when('/ards/configuration/edit/:serverType/:requestType',{
+        templateUrl: "partials/updateConfiguration.html",
+        controller: "updateConfigController"
       })
       .when('/ards/configuration',{
-        templateUrl: 'partials/viewConfiguration',
-        controller: 'scripts/viewConfigController'
+        templateUrl: "partials/viewConfiguration.html",
+        controller: "viewConfigController"
       })
       .otherwise({
         redirectTo: '/ards/configuration'
