@@ -117,7 +117,7 @@ taskModule.factory("conference", function($http){
 
   var addUserToConference = function(conferenceName,user){
 
-    return $http.post("http://localhost:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
+    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
