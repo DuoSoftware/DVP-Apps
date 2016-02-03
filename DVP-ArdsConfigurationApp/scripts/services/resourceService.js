@@ -6,7 +6,7 @@
     var GetTasks = function(accessToken){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8831/DVP/API/6.0/ResourceManager/Tasks',
+        url: 'http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Tasks',
         headers: {
           'authorization': accessToken,
           'api_key': accessToken
@@ -18,7 +18,7 @@
     var GetGroups = function(accessToken){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8831/DVP/API/6.0/ResourceManager/Groups',
+        url: 'http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups',
         headers: {
           'authorization': accessToken,
           'api_key': accessToken

@@ -7,7 +7,7 @@
     var GetCountryCodes = function(accessToken, pageNumber, pageSize){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8832/DVP/API/1.0.0/voxbone/inventory/listcountries/'+pageNumber+'/'+pageSize,
+        url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listcountries/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
           'authorization': accessToken
@@ -19,7 +19,7 @@
     var GetDidsForCountryCode = function(accessToken, countryCode, pageNumber, pageSize){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8832/DVP/API/1.0.0/voxbone/inventory/listdidgroup/'+countryCode+'/'+pageNumber+'/'+pageSize,
+        url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listdidgroup/'+countryCode+'/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
           'authorization': accessToken
@@ -31,7 +31,7 @@
     var FilterDidsFormType = function(accessToken, didType, countryCode, pageNumber, pageSize){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8832/DVP/API/1.0.0/voxbone/inventory/listdidgroup/type/'+didType+'/'+countryCode+'/'+pageNumber+'/'+pageSize,
+        url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listdidgroup/type/'+didType+'/'+countryCode+'/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
           'authorization': accessToken
@@ -43,7 +43,7 @@
     var OrderDid = function(accessToken, orderInfo){
       return $http({
         method: 'POST',
-        url: 'http://localhost:8832/DVP/API/1.0.0/voxbone/order/OrderDids',
+        url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/order/OrderDids',
         headers: {
           'api_key': accessToken,
           'authorization': accessToken
