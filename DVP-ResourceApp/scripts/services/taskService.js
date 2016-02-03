@@ -11,7 +11,7 @@ taskModule.factory("task", function($http){
 
   var getTasks = function(){
 
-    return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Tasks").then(function(response){
+    return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Tasks").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -32,7 +32,7 @@ taskModule.factory("task", function($http){
 
 
 
-    return $http.get("http://127.0.0.1:8831/DVP/API/6.0/ResourceManager/Task/" + id).then(function(response) {
+    return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Task/" + id).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
