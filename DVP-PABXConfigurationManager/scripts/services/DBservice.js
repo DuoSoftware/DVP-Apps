@@ -11,7 +11,7 @@
 
     var loadMasterData = function () {
 
-      return $http.get("http://localhost:8820/DVP/API/1.0.0.0/PBXService/PbxMasterData")
+      return $http.get("http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData")
         .then(function (response) {
           return response;
         });
@@ -19,7 +19,7 @@
     };
     var updateMasterData = function (masterObj) {
 
-      return $http.post("http://localhost:8820/DVP/API/1.0.0.0/PBXService/PbxMasterData",masterObj)
+      return $http.post("http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData",masterObj)
         .then(function (response) {
           return response;
         });
@@ -29,7 +29,7 @@
 
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/FeatureCodes',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/FeatureCodes',
         headers: {
           'authorization': '1#1'
         }
@@ -44,7 +44,7 @@
 
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/FeatureCodeTemplate',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/FeatureCodeTemplate',
         headers: {
           'authorization': '1#1'
         },
@@ -58,7 +58,7 @@
     var loadEmergencyNumbers = function () {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/EmergencyNumbers',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/EmergencyNumbers',
         headers: {
           'authorization': '1#1'
         }
@@ -70,7 +70,7 @@
     var addEmgNumber = function (numObj) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/EmergencyNumber',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/EmergencyNumber',
         headers: {
           'authorization': '1#1'
         },
@@ -83,7 +83,7 @@
     var delEmgNumber = function (eNum) {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/EmergencyNumber/'+eNum,
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/EmergencyNumber/'+eNum,
         headers: {
           'authorization': '1#1'
         }
