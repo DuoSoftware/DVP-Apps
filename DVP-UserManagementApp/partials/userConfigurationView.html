@@ -2,6 +2,9 @@
   <md-toolbar class="md-table-toolbar md-default">
     <div class="custBackground4 md-toolbar-tools" layout="row">
       <div flex="90">SIP User Configuration</div>
+      <md-switch ng-model="basicConfig.UsePublic" ng-show="IsEdit">
+        Public
+      </md-switch>
       <div layout="row" layout-align="right">
       </div>
     </div>
@@ -28,7 +31,7 @@
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Password</label>
-            <input name="password" ng-model="basicConfig.Password" required>
+            <input type="password" name="password" ng-model="basicConfig.Password" required>
             <div ng-messages="sipUserConfForm.Password.$error">
               <div ng-message="required">This field is required</div>
             </div>
@@ -82,7 +85,7 @@
           <div layout="row" flex-gt-sm>
             <md-input-container flex-gt-sm class="md-block">
               <label>Context</label>
-              <md-select name="context" ng-model="basicConfig.Context" ng-model-options="{trackBy: '$value'}">
+              <md-select name="context" ng-model="basicConfig.ContextId" ng-model-options="{trackBy: '$value'}">
                 <md-option ng-repeat="ctxt in contextList" value="{{ctxt.Context}}">{{ctxt.Context}}</md-option>
               </md-select>
             </md-input-container>

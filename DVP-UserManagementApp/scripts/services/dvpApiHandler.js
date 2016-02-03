@@ -119,6 +119,21 @@
       })
     };
 
+    var setPublicUser = function(usrObj)
+    {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8086/DVP/API/6.0/SipUser/DuoWorldUser',
+        headers: {
+          'authorization': 'hhhh'
+        },
+        data:usrObj
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     var saveTransferCodes = function(transCodes)
     {
       return $http({
@@ -264,6 +279,22 @@
       })
     };
 
+    var updateUser = function(usrObj)
+    {
+
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:8086/DVP/API/6.0/SipUser/User/' + usrObj.SipUsername,
+        headers: {
+          'authorization': 'hhhh'
+        },
+        data: usrObj
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     return {
       getGreetingFileMetadata: getGreetingFileMetadata,
       getSIPUsers: getSIPUsers,
@@ -282,7 +313,9 @@
       getExtension: getExtension,
       saveTransferCodes: saveTransferCodes,
       updateTransferCodes: updateTransferCodes,
-      getTransferCodes: getTransferCodes
+      getTransferCodes: getTransferCodes,
+      setPublicUser: setPublicUser,
+      updateUser: updateUser
     };
   };
 

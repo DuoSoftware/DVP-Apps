@@ -24,6 +24,7 @@
         .join(' ');
     };
 
+
     var clearFormOnSave = function()
     {
       $scope.basicConfig = {};
@@ -52,10 +53,19 @@
     {
       if(sharedData.User.IsEdit)
       {
-        dvpHandler.updatePABXUser($scope.basicConfig).then(function(data1)
+        dvpHandler.updateUser($scope.basicConfig).then(function(data1)
         {
           if(data1.IsSuccess)
           {
+            mdAleartDialog("SUCCESS", "Sip user configuration updated successfully", "SUCCESS");
+            if($scope.basicConfig.UsePublic)
+            {
+              $scope.basicConfig.Domain = '';
+              dvpHandler.setPublicUser($scope.basicConfig).then(function(data2)
+              {
+
+              })
+            }
 
 
           }
@@ -201,53 +211,12 @@
       {
         if(data.IsSuccess)
         {
-          if(data.Result && data.Result.ExtensionId)
-          {
-            dvpHandler.getExtension(data.Result.ExtensionId).then(function(data1)
-            {
-              if(data1.IsSuccess)
-              {
-                if(data1.Result)
-                {
-                  $scope.basicConfig.Extension = data1.Result.Extension;
-                }
-
-              }
-              else
-              {
-                var errMsg = data1.CustomMessage;
-
-                if(data1.Exception)
-                {
-                  errMsg = 'Get sip user error : ' + data1.Exception.Message;
-                }
-                $mdToast.show(
-                  $mdToast.simple()
-                    .textContent(errMsg)
-                    .position($scope.getToastPosition())
-                    .hideDelay(5000)
-                );
-              }
-
-            }, function(err)
-            {
-              var errMsg = "Error occurred while getting sip user";
-              if(err.statusText)
-              {
-                errMsg = err.statusText;
-              }
-              $mdToast.show(
-                $mdToast.simple()
-                  .textContent(errMsg)
-                  .position($scope.getToastPosition())
-                  .hideDelay(5000)
-              );
-
-
-            });
-          }
-
           $scope.basicConfig = data.Result;
+
+          if(data.Result && data.Result.Extension)
+          {
+            $scope.basicConfig.Extension = data.Result.Extension.Extension;
+          }
 
         }
         else

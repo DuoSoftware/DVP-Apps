@@ -26,26 +26,34 @@
       link: function(scope, element, attributes, ngModel) {
         ngModel.$asyncValidators.extcheck = function(modelValue) {
           var defer = $q.defer();
-          validateExtension(modelValue).then(function(data){
-              if (data.IsSuccess)
-              {
-                if(data.Result)
+          if(scope.IsEdit)
+          {
+            defer.resolve();
+          }
+          else
+          {
+            validateExtension(modelValue).then(function(data){
+                if (data.IsSuccess)
                 {
-                  defer.reject();
+                  if(data.Result)
+                  {
+                    defer.reject();
+                  }
+                  else
+                  {
+                    defer.resolve();
+                  }
                 }
                 else
                 {
-                  defer.resolve();
-                }
-              }
-              else
+                  defer.reject();
+                }},
+              function(err)
               {
                 defer.reject();
-              }},
-            function(err)
-            {
-              defer.reject();
-            })
+              })
+          }
+
 
           return defer.promise;
         }
@@ -76,9 +84,15 @@
         ngModel.$asyncValidators.usernamecheck = function(modelValue) {
           var defer = $q.defer();
           validateUsername(modelValue).then(function(data){
+            if(scope.IsEdit)
+            {
+              defer.resolve();
+            }
+            else
+            {
               if (data.IsSuccess)
               {
-                if(data.Result)
+                if (data.Result)
                 {
                   defer.reject();
                 }
@@ -90,11 +104,12 @@
               else
               {
                 defer.reject();
-              }},
+              }
+            }},
             function(err)
             {
               defer.reject();
-            })
+            });
 
           return defer.promise;
         }
