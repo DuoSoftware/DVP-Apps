@@ -11,7 +11,7 @@ fileModule.factory("clusterService", function ($http, download) {
     var downloadFile = function (id,fileName) {
 
 
-        download.fromDataURL("http://localhost:8081/DVP/API/6.0/FileService/File/Download/"+id+"/"+fileName, fileName);
+        download.fromDataURL("http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/"+id+"/"+fileName, fileName);
 
        /* return $http.get("http://localhost:8081/DVP/API/6.0/FileService/File/Download/"+id).then(function (response) {
 
@@ -33,7 +33,7 @@ fileModule.factory("clusterService", function ($http, download) {
 
         return $http({
             method: 'get',
-            url: 'http://localhost:8081/DVP/API/6.0/FileService/Files',
+            url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
             headers: {
                 'authorization': '1#1'
             }
@@ -46,7 +46,7 @@ fileModule.factory("clusterService", function ($http, download) {
     var deleteFile = function (file) {
         return $http({
             method: 'delete',
-            url: 'http://localhost:8081/DVP/API/6.0/FileService/File/' + file.UniqueId,
+            url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
             headers: {
                 'authorization': '1#1'
             }
@@ -57,7 +57,7 @@ fileModule.factory("clusterService", function ($http, download) {
 
   var getCatagories = function () {
 
-    return $http.get('http://localhost:8081/DVP/API/6.0/FileService/File/Categories').then(function (response) {
+    return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Categories').then(function (response) {
       return response.data.Result;
     });
 
@@ -69,7 +69,7 @@ fileModule.factory("clusterService", function ($http, download) {
         GetFiles: getFiles,
         DeleteFile: deleteFile,
         GetCatagories:getCatagories,
-        UploadUrl : "http://localhost:8081/DVP/API/6.0/FileService/File/Upload",
+        UploadUrl : "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Upload",
         File: {}
 
 
