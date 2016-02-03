@@ -1,0 +1,164 @@
+<div class="ui-sub" layout="column" ng-cloak>
+  <md-content class="ui-sub" layout-padding>
+    <form name="projectForm">
+      <md-input-container class="md-block">
+        <label>Profile Name</label>
+        <input md-maxlength="30" required name="ProfileName" ng-model="profile.ProfileName">
+
+        <div ng-messages="projectForm.ProfileName.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Main Ip</label>
+          <input required name="MainIp" ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/" ng-model="profile.MainIp">
+
+          <div ng-messages="projectForm.MainIp.$error">
+            <div ng-message="required">Please enter a valid IP address.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Port</label>
+          <input type="number" name="Port" ng-model="profile.Port" min="0" max="65536" required>
+
+          <div ng-messages="projectForm.Port.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="max">Any number above 65536 will be marked invalid.</div>
+            <div ng-message="min">Any number below 0 will be marked invalid.</div>
+          </div>
+
+        </md-input-container>
+
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Internal IP</label>
+          <md-select ng-model="profile.InternalIp" ng-model-options="{trackBy: '$value'}">
+            <md-option ng-value="c.IP" ng-repeat="c in ipAddress" ng-if="c.IsAllocated">
+              {{ c.IP }}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Internal Rtp Ip</label>
+          <input required name="InternalRtpIp" ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/"
+                 ng-model="profile.InternalRtpIp">
+
+          <div ng-messages="projectForm.InternalRtpIp.$error">
+            <div ng-message="required">Please enter a valid IP address.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>External Ip</label>
+          <input required name="ExternalIp" ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/" ng-model="profile.ExternalIp">
+
+          <div ng-messages="projectForm.ExternalIp.$error">
+            <div ng-message="required">Please enter a valid IP address.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>External Rtp Ip</label>
+          <input required name="ExternalRtpIp" ng-pattern="/^(\d{1,3}\.){3}(\d{1,3})$/"
+                 ng-model="profile.ExternalRtpIp">
+
+          <div ng-messages="projectForm.ExternalRtpIp.$error">
+            <div ng-message="required">Please enter a valid IP address.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Class</label>
+          <input required name="Class" ng-model="profile.ObjClass">
+
+          <div ng-messages="projectForm.Class.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Type</label>
+          <input required name="Type" ng-model="profile.ObjType">
+
+          <div ng-messages="projectForm.Type.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Category</label>
+          <input required name="Category" ng-model="profile.ObjCategory">
+
+          <div ng-messages="projectForm.Category.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+      </div>
+
+
+      <div ng-show="profile.id">
+        <div style="background: rgba(34, 44, 30, 0.54)" >
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="edit" ng-click="ShowHide()">
+            <md-icon md-svg-src="img/settings49.svg"></md-icon>
+
+          </md-button><md-tooltip>Settings</md-tooltip>
+        </div>
+        <div ng-show="IsVisible" layout-gt-sm="row" style="background: rgba(34, 44, 30, 0.33)">
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <div>
+              <label>Call Server</label>
+              <md-select name="Code" ng-model="profile.CallServer" ng-model-options="{trackBy: '$value'}">
+                <md-option ng-value="c.id" ng-repeat="c in callServers" ng-if="c.Activate">{{ c.Name }} :
+                  {{c.InternalMainIP}}
+                </md-option>
+              </md-select>
+            </div>
+          </md-input-container>
+          <md-button aria-label="Add"
+                     ng-click="assignSipProfileToCallServer()">
+            <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+            <md-tooltip>Assign To Call Server</md-tooltip>
+          </md-button>
+
+          <md-divider></md-divider>
+          <md-divider></md-divider>
+          <md-input-container class="md-block" flex-gt-sm>
+            <div>
+              <label>End User</label>
+              <md-select name="Code" ng-model="profile.EndUser" ng-model-options="{trackBy: '$value'}">
+                <md-option ng-value="c.id" ng-repeat="c in endUsers">{{ c.Domain }} : {{c.SIPConnectivityProvision}}
+                </md-option>
+              </md-select>
+            </div>
+          </md-input-container>
+          <md-button aria-label="Add"
+                     ng-click="assignSipProfiletoEndUser()">
+            <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+            <md-tooltip>Assign To End-User</md-tooltip>
+          </md-button>
+        </div>
+      </div>
+
+    </form>
+  </md-content>
+</div>
+
+
+
+
+
+
+
+
+

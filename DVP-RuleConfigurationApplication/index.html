@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="ruleapp" style="background-color: #cccccc">
+<head >
+
+  <title>Rules and Translations Configuration</title>
+
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link href="bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
+  <link href="bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" type="text/css"/>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+
+
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/CommonService.js"></script>
+  <script src="scripts/services/DBservice.js"></script>
+  <script src="scripts/controllers/RuleController.js"></script>
+  <script src="scripts/controllers/NewRuleController.js"></script>
+  <script src="scripts/controllers/EditRuleController.js"></script>
+  <script src="scripts/controllers/TranslationController.js"></script>
+  <script src="scripts/controllers/NewTranslationController.js"></script>
+
+
+
+
+</head>
+
+
+
+<body style="background-color: #cccccc">
+
+<h1 align="center" >Rules and Translations Viewer</h1>
+<div layout="row" >
+
+  <div flex="20"></div>
+  <div flex="60"><md-card flex="auto" width="100" class="custBackground1">
+    <md-card-content >
+      <md-content class="md-padding" style="background-color: #cccccc">
+        <md-button  class="md-raised md-primary"  href='#/rules' style="width: 45%; background-color: #323232 "  >Rules</md-button>
+        <md-button class="md-raised md-primary" href='#/translations' style="width: 45%; background-color: #323232 " >TRANSLATIONS</md-button>
+      </md-content>
+
+    </md-card-content>
+  </md-card>
+    </div>
+
+
+
+</div>
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content>
+        <md-content class="md-padding" style="background-color: #cccccc">
+          <div  ng-view=""> </div>
+        </md-content>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+
+</body>
+</html>

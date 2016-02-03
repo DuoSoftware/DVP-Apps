@@ -11,6 +11,12 @@
 
     $scope.editObj.Attribute=$scope.DataObj.Attribute;
     $scope.editObj.OtherData=$scope.DataObj.OtherData;
+<<<<<<< HEAD
+=======
+    $scope.editObj.AttClass=$scope.DataObj.AttClass;
+    $scope.editObj.AttType=$scope.DataObj.AttType;
+    $scope.editObj.AttCategory=$scope.DataObj.AttCategory;
+>>>>>>> Development
 
 
 
@@ -33,7 +39,12 @@
         //$location.path("/attribute");
         //this.reload();
         $scope.isDisabled = true;
+<<<<<<< HEAD
         $route.reload();
+=======
+        $location.path("/attribute");
+        //$route.reload();
+>>>>>>> Development
       }
     }
 
@@ -73,7 +84,12 @@
 
     $scope.Erase = function () {
       console.log("Hit");
+<<<<<<< HEAD
       $mdDialog.hide();
+=======
+      //$mdDialog.hide();
+      $location.path("/attribute");
+>>>>>>> Development
     }
 
 

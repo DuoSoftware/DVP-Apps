@@ -1,0 +1,131 @@
+<div layout="column"  flex-lt-md="80%">
+
+  <md-content layout-padding style="background-color: lightgrey"  >
+    <form name="newRuleForm" >
+      <md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>{{frmTopic}}</h2></md-subheader>
+      <div layout-gt-sm="row">
+
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Direction</label>
+          <input type="text"  name = "Direction" ng-model="newObj.Direction"  required readonly/>
+
+          <span style="color:red" ng-show="newRuleForm.Direction.$dirty && newRuleForm.Direction.$invalid"></span>
+        </md-input-container>
+
+      </div>
+
+      <div  layout-gt-sm="row">
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >Description</label>
+          <input type="text"  name = "Description" ng-model="newObj.CallRuleDescription"  required />
+
+          <span style="color:red" ng-show="newRuleForm.Description.$dirty && newRuleForm.Description.$invalid"></span>
+        </md-input-container>
+
+      </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+
+          <md-select name = "DregEx" ng-model="newObj.RegExPattern" ng-model-options="{trackBy: '$value'}"  required ng-change="onDINISChange()">
+            <md-option value=STARTWITH selected>STARTWITH</md-option>
+            <md-option value=EXACTMATCH>EXACTMATCH</md-option>
+            <md-option value=ANY>ANY</md-option>
+            <md-option value=CUSTOM>CUSTOM</md-option>
+
+          </md-select>
+        </md-input-container>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >DNIS</label>
+          <input type="text"  name = "DNIS" ng-model="newObj.DNIS"  ng-disabled="!isDNISRequired" ng-required="isDNISRequired" />
+
+          <span style="color:red" ng-show="newRuleForm.DNIS.$dirty && newRuleForm.DNIS.$invalid"></span>
+        </md-input-container>
+
+      </div>
+      <div  layout-gt-sm="row">
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <md-select name = "AregEx" ng-model="newObj.ANIRegExPattern" ng-model-options="{trackBy: '$value'}" required ng-change="onANISChange()">
+            <md-option value=STARTWITH selected>STARTWITH</md-option>
+            <md-option value=EXACTMATCH>EXACTMATCH</md-option>
+            <md-option value=ANY>ANY</md-option>
+            <md-option value=CUSTOM>CUSTOM</md-option>
+
+          </md-select>
+        </md-input-container>
+
+        <md-input-container  class="md-block" flex-gt-sm>
+          <label style="color: blue" >ANI</label>
+          <input type="text"  name = "ANI" ng-model="newObj.ANI"  ng-disabled="!isANIRequired" ng-required="isANIRequired"  />
+
+          <span style="color:red" ng-show="newRuleForm.ANI.$dirty && newRuleForm.ANI.$invalid"></span>
+        </md-input-container>
+
+
+      </div>
+
+      <div  layout-gt-sm="row">
+        <md-input-container  name= "Context" class="md-block" flex-gt-sm>
+          <label>Context</label>
+          <md-select ng-model="newObj.Context" name = "Context" >
+            <md-option ng-repeat="context in contextData" value="{{context.Context}}" ng-model-options="{trackBy: '$value'}">
+              {{context.Context}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container  name= "Priority" class="md-block" flex-gt-sm>
+          <label>Priority</label>
+          <input type="number"  name = "PriorityTxt" ng-model="newObj.Priority"  required />
+        </md-input-container>
+
+
+      </div>
+
+      <div  layout-gt-sm="row" class="animate-if" ng-hide="isInRule">
+
+
+        <md-input-container  name= "TrunkIDCnt" class="md-block" flex-gt-sm>
+          <label>Trunk Number</label>
+          <md-select ng-model="newObj.TrunkNumber" name = "TrunkId" >
+            <md-option ng-repeat="trunk in trunkObj" value="{{trunk.PhoneNumber}}" ng-model-options="{trackBy: '$value'}" ng-selected="$first" required>
+              {{trunk.PhoneNumber}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+
+
+        </div>
+
+      <div  layout-gt-sm="row">
+
+        <md-input-container  name= "Status" class="md-block" flex-gt-sm>
+          Active Status
+          <md-switch ng-model="newObj.Enable" >
+
+          </md-switch>
+        </md-input-container>
+
+
+      </div>
+      <div  layout-gt-sm="row">
+        <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 80%">
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="SaveRule()" ng-disabled="isDisabled || newRuleForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" ng-click="hideView()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></td>
+
+        </md-input-container>
+      </div>
+
+
+
+    </form>
+  </md-content>
+
+</div>

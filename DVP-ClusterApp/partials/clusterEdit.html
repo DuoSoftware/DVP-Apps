@@ -1,0 +1,53 @@
+<!--<form class="form-horizontal" role="form" ng-submit="updateResource()">-->
+
+<div id="popupContainer"  ng-cloak>
+
+  <form name="projectForm"   novalidate>
+  <div>
+    <md-card class="ui-main">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Cluster - {{cluster.Name}}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+
+        </md-card-title-media>
+      </md-card-title>
+      <md-card-content layout="column" layout-align="space-between">
+        <div ng-include="'partials/clusterForm.html'"></div>
+
+        <div >
+          <md-content class="ui-sub">
+            <div layout-gt-sm="row">
+
+              <md-input-container class="md-block">
+                <label>Load Balancer</label>
+                <input  name="loadBalancerIp" ng-readonly="true" ng-model="cluster.LoadBalancer.MainIP">
+                <div ng-messages="projectForm.loadBalancerIp.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+
+              <md-input-container class="md-block">
+                <md-button  class="md-raised md-primary" ng-disabled="false" aria-label="Add" ng-click="showAdvanced($event)">
+                  <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+                </md-button>
+              </md-input-container>
+            </div>
+          </md-content>
+        </div>
+
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/cluster/list">
+            <md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-disabled="projectForm.$invalid"  aria-label="Add" ng-click="updateResource()">
+            <md-icon md-svg-src="img/ic_save_24px.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </div>
+  </form>
+</div>

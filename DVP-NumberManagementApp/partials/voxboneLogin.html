@@ -1,0 +1,38 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Voxbone Login</div>
+    </div>
+  </md-toolbar>
+
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+      <form name="voxLoginForm">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Username</label>
+            <input name="userName" ng-model="userName" required>
+            <div ng-messages="voxLoginForm.userName.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Voxbone API Password</label>
+            <input type="password" name="password" ng-model="password" required>
+            <div ng-messages="voxLoginForm.password.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <div flex="100"></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="createAuthToken()" ng-disabled="numberManagementForm.$invalid">Login</md-button></div>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>
+
+

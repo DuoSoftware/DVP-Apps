@@ -1,0 +1,93 @@
+
+
+
+<form name="userForm">
+  <div class="md-padding" id="popupContainer" ng-cloak>
+    <md-card>
+      <md-card-title >
+        <md-card-title-text>
+          <span class="md-headline">Conference APP</span>
+        </md-card-title-text>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Add"  href="#/campaign/create">
+          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+        </md-button>
+      </md-card-title>
+
+
+      <!--
+      <md-list ng-cloak>
+
+
+        <md-list-item ng-repeat="campaign in campaigns">
+
+          <p>{{ campaign.CampaignName }}</p>
+          <p>{{ campaign.CampaignMode }}</p>
+          <p>{{ campaign.CampaignChannel }}</p>
+          <p>{{ campaign.DialoutMechanism }}</p>
+          <p><md-icon md-svg-src="../img/{{campaign.OperationalStatus}}.svg" aria-hidden="true" alt=""/></p>
+
+
+
+
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="editCampaign(campaign.CampaignId)">
+            <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteCampaign(campaign)">
+            <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+          </md-button>
+
+        </md-list-item>
+      </md-list>
+      -->
+
+
+
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead md-head md-order="campOrder" md-on-reorder="onReorder">
+          <tr md-row>
+            <th md-column md-order-by="CampaignName"><span>Name</span></th>
+            <th md-column>Mode</th>
+            <th md-column>Channel</th>
+            <th md-column>Mechanism</th>
+            <th md-column>status</th>
+            <th md-column></th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row md-select="campaign" md-select-id="{{campaign.CampaignId}}" md-auto-select ng-repeat="campaign in campaigns | orderBy: campOrder">
+            <td md-cell>{{campaign.CampaignName}}</td>
+            <td md-cell>{{campaign.CampaignMode}}</td>
+            <td md-cell>{{campaign.CampaignChannel}}</td>
+            <td md-cell>{{campaign.DialoutMechanism}}</td>
+            <td md-cell><md-icon md-svg-src="../img/{{campaign.OperationalStatus}}.svg" aria-hidden="true" alt=""/></td>
+            <td md-cell>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="editCampaign(campaign.CampaignId)">
+                <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+              </md-button>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteCampaign(campaign)">
+                <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+              </md-button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </md-card>
+  </div>
+</form>
+
+

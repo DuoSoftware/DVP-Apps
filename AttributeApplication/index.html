@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html ng-app="attributeapp">
+<html ng-app="attributeapp" style="background-color: #cccccc">
 <head >
 
   <title>Attribute Management</title>
 
+<<<<<<< HEAD
   <!--<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+=======
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+>>>>>>> Development
   <link href="bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
   <link href="bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" type="text/css"/>
 
@@ -15,6 +19,7 @@
   <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+<<<<<<< HEAD
   <script src="bower_components/angular-messages/angular-messages.js"></script>-->
 
   <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
@@ -26,11 +31,33 @@
   <script src="../bower_components/angular-material/angular-material.js"></script>
   <script src="../bower_components/angular-material-icons/angular-material-icons.js"></script>
   <link href="../bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" type="text/css"/>
+=======
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/MainController.js"></script>
+  <script src="scripts/services/DBcontroller.js"></script>
+  <script src="scripts/services/CommonController.js"></script>
+  <script src="scripts/controllers/AttributeController.js"></script>
+  <script src="scripts/controllers/ViewController.js"></script>
+  <script src="scripts/controllers/EditController.js"></script>
+  <script src="scripts/controllers/NewController.js"></script>
+  <script src="scripts/controllers/GroupController.js"></script>
+  <script src="scripts/controllers/ViewgroupController.js"></script>
+  <script src="scripts/controllers/EditgroupController.js"></script>
+  <script src="scripts/controllers/NewgroupController.js"></script>
+  <script src="scripts/controllers/TestazCntrl.js"></script>
+  <script src="scripts/controllers/MapController.js"></script>
+  <script src="scripts/controllers/AssignAttributesToGroup.js"></script>
+  <script src="scripts/controllers/MapTestController.js"></script>
+>>>>>>> Development
 
   <link href="../bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript" src="../bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
 
 
+<<<<<<< HEAD
 
 
 
@@ -51,18 +78,35 @@
   <script src="scripts/controllers/AssignAttributesToGroup.js"></script>
   <script src="scripts/controllers/MapTestController.js"></script>
 
-
-
+=======
+>>>>>>> Development
 
 
 </head>
 
 
 
-<body>
+<body style="background-color: #cccccc">
 
+<h1 align="center" >Attribute Viewer</h1>
+<div layout="row" >
+
+  <div flex="20"></div>
+  <div flex="60"><md-card flex="auto" width="100" class="custBackground1">
+    <md-card-content >
+      <md-content class="md-padding" style="background-color: #cccccc">
+        <md-button  class="md-raised md-primary"  href='#/attribute' style="width: 45%; background-color: #323232 "  >ATTRIBUTE</md-button>
+        <md-button class="md-raised md-primary" href='#/group' style="width: 45%; background-color: #323232 " >GROUP</md-button>
+      </md-content>
+
+<<<<<<< HEAD
 <h1 align="center">Attribute Viewer</h1>
 <div layout="row" layout-align="center">
+=======
+    </md-card-content>
+  </md-card>
+    </div>
+>>>>>>> Development
 
 
     <md-button  class="md-raised md-primary"  href='#/attribute' flex="100">ATTRIBUTE</md-button>
@@ -76,6 +120,18 @@
     <md-card flex="auto" width="100" class="custBackground1">
       <md-card-content>
         <md-content class="md-padding">
+          <div  ng-view=""> </div>
+        </md-content>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+<div layout="row">
+  <div flex="20"></div>
+  <div flex="60">
+    <md-card flex="auto" width="100" class="custBackground1">
+      <md-card-content>
+        <md-content class="md-padding" style="background-color: #cccccc">
           <div  ng-view=""> </div>
         </md-content>
       </md-card-content>

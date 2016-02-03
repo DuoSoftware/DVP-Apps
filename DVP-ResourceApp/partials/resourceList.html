@@ -1,0 +1,102 @@
+
+
+<!--
+<div class="md-padding" id="popupContainer" ng-cloak>
+  <md-list ng-cloak>
+    <md-subheader class="md-no-sticky"><h3>Resource APP</h3></md-subheader>
+
+    <md-button class="md-raised md-primary" ng-disabled="false" aria-label="Add"  href="#/resource/create">
+      <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+    </md-button>
+
+    <md-list-item ng-repeat="resource in resources">
+
+      <p>{{ resource.ResourceName }}</p>
+      <p>{{ resource.ResClass }}</p>
+      <p>{{ resource.ResType }}</p>
+      <p>{{ resource.ResCategory }}</p>
+
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewResource(resource.ResourceId)">
+        <md-icon md-svg-src="img/edit26.svg"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteResource(resource)">
+        <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+      </md-button>
+
+    </md-list-item>
+  </md-list>
+</div>
+
+  -->
+
+<form name="userForm">
+  <div class="md-padding" id="popupContainer" ng-cloak>
+    <md-card>
+      <md-card-title >
+        <md-card-title-text>
+          <span class="md-headline">Resource APP</span>
+
+        </md-card-title-text>
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Add"  href="#/resource/create">
+          <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
+        </md-button>
+      </md-card-title>
+
+<!--
+        <md-list ng-cloak>
+
+
+          <md-list-item ng-repeat="resource in resources">
+
+            <p>{{ resource.ResourceName }}</p>
+            <p>{{ resource.ResClass }}</p>
+            <p>{{ resource.ResType }}</p>
+            <p>{{ resource.ResCategory }}</p>
+
+            <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewResource(resource.ResourceId)">
+              <md-icon md-svg-src="img/edit26.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteResource(resource)">
+              <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+            </md-button>
+
+          </md-list-item>
+        </md-list>
+
+-->
+
+
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead md-head md-order="resOrder" md-on-reorder="onReorder">
+          <tr md-row>
+            <th md-column md-order-by="ResourceName"><span>Name</span></th>
+            <th md-column>Class</th>
+            <th md-column>Type</th>
+            <th md-column>Category</th>
+            <th md-column></th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row md-select="resource" md-select-id="{{resource.ResourceId}}" md-auto-select ng-repeat="resource in resources | orderBy: resOrder">
+            <td md-cell>{{resource.ResourceName}}</td>
+            <td md-cell>{{resource.ResClass}}</td>
+            <td md-cell>{{resource.ResType}}</td>
+            <td md-cell>{{resource.ResCategory}}</td>
+            <td md-cell>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="edit"  ng-click="viewResource(resource.ResourceId)">
+                <md-icon md-svg-src="img/edit26.svg"></md-icon>
+              </md-button>
+              <md-button class="md-icon-button"  ng-disabled="false" aria-label="delete"  ng-click="deleteResource(resource)">
+                <md-icon md-svg-src="img/ic_delete_24px.svg"></md-icon>
+              </md-button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+
+    </md-card>
+  </div>
+</form>

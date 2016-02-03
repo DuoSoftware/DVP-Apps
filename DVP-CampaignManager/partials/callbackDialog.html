@@ -1,0 +1,44 @@
+<md-dialog aria-label="Add Attributes"  ng-cloak>
+  <form name="userForm">
+    <!--<md-toolbar>-->
+    <div class="md-toolbar-tools">
+      <h2>CallBack</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="../img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+    <!--</md-toolbar>-->
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="column" ng-cloak class="md-inline-form">
+          <md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+            <md-input-container>
+              <label>Reason</label>
+              <md-select ng-model="callback.ReasonId">
+                <md-option ng-repeat="reason in reasons" value="{{reason.ReasonId}}">
+                  {{reason.Reason}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container>
+              <label>Max Count</label>
+              <input type="number" ng-model="callback.MaxCallBackCount" class="form-control" id="count" placeholder="Callback max count"/>
+            </md-input-container>
+            <md-input-container>
+              <label>Interval</label>
+              <input type="number" ng-model="callback.CallbackInterval" class="form-control" id="number" placeholder="Callback Interval"/>
+            </md-input-container>
+          </md-content>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-icon-button"  ng-disabled="userForm.$invalid" aria-label="Add"  ng-click="AddCallBack(configid, callback)">
+        <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
+

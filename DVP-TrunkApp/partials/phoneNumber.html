@@ -1,0 +1,50 @@
+<md-data-table-container>
+  <table md-data-table  md-progress="deferred" width="90%">
+    <thead>
+    <tr height="30px">
+      <td >
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="NewNumber()">
+          <md-icon md-svg-src="../TrunkApp/img/ic_add_24px.svg"></md-icon>
+        </md-button>
+
+
+      </td>
+    </tr>
+    <tr align="left">
+      <th>Phone Number</th>
+      <th>Number Type </th>
+      <th>Direction </th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  md-auto-select ng-repeat="NumberListData in numberData " ng-if="NumberListData.Enable==true">
+      <td>{{NumberListData.PhoneNumber}}</td>
+      <td>{{NumberListData.ObjType}}</td>
+      <td>{{NumberListData.ObjCategory }}</td>
+      <!--<td>{{holdMusicData.Availability}}</td>-->
+      <td>
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="EditNumber(NumberListData)">
+          <md-icon md-svg-src="../img/edit26.svg"></md-icon>
+        </md-button>
+
+      </td>
+      <td>
+
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="DeleteNumber(NumberListData)">
+          <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+        </md-button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+  </br>
+
+
+</md-data-table-container>
+

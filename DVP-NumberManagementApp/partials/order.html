@@ -1,0 +1,92 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="custBackground4 md-toolbar-tools" layout="row">
+      <div flex="90">Voxbone Number Management</div>
+    </div>
+  </md-toolbar>
+
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding class="custBackground2">
+      <form name="numberManagementForm">
+        <div layout-gt-sm="row">
+          <div class="md-block" flex-gt-sm>
+            <md-autocomplete
+              md-selected-item="country"
+              md-search-text="searchText"
+              md-selected-item-change="showDidGroupDialog($event, item.countryCodeA3)"
+              md-items="item in querySearch(searchText)"
+              md-item-text="item.countryName"
+              md-min-length="0"
+              placeholder={{autoCompletePlaceHolder}}>
+              <md-item-template>
+                <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.countryName}}</span>
+              </md-item-template>
+              <md-not-found>
+                No Country matching "{{searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <div layout-gt-sm="row">
+              <div flex="auto">
+                <label>DID GroupID</label>
+                <input name="didGroupId" ng-disabled="!order.countryCodeA3" ng-model="order.didGroupId" required>
+                <div ng-messages="numberManagementForm.didGroupId.$error">
+                  <div ng-message="required">This field is required</div>
+                </div>
+              </div>
+              <div>
+                <md-button class="md-icon-button" ng-disabled="!order.countryCodeA3" ng-click="showDidGroupDialog($event, order.countryCodeA3)">
+                  <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+                </md-button>
+              </div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Quantity</label>
+            <input type="number"  name="quantity" ng-disabled="!order.countryCodeA3"  ng-model="order.quantity" required ng-pattern="/^(?:100|[1-9]?[0-9])$/">
+            <div ng-messages="numberManagementForm.quantity.$error">
+              <div ng-message="required">This field is required</div>
+              <div ng-message="pattern">Please enter a valid Number</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Customer Reference</label>
+            <input name="cusReference" ng-disabled="!order.countryCodeA3"  ng-model="order.customerReference" required>
+            <div ng-messages="numberManagementForm.cusReference.$error">
+              <div ng-message="required">This field is required</div>
+            </div>
+          </md-input-container>
+          <div flex="5"></div>
+          <div layout="row" flex-gt-sm>
+            <md-input-container flex-gt-sm class="md-block">
+              <label>Description</label>
+              <input name="description" ng-disabled="!order.countryCodeA3"  ng-model="order.description" required>
+              <div ng-messages="numberManagementForm.description.$error">
+                <div ng-message="required">This field is required</div>
+              </div>
+            </md-input-container>
+
+          </div>
+        </div>
+        <div layout="row">
+          <div flex="100"></div>
+          <div layout="row" layout-align="center center" ng-hide="!processing">
+            <div layout="column" layout-align="center center">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+          </div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="onInitiateOrder()" ng-disabled="numberManagementForm.$invalid">Buy</md-button></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="clearOrder()">Clear</md-button></div>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>
+
+

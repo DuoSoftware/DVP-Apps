@@ -1,0 +1,109 @@
+
+<div layout="column" ng-cloak class="md-inline-form">
+  <div>
+    <md-content md-theme="docs-dark" layout-padding>
+      <div layout-gt-xs="row" ng-hide="edit">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Conference Name Here" ng-required="!edit" conference-available ng-model="conference.ConferenceName" ng-model-options="{ updateOn: 'blur' }"/>
+          <div ng-if="userForm.$pending.conferenceExists">checking....</div>
+          <div ng-messages="userForm.name.$error">
+            <div ng-message="required">Name is required.</div>
+            <div ng-message="conferenceExists">conference already exists</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Extension</label>
+          <md-select ng-model="conference.Extension">
+            <md-option ng-repeat="(index,ext) in extensions" value="{{ext.Extension}}" ng-selected="(index == 1) ? true:false" >
+              {{ext.Extension}}
+            </md-option>
+          </md-select>
+          <div ng-messages="userForm.extension.$error">
+            <div ng-message="required">Extension is required.</div>
+          </div>
+        </md-input-container>
+
+      </div>
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Description</label>
+          <input type="text" ng-model="conference.Description" class="form-control" id="description" name="description" placeholder="More about conference"/>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Pin Number</label>
+          <input type="number" ng-minlength="4" ng-maxlength="8" ng-model="conference.Pin" class="form-control" id="pin" name="pin" placeholder="Enter Pin number" ng-required="true"/>
+          <div ng-messages="userForm.pin.$error">
+            <div ng-message="required">Pin is required.</div>
+            <div ng-message="minlength">Pin should longer than 4 digits.</div>
+            <div ng-message="maxlength">Pin should shorter than 8 digits.</div>
+          </div>
+        </md-input-container>
+
+      </div>
+
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Start Time</label>
+          <input type="datetime-local"  ng-min="{{now}}" ng-model="conference.StartTime" class="form-control" id="starttime" name="starttime" placeholder="Start Time" ng-required="true"/>
+          <div ng-messages="userForm.starttime.$error">
+            <div ng-message="required">Start Time is required.</div>
+            <div ng-message="min">Start Time should be future.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>End Time</label>
+          <input type="datetime-local"  ng-min="{{conference.StartTime}}" ng-model="conference.EndTime" class="form-control" id="endtime" name="endtime" placeholder="End Time" ng-required="true"/>
+          <div ng-messages="userForm.endtime.$error">
+            <div ng-message="required">End Time is required.</div>
+            <div ng-message="min">End time should be greater than start time</div>
+          </div>
+        </md-input-container>
+      </div>
+
+
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Anonymous Users</label>
+          <md-switch ng-model="conference.AllowAnonymousUser" aria-label="Switch 1"/>
+          <!--<input type="boolean" ng-model="conference.AllowAnonymousUser" class="form-control" id="anonymous" name="anonymous" placeholder="Allow Anonymous Users?" ng-required="false"/>-->
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Locked</label>
+          <md-switch ng-model="conference.IsLocked" aria-label="Switch 1"/>
+          <!--<input type="boolean" ng-model="conference.IsLocked" class="form-control" id="locked" name="locked" placeholder="Is conference locked" ng-required="false"/>-->
+        </md-input-container>
+      </div>
+      <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Domain</label>
+          <input type="text" ng-model="conference.Domain" class="form-control" id="domain" name="domain" placeholder="What is the conference domain?" ng-required="true"/>
+          <div ng-messages="userForm.domain.$error">
+            <div ng-message="required">Domain is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs="">
+          <label>Max User count</label>
+          <input type="number" ng-model="conference.MaxUser" class="form-control" min=0 id="usercount" name="usercount" placeholder="Max User Count" ng-required="true"/>
+          <div ng-messages="userForm.usercount.$error">
+            <div ng-message="required">MaxUser is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-content>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

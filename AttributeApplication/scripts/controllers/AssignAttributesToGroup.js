@@ -34,6 +34,12 @@
     $scope.DataObj=dbcontroller.GroupObj;
     $scope.editObj.GroupName=$scope.DataObj.GroupName;
     $scope.editObj.OtherData=$scope.DataObj.OtherData;
+<<<<<<< HEAD
+=======
+    $scope.editObj.GroupClass=$scope.DataObj.GroupClass;
+    $scope.editObj.GroupType=$scope.DataObj.GroupType;
+    $scope.editObj.GroupCategory=$scope.DataObj.GroupCategory;
+>>>>>>> Development
     $scope.editObj.Percentage=$scope.DataObj.Percentage;
 
 
@@ -50,7 +56,11 @@
     }
 
     function querySearch (query) {
+<<<<<<< HEAD
       var results = query ? self.allAttributes.filter(createFilterFor(query)) : [];
+=======
+      var results = query ? self.allAttributes .filter(createFilterFor(query)) : [];
+>>>>>>> Development
       return results;
     }
 
@@ -72,7 +82,11 @@
 
         //var ResArray = response.data.Result.slice();
 
+<<<<<<< HEAD
         self.allAttributes = response.data.Result.map(function (c,index) {
+=======
+        self.allAttributes  = response.data.Result.map(function (c,index) {
+>>>>>>> Development
 
           var item = c;
           console.log("ITM   "+JSON.stringify(c));
