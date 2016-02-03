@@ -6,7 +6,7 @@
     var addReqMetaData = function(accessToken, metaData){
       return $http({
         method: 'POST',
-        url: 'http://localhost:8828/DVP/API/1.0.0.0/ARDS/requestmeta',
+        url: 'http://ardsliteservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ARDS/requestmeta',
         headers: {
           'authorization': accessToken
         },
@@ -19,7 +19,7 @@
     var editReqMetaData = function(accessToken, metaData){
       return $http({
         method: 'PUT',
-        url: 'http://localhost:8828/DVP/API/1.0.0.0/ARDS/requestmeta',
+        url: 'http://ardsliteservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ARDS/requestmeta',
         headers: {
           'authorization': accessToken
         },
@@ -32,7 +32,7 @@
     var getReqMetaData = function(accessToken){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8828/DVP/API/1.0.0.0/ARDS/requestmeta',
+        url: 'http://ardsliteservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ARDS/requestmeta',
         headers: {
           'authorization': accessToken
         }})
@@ -43,7 +43,7 @@
     var getOneReqMetaData = function(accessToken, serverType, requestType){
       return $http({
         method: 'GET',
-        url: 'http://localhost:8828/DVP/API/1.0.0.0/ARDS/requestmeta/'+serverType+'/'+requestType,
+        url: 'http://ardsliteservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ARDS/requestmeta/'+serverType+'/'+requestType,
         headers: {
           'authorization': accessToken
         }})
@@ -54,7 +54,7 @@
     var deleteReqMetaData = function(accessToken, serverType, requestType){
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8828/DVP/API/1.0.0.0/ARDS/requestmeta/'+serverType+'/'+requestType,
+        url: 'http://ardsliteservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ARDS/requestmeta/'+serverType+'/'+requestType,
         headers: {
           'authorization': accessToken
         }})

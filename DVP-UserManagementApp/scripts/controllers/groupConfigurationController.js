@@ -27,6 +27,7 @@
         .join(' ');
     };
 
+
     var clearFormOnSave = function()
     {
       $scope.basicConfig = {};

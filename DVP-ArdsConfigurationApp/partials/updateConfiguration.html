@@ -11,7 +11,7 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Server Type</label>
-            <input name="serverType" ng-model="metaData.ServerType" required>
+            <input name="serverType" ng-model="metaData.ServerType" ng-disabled="true" required>
             <div ng-messages="updateConfigForm.serverType.$error">
               <div ng-message="required">This field is required</div>
             </div>
@@ -19,7 +19,7 @@
           <div flex="5"></div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Request Type</label>
-            <md-select name="requestTypes" ng-model="metaData.RequestType" ng-model-options="{trackBy: '$value'}" required>
+            <md-select name="requestTypes" ng-model="metaData.RequestType" ng-disabled="true" ng-model-options="{trackBy: '$value'}" required>
               <md-option ng-repeat="task in tasks" value="{{task.ResTaskInfo.TaskType}}">
                 {{task.ResTaskInfo.TaskType}}
               </md-option>
@@ -148,7 +148,12 @@
           </div>
         </div>
         <div layout="row">
-          <div flex="70"></div>
+          <div flex="100"></div>
+          <div layout="row" layout-align="center center" ng-hide="!processing">
+            <div layout="column" layout-align="center center">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+          </div>
           <div layout-align="right"><md-button class="md-primary md-raised" ng-click="updateMetaData()" ng-disabled="updateConfigForm.$invalid">Update</md-button></div>
           <div layout-align="right"><md-button class="md-primary md-raised" ng-click="backToMain()">Back</md-button></div>
         </div>
