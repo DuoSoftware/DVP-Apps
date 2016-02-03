@@ -15,7 +15,7 @@ taskModule.factory("conference", function($http){
 
   var getConferences = function(){
 
-    return $http.get("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRooms").then(function(response){
+    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRooms").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -37,7 +37,7 @@ taskModule.factory("conference", function($http){
 
 
 
-    return $http.get("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
+    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -57,10 +57,11 @@ taskModule.factory("conference", function($http){
 
 
 
-    return $http.delete("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
+    return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
+
 
 
       }else{
@@ -78,7 +79,7 @@ taskModule.factory("conference", function($http){
 
 
 
-      return $http.put("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + conference.ConferenceName,conference).then(function(response) {
+      return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + conference.ConferenceName,conference).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -98,7 +99,7 @@ taskModule.factory("conference", function($http){
 
 
 
-    return $http.post("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom",conference).then(function(response) {
+    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom",conference).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -116,7 +117,7 @@ taskModule.factory("conference", function($http){
 
   var addUserToConference = function(conferenceName,user){
 
-    return $http.post("http://localhost:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
+    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -139,7 +140,7 @@ taskModule.factory("conference", function($http){
 
 
 
-    return $http.get("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users").then(function(response) {
+    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users").then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -158,7 +159,7 @@ taskModule.factory("conference", function($http){
   var deleteConferenceUser = function(userID){
 
     ///ConferenceConfiguration/ConferenceUser/:UserId
-    return $http.delete("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID).then(function(response) {
+    return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -177,7 +178,7 @@ taskModule.factory("conference", function($http){
   var updateConferenceUser = function(userID, user){
 
     ///ConferenceConfiguration/ConferenceUser/:UserId
-    return $http.put("http://127.0.0.1:8085/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID, user).then(function(response) {
+    return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID, user).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
