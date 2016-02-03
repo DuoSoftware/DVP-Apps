@@ -12,7 +12,7 @@
         var getAppList = function () {
             console.log("BACKENDCONTROLLER");
            // return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/true")
-                  return $http.get("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Applications/true")
+                  return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Applications/true")
                 .then(function (response) {
                     console.log("BACKENDCONTROLLER2");
                     return response.data;
@@ -61,7 +61,7 @@
         var deleteApplication = function (AppId) {
 
            // return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/false")
-          return $http.post("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+AppId+"/Activate/false")
+          return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Application/"+AppId+"/Activate/false")
                 .then(function (response) {
 
                     if(response.data && response.data.IsSuccess) {
@@ -100,7 +100,7 @@
             console.log("updateApp");
             console.log(Attribute.id);
             console.log(Attribute);
-            return $http.put("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+Attribute.id,Attribute)
+            return $http.put("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Application/"+Attribute.id,Attribute)
                 .then(function (response) {
 
                     if(response.data && response.data.IsSuccess) {
@@ -121,7 +121,7 @@
 
         var testApplication = function(appId){
 
-            return $http.get("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+appId+"/Test").then(function(response){
+            return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Application/"+appId+"/Test").then(function(response){
 
 
                 if(!response.data.IsSuccess && response.data.Exception ) {
@@ -147,7 +147,7 @@
           console.log("createNewApplication");
           //   console.log(Attribute);
           //   return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application",NewAppDataObj)
-          return $http.post("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application", NewAppDataObj)
+          return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Application", NewAppDataObj)
 
             .then(function (response) {
               if (response.data && response.data.IsSuccess) {
