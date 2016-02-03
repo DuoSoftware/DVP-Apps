@@ -21,7 +21,7 @@
 
       /*  var assignMasterApp = function (NewAppDataObj) {
             console.log("assignMasterApp  "+NewAppDataObj.id+"  --  "+NewAppDataObj.MasterApplicationId);
-            return $http.get("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+NewAppDataObj.id+"/SetAsMasterApp/"+NewAppDataObj.MasterApplicationId)
+            return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/6.0/APPRegistry/Application/"+NewAppDataObj.id+"/SetAsMasterApp/"+NewAppDataObj.MasterApplicationId)
 
                 //  return $http.get("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/DidNumbers")
                 .then(function (response) {
