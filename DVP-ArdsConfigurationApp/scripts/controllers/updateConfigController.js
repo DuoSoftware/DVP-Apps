@@ -36,6 +36,7 @@
       }
     };
     var onEditReqMetaData = function(data){
+      $scope.processing = false;
       if(data.IsSuccess){
         $scope.showAlert("Susscess", "OK", data.CustomMessage);
         $scope.backToMain();
@@ -75,6 +76,7 @@
       );
     };
     $scope.updateMetaData = function(){
+      $scope.processing = true;
       $scope.metaData.AttributeGroups = [];
       for(var i=0; i< $scope.attributeGroups.length; i++){
         $scope.metaData.AttributeGroups.push($scope.attributeGroups[i].GroupId);

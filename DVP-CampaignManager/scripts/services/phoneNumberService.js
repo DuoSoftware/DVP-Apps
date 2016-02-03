@@ -13,7 +13,7 @@ numberModule.factory("number", function($http){
 
   var getNumbers = function(){
 
-    return $http.get("http://localhost:9898/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumbers").then(function(response){
+    return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumbers").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {

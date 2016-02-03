@@ -9,7 +9,7 @@
 
 
     var getUserList = function () {
-      return $http.get("http://localhost:3636/DVP/API/1.0/CloudConfiguration/CloudEndUsers")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUsers")
         .then(function (response) {
           console.log("resp  "+JSON.stringify(response));
           return response;
@@ -18,7 +18,7 @@
 
     var getUser = function (uID) {
       console.log("hitttttttt");
-      return $http.get("http://localhost:3636/DVP/API/1.0/CloudConfiguration/CloudEndUser/"+uID)
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+uID)
         .then(function (response) {
           console.log("resp single user  "+JSON.stringify(response));
           return response;
@@ -28,7 +28,7 @@
 
     var userDelete = function (user) {
 
-      return $http.delete("http://localhost:3636/DVP/API/1.0/CloudConfiguration/CloudEndUser/"+user)
+      return $http.delete("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/1.0/CloudConfiguration/CloudEndUser/"+user)
         .then(function (response) {
 
           response.id=user;
@@ -39,7 +39,7 @@
 
     var updateUser = function (user) {
 
-      return $http.put("http://localhost:3636/DVP/API/1.0/CloudConfiguration/CloudEndUser/"+user.id,user)
+      return $http.put("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+user.id,user)
         .then(function (response) {
 
           response.id=user.id;
@@ -50,7 +50,7 @@
 
     var newUser = function (user) {
 
-      return $http.post("http://localhost:3636/DVP/API/1.0/CloudConfiguration/CloudEndUser",user)
+      return $http.post("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser",user)
         .then(function (response) {
           return response;
         });
@@ -59,7 +59,7 @@
 
     var loadClusterDetails = function()
     {
-      return $http.get("http://localhost:3636/DVP/API/1.0/CloudConfiguration/Clouds")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds")
         .then(function (response) {
           return response;
         });
@@ -67,7 +67,7 @@
 
     var getContextList = function () {
 
-      return $http.get("http://localhost:8086/DVP/API/6.0/SipUser/Contexts")
+      return $http.get("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Contexts")
         .then(function (response) {
           console.log("Contexts  "+JSON.stringify(response));
           return response;
@@ -77,7 +77,7 @@
 
     var newContext = function(newObj)
     {
-      return $http.post("http://localhost:8086/DVP/API/6.0/SipUser/Context",newObj)
+      return $http.post("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context",newObj)
         .then(function (response) {
           return response;
         });
@@ -85,7 +85,7 @@
 
     var getContext = function (context) {
       console.log("hitttttttt");
-      return $http.get("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+context)
+      return $http.get("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+context)
         .then(function (response) {
           console.log("resp single Context  "+JSON.stringify(response));
           return response;
@@ -94,7 +94,7 @@
 
     var updateContext = function (contextObj) {
       console.log("hitttttttt");
-      return $http.put("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+contextObj.Context,contextObj)
+      return $http.put("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,contextObj)
         .then(function (response) {
           return response;
         });
@@ -102,7 +102,7 @@
 
     var deleteContext = function (contextObj) {
 
-      return $http.delete("http://localhost:8086/DVP/API/6.0/SipUser/Context/"+contextObj.Context)
+      return $http.delete("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context)
         .then(function (response) {
           return response;
         });

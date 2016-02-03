@@ -148,7 +148,12 @@
           </div>
         </div>
         <div layout="row">
-          <div flex="70"></div>
+          <div flex="100"></div>
+          <div layout="row" layout-align="center center" ng-hide="!processing">
+            <div layout="column" layout-align="center center">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+          </div>
           <div layout-align="right"><md-button class="md-primary md-raised" ng-click="saveMetaData()" ng-disabled="createConfigForm.$invalid">Save</md-button></div>
           <div layout-align="right"><md-button class="md-primary md-raised" ng-click="backToMain()">Back</md-button></div>
         </div>
