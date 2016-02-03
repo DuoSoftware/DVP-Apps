@@ -1,21 +1,38 @@
+<<<<<<< HEAD
+<md-subheader class="md-no-sticky"><h2>Group Manager</h2></md-subheader>
+=======
 <md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>Group Manager</h2></md-subheader>
+>>>>>>> Development
 <div><md-button class="md-icon-button" ng-click="addNewGroup()" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
 
 <md-data-table-container>
 
     <table md-table  md-progress="deferred" >
+<<<<<<< HEAD
+        <thead md-head>
+        <tr md-row>
+            <th md-column>GroupId</th>
+            <th md-column>GroupName</th>
+            <th md-column>OtherData</th>
+            <th md-column>Percentage</th>
+=======
       <thead md-head style="background-color: #cccccc">
         <tr md-row>
             <th md-column style="color: #323232"><h3>ID</h3></th>
             <th md-column style="color: #323232"><h3>Name</h3></th>
             <th md-column style="color: #323232"><h3>Other Data</h3></th>
             <th md-column style="color: #323232"><h3>Percentage</h3></th>
+>>>>>>> Development
 
 
         </tr>
         </thead>
         <tbody md-body>
+<<<<<<< HEAD
+        <tr md-row layout-align="center center" md-auto-select ng-repeat="grp in grps ">
+=======
         <tr md-row layout-align="center center" md-auto-select ng-repeat="grp in grps | limitTo: query.limit: (query.page - 1) * query.limit ">
+>>>>>>> Development
             <td md-cell>{{grp.GroupId}}</td>
             <td md-cell>{{grp.GroupName}}</td>
             <td md-cell>{{grp.OtherData}}</td>

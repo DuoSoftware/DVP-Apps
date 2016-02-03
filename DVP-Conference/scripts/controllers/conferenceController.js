@@ -4,7 +4,7 @@
 
 var app = angular.module("ConferenceApp");
 
-app.controller("ConferenceListController", function($scope, $location,$mdDialog, conference){
+app.controller("conferenceListController", function($scope, $location,$mdDialog, conference){
 
 
   $scope.showAlert = function(tittle, label, button, content) {
@@ -88,12 +88,12 @@ app.controller("ConferenceListController", function($scope, $location,$mdDialog,
 });
 
 
-app.controller("ConferenceViewController", function($scope, $location,$mdDialog, conference){
+app.controller("conferenceViewController", function($scope, $location,$mdDialog, conference){
 
 });
 
 
-app.controller("ConferenceUserController", function($scope, $location,$mdDialog,$log,$timeout,$q,$routeParams,  conference, sipuser){
+app.controller("conferenceUserController", function($scope, $location,$mdDialog,$log,$timeout,$q,$routeParams,  conference, sipuser){
 
 
 
@@ -410,7 +410,7 @@ app.controller("ConferenceUserController", function($scope, $location,$mdDialog,
 });
 
 
-app.controller("ConferenceEditController", function($scope, $location,$mdDialog,$routeParams,  conference){
+app.controller("conferenceEditController", function($scope, $location,$mdDialog,$routeParams,  conference){
 
 
   $scope.conference = {};
@@ -468,7 +468,7 @@ app.controller("ConferenceEditController", function($scope, $location,$mdDialog,
 });
 
 
-app.controller("ConferenceCreateController", function($scope, $location,$mdDialog, conference, sipuser){
+app.controller("conferenceCreateController", function($scope, $location,$mdDialog, conference, sipuser){
 
 
 

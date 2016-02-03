@@ -7,6 +7,12 @@
 
   var AttributeController= function ($scope,dbcontroller,commoncontroller,$location,$mdDialog,$mdMedia) {
 
+<<<<<<< HEAD
+    $scope.isDisabled = false;
+
+    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+=======
     $scope.query = {
       limit: 5,
       page: 1
@@ -16,6 +22,7 @@
 
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
+>>>>>>> Development
     var onAttribComplete = function (response) {
       console.log(JSON.stringify(response.data.Result));
       if(response.data.Exception)
@@ -26,11 +33,18 @@
       {
         dbcontroller.GIDst=false;
         console.log("Got as Attributes "+JSON.stringify(response.data.Result));
+<<<<<<< HEAD
+        $scope.attribData=response.data.Result;
+      }
+
+    }
+=======
         $scope.total = response.data.Result.length;
         $scope.attribData=response.data.Result;
       }
 
     };
+>>>>>>> Development
 
     var onGrpAttribComplete = function (response) {
       console.log(JSON.stringify(response.data.Result));
@@ -50,7 +64,10 @@
 
           if(i==len-1 )
           {
+<<<<<<< HEAD
+=======
             $scope.total = response.data.Result.length;
+>>>>>>> Development
             $scope.attribData=tempArr;
           }
         }
@@ -88,10 +105,80 @@
         }
         $scope.isDisabled = false;
         $scope.attribData.splice(val, 1);
+<<<<<<< HEAD
 
       }
     }
 
+    $scope.loadAttc=function(){
+   if(dbcontroller.GIDst )
+   {
+     console.log("GID is in");
+     console.log("GID "+dbcontroller.GID);
+     console.log("GID status "+dbcontroller.GIDst);
+     dbcontroller.GIDst=false;
+     dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onGrpAttribComplete,onError);
+     $scope.gTopic="Attributes assigned to Group "+dbcontroller.GID;
+   }
+   else
+   {
+     $scope.gTopic="Attribute Viewer";
+     console.log("NO GID");
+     console.log("GID "+dbcontroller.GID);
+     console.log("GID status "+dbcontroller.GIDst);
+     dbcontroller.getAttributeList().then(onAttribComplete,onError);
+   }
+ };
+
+
+
+
+
+    $scope.DeleteAttribute = function(Attb)
+    {
+      $scope.isDisabled = true;
+      var title="Delete attribute ";
+      var content= "Do you want to delete "+ Attb.Attribute;
+      console.log(content) ;
+      commoncontroller.showConfirm(title,"Delete","Delete","Cancel",content,function(obj){
+
+        dbcontroller.attribDelete(Attb).then(onAttributeDeleteComplete,onError);
+
+
+      }, function(){
+
+        //$scope.showAlert("title","lable","ok","content");
+        $scope.isDisabled = false;
+
+      },Attb)
+
+
+
+
+    }
+    $scope.addNewAttrib = function()
+    {
+      commoncontroller.showAdvanced("NewController","partials/new.html",true);
+      //$location.path("/newattrib");
+    }
+    $scope.ViewAttribute = function(Attb)
+    {
+      dbcontroller.Attribobj=Attb;
+      console.log(dbcontroller.Attribobj);
+
+      commoncontroller.showAdvanced('EditController','partials/edit.html',false);
+      //$location.path("/viewattrib");
+    }
+
+
+=======
+>>>>>>> Development
+
+      }
+    }
+
+<<<<<<< HEAD
+=======
     $scope.loadAttc=function(){
    if(dbcontroller.GIDst )
    {
@@ -156,6 +243,7 @@
 
 
 
+>>>>>>> Development
     $scope.loadAttc();
   };
 

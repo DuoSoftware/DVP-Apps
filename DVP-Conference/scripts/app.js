@@ -16,27 +16,27 @@ app.config(function($routeProvider){
   $routeProvider.when("/",{
 
     templateUrl: 'partials/conferenceList.html',
-    controller: 'ConferenceListController'
+    controller: 'conferenceListController'
 
   }).when("/conference/list",{
 
 
     templateUrl: 'partials/conferenceList.html',
-    controller: 'ConferenceListController'
+    controller: 'conferenceListController'
 
 
   }).when("/conference/create",{
 
 
     templateUrl: 'partials/conferenceAdd.html',
-    controller: 'ConferenceCreateController'
+    controller: 'conferenceCreateController'
 
 
   }).when("/conference/:id/edit",{
 
 
     templateUrl: 'partials/conferenceEdit.html',
-    controller: 'ConferenceEditController'
+    controller: 'conferenceEditController'
 
 
 
@@ -44,7 +44,7 @@ app.config(function($routeProvider){
 
 
     templateUrl: 'partials/conferenceView.html',
-    controller: 'ConferenceViewController'
+    controller: 'conferenceViewController'
 
 
 
@@ -52,7 +52,7 @@ app.config(function($routeProvider){
 
 
   templateUrl: 'partials/conferenceUserForm.html',
-  controller: 'ConferenceUserController'
+  controller: 'conferenceUserController'
 
 
 
@@ -60,7 +60,7 @@ app.config(function($routeProvider){
 
 
     templateUrl: 'partials/conferenceList.html',
-    controller: 'ConferenceListController'
+    controller: 'conferenceListController'
 
   });
 
