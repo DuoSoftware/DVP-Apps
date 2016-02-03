@@ -10,7 +10,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedules',
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedules',
         headers: {
           'authorization': 'hhhh'
         }
@@ -24,7 +24,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/' + scheduleId + '/Appointments',
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule/' + scheduleId + '/Appointments',
         headers: {
           'authorization': 'hhhh'
         }
@@ -38,7 +38,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule',
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule',
         headers: {
           'authorization': 'hhhh'
         },
@@ -53,7 +53,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/Appointment',
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule/Appointment',
         headers: {
           'authorization': 'hhhh'
         },
@@ -68,7 +68,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/Appointment/' + appInfo.id,
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule/Appointment/' + appInfo.id,
         headers: {
           'authorization': 'hhhh'
         },
@@ -83,7 +83,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/' + scheduleInfo.id,
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule/' + scheduleInfo.id,
         headers: {
           'authorization': '1#1'
         },
@@ -98,7 +98,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Schedule/' + scheduleId,
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedule/' + scheduleId,
         headers: {
           'authorization': '1#1'
         }
@@ -112,7 +112,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8084/DVP/API/6.0/LimitAPI/Appointment/' + appointmentId,
+        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Appointment/' + appointmentId,
         headers: {
           'authorization': '1#1'
         }

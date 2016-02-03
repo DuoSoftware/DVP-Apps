@@ -11,7 +11,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/Extension/' + ext,
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/' + ext,
         headers: {
           'authorization': 'hhhh'
         }
@@ -68,7 +68,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/User/' + usr,
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User/' + usr,
         headers: {
           'authorization': 'hhhh'
         }

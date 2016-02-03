@@ -9,7 +9,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendants',
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendants',
         headers: {
           'authorization': 'hhhh'
         }
@@ -23,7 +23,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + autoAttName,
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant/' + autoAttName,
         headers: {
           'authorization': 'hhhh'
         }
@@ -37,7 +37,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + autoAttName,
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant/' + autoAttName,
         headers: {
           'authorization': 'hhhh'
         }
@@ -51,7 +51,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant',
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant',
         headers: {
           'authorization': 'hhhh'
         },
@@ -66,7 +66,7 @@
     {
       return $http({
         method: 'PUT',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + obj.Name,
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant/' + obj.Name,
         headers: {
           'authorization': 'hhhh'
         },
@@ -81,7 +81,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + autoAttName + '/Action/' + action.OnEvent,
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant/' + autoAttName + '/Action/' + action.OnEvent,
         headers: {
           'authorization': 'hhhh'
         },
@@ -96,7 +96,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:4445/DVP/API/1.0/AuttoAttendant/' + autoAttName + '/Action/' + actionId,
+        url: 'http://autoattendant.104.131.67.21.xip.io/DVP/API/1.0.0.0/AuttoAttendant/' + autoAttName + '/Action/' + actionId,
         headers: {
           'authorization': 'hhhh'
         }
@@ -110,7 +110,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8086/DVP/API/6.0/SipUser/Extensions/OfCompany/1',
+        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extensions/OfCompany/1',
         headers: {
           'authorization': 'hhhh'
         }
