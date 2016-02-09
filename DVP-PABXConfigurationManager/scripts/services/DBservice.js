@@ -11,18 +11,33 @@
 
     var loadMasterData = function () {
 
-      return $http.get("http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData")
-        .then(function (response) {
-          return response;
-        });
+      return $http({
+        method: 'GET',
+        url: "http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData",
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
 
     };
     var updateMasterData = function (masterObj) {
 
-      return $http.post("http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData",masterObj)
-        .then(function (response) {
-          return response;
-        });
+      return $http({
+        method: 'POST',
+        url: "http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PbxMasterData",
+        headers: {
+          'authorization': '1#1'
+        },
+        data:masterObj
+      }).then(function(response)
+      {
+        return response;
+      });
+
 
     };
     var loadGeneral = function () {
@@ -66,7 +81,7 @@
       {
         return response;
       });
-    }
+    };
     var addEmgNumber = function (numObj) {
       return $http({
         method: 'POST',
@@ -79,7 +94,7 @@
       {
         return response;
       });
-    }
+    };
     var delEmgNumber = function (eNum) {
       return $http({
         method: 'DELETE',
@@ -91,7 +106,7 @@
       {
         return response;
       });
-    }
+    };
 
     return{
 
