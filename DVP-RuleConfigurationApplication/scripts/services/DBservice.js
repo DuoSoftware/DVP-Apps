@@ -227,7 +227,7 @@ var loadApps = function () {
       {
         return response;
       });
-      
+
 
     };
 
