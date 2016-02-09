@@ -11,84 +11,139 @@
   var dbcontroller = function ($http,$mdDialog,$mdMedia) {
 
     var getAttributeList = function () {
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes")
-        .then(function (response) {
-          return response;
-        });
+
+
+      return $http({
+        method: 'GET',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
 
 
     var attribDelete = function (Attribute) {
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId)
-        .then(function (response) {
+      return $http({
+        method: 'DELETE',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          response.AttributeId=Attribute.AttributeId;
-          return response;
-        });
+
 
     };
 
     var updateAttribute = function (edtObj) {
 
 
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,edtObj)
-        .then(function (response) {
+      return $http({
+        method: 'PUT',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
+        headers: {
+          'authorization': '1#1'
+        },
+        data:edtObj
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          return response;
-        });
-    }
+    };
 
 
     var NewAttribute = function(data)
     {
 
-      return $http.post("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",data)
-        .then(function (response) {
+      return $http({
+        method: 'POST',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
+        headers: {
+          'authorization': '1#1'
+        },
+        data:data
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          console.log(response);
-          return response;
-        });
-    }
+    };
 
     var getGroupList = function () {
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups")
-        .then(function (response) {
-          return response;
-        });
+
+      return $http({
+        method: 'GET',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
     var updateGroup = function (edtObj) {
 
+      return $http({
+        method: 'PUT',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
+        headers: {
+          'authorization': '1#1'
+        },
+        data:edtObj
+      }).then(function(response)
+      {
+        return response;
+      });
 
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId, edtObj)
-        .then(function (response) {
-
-          return response;
-        });
     };
 
     var groupDelete = function (group) {
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId)
-        .then(function (response) {
+      return $http({
+        method: 'DELETE',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        response.GroupId= group.GroupId;
+        return response;
+      });
 
-          response.GroupId= group.GroupId;
-          return response;
-        });
 
     };
 
     var NewGroup = function(grpObj)
     {
 
-      return $http.post("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",grpObj)
-        .then(function (response) {
+      return $http({
+        method: 'POST',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
+        headers: {
+          'authorization': '1#1'
+        },
+        data:grpObj
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          return response;
-        });
-    }
+    };
 
     var AddAttributesToGroup = function(AttributeIds,GID){
 
@@ -97,12 +152,20 @@
         AttributeIds:AttributeIds
 
 
-      }
-      return $http.put("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",data)
-        .then(function (response) {
+      };
 
-          return response;
-        });
+      return $http({
+        method: 'PUT',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
+        headers: {
+          'authorization': '1#1'
+        },
+        data:data
+      }).then(function(response)
+      {
+        return response;
+      });
+
 
     };
 
@@ -111,24 +174,35 @@
     var RemoveAttributeFromGroup = function (attributeId,groupId) {
 
 
-      return $http.delete("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId)
-        .then(function (response) {
+      return $http({
+        method: 'DELETE',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          return response;
-        });
 
-
-    }
+    };
 
     var GetAttributesOfGroup = function (GrpID) {
 
+      return $http({
+        method: 'GET',
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
+        headers: {
+          'authorization': '1#1'
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
 
-      return $http.get("http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details")
-        .then(function (response) {
-          return response;
-        });
 
-    }
+    };
 
 
 
