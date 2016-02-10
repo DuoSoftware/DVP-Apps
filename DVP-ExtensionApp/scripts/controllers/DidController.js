@@ -82,6 +82,7 @@
     };
     var onDidNumberDeleteComplete = function(data){
       if(data.IsSuccess){
+        $scope.showAlert("Delete", "OK", "Delete DID number success");
         $scope.loadData();
       }else{
         $scope.error = data.Exception;
