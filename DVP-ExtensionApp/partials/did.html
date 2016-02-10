@@ -1,16 +1,14 @@
 <div>
-  {{error}}
-  <div>
-    <div>
       <md-toolbar class="md-table-toolbar md-default">
         <div class="md-toolbar-tools" layout="row">
-          <div flex="20">
-            <md-button class="md-primary md-raised" ng-click="showAdvanced($event, null)" flex="100" flex-gt-md="auto">
-              <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon>
-            </md-button></div>
+          <div flex="90"></div>
+          <div>
+            <md-button class="md-primary md-raised" ng-click="showAdvanced($event, null)">
+              <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+            </md-button>
+          </div>
         </div>
       </md-toolbar>
-    </div>
 
     <md-table-container>
       <div layout="row" layout-align="center center" ng-hide="didNumbers">
@@ -48,5 +46,4 @@
       </table>
     </md-table-container>
     <md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
-  </div>
 </div>

@@ -80,7 +80,7 @@
     $scope.loadContexts = function () {
 
       dbservice.getContextList().then(onContextComplete,onError);
-    }
+    };
 
     $scope.SaveRule = function () {
 

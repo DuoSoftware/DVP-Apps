@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/QueueMusicApp.iml" filepath="$PROJECT_DIR$/.idea/QueueMusicApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PABXUserApp.iml" filepath="$PROJECT_DIR$/.idea/PABXUserApp.iml" />
     </modules>
   </component>
 </project>
