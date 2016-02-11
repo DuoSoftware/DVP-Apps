@@ -69,10 +69,14 @@
 
 
           }
+          else
+          {
+            mdAleartDialog("ERROR", "Error updating user", "ERROR");
+          }
 
         }, function(err)
         {
-          console.log('Error occurred : ' + err);
+          mdAleartDialog("ERROR", "Error updating user", "ERROR");
         });
       }
       else
