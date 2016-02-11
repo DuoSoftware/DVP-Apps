@@ -67,7 +67,8 @@
 
       if(response.data.Exception)
       {
-        onError(response.data.Exception.Message);
+        //onError(response.data.Exception.Message);
+
         $scope.isAppDisabled=true;
       }
       else {
@@ -116,7 +117,7 @@
       if(response.data.Exception)
       {
         $scope.isScheduleDisabled=true;
-        onError(response.data.Exception.Message);
+       // onError(response.data.Exception.Message);
       }
       else {
 
