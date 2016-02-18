@@ -10,6 +10,19 @@
       $scope.allowedNumbers = [];
       $scope.timeZoneList = timeZones;
 
+    var mdAleartDialog = function(title, content, ariaLabel)
+    {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title(title)
+          .textContent(content)
+          .ariaLabel(ariaLabel)
+          .ok('Ok')
+      );
+    };
+
       $scope.onMenuButtonPressed = function(btnType)
       {
           if(btnType == 1)
@@ -43,28 +56,39 @@
               {
                 if(data2.IsSuccess)
                 {
-                  $mdDialog.show(
-                    $mdDialog.alert()
-                      .parent(angular.element(document.querySelector('#popupContainer')))
-                      .clickOutsideToClose(true)
-                      .title('Basic configuration saved successfully')
-                      .textContent('')
-                      .ariaLabel('Save PBX User Done')
-                      .ok('Ok')
-                  );
+                  mdAleartDialog("SUCCESS", "Basic Configuration Updated Successfully", "SUCCESS");
+                }
+                else
+                {
+                  var errMsg = data2.CustomMessage;
 
+                  if(data2.Exception)
+                  {
+                    errMsg = data2.Exception.Message;
+                  }
+                  mdAleartDialog("WARINING", "Basic Configuration Partially Updated - ERROR : " + errMsg, "WARINING");
                 }
 
               }, function(err)
               {
-                console.log('Error occurred : ' + err);
+                mdAleartDialog("WARINING", "Basic Configuration Partially Updated - Communication Error on Saving Allowed Numbers : ", "WARINING");
               });
 
+            }
+            else
+            {
+              var errMsg = data1.CustomMessage;
+
+              if(data1.Exception)
+              {
+                errMsg = data1.Exception.Message;
+              }
+              mdAleartDialog("ERROR", errMsg, "ERROR");
             }
 
           }, function(err)
           {
-            console.log('Error occurred : ' + err);
+            mdAleartDialog("ERROR", "Communication Error Occurred", "ERROR");
           });
         }
         else
@@ -78,28 +102,39 @@
               {
                 if(data2.IsSuccess)
                 {
-                  $mdDialog.show(
-                    $mdDialog.alert()
-                      .parent(angular.element(document.querySelector('#popupContainer')))
-                      .clickOutsideToClose(true)
-                      .title('Basic configuration saved successfully')
-                      .textContent('')
-                      .ariaLabel('Save PBX User Done')
-                      .ok('Ok')
-                  );
+                  mdAleartDialog("SUCCESS", "Basic Configuration Saved Successfully", "SUCCESS");
+                }
+                else
+                {
+                  var errMsg = data2.CustomMessage;
 
+                  if(data2.Exception)
+                  {
+                    errMsg = data2.Exception.Message;
+                  }
+                  mdAleartDialog("WARINING", "Basic Configuration Partially Saved - ERROR : " + errMsg, "WARINING");
                 }
 
               }, function(err)
               {
-                console.log('Error occurred : ' + err);
+                mdAleartDialog("WARINING", "Basic Configuration Partially Saved - Communication Error on Saving Allowed Numbers : ", "WARINING");
               });
 
+            }
+            else
+            {
+              var errMsg = data1.CustomMessage;
+
+              if(data1.Exception)
+              {
+                errMsg = data1.Exception.Message;
+              }
+              mdAleartDialog("ERROR", errMsg, "ERROR");
             }
 
           }, function(err)
           {
-            console.log('Error occurred : ' + err);
+            mdAleartDialog("ERROR", "Communication Error Occurred", "ERROR");
           });
         }
 
