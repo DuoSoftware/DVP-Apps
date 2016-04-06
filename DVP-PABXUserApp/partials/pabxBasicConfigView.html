@@ -97,6 +97,12 @@
             </md-select>
           </md-input-container>
         </div>
+        <div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Ring Timeout</label>
+            <input name="ringTimeout" ng-model="basicConfig.RingTimeout" required>
+          </md-input-container>
+        </div>
         <div layout-gt-sm="row">
           <md-checkbox md-no-ink aria-label="BypassMedia" ng-model="basicConfig.BypassMedia" class="md-primary" flex-gt-sm>
             Media Bypass
