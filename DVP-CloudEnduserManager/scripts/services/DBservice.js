@@ -68,7 +68,6 @@
         data:user
       }).then(function(response)
       {
-        response.id=user;
         return response;
       });
 
