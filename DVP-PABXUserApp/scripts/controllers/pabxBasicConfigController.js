@@ -152,7 +152,6 @@
             console.log('Error occurred : ' + err);
         };
 
-
         dvpHandler.getPABXUserTemplates(sharedResPABXUser.PABXUser.UserUuid).then(onGetPABXTemplListSuccess, onGetPABXTemplListError);
 
       };
