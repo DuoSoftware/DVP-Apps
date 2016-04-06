@@ -5,14 +5,14 @@
 
   var dvpHandler = function($http)
   {
-    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMTNiMzA3M2EtNDgwMi00NjNhLTllMWYtMDRlZTdkNGMzMmEyIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTE5MjE4MDgsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIn0seyJyZXNvdXJjZSI6InBieGFkbWluIiwiYWN0aW9ucyI6WyJyZWFkIiwid3JpdGUiLCJkZWxldGUiXX0seyJyZXNvdXJjZSI6InBieHVzZXIiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTkxODIwOH0.EJgilGayGMYFJQ3XXTzgaYT9RSWgUHCYbCDzOSICY5I';
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiYmEzY2M5MWEtZTZmNC00OTc1LThlYmEtZGE4MDQxMWRiMDBiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTE5NDU2NDcsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIn0seyJyZXNvdXJjZSI6InVzZXIiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfSx7InJlc291cmNlIjoicGJ4YWRtaW4iLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfSx7InJlc291cmNlIjoicGJ4dXNlciIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19LHsicmVzb3VyY2UiOiJmaWxlc2VydmljZSIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19LHsicmVzb3VyY2UiOiJzY2hlZHVsZSIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19LHsicmVzb3VyY2UiOiJhcHBvaW50bWVudCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDU5OTQyMDQ3fQ.k1-UxZzeGwH0rRG3mhxw3yX6u1LlPCgzU-yeIAs1vQk';
 
     var getPABXUsers = function()
     {
 
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUsers',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUsers',
         headers: {
           'authorization': authToken
         }
@@ -42,7 +42,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/PBXUserTemplates',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/PBXUserTemplates',
         headers: {
           'authorization': authToken
         }
@@ -56,7 +56,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/PBXUserTemplate',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/PBXUserTemplate',
         headers: {
           'authorization': authToken
         },
@@ -71,7 +71,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/FollowMe',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/FollowMe',
         headers: {
           'authorization': authToken
         },
@@ -86,7 +86,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/Forwarding',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/Forwarding',
         headers: {
           'authorization': authToken
         },
@@ -101,7 +101,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/AllowedNumbers',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/AllowedNumbers',
         headers: {
           'authorization': authToken
         },
@@ -116,7 +116,7 @@
     {
       return $http({
         method: 'PUT',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + usrObj.UserUuid,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + usrObj.UserUuid,
         headers: {
           'authorization': authToken
         },
@@ -131,7 +131,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser',
         headers: {
           'authorization': authToken
         },
@@ -146,7 +146,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUserTemplate/' + id,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUserTemplate/' + id,
         headers: {
           'authorization': authToken
         }
@@ -160,7 +160,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid,
         headers: {
           'authorization': authToken
         }
@@ -174,7 +174,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + id,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + id,
         headers: {
           'authorization': authToken
         }
@@ -216,7 +216,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/FollowMe',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/FollowMe',
         headers: {
           'authorization': authToken
         }
@@ -230,7 +230,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/Forwarding',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/Forwarding',
         headers: {
           'authorization': authToken
         }
@@ -244,7 +244,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/FollowMe/' + fmId,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/FollowMe/' + fmId,
         headers: {
           'authorization': authToken
         }
@@ -258,7 +258,7 @@
     {
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:8820/DVP/API/1.0.0.0/PBXService/Forwarding/' + fwdId,
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/Forwarding/' + fwdId,
         headers: {
           'authorization': authToken
         }
