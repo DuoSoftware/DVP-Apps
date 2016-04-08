@@ -81,6 +81,11 @@
               <md-option ng-repeat="tz in timeZoneList" ng-value="tz.Offset">{{tz.TZName}}</md-option>
             </md-select>
           </md-input-container>
+          <div flex="5"></div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Ring Timeout</label>
+            <input name="ringTimeout" ng-model="basicConfig.RingTimeout" required>
+          </md-input-container>
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
@@ -97,12 +102,7 @@
             </md-select>
           </md-input-container>
         </div>
-        <div>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Ring Timeout</label>
-            <input name="ringTimeout" ng-model="basicConfig.RingTimeout" required>
-          </md-input-container>
-        </div>
+
         <div layout-gt-sm="row">
           <md-checkbox md-no-ink aria-label="BypassMedia" ng-model="basicConfig.BypassMedia" class="md-primary" flex-gt-sm>
             Media Bypass
@@ -124,6 +124,12 @@
           <md-input-container class="md-block" flex-gt-sm>
             <label>Allowed Numbers</label>
             <md-chips name="allowedNums" ng-model="allowedNumbers"></md-chips>
+          </md-input-container>
+        </div>
+        <div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Denied Numbers</label>
+            <md-chips name="deniedNums" ng-model="deniedNumbers"></md-chips>
           </md-input-container>
         </div>
         <div layout="row">

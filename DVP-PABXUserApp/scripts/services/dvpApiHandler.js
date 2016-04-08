@@ -112,6 +112,21 @@
       })
     };
 
+    var setDeniedNumbers = function(userUuid, deniedNumbers)
+    {
+      return $http({
+        method: 'POST',
+        url: 'http://pbxservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PBXService/PBXUser/' + userUuid + '/DeniedNumbers',
+        headers: {
+          'authorization': authToken
+        },
+        data:{DeniedNumbers:deniedNumbers}
+      }).then(function(resp)
+      {
+        return resp.data;
+      })
+    };
+
     var updatePABXUser = function(usrObj)
     {
       return $http({
@@ -280,6 +295,7 @@
       updatePABXUser: updatePABXUser,
       savePABXUser: savePABXUser,
       setAllowedNumbers: setAllowedNumbers,
+      setDeniedNumbers: setDeniedNumbers,
       getSIPUsers: getSIPUsers,
       deletePABXUser: deletePABXUser,
       getFollowMeConfigList: getFollowMeConfigList,
