@@ -3,7 +3,7 @@
     <md-tabs md-dynamic-height md-border-bottom style="background-color: #cccccc">
       <md-tab label="INBOUND" >
         <md-subheader class="md-no-sticky" style="background-color: #cccccc"><h2>INBOUND</h2></md-subheader>
-        <div  style="background-color: #cccccc"><md-button class="md-icon-button" ng-click="addRule('INBOUND')" class="md-raised md-primary"> <md-icon md-svg-src="img/ic_add_24px.svg"></md-icon></md-button></div>
+        <div  style="background-color: #cccccc"><md-button class="md-icon-button" ng-click="addRule('INBOUND')" class="md-raised md-primary"> <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon></md-button></div>
 
         <md-data-table-container  style="background-color: #cccccc">
 
@@ -67,8 +67,12 @@
               <td md-cell>{{rule.Priority}}</td>
               <td md-cell>{{rule.TrunkNumber}}</td>
               <td md-cell>
-                <md-button class="md-icon-button"  class="md-raised md-primary" ng-click="editRule(rule)"><md-icon md-svg-src="../img/edit26.svg"></md-icon></md-button>
-                <md-button class="md-icon-button" class="md-raised md-warn" ng-disabled="isDisabled" ng-click="DeleteRule(rule)"><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
+
+                <div layout="row">
+                  <md-button class="md-icon-button"  class="md-raised md-primary" ng-click="editRule(rule)"><md-icon md-svg-src="../img/edit26.svg"></md-icon></md-button>
+                  <md-button class="md-icon-button" class="md-raised md-warn" ng-disabled="isDisabled" ng-click="DeleteRule(rule)"><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
+
+              </div>
 
               </td>
 
