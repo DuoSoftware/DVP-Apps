@@ -49,7 +49,7 @@
             <md-select name="advRouteMethod" ng-model="basicConfig.AdvancedRouteMethod" ng-model-options="{trackBy: '$value'}" required>
               <md-option value="NONE">Default</md-option>
               <md-option value="FOLLOW_ME">Follow Me</md-option>
-              <md-option value="FORWARDING">Conditional Forward</md-option>
+              <md-option value="FORWARD">Conditional Forward</md-option>
             </md-select>
             <div ng-messages="pabxBasicConfForm.advRouteMethod.$error">
               <div ng-message="required">This field is required</div>
@@ -95,6 +95,12 @@
             <md-select name="nightGreeting" ng-model="basicConfig.NightGreetingFile" ng-model-options="{trackBy: '$value'}">
               <md-option ng-repeat="nightGreetItem in fileList" value="{{nightGreetItem.UniqueId}}">{{nightGreetItem.DisplayName}}</md-option>
             </md-select>
+          </md-input-container>
+        </div>
+        <div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Ring Timeout</label>
+            <input name="ringTimeout" ng-model="basicConfig.RingTimeout" required>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
