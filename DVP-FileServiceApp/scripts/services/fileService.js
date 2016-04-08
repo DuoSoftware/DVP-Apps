@@ -10,7 +10,7 @@ fileModule.factory("clusterService", function ($http, download) {
 
     return $http({
       method: 'get',
-      url: 'http://localhost:8827/DVP/AuthorizationToken'
+      url: 'http://192.168.0.69:8827/DVP/AuthorizationToken'
     }).then(function (response) {
       // return response.data.Result;
       return response.data;
@@ -25,7 +25,7 @@ fileModule.factory("clusterService", function ($http, download) {
       // call file download
 
       $http({
-        url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName,
+        url: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
         method: "get",
         //data: json, //this is your json data string
         headers: {
@@ -71,7 +71,7 @@ fileModule.factory("clusterService", function ($http, download) {
     return getToken().then(function (response) {
       return $http({
         method: 'get',
-        url: 'http://localhost:8888/DVP/API/6.0/FileService/Files',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
         headers: {
           'authorization': response
         }
@@ -90,7 +90,7 @@ fileModule.factory("clusterService", function ($http, download) {
     return getToken().then(function (response) {
       return $http({
         method: 'delete',
-        url: 'http://localhost:8888/DVP/API/6.0/FileService/File/' + file.UniqueId,
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
         headers: {'authorization': response}
       }).then(function (response) {
         return response.data.IsSuccess;
@@ -118,7 +118,7 @@ fileModule.factory("clusterService", function ($http, download) {
      */
 
     return getToken().then(function (response) {
-      return $http.get('http://localhost:8888/DVP/API/6.0/FileService/FileCategories',
+      return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
         {
           headers: {'authorization': response}
         }
@@ -141,7 +141,7 @@ fileModule.factory("clusterService", function ($http, download) {
     GetFiles: getFiles,
     DeleteFile: deleteFile,
     GetCatagories: getCatagories,
-    UploadUrl: "http://localhost:8888/DVP/API/6.0/FileService/File/Upload",
+    UploadUrl: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Upload",
     File: {},
     Headers: {}
   }

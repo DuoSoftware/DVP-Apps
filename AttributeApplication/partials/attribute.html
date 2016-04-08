@@ -24,8 +24,11 @@
       <td md-cell>{{attrib.OtherData}}</td>
       <td md-cell>{{attrib.Status}}</td>
       <td md-cell>
-        <md-button class="md-icon-button" ng-click="ViewAttribute(attrib)" class="md-raised md-primary"><md-icon md-svg-src="../img/edit26.svg"></md-icon></md-button>
-        <md-button class="md-icon-button" ng-click="DeleteAttribute(attrib)" class="md-raised md-warn" ng-disabled="isDisabled" ><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
+        <div layout="raw">
+          <md-button class="md-icon-button" ng-click="ViewAttribute(attrib)" class="md-raised md-primary"><md-icon md-svg-src="../img/edit26.svg"></md-icon></md-button>
+          <md-button class="md-icon-button" ng-click="DeleteAttribute(attrib)" class="md-raised md-warn" ng-disabled="isDisabled" ><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
+
+        </div>
 
       </td>
 

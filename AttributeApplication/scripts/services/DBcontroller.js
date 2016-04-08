@@ -17,7 +17,7 @@
         method: 'GET',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
@@ -34,7 +34,7 @@
         method: 'DELETE',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
@@ -52,7 +52,7 @@
         method: 'PUT',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         },
         data:edtObj
       }).then(function(response)
@@ -70,7 +70,7 @@
         method: 'POST',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         },
         data:data
       }).then(function(response)
@@ -86,7 +86,7 @@
         method: 'GET',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
@@ -101,7 +101,7 @@
         method: 'PUT',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         },
         data:edtObj
       }).then(function(response)
@@ -117,7 +117,7 @@
         method: 'DELETE',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
@@ -135,7 +135,7 @@
         method: 'POST',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         },
         data:grpObj
       }).then(function(response)
@@ -158,7 +158,7 @@
         method: 'PUT',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         },
         data:data
       }).then(function(response)
@@ -178,7 +178,7 @@
         method: 'DELETE',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
@@ -194,7 +194,7 @@
         method: 'GET',
         url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI1ZDNhZWZiYi1kYWNiLTQ5NjEtYmQ2MS0wMGQzNWMxMmI2ZWEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjEyMDQwMSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhcmRzcmVzb3VyY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDExNjgwMX0.kWkLo8B4i1BQ-64hRB8quh8jdquPmEA3rQwTCOb-DL4'
         }
       }).then(function(response)
       {
