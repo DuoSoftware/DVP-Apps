@@ -20,31 +20,50 @@ fileModule.factory("clusterService", function ($http, download) {
 
   var downloadFile = function (id, fileName) {
 
-    $http({method: 'GET',
-      headers: {
-      'authorization': "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJ1bmFAZHVvc29mdHdhcmUuY29tIiwianRpIjoiYWZmZWU2MjAtM2QxZS00YzY5LWI3ZGQtYjJhMGEzNzc1N2U2Iiwic3ViIjoiOTI0YWVhZDEtOTBkOC00MGE5LTg3M2QtNDc5YzE1ODllYjU1IiwiZXhwIjoxNDYwNTQxMjgyLCJ0ZW5hbnQiOiI1IiwiY29tcGFueSI6IjEwIiwic2NvcGUiOlt7InJlc291cmNlIjoiZmlsZXNlcnZpY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTkzNjQ4Mn0.zGoXCyrxjXTPASYrrzB0Vifkpf4UqeIqkC67wAzsQ6Q"
-    }, url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName}).
-      success(function(data, status, headers, config) {
-
-        var anchor = angular.element('<a/>');
-        anchor.attr({
-          href: 'data:' +data,
-          target: '_blank',
-          download: fileName
-        })[0].click();
-
-     /*
-        var anchor = angular.element('<a/>');
-        anchor.attr({
-          href: 'data:attachment/csv;charset=utf-8,' + encodeURI(data),
-          target: '_blank',
-          download: fileName
-        })[0].click();
-*/
-      }).
-      error(function(data, status, headers, config) {
-        // handle error
+    return getToken().then(function (response) {
+      return $http({
+        method: 'get',
+        url: 'http://localhost:8888/DVP/API/6.0/FileService/Files',
+        headers: {
+          'authorization': response
+        }
+      }).then(function (response) {
+        return response.data.Result;
       });
+    }, function (error) {
+      console.info("GetToken err" + error);
+
+    });
+
+    $http({
+      url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName,
+      method: "get",
+      //data: json, //this is your json data string
+      headers: {
+        'Content-type': 'application/json',
+        'authorization': "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJ1bmFAZHVvc29mdHdhcmUuY29tIiwianRpIjoiYWZmZWU2MjAtM2QxZS00YzY5LWI3ZGQtYjJhMGEzNzc1N2U2Iiwic3ViIjoiOTI0YWVhZDEtOTBkOC00MGE5LTg3M2QtNDc5YzE1ODllYjU1IiwiZXhwIjoxNDYwNTQxMjgyLCJ0ZW5hbnQiOiI1IiwiY29tcGFueSI6IjEwIiwic2NvcGUiOlt7InJlc291cmNlIjoiZmlsZXNlcnZpY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTkzNjQ4Mn0.zGoXCyrxjXTPASYrrzB0Vifkpf4UqeIqkC67wAzsQ6Q"
+      },
+      responseType: 'arraybuffer'
+    }).success(function (data, status, headers, config) {
+
+      /*
+      var blob = new Blob([data], {type: "application/image/png"});
+      var objectUrl = URL.createObjectURL(blob);
+      window.open(objectUrl);
+*/
+
+      var myBlob = new Blob([data]);
+      var blobURL = (window.URL || window.webkitURL).createObjectURL(myBlob);
+      var anchor = document.createElement("a");
+      anchor.download = fileName;
+      anchor.href = blobURL;
+      anchor.click();
+
+    }).error(function (data, status, headers, config) {
+      //upload failed
+    });
+
+
 
    // download.fromDataURL("http://campaignmanager.104.131.67.21.xip.io/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName, fileName);
 
