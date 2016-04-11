@@ -5,13 +5,14 @@
 
   var dvpHandler = function($http)
   {
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiZTBhMGFlYzItMDViYi00YTZiLThlYjctMzFmZjBjYWE4OGI0Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTIzNTM2NDksInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwMzUwMDQ5fQ.CJuBzazkYKiGWVhxvZ4NweilYP3n5RQFvTk2VoHYa2c';
     var getSIPUsers = function()
     {
       return $http({
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Users',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -25,7 +26,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Groups/Company/1',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -39,7 +40,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group/' + id,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -53,7 +54,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Users/InGroup/' + id,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -67,7 +68,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User/' + username,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -81,7 +82,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/' + extId,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -96,7 +97,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/' + usrId + '/AssignToGroup/' + grpId,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -110,7 +111,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:usrObj
       }).then(function(resp)
@@ -125,7 +126,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/DuoWorldUser',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:usrObj
       }).then(function(resp)
@@ -140,7 +141,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCodes',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:transCodes
       }).then(function(resp)
@@ -155,7 +156,7 @@
         method: 'PUT',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCode/' + transCodes.id,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:transCodes
       }).then(function(resp)
@@ -170,7 +171,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCode',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -184,7 +185,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:grpObj
       }).then(function(resp)
@@ -199,7 +200,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group/' + grpObj.id,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:grpObj
       }).then(function(resp)
@@ -214,7 +215,7 @@
         method: 'GET',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/ByCompany/1',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -228,7 +229,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/' + ext + '/AssignToSipUser/' + sipUserId,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -242,7 +243,7 @@
         method: 'POST',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data:extObj
       }).then(function(resp)
@@ -257,7 +258,7 @@
         method: 'GET',
         url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedules/byCompany',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -271,7 +272,7 @@
         method: 'GET',
         url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/' + refId + '/PABX/USER/GREETING',
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         }
       }).then(function(resp)
       {
@@ -286,7 +287,7 @@
         method: 'PUT',
         url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User/' + usrObj.SipUsername,
         headers: {
-          'authorization': 'hhhh'
+          'authorization': authToken
         },
         data: usrObj
       }).then(function(resp)
