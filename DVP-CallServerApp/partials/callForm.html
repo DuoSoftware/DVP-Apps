@@ -23,9 +23,28 @@
 
       <md-input-container class="md-block" flex-gt-sm>
         <label>Code</label>
-        <md-select name="Code" ng-model="callServer.Code" ng-model-options="{trackBy: '$value'}">
-          <md-option ng-value="c.Code" ng-repeat="c in codes">{{ c.name }}</md-option>
-        </md-select>
+        <input type="number"
+               placeholder="Code"
+               required
+               ng-unique="{key: 'users', property: 'Code'}"
+               autofocus name="Code" ng-model="callServer.Code">
+
+        <div ng-messages="projectForm.Code.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-show="projectForm.Code.$error.unique">Code is already taken.</div>
+        </div>
+        <!--<input type="number"
+               placeholder="Code"
+               ng-minlength=5
+               required
+               ng-unique="{key: 'users', property: 'Code'}"
+               autofocus name="Code" ng-model="callServer.Code">
+
+        <div ng-messages="projectForm.Code.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-if="projectForm.Code.$error.minlength">Must be at least 5 characters.</div>
+          <div ng-show="projectForm.Code.$error.unique">Code is already taken.</div>
+        </div>-->
       </md-input-container>
 
 
