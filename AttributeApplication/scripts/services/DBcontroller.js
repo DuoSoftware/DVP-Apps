@@ -15,9 +15,9 @@
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
         }
       }).then(function(response)
       {
@@ -32,9 +32,9 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
         }
       }).then(function(response)
       {
@@ -50,9 +50,9 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
         },
         data:edtObj
       }).then(function(response)
@@ -68,9 +68,9 @@
 
       return $http({
         method: 'POST',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
         },
         data:data
       }).then(function(response)
@@ -84,9 +84,9 @@
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         }
       }).then(function(response)
       {
@@ -99,9 +99,9 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         },
         data:edtObj
       }).then(function(response)
@@ -115,9 +115,9 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         }
       }).then(function(response)
       {
@@ -133,9 +133,9 @@
 
       return $http({
         method: 'POST',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         },
         data:grpObj
       }).then(function(response)
@@ -156,9 +156,9 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         },
         data:data
       }).then(function(response)
@@ -176,9 +176,9 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         }
       }).then(function(response)
       {
@@ -192,9 +192,9 @@
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
+        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
         headers: {
-          'authorization': '1#1'
+          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
         }
       }).then(function(response)
       {

@@ -2,7 +2,7 @@
 
   var app =   angular.module("attributeapp");
 
-  var MapController = function (dbcontroller,$scope,$location,$timeout, $q) {
+  var MappingController = function (dbcontroller,$scope,$location,$timeout, $q) {
 
     var self = this;
     self.readonly = false;
@@ -122,6 +122,6 @@
 
   }
 
-  app.controller("MapController",MapController);
+  app.controller("MappingController",MappingController);
 
 }());
