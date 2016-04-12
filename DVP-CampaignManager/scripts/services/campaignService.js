@@ -9,6 +9,7 @@ service.factory("campaign", function($http){
 
   var createCampaign = function(campaign){
 
+<<<<<<< HEAD
     return $http({
       method: 'POST',
       url: "http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign",
@@ -33,6 +34,12 @@ service.factory("campaign", function($http){
 
 
     /*return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign",campaign).then(function(response){
+=======
+    return $http.post("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign",
+      {
+        headers: {'Authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJ1bmFAZHVvc29mdHdhcmUuY29tIiwianRpIjoiNmVmZmE5Y2EtMjk5ZS00N2QxLWE1ZGMtZDEzMmUwMzFlZDA2Iiwic3ViIjoiYWY1MzY0YmQtYTM3Yy00MzU4LWEwMDktMjBmZDY4MWMzYWU4IiwiZXhwIjoxNDYwNTQ5NTk2LCJ0ZW5hbnQiOiI1IiwiY29tcGFueSI6IjEwIiwic2NvcGUiOlt7InJlc291cmNlIjoiY2FtcGFpZ24iLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTk0NDc5Nn0.KSdn9NXHyUr4GlJcKK-E9nQVBebTheOQy0swDQLEy5o'}
+      },campaign).then(function(response){
+>>>>>>> 997cdbdc1b64778914226441f4bc6547216491f7
 
 
       if(response.data && response.data.IsSuccess) {
@@ -181,6 +188,7 @@ service.factory("campaign", function($http){
 
   var getCampaigns = function(){
 
+<<<<<<< HEAD
     return $http({
       method: 'GET',
       url: "http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/0",
@@ -203,6 +211,12 @@ service.factory("campaign", function($http){
 
 
    /* return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/0").then(function(response){
+=======
+    return $http.get("http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/0",
+      {
+        headers: {'Authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJ1bmFAZHVvc29mdHdhcmUuY29tIiwianRpIjoiNmVmZmE5Y2EtMjk5ZS00N2QxLWE1ZGMtZDEzMmUwMzFlZDA2Iiwic3ViIjoiYWY1MzY0YmQtYTM3Yy00MzU4LWEwMDktMjBmZDY4MWMzYWU4IiwiZXhwIjoxNDYwNTQ5NTk2LCJ0ZW5hbnQiOiI1IiwiY29tcGFueSI6IjEwIiwic2NvcGUiOlt7InJlc291cmNlIjoiY2FtcGFpZ24iLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTk0NDc5Nn0.KSdn9NXHyUr4GlJcKK-E9nQVBebTheOQy0swDQLEy5o'}
+      }).then(function(response){
+>>>>>>> 997cdbdc1b64778914226441f4bc6547216491f7
 
 
       if(response.data && response.data.IsSuccess) {

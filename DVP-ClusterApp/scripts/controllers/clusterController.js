@@ -71,7 +71,7 @@ app.controller("ClusterListController", function ($scope, $location, $mdDialog, 
 
       clusterService.DeleteCluster(clusterObj).then(function (response) {
         if (response) {
-          $scope.loadResources();
+          $scope.loadClusters();
           $scope.showAlert("Deleted", "Deleted", "ok", "Cluster " + obj.Name + " Deleted successfully");
         }
         else

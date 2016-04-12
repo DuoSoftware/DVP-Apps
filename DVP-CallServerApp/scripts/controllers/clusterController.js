@@ -91,9 +91,9 @@ app.controller("CallEditController", function ($scope, $routeParams, $mdDialog, 
   $scope.IpAddress = {};
 
   $scope.codes = [
-    {Code: 1, name: 'Basic'},
-    {Code: 2, name: 'Intermediate'},
-    {Code: 3, name: 'Advanced'},
+    {Code: 1, name: 'Single Instance'},
+    {Code: 2, name: 'Profile'},
+    {Code: 3, name: 'Shared'}
   ];
 
   $scope.showAlert = function (tittle, label, button, content) {

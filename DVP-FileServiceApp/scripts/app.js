@@ -13,7 +13,7 @@ app.config(function ($routeProvider) {
     })
     .otherwise({
       templateUrl: 'partials/fileList.html',
-      /*controller: 'FileListController'*/
+      controller: 'FileListController'
     });
 
 });

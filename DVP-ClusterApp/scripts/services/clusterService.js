@@ -203,9 +203,13 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var deleteCallServerFromCluster = function (cloudId,callServerId) {
+<<<<<<< HEAD
     return $http.delete("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId,{
       headers:{authorization:authToken}
     }).then(function (response) {
+=======
+    return $http.delete("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer/"+callServerId+"/AssignTo/"+cloudId).then(function (response) {
+>>>>>>> 997cdbdc1b64778914226441f4bc6547216491f7
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
       } else {
