@@ -5,12 +5,12 @@
 
   var dvpHandler = function($http)
   {
-    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiZTBhMGFlYzItMDViYi00YTZiLThlYjctMzFmZjBjYWE4OGI0Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTIzNTM2NDksInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwMzUwMDQ5fQ.CJuBzazkYKiGWVhxvZ4NweilYP3n5RQFvTk2VoHYa2c';
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
     var getSIPUsers = function()
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Users',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Users',
         headers: {
           'authorization': authToken
         }
@@ -24,7 +24,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Groups/Company/1',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Groups/Company/1',
         headers: {
           'authorization': authToken
         }
@@ -38,7 +38,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group/' + id,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Group/' + id,
         headers: {
           'authorization': authToken
         }
@@ -52,7 +52,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Users/InGroup/' + id,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Users/InGroup/' + id,
         headers: {
           'authorization': authToken
         }
@@ -66,7 +66,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User/' + username,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/User/' + username,
         headers: {
           'authorization': authToken
         }
@@ -80,7 +80,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/' + extId,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Extension/' + extId,
         headers: {
           'authorization': authToken
         }
@@ -95,7 +95,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/' + usrId + '/AssignToGroup/' + grpId,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/' + usrId + '/AssignToGroup/' + grpId,
         headers: {
           'authorization': authToken
         }
@@ -109,7 +109,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/User',
         headers: {
           'authorization': authToken
         },
@@ -124,7 +124,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/DuoWorldUser',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/DuoWorldUser',
         headers: {
           'authorization': authToken
         },
@@ -139,7 +139,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCodes',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/TransferCodes',
         headers: {
           'authorization': authToken
         },
@@ -154,7 +154,7 @@
     {
       return $http({
         method: 'PUT',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCode/' + transCodes.id,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/TransferCode/' + transCodes.id,
         headers: {
           'authorization': authToken
         },
@@ -169,7 +169,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/TransferCode',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/TransferCode',
         headers: {
           'authorization': authToken
         }
@@ -183,7 +183,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Group',
         headers: {
           'authorization': authToken
         },
@@ -198,7 +198,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Group/' + grpObj.id,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Group/' + grpObj.id,
         headers: {
           'authorization': authToken
         },
@@ -213,7 +213,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/ByCompany/1',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Context/ByCompany/1',
         headers: {
           'authorization': authToken
         }
@@ -227,7 +227,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension/' + ext + '/AssignToSipUser/' + sipUserId,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Extension/' + ext + '/AssignToSipUser/' + sipUserId,
         headers: {
           'authorization': authToken
         }
@@ -241,7 +241,7 @@
     {
       return $http({
         method: 'POST',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Extension',
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/Extension',
         headers: {
           'authorization': authToken
         },
@@ -256,7 +256,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Schedules/byCompany',
+        url: 'http://192.168.0.88:8084/DVP/API/1.0.0.0/LimitAPI/Schedules/byCompany',
         headers: {
           'authorization': authToken
         }
@@ -270,7 +270,7 @@
     {
       return $http({
         method: 'GET',
-        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/' + refId + '/PABX/USER/GREETING',
+        url: 'http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/Files/' + refId + '/PABX/USER/GREETING',
         headers: {
           'authorization': authToken
         }
@@ -285,7 +285,7 @@
 
       return $http({
         method: 'PUT',
-        url: 'http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/User/' + usrObj.SipUsername,
+        url: 'http://192.168.0.88:8086/DVP/API/1.0.0.0/SipUser/User/' + usrObj.SipUsername,
         headers: {
           'authorization': authToken
         },

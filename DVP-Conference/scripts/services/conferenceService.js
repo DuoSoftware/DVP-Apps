@@ -10,12 +10,33 @@ var taskModule = angular.module("conferenceService", []);
 
 taskModule.factory("conference", function($http){
 
-
+  var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
 
 
   var getConferences = function(){
 
-    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRooms").then(function(response){
+
+    return $http({
+      method: 'GET',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRooms",
+      headers: {
+        'authorization': authToken
+      }
+    }).then(function(response)
+    {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+    });
+
+    /*return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRooms").then(function(response){
 
 
       if(response.data && response.data.IsSuccess) {
@@ -29,15 +50,21 @@ taskModule.factory("conference", function($http){
       }
 
 
-    });
-  }
+    });*/
+  };
 
 
   var getConference = function(name){
 
 
-
-    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
+    return $http({
+      method: 'GET',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name,
+      headers: {
+        'authorization': authToken
+      }
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -50,14 +77,46 @@ taskModule.factory("conference", function($http){
 
     });
 
+
+   /* return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+    });*/
+
   }
 
 
   var deleteConference = function(name){
 
+    return $http({
+      method: 'DELETE',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name,
+      headers: {
+        'authorization': authToken
+      }
+    }).then(function(response)
+    {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
 
 
-    return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
+      }else{
+
+        return {};
+      }
+
+    });
+
+    /*return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name).then(function(response) {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -69,17 +128,36 @@ taskModule.factory("conference", function($http){
         return {};
       }
 
-    });
+    });*/
 
   }
 
 
   var updateConference = function(conference){
 
+    return $http({
+      method: 'PUT',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + conference.ConferenceName,
+      headers: {
+        'authorization': authToken
+      },
+      data:conference
+    }).then(function(response)
+    {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
 
 
+      }else{
 
-      return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + conference.ConferenceName,conference).then(function(response) {
+        return null;
+      }
+
+    });
+
+
+      /*return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + conference.ConferenceName,conference).then(function(response) {
         if(response.data && response.data.IsSuccess) {
 
           return response.data.Result;
@@ -90,16 +168,23 @@ taskModule.factory("conference", function($http){
           return null;
         }
 
-      });
+      });*/
 
-  }
+  };
 
 
   var createConference = function(conference){
 
 
-
-    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom",conference).then(function(response) {
+    return $http({
+      method: 'PUT',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom",
+      headers: {
+        'authorization': authToken
+      },
+      data:conference
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -112,12 +197,34 @@ taskModule.factory("conference", function($http){
 
     });
 
-  }
+
+    /*return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom",conference).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return undefined;
+      }
+
+    });*/
+
+  };
 
 
   var addUserToConference = function(conferenceName,user){
 
-    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
+    return $http({
+      method: 'POST',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",
+      headers: {
+        'authorization': authToken
+      },
+      data:user
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -131,16 +238,36 @@ taskModule.factory("conference", function($http){
     });
 
 
+   /* return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",user).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
 
 
-  }
+      }else{
+
+        return undefined;
+      }
+
+    });*/
+
+
+
+
+  };
 
 
   var getConferenceUsers = function(name){
 
 
-
-    return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users").then(function(response) {
+    return $http({
+      method: 'GET',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users",
+      headers: {
+        'authorization': authToken
+      }
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -153,13 +280,36 @@ taskModule.factory("conference", function($http){
 
     });
 
-  }
+
+
+   /* return $http.get("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users").then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+    });*/
+
+  };
 
 
   var deleteConferenceUser = function(userID){
 
     ///ConferenceConfiguration/ConferenceUser/:UserId
-    return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID).then(function(response) {
+
+    return $http({
+      method: 'DELETE',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID,
+      headers: {
+        'authorization': authToken
+      }
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -172,13 +322,38 @@ taskModule.factory("conference", function($http){
 
     });
 
-  }
+
+
+
+   /* return $http.delete("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+    });*/
+
+  };
 
 
   var updateConferenceUser = function(userID, user){
 
     ///ConferenceConfiguration/ConferenceUser/:UserId
-    return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID, user).then(function(response) {
+
+    return $http({
+      method: 'PUT',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID,
+      headers: {
+        'authorization': authToken
+      },
+      data:user
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -191,12 +366,35 @@ taskModule.factory("conference", function($http){
 
     });
 
-  }
+
+    /*return $http.put("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID, user).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      }else{
+
+        return {};
+      }
+
+    });*/
+
+  };
 
   var updateConferenceUserModes = function(userID, user){
 
     ///ConferenceConfiguration/ConferenceUser/:UserId
-    return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID+"/Mode", user).then(function(response) {
+
+    return $http({
+      method: 'POST',
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID+"/Mode",
+      headers: {
+        'authorization': authToken
+      },
+      data:user
+    }).then(function(response)
+    {
       if(response.data && response.data.IsSuccess) {
 
         return response.data.Result;
@@ -209,11 +407,21 @@ taskModule.factory("conference", function($http){
 
     });
 
-  }
+
+    /*return $http.post("http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/" + userID+"/Mode", user).then(function(response) {
+      if(response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
 
 
+      }else{
 
+        return {};
+      }
 
+    });*/
+
+  };
 
 
 

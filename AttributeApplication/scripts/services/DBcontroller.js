@@ -10,6 +10,8 @@
 
   var dbcontroller = function ($http,$mdDialog,$mdMedia) {
 
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
+
     var getAttributeList = function () {
 
 
@@ -17,7 +19,7 @@
         method: 'GET',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
+          'authorization':authToken
         }
       }).then(function(response)
       {
@@ -34,7 +36,7 @@
         method: 'DELETE',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
+          'authorization':authToken
         }
       }).then(function(response)
       {
@@ -52,7 +54,7 @@
         method: 'PUT',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
+          'authorization':authToken
         },
         data:edtObj
       }).then(function(response)
@@ -70,7 +72,7 @@
         method: 'POST',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiI2OGZjNzkyYy04ZTVjLTRlZjktYTQ2OC0wMmM2NTlhMTczZTQiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzA3NywidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJhdHRyaWJ1dGUiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ2MDM0OTQ3N30.jgybM2m0BHgKaEuC3wfO2WtlC86Vilj0TrI8C6HEQt0'
+          'authorization': authToken
         },
         data:data
       }).then(function(response)
@@ -86,7 +88,7 @@
         method: 'GET',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -101,7 +103,7 @@
         method: 'PUT',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         },
         data:edtObj
       }).then(function(response)
@@ -117,7 +119,7 @@
         method: 'DELETE',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -135,7 +137,7 @@
         method: 'POST',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         },
         data:grpObj
       }).then(function(response)
@@ -158,7 +160,7 @@
         method: 'PUT',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         },
         data:data
       }).then(function(response)
@@ -178,7 +180,7 @@
         method: 'DELETE',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -194,7 +196,7 @@
         method: 'GET',
         url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
         headers: {
-          'authorization': 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXdhblNhc2Fua2EiLCJqdGkiOiIyMTVkYWUyZS1kZWZmLTQ3NjItOTk4YS1lNDc0ODgyMDE3ZDEiLCJzdWIiOiI1NmE5ZTc1OWZiMDcxOTA3YTAwMDAwMDEyNWQ5ZTgwYjVjN2M0Zjk4NDY2ZjkyMTE3OTZlYmY0MyIsImV4cCI6MTg5MjM1MzI4MSwidGVuYW50IjoxLCJjb21wYW55Ijo0LCJzY29wZSI6W3sicmVzb3VyY2UiOiJncm91cCIsImFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl19XSwiaWF0IjoxNDYwMzQ5NjgxfQ.WWF3Krwm_5www72L2tOdsH-LEXuMr94rQu6axKLI1E8'
+          'authorization': authToken
         }
       }).then(function(response)
       {

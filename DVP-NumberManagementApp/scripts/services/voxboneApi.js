@@ -4,13 +4,14 @@
 (function(){
   var voxboneApi = function($http){
     //var accessToken = "Basic d2FydW5hOkR1b1MxMjM=";
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
     var GetCountryCodes = function(accessToken, pageNumber, pageSize){
       return $http({
         method: 'GET',
         url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listcountries/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
-          'authorization': accessToken
+          'authorization': authToken
         }})
         .then(function(response){
           return response.data;
@@ -22,7 +23,7 @@
         url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listdidgroup/'+countryCode+'/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
-          'authorization': accessToken
+          'authorization': authToken
         }})
         .then(function(response){
           return response.data;
@@ -34,7 +35,7 @@
         url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/inventory/listdidgroup/type/'+didType+'/'+countryCode+'/'+pageNumber+'/'+pageSize,
         headers: {
           'api_key': accessToken,
-          'authorization': accessToken
+          'authorization': authToken
         }})
         .then(function(response){
           return response.data;
@@ -46,7 +47,7 @@
         url: 'http://voxboneapi.104.131.67.21.xip.io/DVP/API/1.0.0.0/voxbone/order/OrderDids',
         headers: {
           'api_key': accessToken,
-          'authorization': accessToken
+          'authorization': authToken
         },
         data: orderInfo
       })

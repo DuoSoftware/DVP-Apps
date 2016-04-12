@@ -7,6 +7,7 @@
 
   var dbservice = function ($http,$mdDialog,$mdMedia){
 
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
 
     var getUserList = function () {
 
@@ -14,7 +15,7 @@
         method: 'GET',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUsers",
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -29,7 +30,7 @@
         method: 'GET',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+uID,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -45,7 +46,7 @@
         method: 'DELETE',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/1.0/CloudConfiguration/CloudEndUser/"+user,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -63,7 +64,7 @@
         method: 'PUT',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+user.id,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         },
         data:user
       }).then(function(response)
@@ -80,7 +81,7 @@
         method: 'PUT',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser",
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         },
         data:user
       }).then(function(response)
@@ -97,7 +98,7 @@
         method: 'GET',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds",
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -113,7 +114,7 @@
         method: 'GET',
         url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Contexts",
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -130,7 +131,7 @@
         method: 'POST',
         url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context",
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         },
         data:newObj
       }).then(function(response)
@@ -147,7 +148,7 @@
         method: 'GET',
         url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+context,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
       }).then(function(response)
       {
@@ -162,7 +163,7 @@
         method: 'PUT',
         url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         },
         data:contextObj
 
@@ -179,7 +180,7 @@
         method: 'DELETE',
         url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,
         headers: {
-          'authorization': '1#1'
+          'authorization': authToken
         }
 
       }).then(function(response)
