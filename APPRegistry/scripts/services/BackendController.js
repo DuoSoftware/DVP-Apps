@@ -13,7 +13,7 @@
         var getAppList = function () {
             console.log("BACKENDCONTROLLER");
          //   return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/true")
-            return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/true",
+            return $http.get("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/true",
                     {
                       headers:{authorization:authToken}
                     }).then(function (response) {
@@ -44,7 +44,7 @@
 
         var getDeactiveAppList = function () {
             console.log("getDeactiveAppList");
-            return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/false",
+            return $http.get("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications/false",
               {
                 headers:{authorization:authToken}
               }).then(function (response) {
@@ -67,7 +67,7 @@
         var deleteApplication = function (AppId) {
 
         // return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/false")
-          return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/false",
+          return $http.post("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/false",
             {
               headers:{authorization:authToken}
             })
@@ -88,7 +88,7 @@
 
         var activateApplication = function (AppId) {
                 console.log("activateApplication-BACKENd");
-            return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/true",
+            return $http.post("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/true",
               {
                 headers:{authorization:authToken}
               })
@@ -112,7 +112,7 @@
             console.log("updateApp");
             console.log(Attribute.id);
             console.log(Attribute);
-            return $http.put("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+Attribute.id,
+            return $http.put("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+Attribute.id,
               {
                 headers:{authorization:authToken}
               },Attribute)
@@ -136,7 +136,7 @@
 
         var testApplication = function(appId){
 
-            return $http.get("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+appId+"/Test",
+            return $http.get("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+appId+"/Test",
               {
                 headers:{authorization:authToken}
               }).then(function(response){
@@ -165,7 +165,7 @@
           console.log("createNewApplication");
           //   console.log(Attribute);
           //   return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application",NewAppDataObj)
-          return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application",
+          return $http.post("http://appregistry.104.131.78.57.xip.io/DVP/API/1.0.0.0/APPRegistry/Application",
             {
               headers:{authorization:authToken}
             }, NewAppDataObj)
