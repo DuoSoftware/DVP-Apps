@@ -1,17 +1,17 @@
 var app = angular.module("FileManageApp");
 
-app.controller('FileEditController', ['$scope','$filter', 'FileUploader','clusterService', function($scope,$filter, FileUploader,clusterService) {
-
+app.controller('FileEditController', ['$scope', '$filter', 'FileUploader', 'clusterService', function ($scope, $filter, FileUploader, clusterService) {
 
   var uploader = $scope.uploader = new FileUploader({
-    url: clusterService.UploadUrl
+    url: clusterService.UploadUrl,
+    headers: clusterService.Headers
   });
 
   // FILTERS
 
   uploader.filters.push({
     name: 'customFilter',
-    fn: function(item /*{File|FileLikeObject}*/, options) {
+    fn: function (item /*{File|FileLikeObject}*/, options) {
       return this.queue.length < 10;
     }
   });
@@ -20,38 +20,38 @@ app.controller('FileEditController', ['$scope','$filter', 'FileUploader','cluste
 
   // CALLBACKS
 
-  uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+  uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
     console.info('onWhenAddingFileFailed', item, filter, options);
   };
-  uploader.onAfterAddingFile = function(fileItem) {
+  uploader.onAfterAddingFile = function (fileItem) {
     console.info('onAfterAddingFile', fileItem);
   };
-  uploader.onAfterAddingAll = function(addedFileItems) {
+  uploader.onAfterAddingAll = function (addedFileItems) {
     console.info('onAfterAddingAll', addedFileItems);
   };
-  uploader.onBeforeUploadItem = function(item) {
-    item.formData.push({'fileCategory' : $scope.file.category});
-       console.info('onBeforeUploadItem', item);
+  uploader.onBeforeUploadItem = function (item) {
+    item.formData.push({'fileCategory': $scope.file.category});
+    console.info('onBeforeUploadItem', item);
   };
-  uploader.onProgressItem = function(fileItem, progress) {
+  uploader.onProgressItem = function (fileItem, progress) {
     console.info('onProgressItem', fileItem, progress);
   };
-  uploader.onProgressAll = function(progress) {
+  uploader.onProgressAll = function (progress) {
     console.info('onProgressAll', progress);
   };
-  uploader.onSuccessItem = function(fileItem, response, status, headers) {
+  uploader.onSuccessItem = function (fileItem, response, status, headers) {
     console.info('onSuccessItem', fileItem, response, status, headers);
   };
-  uploader.onErrorItem = function(fileItem, response, status, headers) {
+  uploader.onErrorItem = function (fileItem, response, status, headers) {
     console.info('onErrorItem', fileItem, response, status, headers);
   };
-  uploader.onCancelItem = function(fileItem, response, status, headers) {
+  uploader.onCancelItem = function (fileItem, response, status, headers) {
     console.info('onCancelItem', fileItem, response, status, headers);
   };
-  uploader.onCompleteItem = function(fileItem, response, status, headers) {
+  uploader.onCompleteItem = function (fileItem, response, status, headers) {
     console.info('onCompleteItem', fileItem, response, status, headers);
   };
-  uploader.onCompleteAll = function() {
+  uploader.onCompleteAll = function () {
     console.info('onCompleteAll');
   };
 
@@ -64,70 +64,47 @@ app.controller('FileEditController', ['$scope','$filter', 'FileUploader','cluste
       $scope.Categorys = $filter('filter')(response, {Owner: "user"});
 
     }, function (error) {
-      $log.debug("GetCatagories err");
-      $scope.showAlert("Error", "Error", "ok", "There is an error ");
+      console.info("GetCatagories err" + error);
+
     });
   };
 
   $scope.loadFileService();
+
+
 }]);
 
-app.controller("FileListController", function ($scope,$route, $routeParams, $mdDialog, $mdMedia, $location, $log,$filter,$http,NgTableParams, clusterService) {
-
-  /*this.tableParams = new NgTableParams({ group: 'Category' },{ getData: function(params){
-
-    return $http({
-      method: 'get',
-      url: 'http://localhost:8081/DVP/API/6.0/FileService/Files',
-      headers: {
-        'authorization': '1#1'
-      }
-    }).then(function (response) {
-
-      //$filter('filter')(response, {Type: "USER"});
-
-      // Filtering
-      var orderedData = params.filter() ?
-        $filter('filter')(response.data.Result, params.filter()) :
-        response.data.Result;
-      // Sorting
-      orderedData = params.sorting() ?
-        $filter('orderBy')(orderedData, params.orderBy()) :
-        orderedData;
-      //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
-
-      /!* set total for recalc pagination *!/
-      params.total(orderedData.length);
-      return  orderedData;
-    });
+app.controller("FileListController", function ($scope, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, clusterService) {
 
 
-  } });*/
-
-  this.tableParams = new NgTableParams({ group: 'Category' },{ getData: function(params){
-
-    return clusterService.GetFiles().then(function(response){
-
-     // Filtering
-      var orderedData = params.filter() ?
-        $filter('filter')(response, params.filter()) :
-        response;
-      // Sorting
-      orderedData = params.sorting() ?
-        $filter('orderBy')(orderedData, params.orderBy()) :
-        orderedData;
-      /*$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));*/
-
-      /!* set total for recalc pagination *!/
-      params.total(orderedData.length);
-      return  orderedData;
-
-    },function(err){});
+  this.tableParams = new NgTableParams({group: 'Category'}, {
+    getData: function (params) {
 
 
-  } });
+      return clusterService.GetFiles().then(function (response) {
 
-  $scope.tableParams=this.tableParams;
+        // Filtering
+        var orderedData = params.filter() ?
+          $filter('filter')(response, params.filter()) :
+          response;
+        // Sorting
+        orderedData = params.sorting() ?
+          $filter('orderBy')(orderedData, params.orderBy()) :
+          orderedData;
+        //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
+
+
+        params.total(orderedData.length);
+        return orderedData;
+
+      }, function (err) {
+      });
+
+
+    }
+  });
+
+  $scope.tableParams = this.tableParams;
 
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
@@ -161,7 +138,7 @@ app.controller("FileListController", function ($scope,$route, $routeParams, $mdD
 
     $scope.showConfirm("Delete File", "Delete", "ok", "cancel", "Do you want to delete " + file.Filename, function (obj) {
 
-      clusterService.DeleteFile(file).then(function (response) {
+      clusterService.DeleteFile(file, $scope.Headers).then(function (response) {
         if (response) {
           $scope.tableParams.reload();
           $scope.showAlert("Deleted", "Deleted", "ok", "File " + obj.Filename + " Deleted successfully");
@@ -179,8 +156,18 @@ app.controller("FileListController", function ($scope,$route, $routeParams, $mdD
   };
 
   $scope.downloadFile = function (file) {
-    clusterService.DownloadFile(file.UniqueId,file.Filename);
+    clusterService.DownloadFile(file.UniqueId, file.Filename);
   };
 
+
+  $scope.GetToken = function () {
+    clusterService.GetToken().then(function (response) {
+      clusterService.Headers = {'Authorization': response};
+    }, function (error) {
+      console.info("GetToken err" + error);
+
+    });
+  };
+  $scope.GetToken();
 
 });

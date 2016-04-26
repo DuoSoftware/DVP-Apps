@@ -7,105 +7,186 @@
 
   var dbservice = function ($http,$mdDialog,$mdMedia){
 
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
 
     var getUserList = function () {
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUsers")
-        .then(function (response) {
-          console.log("resp  "+JSON.stringify(response));
-          return response;
-        });
+
+      return $http({
+        method: 'GET',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUsers",
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
     var getUser = function (uID) {
-      console.log("hitttttttt");
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+uID)
-        .then(function (response) {
-          console.log("resp single user  "+JSON.stringify(response));
-          return response;
-        });
+
+      return $http({
+        method: 'GET',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+uID,
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
 
     var userDelete = function (user) {
 
-      return $http.delete("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/1.0/CloudConfiguration/CloudEndUser/"+user)
-        .then(function (response) {
+      return $http({
+        method: 'DELETE',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/1.0/CloudConfiguration/CloudEndUser/"+user,
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        response.id=user;
+        return response;
+      });
 
-          response.id=user;
-          return response;
-        });
+
 
     };
 
     var updateUser = function (user) {
 
-      return $http.put("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+user.id,user)
-        .then(function (response) {
+      return $http({
+        method: 'PUT',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+user.id,
+        headers: {
+          'authorization': authToken
+        },
+        data:user
+      }).then(function(response)
+      {
+        return response;
+      });
 
-          response.id=user.id;
-          return response;
-        });
 
     };
 
     var newUser = function (user) {
 
-      return $http.post("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser",user)
-        .then(function (response) {
-          return response;
-        });
+      return $http({
+        method: 'PUT',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser",
+        headers: {
+          'authorization': authToken
+        },
+        data:user
+      }).then(function(response)
+      {
+        return response;
+      });
 
-    }
+    };
 
     var loadClusterDetails = function()
     {
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds")
-        .then(function (response) {
-          return response;
-        });
-    }
+
+      return $http({
+        method: 'GET',
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds",
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
+    };
 
     var getContextList = function () {
 
-      return $http.get("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Contexts")
-        .then(function (response) {
-          console.log("Contexts  "+JSON.stringify(response));
-          return response;
-        });
+
+      return $http({
+        method: 'GET',
+        url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Contexts",
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
 
     };
 
     var newContext = function(newObj)
     {
-      return $http.post("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context",newObj)
-        .then(function (response) {
-          return response;
-        });
+
+      return $http({
+        method: 'POST',
+        url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context",
+        headers: {
+          'authorization': authToken
+        },
+        data:newObj
+      }).then(function(response)
+      {
+        return response;
+      });
+
+
     };
 
     var getContext = function (context) {
-      console.log("hitttttttt");
-      return $http.get("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+context)
-        .then(function (response) {
-          console.log("resp single Context  "+JSON.stringify(response));
-          return response;
-        });
+
+      return $http({
+        method: 'GET',
+        url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+context,
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
     var updateContext = function (contextObj) {
-      console.log("hitttttttt");
-      return $http.put("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,contextObj)
-        .then(function (response) {
-          return response;
-        });
+
+      return $http({
+        method: 'PUT',
+        url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,
+        headers: {
+          'authorization': authToken
+        },
+        data:contextObj
+
+      }).then(function(response)
+      {
+        return response;
+      });
+
     };
 
     var deleteContext = function (contextObj) {
 
-      return $http.delete("http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context)
-        .then(function (response) {
-          return response;
-        });
+      return $http({
+        method: 'DELETE',
+        url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/Context/"+contextObj.Context,
+        headers: {
+          'authorization': authToken
+        }
+
+      }).then(function(response)
+      {
+        return response;
+      });
 
     };
 

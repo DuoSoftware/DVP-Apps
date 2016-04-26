@@ -1,40 +1,4 @@
 
-<!--<md-data-table-toolbar>
-    <h2 class="md-title">Add New Group Details</h2>
-
-</md-data-table-toolbar>
-<md-data-table-container>
-
-    <table md-data-table  md-progress="deferred">
-
-        <tbody>
-        <tr>
-            <td><h3 >Group Details</h3></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <td>GroupName</td>
-            <td ><input type="text" ng-model="GroupName" /></td>
-
-        </tr>
-        <tr>
-            <td>OtherData</td>
-            <td ><input type="text" ng-model="OtherData" /></td>
-        </tr>
-        <tr>
-            <td>Percentage</td>
-            <td ><input type="text" ng-model="Percentage" /></td>
-        </tr>
-
-        <tr>
-
-            <td ><md-button class="md-raised md-primary" ng-disabled="isDisabled" ng-click="AddNewGroup(GroupName,OtherData,Percentage)">Save</md-button></td>
-        </tr>
-        </tbody>
-    </table>
-
-</md-data-table-container>-->
 <div layout="column"  flex-lt-md="80%">
   <md-content layout-padding style="background-color: lightgrey"  >
 
@@ -122,9 +86,13 @@
 
       </div>
 
-      <div layout-gt-sm="row">
+      <div >
         <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 70%" >
-          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNewGroup(newGrp)" ng-disabled="isDisabled || newGrpForm.$invalid "><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-button></md-button>
+          <div layout="row">
+            <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNewGroup(newGrp)" ng-disabled="isDisabled || newGrpForm.$invalid "><md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon></md-button>
+            <md-button class="md-icon-button" class="md-raised md-primary" ng-click="HideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-button></md-button>
+            </div>
+
 
           <!--/*newGrpForm.otherData.$dirty && newGrpForm.otherData.$invalid ||
           newGrpForm.Group.$dirty && newGrpForm.Group.$invalid || !newGrpForm.Percentage.$dirty && newGrpForm.Percentage.$invalid || !OtherData.length || !GroupName.length */

@@ -38,11 +38,14 @@
       <div layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
           <label>Internal IP</label>
-          <md-select ng-model="profile.InternalIp" ng-model-options="{trackBy: '$value'}">
-            <md-option ng-value="c.IP" ng-repeat="c in ipAddress" ng-if="c.IsAllocated">
+          <md-select required ng-model="profile.InternalIp" ng-model-options="{trackBy: '$value'}">
+            <md-option ng-value="c.IP" ng-repeat="(index,c) in ipAddress" ng-if="c.IsAllocated" ng-selected="(index == 1) ? true:false">
               {{ c.IP }}
             </md-option>
           </md-select>
+          <div ng-messages="projectForm.InternalIp.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm>

@@ -9,13 +9,14 @@
         var campaignData = {};
         var status = {};
 
+      var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
         var saveCampaign = function (newObj) {
 
             return $http({
                 method: 'POST',
                 url: 'http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign',
                 headers: {
-                    'authorization': '1#1'
+                    'authorization': authToken
                 },
                 data: newObj
 
@@ -31,7 +32,7 @@
                 method: 'put',
                 url: 'http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/' + camp.CampaignId,
                 headers: {
-                    'authorization': '1#1'
+                    'authorization': authToken
                 },
                 data: camp
             }).then(function (response) {
@@ -46,7 +47,7 @@
                 method: 'GET',
                 url: 'http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/Operations/State/Ongoing',
                 headers: {
-                    'authorization': '1#1'
+                    'authorization': authToken
                 }
 
             }).then(function (response) {
@@ -63,7 +64,7 @@
                 method: 'GET',
                 url: 'http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/' + campaignId,
                 headers: {
-                    'authorization': '1#1'
+                    'authorization': authToken
                 }
             }).then(function (response) {
                 $log.debug("getCampaign response" + response);
@@ -77,7 +78,7 @@
                 method: 'put',
                 url: 'http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign/' + camp.CampaignId + '/Operations/stop',
                 headers: {
-                    'authorization': '1#1'
+                    'authorization': authToken
                 },
                 data: camp
             }).then(function (response) {
