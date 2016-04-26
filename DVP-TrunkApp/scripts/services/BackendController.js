@@ -22,6 +22,31 @@
         });
     };
 
+    var createNewTrunk= function (createNewTrunk) {
+
+      console.log("createNewTrunk");
+      console.log("createNewTrunk---"+JSON.stringify(createNewTrunk));
+
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk",createNewTrunk)
+        .then(function (response) {
+          if (response.data && response.data.IsSuccess) {
+
+            console.log("BACKEND_SERVICE  "+JSON.stringify(response.data.Result));
+            return response.data.Result;
+
+
+          } else {
+
+            console.log("BACKEND_SERVICE_ELSE  "+JSON.stringify(response.data));
+            // console.log("BACKEND_SERVICE_ELSE SSSSS "+JSON.stringify(response.data.Result.errors.message));
+            //return response.data.Result.errors;
+            return{};
+          }
+
+
+        });
+    }
+
     var getTrunkList = function () {
       console.log("BACKENDCONTROLLER - getTrunkList ");
       return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunks")
@@ -379,6 +404,7 @@
       getTrunkList:getTrunkList,
       getTrunkDataById:getTrunkDataById,
       createNewNumber:createNewNumber,
+      createNewTrunk:createNewTrunk,
       updateTrunk:updateTrunk,
       getProfileData:getProfileData,
       getCloudeData:getCloudeData,
