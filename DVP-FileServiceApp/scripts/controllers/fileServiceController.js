@@ -161,12 +161,7 @@ app.controller("FileListController", function ($scope, $route, $routeParams, $md
 
 
   $scope.GetToken = function () {
-    clusterService.GetToken().then(function (response) {
-      clusterService.Headers = {'Authorization': response};
-    }, function (error) {
-      console.info("GetToken err" + error);
-
-    });
+    clusterService.Headers = {'Authorization': clusterService.GetToken};
   };
   $scope.GetToken();
 

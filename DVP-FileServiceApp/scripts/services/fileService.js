@@ -4,104 +4,62 @@
 
 var fileModule = angular.module("fileServiceModule", ["download"]);
 
-fileModule.factory("clusterService", function ($http, download) {
+fileModule.factory("clusterService", function ($http, download,AuthService) {
 
-  var getToken = function () {
 
-    return $http({
-      method: 'get',
-      url: 'http://162.243.81.39:8827/DVP/AuthorizationToken'
-    }).then(function (response) {
-      // return response.data.Result;
-      return "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiYjExYzg3YjktMzYyNS00ZWE0LWFlZWMtYzE0NGEwNjZlM2I5Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTM2NTQyNzEsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYxNjUwNjcxfQ.j4zqaDSeuYIw5fy8AkiBTglyLpjV-Cucmlp1qdq9CfA";// response.data;
-    })
-
-  };
 
   var downloadFile = function (id, fileName) {
 
-    return getToken().then(function (response) {
+    $http({
+      url: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
+      method: "get",
+      //data: json, //this is your json data string
+      headers: {
+        'Content-type': 'application/json',
+        'authorization': AuthService.Token
+      },
+      responseType: 'arraybuffer'
+    }).success(function (data, status, headers, config) {
 
-      // call file download
+      /*
+       var blob = new Blob([data], {type: "application/image/png"});
+       var objectUrl = URL.createObjectURL(blob);
+       window.open(objectUrl);
+       */
 
-      $http({
-        url: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
-        method: "get",
-        //data: json, //this is your json data string
-        headers: {
-          'Content-type': 'application/json',
-          'authorization': response
-        },
-        responseType: 'arraybuffer'
-      }).success(function (data, status, headers, config) {
+      var myBlob = new Blob([data]);
+      var blobURL = (window.URL || window.webkitURL).createObjectURL(myBlob);
+      var anchor = document.createElement("a");
+      anchor.download = fileName;
+      anchor.href = blobURL;
+      anchor.click();
 
-        /*
-         var blob = new Blob([data], {type: "application/image/png"});
-         var objectUrl = URL.createObjectURL(blob);
-         window.open(objectUrl);
-         */
-
-        var myBlob = new Blob([data]);
-        var blobURL = (window.URL || window.webkitURL).createObjectURL(myBlob);
-        var anchor = document.createElement("a");
-        anchor.download = fileName;
-        anchor.href = blobURL;
-        anchor.click();
-
-      }).error(function (data, status, headers, config) {
-        //upload failed
-      });
-
-    }, function (error) {
-      console.info("GetToken err" + error);
-
+    }).error(function (data, status, headers, config) {
+      //upload failed
     });
-
-
-
-
-
-   // download.fromDataURL("http://campaignmanager.104.131.67.21.xip.io/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName, fileName);
-
 
   };
 
   var getFiles = function () {
-
-    return getToken().then(function (response) {
-      return $http({
-        method: 'get',
-        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
-        headers: {
-          'authorization': response
-        }
-      }).then(function (response) {
-        return response.data.Result;
-      });
-    }, function (error) {
-      console.info("GetToken err" + error);
-
+    return $http({
+      method: 'get',
+      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
+      headers: {
+        'authorization': AuthService.Token
+      }
+    }).then(function (response) {
+      return response.data.Result;
     });
-
   };
 
   var deleteFile = function (file) {
-
-    return getToken().then(function (response) {
-      return $http({
-        method: 'delete',
-        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
-        headers: {'authorization': response}
-      }).then(function (response) {
-        return response.data.IsSuccess;
-      });
-
-    }, function (error) {
-      console.info("GetToken err" + error);
-
+    return $http({
+      method: 'delete',
+      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
+      headers: {'authorization': AuthService.Token}
+    }).then(function (response) {
+      return response.data.IsSuccess;
     });
-
-
   };
 
   var getCatagories = function (token) {
@@ -117,26 +75,19 @@ fileModule.factory("clusterService", function ($http, download) {
      });
      */
 
-    return getToken().then(function (response) {
-      return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
-        {
-          headers: {'authorization': response}
-        }
-      ).then(function (response) {
+    return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
+      {
+        headers: {'authorization':  AuthService.Token}
+      }
+    ).then(function (response) {
 
-          return response.data.Result;
-        });
-
-    }, function (error) {
-      console.info("GetToken err" + error);
-
-    });
-
+        return response.data.Result;
+      });
 
   };
 
   return {
-    GetToken: getToken,
+    GetToken: AuthService.Token,
     DownloadFile: downloadFile,
     GetFiles: getFiles,
     DeleteFile: deleteFile,
