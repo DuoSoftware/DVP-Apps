@@ -10,11 +10,11 @@ fileModule.factory("clusterService", function ($http, download) {
 
     return $http({
       method: 'get',
-      url: 'http://192.168.0.69:8827/DVP/AuthorizationToken'
+      url: 'http://162.243.81.39:8827/DVP/AuthorizationToken'
     }).then(function (response) {
       // return response.data.Result;
-      return response.data;
-    });
+      return "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiYjExYzg3YjktMzYyNS00ZWE0LWFlZWMtYzE0NGEwNjZlM2I5Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTM2NTQyNzEsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYxNjUwNjcxfQ.j4zqaDSeuYIw5fy8AkiBTglyLpjV-Cucmlp1qdq9CfA";// response.data;
+    })
 
   };
 
