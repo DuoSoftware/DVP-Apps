@@ -1,0 +1,64 @@
+<div >
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">File List</span>
+        <!--<span class="md-subhead">Select files</span>-->
+      </md-card-title-text>
+
+    </md-card-title>
+
+    <md-card-content layout="column" layout-align="space-between">
+      <div class="row">
+        <div class="col-md-5" ng-controller="FileListController as demo">
+          <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-hover">
+            <colgroup>
+              <col width="50%" />
+              <col width="5%" />
+              <col width="35%" />
+              <col width="5%" />
+              <col width="5%" />
+            </colgroup>
+            <tr class="ng-table-group" ng-repeat-start="group in $groups">
+              <td colspan="5">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                  <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                  <strong>{{ group.value }}</strong>
+                </a>
+              </td>
+            </tr>
+            <tr ng-hide="group.$hideRows" ng-repeat="file in group.data" ng-repeat-end>
+              <td  data-title="'Category'" groupable="'Category'" ng-if="false">
+                {{file.Category}}
+              </td>
+              <td sortable="'Filename'" filter="{Filename: 'text'}" data-title="'Filename'" >
+                {{file.Filename}}
+              </td>
+              <td sortable="'Version'" data-title="'Version'" >
+                {{file.Version}}
+              </td>
+              <td sortable="'UniqueId'" data-title="'UniqueId'">
+                {{file.UniqueId}}
+              </td>
+              <td>
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"
+                           ng-click="deleteFile(file)">
+                  <md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon>
+                </md-button>
+              </td>
+              <td >
+                <md-button class="md-icon-button" ng-disabled="false" aria-label="edit"
+                           ng-click="downloadFile(file)">
+                  <md-icon md-svg-src="../img/download.svg"></md-icon>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+
+    </md-card-actions>
+  </md-card>
+</div>

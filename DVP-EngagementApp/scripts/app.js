@@ -1,9 +1,9 @@
-var app = angular.module("FileManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate","ngTable", "fileServiceModule","angularFileUpload","download"]);
+var app = angular.module("EngagementApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate","ngTable", "fileServiceModule","angularFileUpload","download"]);
 
 app.config(function ($routeProvider) {
 
   $routeProvider.when("/file/list", {
-    templateUrl: 'partials/fileList.html',
+    templateUrl: 'partials/fileList.html'
 
   })
     .when("/file/create", {
