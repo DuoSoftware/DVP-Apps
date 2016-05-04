@@ -12,9 +12,13 @@
 
   var backendcontroller = function ($http) {
 
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
+
     var getLimits = function(){
       console.log("BACKENDCONTROLLER - getLimits ");
-      return $http.get("http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit/Info")
+      return $http.get("http://limithandler.104.131.67.21.xip.io/DVP/API/1.0.0.0/LimitAPI/Limit/Info",{
+        headers:{authorization:authToken}
+      })
         // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
         .then(function (response) {
           console.log("BACKENDCONTROLLER-getTrunkList -"+ JSON.stringify(response));
@@ -22,9 +26,36 @@
         });
     };
 
+    var createNewTrunk= function (createNewTrunk) {
+
+      console.log("createNewTrunk");
+      console.log("createNewTrunk---"+JSON.stringify(createNewTrunk));
+
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk",createNewTrunk)
+        .then(function (response) {
+          if (response.data && response.data.IsSuccess) {
+
+            console.log("BACKEND_SERVICE  "+JSON.stringify(response.data.Result));
+            return response.data.Result;
+
+
+          } else {
+
+            console.log("BACKEND_SERVICE_ELSE  "+JSON.stringify(response.data));
+            // console.log("BACKEND_SERVICE_ELSE SSSSS "+JSON.stringify(response.data.Result.errors.message));
+            //return response.data.Result.errors;
+            return{};
+          }
+
+
+        });
+    }
+
     var getTrunkList = function () {
       console.log("BACKENDCONTROLLER - getTrunkList ");
-      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunks")
+      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunks",{
+        headers:{authorization:authToken}
+      })
         // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
         .then(function (response) {
           console.log("BACKENDCONTROLLER-getTrunkList -"+ JSON.stringify(response));
@@ -34,7 +65,9 @@
 
     var getProfileData = function($http){
       console.log("BACKENDCONTROLLER - getProfileData ");
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profiles")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profiles",{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           if(response.data && response.data.IsSuccess) {
             console.log("BACKENDCONTROLLER - getProfileData "+ JSON.stringify(response));
@@ -48,7 +81,9 @@
 
     var getCloudeData = function($http){
       console.log("BACKENDCONTROLLER - getCloudeData ");
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds",{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           if(response.data && response.data.IsSuccess) {
             console.log("BACKENDCONTROLLER - getCloudeData "+ JSON.stringify(response));
@@ -65,7 +100,9 @@
       console.log("deleteTrunk-- "+ id);
       // return $http.post("http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Application/"+AppId+"/Activate/false")
       // return $http.post("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+AppId+"/Activate/false")
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+id+"/Availability/false")
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+id+"/Availability/false",{
+        headers:{authorization:authToken}
+      })
         //'/DVP/API/' + hostVersion + '/PhoneNumberTrunkApi/Trunk/:id/Availability/:status
         ///
         // ('/DVP/API/:version/QueueMusic/Profile/:name'
@@ -88,7 +125,9 @@
     var deleteNumber = function (phoneNumber) {
 
       console.log("deleteNumber-- "+ phoneNumber);
-      return $http.delete("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+phoneNumber)
+      return $http.delete("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+phoneNumber,{
+        headers:{authorization:authToken}
+      })
 
         .then(function (response) {
 
@@ -112,7 +151,9 @@
       console.log("createNewNumber");
       console.log("createNewNumber---"+JSON.stringify(createNewNumber));
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber",createNewNumber)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber",{
+        headers:{authorization:authToken}
+      },createNewNumber)
         .then(function (response) {
           if (response.data && response.data.IsSuccess) {
 
@@ -130,14 +171,16 @@
 
 
         });
-    }
+    };
 
     var updateNumber= function (editNumber) {
 
       console.log("updateNumber");
       console.log("updateNumber---"+JSON.stringify(editNumber));
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+editNumber.PhoneNumber,editNumber)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+editNumber.PhoneNumber,{
+        headers:{authorization:authToken}
+      },editNumber)
         //PhoneNumberTrunkApi/TrunkNumber/
         .then(function (response) {
           if (response.data && response.data.IsSuccess) {
@@ -163,7 +206,9 @@
       console.log("updateTrunk");
       console.log("updateTrunk---"+JSON.stringify(EditTrunkDataObj));
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+EditTrunkDataObj.id ,EditTrunkDataObj)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+EditTrunkDataObj.id ,{
+        headers:{authorization:authToken}
+      },EditTrunkDataObj)
         .then(function (response) {
           if (response.data && response.data.IsSuccess) {
 
@@ -181,11 +226,13 @@
 
 
         });
-    }
+    };
 
     var getProfileData = function(){
       console.log("BACKENDCONTROLLER - getProfileData ");
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profiles")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profiles",{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           if(response.data && response.data.IsSuccess) {
             console.log("BACKENDCONTROLLER - getProfileData "+ JSON.stringify(response.data.Result));
@@ -199,7 +246,9 @@
 
     var getCloudeData = function(){
       console.log("BACKENDCONTROLLER - getCloudeData ");
-      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds")
+      return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Clouds",{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           //console.log("getCloudeData----"+JSON.stringify(response));
           if(response.data && response.data.IsSuccess) {
@@ -214,7 +263,9 @@
 
     var getNumberTranslationData = function(){
       console.log("BACKENDCONTROLLER - getNumberTranslationData ");
-      return $http.get("http://ruleservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/CallRuleApi/Translations")
+      return $http.get("http://ruleservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/CallRuleApi/Translations",{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           if(response.data && response.data.IsSuccess) {
             console.log("BACKENDCONTROLLER - getNumberTranslationData "+ JSON.stringify(response.data.Result));
@@ -230,7 +281,9 @@
       console.log("BACKENDCONTROLLER - setExternalProfileOnTrunk "+trunkId+"---"+profID);
 
      // return {};
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetSipProfile/"+profID)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetSipProfile/"+profID,{
+        headers:{authorization:authToken}
+      })
 
        // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
         .then(function (response) {
@@ -247,7 +300,9 @@
     var setCloudeOnTrunk = function(trunkId,cloudeID){
       console.log("BACKENDCONTROLLER - setCloudeOnTrunk ");
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetCloud/"+cloudeID)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetCloud/"+cloudeID,{
+        headers:{authorization:authToken}
+      })
 
       // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
       .then(function (response) {
@@ -264,7 +319,9 @@
     var setNumberTranslationOnTrunk = function(trunkId,TransID){
       console.log("BACKENDCONTROLLER - setNumberTranslationOnTrunk ");
 
-         return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetTranslation/"+TransID)
+         return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/SetTranslation/"+TransID,{
+           headers:{authorization:authToken}
+         })
 
        // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
        .then(function (response) {
@@ -280,7 +337,9 @@
     var setInboundLimitOnNumber = function(number,LimitID){
       console.log("BACKENDCONTROLLER - setBothLimitOnNumber ");
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetInboundLimit/"+LimitID)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetInboundLimit/"+LimitID,{
+        headers:{authorization:authToken}
+      })
 //PhoneNumberTrunkApi/TrunkNumber/:trNum/SetBothLimit/:limId
         // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
         .then(function (response) {
@@ -296,7 +355,9 @@
     var setOutboundLimitOnNumber = function(number,LimitID){
       console.log("BACKENDCONTROLLER - setBothLimitOnNumber ");
 
-      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetOutboundLimit/"+LimitID)
+      return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetOutboundLimit/"+LimitID,{
+        headers:{authorization:authToken}
+      })
 //PhoneNumberTrunkApi/TrunkNumber/:trNum/SetBothLimit/:limId
         // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
         .then(function (response) {
@@ -313,7 +374,9 @@
     var setBothLimitOnNumber = function(number,LimitID){
       console.log("BACKENDCONTROLLER - setBothLimitOnNumber ");
 
-        return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetBothLimit/"+LimitID)
+        return $http.post("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+number+"/SetBothLimit/"+LimitID,{
+          headers:{authorization:authToken}
+        })
 //PhoneNumberTrunkApi/TrunkNumber/:trNum/SetBothLimit/:limId
        // /DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/:id/SetSipProfile/:profId
        .then(function (response) {
@@ -329,7 +392,9 @@
 
     var getTrunkDataById = function (id) {
       console.log("BACKENDCONTROLLER - getTrunkDataById ");
-      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+id)
+      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+id,{
+        headers:{authorization:authToken}
+      })
         // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
         .then(function (response) {
           console.log("BACKENDCONTROLLER-getNumberList -"+ JSON.stringify(response));
@@ -339,7 +404,9 @@
 
     var getPhoneNumberList = function () {
       console.log("BACKENDCONTROLLER - getNumberList ");
-      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumbers")
+      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumbers",{
+        headers:{authorization:authToken}
+      })
         // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
         .then(function (response) {
           console.log("BACKENDCONTROLLER-getNumberList -"+ JSON.stringify(response));
@@ -349,7 +416,9 @@
 
     var getPhoneNumbersOfTrunk = function (trunkId) {
       console.log("BACKENDCONTROLLER - getPhoneNumbersOfTrunk ");
-      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/PhoneNumbers")
+      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/Trunk/"+trunkId+"/PhoneNumbers",{
+        headers:{authorization:authToken}
+      })
         //PhoneNumberTrunkApi/Trunk/:id/PhoneNumbers
         // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
         .then(function (response) {
@@ -360,7 +429,9 @@
 
     var getPhonenumberData = function (phoneNumber) {
       console.log("BACKENDCONTROLLER - getPhonenumberData ");
-      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+phoneNumber)
+      return $http.get("http://phonenumbertrunkservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/PhoneNumberTrunkApi/TrunkNumber/"+phoneNumber,{
+        headers:{authorization:authToken}
+      })
         .then(function (response) {
           console.log("BACKENDCONTROLLER-getPhonenumberData -"+ JSON.stringify(response));
           return response.data;
@@ -379,6 +450,7 @@
       getTrunkList:getTrunkList,
       getTrunkDataById:getTrunkDataById,
       createNewNumber:createNewNumber,
+      createNewTrunk:createNewTrunk,
       updateTrunk:updateTrunk,
       getProfileData:getProfileData,
       getCloudeData:getCloudeData,
