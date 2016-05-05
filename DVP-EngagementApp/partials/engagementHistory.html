@@ -1,0 +1,147 @@
+<div>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+
+      </md-card-title-text>
+
+    </md-card-title>
+
+    <md-card-content>
+      <div style="border: outset" >
+        <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Session ID</label>
+            <md-icon md-svg-src="../img/ic_vpn_key_24px.svg" class="name"></md-icon>
+            <input required name="sessionId" ng-model="engagement.sessionId">
+
+            <div ng-messages="addEngagementForm.sessionId.$error">
+              <div ng-message="required">Session ID is required.</div>
+            </div>
+          </md-input-container>
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Engagement Type</label>
+            <md-icon md-svg-src="../img/ic_stars_24px.svg" class="name"></md-icon>
+            <input required readonly name="engagementType" ng-model="engagement.engagementType">
+
+            <div ng-messages="addEngagementForm.engagementType.$error">
+              <div ng-message="required">Engagement Type is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Company No</label>
+            <md-icon md-svg-src="../img/smartphone-2.svg" class="CompanyNo"></md-icon>
+            <input ng-model="engagement.Data.CompanyNo"/>
+          </md-input-container>
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Contact ID</label>
+            <md-icon md-svg-src="../img/smartphone-2.svg" class="name"></md-icon>
+            <input ng-model="engagement.Data.contactId"/>
+          </md-input-container>
+          <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+          </div>
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Engagee</label>
+            <md-icon md-svg-src="../img/stickman142.svg" class="name"></md-icon>
+            <input ng-model="engagement.Data.engagee"/>
+          </md-input-container>
+
+        </div>
+
+        <md-input-container class="md-icon-float md-block">
+          <label>Comments</label>
+          <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+          <textarea ng-model="engagement.Data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+        </md-input-container>
+
+        <fieldset ng-repeat="item in items">
+          <md-content class="autoScroll">
+            <md-input-container class="md-icon-float md-block">
+              <label>Descriptions</label>
+              <input name="description" ng-model="item.Data.Descriptions" type="text">
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+              <label>Data</label>
+              <textarea name="Data" ng-model="item.Data.Data" columns="1" md-maxlength="500" rows="5"></textarea>
+            </md-input-container>
+        </fieldset>
+
+
+        <md-card-actions layout="row" layout-align="end center">
+
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"
+                     ng-click="showAdvanced($event,engagement)">
+            <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+            <md-tooltip>
+              Add Item
+            </md-tooltip>
+          </md-button>
+
+        </md-card-actions>
+
+
+        <div id="ItemList" style="border: inset" ng-repeat="history in engagementsHistory">
+          <div >
+            <div layout-gt-sm="row">
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Session ID</label>
+                <md-icon md-svg-src="../img/ic_vpn_key_24px.svg" class="name"></md-icon>
+                <input required name="sessionId" ng-model="history.sessionId">
+
+                <div ng-messages="addEngagementForm.sessionId.$error">
+                  <div ng-message="required">Session ID is required.</div>
+                </div>
+              </md-input-container>
+              <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+              </div>
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Engagement Type</label>
+                <md-icon md-svg-src="../img/ic_stars_24px.svg" class="name"></md-icon>
+                <input required readonly name="engagementType" ng-model="history.engagementType">
+
+                <div ng-messages="addEngagementForm.engagementType.$error">
+                  <div ng-message="required">Engagement Type is required.</div>
+                </div>
+              </md-input-container>
+            </div>
+
+            <div layout-gt-sm="row">
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Contact ID</label>
+                <md-icon md-svg-src="../img/smartphone-2.svg" class="name"></md-icon>
+                <input ng-model="history.Data.contactId"/>
+              </md-input-container>
+              <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+              </div>
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Engagee</label>
+                <md-icon md-svg-src="../img/stickman142.svg" class="name"></md-icon>
+                <input ng-model="history.Data.engagee"/>
+              </md-input-container>
+
+            </div>
+
+            <md-input-container class="md-icon-float md-block">
+              <label>Comments</label>
+              <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+              <textarea ng-model="history.Data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+            </md-input-container>
+
+
+          </div>
+        </div>
+
+      </div>
+    </md-card-content>
+  </md-card>
+</div>

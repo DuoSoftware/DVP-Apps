@@ -3,7 +3,7 @@ var app = angular.module("FileManageApp", ["ngMaterial", "md.data.table", "ngRou
 app.config(function ($routeProvider) {
 
   $routeProvider.when("/file/list", {
-    templateUrl: 'partials/fileList.html',
+    templateUrl: 'partials/engagementList.html',
 
   })
     .when("/file/create", {
@@ -12,7 +12,7 @@ app.config(function ($routeProvider) {
 
     })
     .otherwise({
-      templateUrl: 'partials/fileList.html',
+      templateUrl: 'partials/engagementList.html',
       controller: 'FileListController'
     });
 

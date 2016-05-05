@@ -1,0 +1,36 @@
+<div layout="column" id="popupContainer">
+  <form name="addEngagementForm">
+    <md-content layout="row" layout-wrap layout-align="center start">
+      <div layout="column" style="width: 100%">
+
+        <md-card>
+
+          <md-card-header>
+            <md-card-avatar>
+              <img src="img/logo.svg"/>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-headline">Engagement</span>
+              <span class="md-subhead">Add New</span>
+            </md-card-header-text>
+          </md-card-header>
+          <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+
+
+          <div ng-include="'partials/Engagement.html'"></div>
+
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/file/list">
+              <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-disabled="addEngagementForm.$invalid" aria-label="Add"
+                       ng-click="saveEngagement(engagement)">
+              <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+
+      </div>
+    </md-content>
+  </form>
+</div>

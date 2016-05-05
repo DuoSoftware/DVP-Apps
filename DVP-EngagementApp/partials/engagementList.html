@@ -1,0 +1,229 @@
+<div ng-app="app">
+
+  <div  >
+
+    <div class="parent" ng-repeat="engagement in engagements">
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Engagement Id</label>
+          <input ng-model="engagement.engagementId">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Company No</label>
+          <input ng-model="engagement.data.CompanyNo">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Contact Id</label>
+          <input ng-model="engagement.data.contactId">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Engagee</label>
+          <input ng-model="engagement.data.engagee">
+        </md-input-container>
+
+      </div>
+
+      <md-input-container class="md-icon-float md-block">
+        <label>Comments</label>
+        <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+        <textarea ng-model="engagement.data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+      </md-input-container>
+
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="LoadEngagementHistory(engagement)">
+          <md-icon md-svg-src="../img/ic_reorder_24px.svg"></md-icon>
+          <md-tooltip>
+            History
+          </md-tooltip>
+        </md-button>
+
+        <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"
+                   ng-click="showAdvanced($event,engagement)">
+          <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+          <md-tooltip>
+            Add Item
+          </md-tooltip>
+        </md-button>
+
+
+      </md-card-actions>
+
+      <div class="directive" my-directive name="{{engagement.engagementId}}"></div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+
+<div>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">File List</span>
+        &lt;!&ndash;<span class="md-subhead">Select files</span>&ndash;&gt;
+      </md-card-title-text>
+
+    </md-card-title>
+
+    <md-card-content>
+
+
+      <div style="border: outset" ng-repeat="engagement in engagements" ng-init='loadItems(engagement.sessionId)'>
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Session ID</label>
+            <md-icon md-svg-src="../img/ic_vpn_key_24px.svg" class="name"></md-icon>
+            <input required name="sessionId" ng-model="engagement.sessionId">
+
+            <div ng-messages="addEngagementForm.sessionId.$error">
+              <div ng-message="required">Session ID is required.</div>
+            </div>
+          </md-input-container>
+          <div flex="5" hide-xs hide-sm>
+            &lt;!&ndash; Spacer //&ndash;&gt;
+          </div>
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Engagement Type</label>
+            <md-icon md-svg-src="../img/ic_stars_24px.svg" class="name"></md-icon>
+            <input required readonly name="engagementType" ng-model="engagement.engagementType">
+
+            <div ng-messages="addEngagementForm.engagementType.$error">
+              <div ng-message="required">Engagement Type is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Contact ID</label>
+            <md-icon md-svg-src="../img/smartphone-2.svg" class="name"></md-icon>
+            <input ng-model="engagement.data.contactId"/>
+          </md-input-container>
+          <div flex="5" hide-xs hide-sm>
+            &lt;!&ndash; Spacer //&ndash;&gt;
+          </div>
+          <md-input-container class="md-icon-float md-block" flex-gt-sm>
+            <label>Engagee</label>
+            <md-icon md-svg-src="../img/stickman142.svg" class="name"></md-icon>
+            <input ng-model="engagement.data.engagee"/>
+          </md-input-container>
+
+        </div>
+
+        <md-input-container class="md-icon-float md-block">
+          <label>Comments</label>
+          <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+          <textarea ng-model="engagement.data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+        </md-input-container>
+
+        <fieldset ng-repeat="item in items">
+          <md-content class="autoScroll">
+            <md-input-container class="md-icon-float md-block">
+              <label>Descriptions</label>
+              <input name="description" ng-model="item.data.Descriptions" type="text">
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+              <label>data</label>
+              <textarea name="data" ng-model="item.data.data" columns="1" md-maxlength="500" rows="5"></textarea>
+            </md-input-container>
+        </fieldset>
+
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"
+                     ng-click="getEngagementsBySessionId(engagement.sessionId)">
+            <md-icon md-svg-src="../img/ic_reorder_24px.svg"></md-icon>
+            <md-tooltip>
+              History
+            </md-tooltip>
+          </md-button>
+
+          <md-button class="md-icon-button" ng-disabled="false" aria-label="Back"
+                     ng-click="showAdvanced($event,engagement)">
+            <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+            <md-tooltip>
+              Add Item
+            </md-tooltip>
+          </md-button>
+
+
+        </md-card-actions>
+
+
+        &lt;!&ndash; history&ndash;&gt;
+
+
+        <div id="ItemList" style="border: inset" ng-repeat="history in engagementsHistory">
+
+          <a href="#" ng-hide="engagementsHistory.length==0" ng-model="collapsed"
+             ng-click="collapsed=!collapsed"><strong>{{history.sessionId}}</strong></a>
+          <hr ng-show="collapsed"/>
+          <div ng-show="collapsed">
+            <div layout-gt-sm="row">
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Session ID</label>
+                <md-icon md-svg-src="../img/ic_vpn_key_24px.svg" class="name"></md-icon>
+                <input required name="sessionId" ng-model="history.sessionId">
+
+                <div ng-messages="addEngagementForm.sessionId.$error">
+                  <div ng-message="required">Session ID is required.</div>
+                </div>
+              </md-input-container>
+              <div flex="5" hide-xs hide-sm>
+                &lt;!&ndash; Spacer //&ndash;&gt;
+              </div>
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Engagement Type</label>
+                <md-icon md-svg-src="../img/ic_stars_24px.svg" class="name"></md-icon>
+                <input required readonly name="engagementType" ng-model="history.engagementType">
+
+                <div ng-messages="addEngagementForm.engagementType.$error">
+                  <div ng-message="required">Engagement Type is required.</div>
+                </div>
+              </md-input-container>
+            </div>
+
+            <div layout-gt-sm="row">
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Contact ID</label>
+                <md-icon md-svg-src="../img/smartphone-2.svg" class="name"></md-icon>
+                <input ng-model="history.data.contactId"/>
+              </md-input-container>
+              <div flex="5" hide-xs hide-sm>
+                &lt;!&ndash; Spacer //&ndash;&gt;
+              </div>
+              <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                <label>Engagee</label>
+                <md-icon md-svg-src="../img/stickman142.svg" class="name"></md-icon>
+                <input ng-model="history.data.engagee"/>
+              </md-input-container>
+
+            </div>
+
+            <md-input-container class="md-icon-float md-block">
+              <label>Comments</label>
+              <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+              <textarea ng-model="history.data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+            </md-input-container>
+
+
+          </div>
+        </div>
+
+      </div>
+    </md-card-content>
+
+
+
+  </md-card>
+</div>
+-->

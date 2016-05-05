@@ -28,7 +28,10 @@
     "grunt-wiredep": "^2.0.0",
     "jit-grunt": "^0.9.1",
     "time-grunt": "^1.0.0",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "^1.0.0",
+    "angular-file-saver": "^1.1.1",
+    "socket.io-client": "^1.4.6",
+"angular-socket-io": "^1.4.6"
   },
   "engines": {
     "node": ">=0.10.0"

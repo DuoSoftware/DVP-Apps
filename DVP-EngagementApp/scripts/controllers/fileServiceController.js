@@ -1,99 +1,209 @@
 var app = angular.module("EngagementApp");
 
-app.controller('AddEngagementController', ['$scope', '$filter', 'FileUploader', 'clusterService', function ($scope, $filter, FileUploader, clusterService) {
+app.run(function (socketAuth) {
+  socketAuth.getAuthenticatedAsPromise();
+});
+
+app.controller('FileEditController', function ($scope, $filter, $mdDialog, $location, Notification, engagementService, socket) {
+
+  console.info("FileEditController" + socket.message);
+  $scope.engagement = {};
+  $scope.engagement.engagementType = "Engagement";
+  if (socket.message) {
+    $scope.engagement.engagementId = socket.message[1];
+    $scope.engagement.data = {};
+    $scope.engagement.data.contactId = socket.message[5];
+    $scope.engagement.data.comments = socket.message[6];
+    $scope.engagement.data.CompanyNo = socket.message[3];
+  }
+
+  $scope.saveEngagement = function (engagement) {
+
+    engagementService.SaveEngagement(engagement).then(function (response) {
+      if (response) {
+        $scope.showAlert("Save Engagement", "Successfully Saved");
+        $location.path('/engagement/list');
+      }
+      else
+        $scope.showAlert("Save Engagement", "Fail to Save.");
 
 
-}]);
+    }, function (error) {
+      console.info("GetCatagories err" + error);
 
-app.controller("FileListController", function ($scope, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, clusterService) {
-
-
-  this.tableParams = new NgTableParams({group: 'Category'}, {
-    getData: function (params) {
-
-
-      return clusterService.GetFiles().then(function (response) {
-
-        // Filtering
-        var orderedData = params.filter() ?
-          $filter('filter')(response, params.filter()) :
-          response;
-        // Sorting
-        orderedData = params.sorting() ?
-          $filter('orderBy')(orderedData, params.orderBy()) :
-          orderedData;
-        //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
-
-
-        params.total(orderedData.length);
-        return orderedData;
-
-      }, function (err) {
-      });
-
-
-    }
-  });
-
-  $scope.tableParams = this.tableParams;
-
-  $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
-
-
-    var confirm = $mdDialog.confirm()
-      .title(tittle)
-      .textContent(content)
-      .ok(okbutton)
-      .cancel(cancelbutton);
-
-    $mdDialog.show(confirm).then(function () {
-      OkCallback(okObj);
-    }, function () {
-      CancelCallBack();
     });
   };
 
-  $scope.showAlert = function (tittle, label, button, content) {
-
+  $scope.showAlert = function (title, textContent, ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    // Modal dialogs should fully cover application
+    // to prevent interaction outside of dialog
     $mdDialog.show(
       $mdDialog.alert()
         .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
-        .title(tittle)
-        .textContent(content)
-        .ok(button)
+        .title(title)
+        .textContent(textContent)
+        .ariaLabel('Alert Dialog')
+        .ok('Ok')
     );
   };
+});
 
-  $scope.deleteFile = function (file) {
+app.controller("FileListController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService) {
 
-    $scope.showConfirm("Delete File", "Delete", "ok", "cancel", "Do you want to delete " + file.Filename, function (obj) {
+  $scope.engagements = {};
+  $scope.engagementsHistory = {};
+  $scope.items = {};
 
-      clusterService.DeleteFile(file, $scope.Headers).then(function (response) {
-        if (response) {
-          $scope.tableParams.reload();
-          $scope.showAlert("Deleted", "Deleted", "ok", "File " + obj.Filename + " Deleted successfully");
+  $scope.LoadEngagementHistory = function (engagement) {
+    engagementService.Engagement = engagement;
+    $location.path('/engagement/history');
+  };
+
+  $scope.loadItems = function (sessionId) {
+
+    engagementService.GetItemsBySessionId(sessionId).then(function (response) {
+      $scope.items = $filter('filter')(response, {itemType: "EngagementItem"});
+    }, function (error) {
+      console.info("GetEngagementsBySessionId err" + error);
+
+    });
+  };
+
+
+  $scope.loadEngagements = function () {
+
+    engagementService.LoadEngagements(5, 1).then(function (response) {
+      $scope.engagements = $filter('filter')(response, {engagementType: "Engagement"});
+    }, function (error) {
+      console.info("GetCatagories err" + error);
+
+    });
+  };
+
+  $scope.getEngagementsBySessionId = function (sessionId) {
+
+    engagementService.GetEngagementsBySessionId(sessionId).then(function (response) {
+      $scope.engagementsHistory = $filter('filter')(response, {engagementType: "Engagement"});
+    }, function (error) {
+      console.info("GetCatagories err" + error);
+
+    });
+  };
+
+  $scope.loadEngagements();
+
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+  $scope.showAdvanced = function (ev, eng) {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'partials/addItems.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: useFullScreen
+    })
+      .then(function (item) {
+        if (item != "Cancel") {
+          engagementService.SaveItem(item, eng).then(function (response) {
+            if (response)
+              Notification.success({message: "Successfully Saved", delay: 300, closeOnClick: true});
+            else
+              Notification.error({message: "Fail to Save.", delay: 300, closeOnClick: true});
+
+          }, function (error) {
+            console.info("SaveItem err" + error);
+          });
         }
-
-        else
-          $scope.showAlert("Error", "Error", "ok", "There is an error ");
-      }, function (error) {
-        $scope.showAlert("Error", "Error", "ok", "There is an error ");
+        //$scope.status = 'You said the information was "' + answer + '".';
+      }, function () {
+        //$scope.status = 'You cancelled the dialog.';
       });
-
-    }, function () {
-
-    }, file)
+    $scope.$watch(function () {
+      return $mdMedia('xs') || $mdMedia('sm');
+    }, function (wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true);
+    });
   };
-
-  $scope.downloadFile = function (file) {
-    clusterService.DownloadFile(file.UniqueId, file.Filename);
-  };
-
-
-  $scope.GetToken = function () {
-    clusterService.Headers = {'Authorization': clusterService.GetToken};
-  };
-  $scope.GetToken();
 
 });
+
+app.controller("FileHistoryController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService) {
+
+
+  $scope.engagement = engagementService.Engagement;
+  $scope.engagementsHistory = {};
+  $scope.items = {};
+
+  if (!engagementService.Engagement)
+    $location.path('/engagement/list');
+
+  $scope.loadItems = function (sessionId) {
+    if (!sessionId)
+      $location.path('/engagement/list');
+    engagementService.GetItemsBySessionId(sessionId).then(function (response) {
+      $scope.items = $filter('filter')(response, {itemType: "EngagementItem"});
+    }, function (error) {
+      console.info("GetEngagementsBySessionId err" + error);
+
+    });
+  };
+
+  $scope.getEngagementsBySessionId = function (sessionId) {
+    if (!sessionId)
+      $location.path('/engagement/list');
+    engagementService.GetEngagementsBySessionId(sessionId).then(function (response) {
+      $scope.engagementsHistory = $filter('filter')(response, {engagementType: "Engagement"});
+    }, function (error) {
+      console.info("GetCatagories err" + error);
+
+    });
+  };
+
+  $scope.loadItems($scope.engagement.sessionId);
+  $scope.getEngagementsBySessionId($scope.engagement.sessionId)
+});
+
+
+function DialogController($scope, $mdDialog) {
+  $scope.hide = function () {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function () {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function (answer) {
+    $mdDialog.hide(answer);
+  };
+}
+
+app.directive("myDirective", function ($filter, engagementService) {
+
+  return {
+    restrict: "EA",
+    scope: {
+      name: "@",
+      heroes: '=data'
+    },
+
+    template: '<div ng-repeat="x in heroes" style="border: outset"><md-input-container class="md-block" flex-gt-xs><label>Descriptions</label><input name="Descriptions" ng-model="x.data.Descriptions"></md-input-container><md-input-container class="md-block"> <label>Data</label>    <textarea ng-model="x.data.Data" columns="1" md-maxlength="500" rows="5"></textarea>    </md-input-container>    </div>',
+
+
+    link: function (scope, element, attributes) {
+
+      engagementService.GetItemsBySessionId(scope.name).then(function (response) {
+        scope.heroes = $filter('filter')(response, {attachmentType: "EngagementItem"});
+      }, function (error) {
+        console.info("GetEngagementsBySessionId err" + error);
+
+      });
+
+
+    }
+  }
+});
+

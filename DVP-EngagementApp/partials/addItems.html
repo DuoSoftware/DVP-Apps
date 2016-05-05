@@ -1,0 +1,49 @@
+<md-dialog  ng-cloak>
+  <form name="projectForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Item</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+
+        <md-content class="autoScroll">
+          <md-input-container class="md-icon-float md-block">
+            <label>Descriptions</label>
+            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+            <input required name="description" ng-model="item.Descriptions" type="text">
+            <div ng-messages="projectForm.description.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-icon-float md-block">
+            <label>Data</label>
+            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+            <textarea required name="Data" ng-model="item.Data" columns="1" md-maxlength="500" rows="5"></textarea>
+            <div ng-messages="projectForm.Data.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+
+        </md-content>
+
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="answer('Cancel')">
+        Cancel
+      </md-button>
+      <md-button ng-click="answer(item)" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

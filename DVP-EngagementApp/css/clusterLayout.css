@@ -430,3 +430,70 @@ menu md-option[selected] {
   color: rgb(63,81,181);
   background-color: rgb(64, 5, 9);
 }
+
+fieldset{
+  background: rgb(171, 239, 171);
+  padding: 16px;
+  border: 1px solid rgb(9, 56, 9);
+}
+.addfields{
+  margin: 10px 0;
+}
+
+#choicesDisplay {
+  padding: 10px;
+  background: rgb(227, 250, 227);
+  border: 1px solid rgb(171, 239, 171);
+  color: rgb(9, 56, 9);
+}
+.remove{
+  background: #C76868;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 21px;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 9px;
+  vertical-align: top;
+  line-height: 100%;
+}
+input[type="text"],
+select{
+  padding:5px;
+}
+
+.parent {
+  border: 20px solid #676767;
+  padding : 20px;
+}
+.parent,.directive {
+  position: relative;
+  border: 2px solid #cbccdd;
+}
+.parent:after,.directive:after {
+  display: inline;
+  color: #fff;
+  font-size: normal;
+  position: absolute;
+  top:-20px;
+  left:-20px;
+  z-index: 100;
+  padding: 1px 5px;
+  background-color: rgba(0,0,0,0.5);
+}
+.parent:after {
+
+}
+.directive {
+  padding: 20px;
+  border: 3px solid #cbccdd;
+  margin-top: 20px;
+}
+.directive:after {
+
+}
+.line {
+  border-bottom: 1px dotted #ccc;
+  padding: 5px 0;
+}
