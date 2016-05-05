@@ -110,8 +110,17 @@
         </md-button></p>-->
       </md-input-container>
 </div>
-      </md-input-container>
+
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <p style="font-size: small; color: #C0CBCF" >Assign Files
+            <md-button class="md-icon-button" ng-disabled="NewApplicationForm.$invalid" aria-label="Add" ng-click="showFileDialog($event, editAppObj.id)">
+              <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+            </md-button>
+          </p>
+        </md-input-container>
     </div>
+
     <div layout-gt-sm="row">
       <!--<md-input-container class="md-block" flex-gt-sm>
         <label>Tenant Id</label>

@@ -18,7 +18,7 @@
             console.log("CancelEdit");
            // $scope.DataObj=backendcontroller.Attribobj;
             $location.path("/app");
-        }
+        };
 
         $scope.SaveApp= function(){
 
@@ -46,7 +46,7 @@
             // dbcontroller.updateAttribute(dbcontroller.Attribobj);
            // backendcontroller.updateApp(editApplicationObj);
            // $location.path("/apps");
-        }
+        };
 
       $scope.testApplication=function(appId){
 
@@ -54,7 +54,7 @@
         console.log ("testURL  "+appId);
         backendcontroller.testApplication(appId).then(onTestResult,onError);
 
-      }
+      };
 
       var onTestResult = function(response){
 
@@ -74,7 +74,7 @@
           //console.log(response.data.Exception.Message);
         }
 
-      }
+      };
 
       /////////TOST/////
       var last = {
@@ -168,8 +168,144 @@
         console.log(ex);
       }
 
+      $scope.showFileDialog = function(ev, appId) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+          controller: fileDialogController,
+          templateUrl: 'partials/assignFiles.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:false,
+          fullscreen: useFullScreen,
+          locals: {
+            appId: appId
+          }
+        })
+          .then(function(answer) {
+            if(answer && answer != "") {
+              $scope.showAlert(answer.tittle, answer.button, answer.content);
+              if (answer.isSuccess) {
+                $scope.loadData();
+              }
+            }
+          }, function() {
+            $scope.status = 'You cancelled the dialog.';
+          });
+        $scope.$watch(function() {
+          return $mdMedia('xs') || $mdMedia('sm');
+        }, function(wantsFullScreen) {
+          $scope.customFullscreen = (wantsFullScreen === true);
+        });
+      };
+
+
     };
     app.controller("EditAppController",EditAppController);
 
 
 }());
+
+function fileDialogController($scope, backendcontroller, $mdDialog, appId){
+  var onGetFilesByAppIdComplete = function(data){
+    if(data.IsSuccess){
+      $scope.FilesAssignedToApp = data.Result;
+      $scope.FileList = [];
+      if(data.Result.length>0) {
+        for(var i=0; i< data.Result.length; i++) {
+          var item = data.Result[i];
+          if(item != null) {
+            var tmpFile = {
+              UniqueId: item.UniqueId,
+              Filename: item.Filename,
+              Version: item.Version,
+              IsChecked: true
+            };
+            $scope.FileList.push(tmpFile);
+          }
+        }
+      }
+      if($scope.AllFiles.length>0){
+        for(var i=0; i< $scope.AllFiles.length; i++) {
+          var item = $scope.AllFiles[i];
+          if (item.Application == null) {
+            var tmpFile = {UniqueId: item.UniqueId, Filename: item.Filename, Version: item.Version, IsChecked: false};
+            $scope.FileList.push(tmpFile);
+          }
+        }
+      }
+      $scope.InitialFileList = angular.copy($scope.FileList);
+    }else{
+      $scope.showAlert("Error", "OK", data.CustomMessage);
+    }
+  };
+  var onGetAllFilesComplete = function(data){
+    if(data.IsSuccess){
+      $scope.AllFiles = data.Result;
+      backendcontroller.getFilesByAppId(appId).then(onGetFilesByAppIdComplete, function(){onError("Could not fetch the file data")});
+    }else{
+      $scope.showAlert("Error", "OK", data.CustomMessage);
+    }
+  };
+  var onAssignFileToAppComplete = function(data){
+    if(!data.IsSuccess) {
+      $scope.showAlert("Error", "OK", data.CustomMessage);
+    }
+  };
+  var onError = function(reason){
+    $scope.showAlert("Error", "OK", reason);
+  };
+  var onAssignFileToAppError = function () {
+    $scope.showAlert("Error", "OK", "Updating files failed");
+  };
+  $scope.showAlert = function(tittle, button, content) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(tittle)
+        .textContent(content)
+        .ok(button)
+    );
+  };
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(isSuccess,tittle,button,content) {
+    var ans = {isSuccess: isSuccess, tittle: tittle, button: button, content: content};
+    $mdDialog.hide(ans);
+  };
+  $scope.loadData = function(){
+    backendcontroller.getAllFiles().then(onGetAllFilesComplete, function(){onError("Could not fetch the file data")});
+  };
+  $scope.loadData();
+  $scope.updateFiles = function(){
+    var recordToInsert = [];
+    var recordToDelete = [];
+
+    for(var i=0; i<$scope.InitialFileList.length; i++){
+      var iitem = $scope.InitialFileList[i];
+      var item = $scope.FileList[i];
+
+      if(iitem.IsChecked != item.IsChecked){
+        if(item.IsChecked){
+          recordToInsert.push(item);
+        }else{
+          recordToDelete.push(item);
+        }
+      }
+    }
+
+    for(var i=0; i<recordToInsert.length; i++) {
+      var file = recordToInsert[i];
+      backendcontroller.assignFileToApp(file.UniqueId,appId).then(onAssignFileToAppComplete, onAssignFileToAppError);
+    }
+    for(var i=0; i<recordToDelete.length; i++) {
+      var file = recordToDelete[i];
+      backendcontroller.deleteFiles(file.UniqueId).then(onAssignFileToAppComplete, onAssignFileToAppError);
+    }
+    $scope.showAlert("Succee", "OK", "Update files success");
+  }
+}

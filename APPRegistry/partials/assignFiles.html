@@ -1,0 +1,33 @@
+<div>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools" layout="row">
+      <div flex="90">ADD FILES</div>
+    </div>
+  </md-toolbar>
+  <div ng-cloak class="md-inline-form">
+    <md-content layout-padding>
+      <form name="fileForm">
+
+        <div layout-gt-sm="row">
+          <md-list ng-cloak>
+            <md-subheader class="md-no-sticky">Available files</md-subheader>
+            <md-list-item ng-repeat="iFile in FileList">
+              <p> {{ iFile.Filename }} </p>
+              <md-checkbox class="md-secondary" ng-model="iFile.IsChecked"></md-checkbox>
+            </md-list-item>
+          </md-list>
+        </div>
+        <div layout="row">
+          <div flex="70"></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="updateFiles()">Update</md-button></div>
+          <div layout-align="right"><md-button class="md-primary md-raised" ng-click="hide()">Back</md-button></div>
+        </div>
+
+
+
+      </form>
+    </md-content>
+  </div>
+</div>
+
+

@@ -230,6 +230,54 @@
         });
     };
 
+    var getAllFiles = function(){
+      return $http({
+        method: 'GET',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
+        headers: {
+          'authorization': authToken
+        }})
+        .then(function(response){
+          return response.data;
+        });
+    };
+
+    var getFilesByAppId = function(appId){
+      return $http({
+        method: 'GET',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/Info/'+appId,
+        headers: {
+          'authorization': authToken
+        }})
+        .then(function(response){
+          return response.data;
+        });
+    };
+
+    var assignFileToApp = function(uuid, appId){
+      return $http({
+        method: 'POST',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/'+uuid+'/AssignToApplication/'+appId,
+        headers: {
+          'authorization': authToken
+        }
+      })
+        .then(function(response){
+          return response.data;
+        });
+    };
+
+    var deleteFiles = function(uuid){
+      return $http({
+        method: 'POST',
+        url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/'+uuid+'/DetachFromApplication',
+        headers: {
+          'authorization': authToken
+        }})
+        .then(function(response){
+          return response.data;
+        });
+    };
 
     return{
       getAppList:getAppList,
@@ -244,7 +292,11 @@
       testApplication:testApplication,
       EditAppObj:EditAppObj,
       newDataObj:newDataObj,
-      viewDeactAppObj:viewDeactAppObj
+      viewDeactAppObj:viewDeactAppObj,
+      getAllFiles:getAllFiles,
+      getFilesByAppId:getFilesByAppId,
+      assignFileToApp:assignFileToApp,
+      deleteFiles:deleteFiles
     };
   };
 
