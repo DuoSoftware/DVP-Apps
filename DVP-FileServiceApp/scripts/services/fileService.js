@@ -101,7 +101,6 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
 
 
 /*
-
 fileModule.factory('fileFactory', ['$http', '$window',
   function ($http, $window) {
     return {

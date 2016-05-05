@@ -85,9 +85,13 @@
         </md-input-container>
 
       </div>
-      <div  layout-gt-sm="row">
+      <div>
         <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 70%">
-          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNew()" ng-disabled="isDisabled || newContextForm.$invalid "><md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button"  class="md-raised md-primary" href="#/contexts" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-button></td>
+          <div align="row">
+            <md-button class="md-icon-button" class="md-raised md-primary" ng-click="AddNew()" ng-disabled="isDisabled || newContextForm.$invalid "><md-icon md-svg-src="../img/ic_save_24px.svg"></md-button>
+            <md-button class="md-icon-button"  class="md-raised md-primary" href="#/contexts" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-button>
+          </div>
+
 
         </md-input-container>
       </div>

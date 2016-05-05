@@ -189,9 +189,12 @@
 
 
 
-    <div layout-gt-sm="row">
+    <div >
       <md-input-container style="padding: 0% 0% 0% 80%"   >
-        <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.$invalid"><md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon></md-button></td>
+        <div align="row">
+          <md-button  class="md-icon-button" class="md-raised md-primary" ng-click="SaveUpdated(DataObj.GroupId)" ng-disabled="isDisabled || editGrpForm.$invalid"><md-icon md-svg-src="img/ic_save_24px.svg"></md-icon></md-button><md-button class="md-icon-button" class="md-raised md-primary" ng-click="hideDialog()" ng-disabled="isDisabled"><md-icon md-svg-src="img/ic_arrow_back_24px.svg"></md-icon></md-button>
+        </div>
+
 
       </md-input-container>
     </div>

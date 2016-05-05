@@ -20,4 +20,4 @@
 
     };
     app.controller("MainController",MainController)
-}())
+}());

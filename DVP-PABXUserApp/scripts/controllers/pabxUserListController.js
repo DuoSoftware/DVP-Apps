@@ -54,7 +54,7 @@
 
       $mdDialog.show({
         controller: PickUserController,
-        templateUrl: '../PABXUserApp/partials/newUserSelectionView.html',
+        templateUrl: 'partials/newUserSelectionView.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true

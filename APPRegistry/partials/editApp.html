@@ -110,8 +110,17 @@
         </md-button></p>-->
       </md-input-container>
 </div>
-      </md-input-container>
+
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <p style="font-size: small; color: #C0CBCF" >Assign Files
+            <md-button class="md-icon-button" ng-disabled="NewApplicationForm.$invalid" aria-label="Add" ng-click="showFileDialog($event, editAppObj.id)">
+              <md-icon md-svg-src="../img/ic_add_24px.svg"></md-icon>
+            </md-button>
+          </p>
+        </md-input-container>
     </div>
+
     <div layout-gt-sm="row">
       <!--<md-input-container class="md-block" flex-gt-sm>
         <label>Tenant Id</label>
@@ -149,17 +158,17 @@
 
 
        <p style="font-size: small; color: #C0CBCF" >Test Url<md-button class="md-icon-button" ng-disabled="NewApplicationForm.$invalid" aria-label="Add" ng-click="testApplication(editAppObj.id)">
-          <md-icon md-svg-src="../appregistry/img/ic_check_circle_24px.svg"></md-icon>
+          <md-icon md-svg-src="../img/ic_check_circle_24px.svg"></md-icon>
         </md-button></p>
       </md-input-container>
 
       <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 70%" layout="row">
 
         <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
-          <md-icon md-svg-src="../appregistry/img/ic_arrow_back_24px.svg"></md-icon>
+          <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
         </md-button>
         <md-button class="md-icon-button" ng-disabled="applicationForm.$invalid" aria-label="Add" ng-click="SaveApp()">
-          <md-icon md-svg-src="../appregistry/img/ic_save_24px.svg"></md-icon>
+          <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
         </md-button>
 
       </md-input-container>

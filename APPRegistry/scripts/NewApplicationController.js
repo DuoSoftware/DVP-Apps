@@ -38,7 +38,7 @@
 
       }, "okObj");
      // backendcontroller.createNewApplication(newApplication).then(onNewAppResult,onNewAppError);
-    }
+    };
 
     /*var SaveApplication = function(newApplication){
       backendcontroller.createNewApplication(newApplication).then(onNewAppResult,onNewAppError);
@@ -67,12 +67,12 @@
        // alert(response.Message);
 
       }
-    }
+    };
 
     var onNewAppError = function(response){
 
       console.log("NEW APP ERROR  "+JSON.stringify(response));
-    }
+    };
 
   /*  $scope.testApplication=function(appId){
 
@@ -106,7 +106,7 @@
       console.log("CancelEdit");
       // $scope.DataObj=backendcontroller.Attribobj;
       $location.path("/app");
-    }
+    };
 
     $scope.onChange = function(cbState ) {
       console.log(cbState);
@@ -123,7 +123,7 @@
 
     var onError=function(ex){
       console.log(ex);
-    }
+    };
 
    /* $scope.showAlert = function(msg) {
        $mdDialog.show(
@@ -148,4 +148,4 @@
 
   };
   app.controller("NewApplicationController",NewApplicationController);
-}())
+}());

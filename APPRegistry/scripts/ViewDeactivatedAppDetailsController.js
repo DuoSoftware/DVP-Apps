@@ -31,4 +31,4 @@
        };
     };
     app.controller("ViewDeactivatedAppDetailsController",ViewDeactivatedAppDetailsController)
-}())
+}());
