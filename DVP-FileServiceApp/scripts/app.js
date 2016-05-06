@@ -3,16 +3,16 @@ var app = angular.module("FileManageApp", ["ngMaterial", "md.data.table", "ngRou
 app.config(function ($routeProvider) {
 
   $routeProvider.when("/file/list", {
-    templateUrl: 'partials/engagementList.html',
+    templateUrl: 'partials/fileList.html',
 
   })
     .when("/file/create", {
-      templateUrl: 'partials/AddEngagement.html',
+      templateUrl: 'partials/FileAdd.html',
       controller: 'FileEditController'
 
     })
     .otherwise({
-      templateUrl: 'partials/engagementList.html',
+      templateUrl: 'partials/fileList.html',
       controller: 'FileListController'
     });
 

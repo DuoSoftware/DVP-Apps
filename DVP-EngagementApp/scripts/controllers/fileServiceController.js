@@ -6,6 +6,11 @@ app.run(function (socketAuth) {
 
 app.controller('FileEditController', function ($scope, $filter, $mdDialog, $location, Notification, engagementService, socket) {
 
+  $scope.$on('profile-updated', function(event, profileObj) {
+    // profileObj contains; name, country and email from emitted event
+    $scope.showAlert("Save Engagement", "Successfully Saved");
+  });
+
   console.info("FileEditController" + socket.message);
   $scope.engagement = {};
   $scope.engagement.engagementType = "Engagement";

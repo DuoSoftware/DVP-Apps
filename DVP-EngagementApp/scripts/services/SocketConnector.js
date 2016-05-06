@@ -83,9 +83,10 @@ socketConnector.factory('socket', function ($location,socketFactory, Notificatio
     });
     socket.on('agent_found', function (data) {
 
-      $location.path('/engagement/create');
       var values = data.Message.split("|");
       self.message = values;
+      $location.path('/engagement/create');
+
       var displayMsg = "Company : " + data.Company + "<br> Company No : " + values[3] + "<br> Caller : " + values[5] + "<br> Skill : " + values[6];
       //document.getElementById("lblNotification").innerHTML = displayMsg;
       /* Notification.success({
@@ -95,6 +96,12 @@ socketConnector.factory('socket', function ($location,socketFactory, Notificatio
         closeOnClick: true
       });
       */
+
+      $scope.$emit('profile-updated', {
+        name: 'Dwayne',
+        country: 'Australia',
+        email: 'somedude@example.com'
+      });
       console.log(data);
     });
     socket.on('agent_disconnected', function (data) {
