@@ -15,9 +15,15 @@
 
 
 <body  layout="column">
-<div layout="row" id="popupContainer">
-  <md-button class="md-fab md-mini md-fab-bottom-right">
+
+<div layout="row" id="popupContainer" ng-controller="OnlineStatusCtrl">
+
+  <md-button class="md-fab md-fab md-primary md-fab-bottom-right" ng-hide="!online_status">
     <md-tooltip class="md-primary md-fab md-fab-bottom-right">Online</md-tooltip>
+  </md-button>
+
+  <md-button class="md-fab md-mini md-fab-bottom-left" ng-hide="online_status">
+    <md-tooltip class="md-primary md-fab md-fab-bottom-right">offline</md-tooltip>
   </md-button>
 
 </div>
@@ -86,7 +92,7 @@
 <script src="scripts/directives/taskDirective.js"></script>
 <script src="scripts/services/SocketAuthenticated.js"></script>
 <script src="scripts/services/SocketConnector.js"></script>
-
+<script src="scripts/services/onlineStatusApp.js"></script>
 
 
 <script src="scripts/console-sham.js"></script>

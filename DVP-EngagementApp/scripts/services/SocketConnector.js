@@ -84,8 +84,10 @@ socketConnector.factory('socket', function ($location,socketFactory, Notificatio
     socket.on('agent_found', function (data) {
 
       var values = data.Message.split("|");
-      self.message = values;
-      $location.path('/engagement/create');
+      if(self.callbackControler)
+        self.callbackControler(values);
+
+
 
       var displayMsg = "Company : " + data.Company + "<br> Company No : " + values[3] + "<br> Caller : " + values[5] + "<br> Skill : " + values[6];
       //document.getElementById("lblNotification").innerHTML = displayMsg;
@@ -97,12 +99,8 @@ socketConnector.factory('socket', function ($location,socketFactory, Notificatio
       });
       */
 
-      $scope.$emit('profile-updated', {
-        name: 'Dwayne',
-        country: 'Australia',
-        email: 'somedude@example.com'
-      });
-      console.log(data);
+
+      console.log("data : "+ data);
     });
     socket.on('agent_disconnected', function (data) {
       // document.getElementById("lblNotification").innerHTML = data.Message;
@@ -110,6 +108,13 @@ socketConnector.factory('socket', function ($location,socketFactory, Notificatio
       self.message = null;
       console.log(data);
     });
+
+    // callback function
+    self.callBackMe = function _show(callback){
+      self.callbackControler = callback;
+    }
+
+
   };
 
   return self;

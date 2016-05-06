@@ -1,4 +1,4 @@
-var app = angular.module("EngagementApp", ["ui-notification","ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate","ngTable", "engagementServiceModule","authServiceModule","btford.socket-io","socketConnectorServiceModule","socketConnectorAuthModule"]);
+var app = angular.module("EngagementApp", ["ui-notification","ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate","ngTable", "engagementServiceModule","authServiceModule","btford.socket-io","socketConnectorServiceModule","socketConnectorAuthModule","onlineStatusApp"]);
 
 app.constant('engagementUrl', 'http://localhost:8827/DVP/API/6.0/EngagementService/');
 app.config(function ($routeProvider) {
