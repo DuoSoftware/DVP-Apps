@@ -77,20 +77,16 @@ app.controller('FileEditController', ['$scope', '$filter', 'FileUploader', 'clus
 app.controller("FileListController", function ($scope, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, clusterService) {
 
 
-  this.tableParams = new NgTableParams({group: 'Category'}, {
+  this.tableParams = new NgTableParams({group: 'FileCategory.Category'}, {
     getData: function (params) {
 
 
       return clusterService.GetFiles().then(function (response) {
 
         // Filtering
-        var orderedData = params.filter() ?
-          $filter('filter')(response, params.filter()) :
-          response;
+        var orderedData = params.filter() ?  $filter('filter')(response, params.filter()) :  response;
         // Sorting
-        orderedData = params.sorting() ?
-          $filter('orderBy')(orderedData, params.orderBy()) :
-          orderedData;
+        orderedData = params.sorting() ?   $filter('orderBy')(orderedData, params.orderBy()) :     orderedData;
         //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
 
 
@@ -166,3 +162,4 @@ app.controller("FileListController", function ($scope, $route, $routeParams, $md
   $scope.GetToken();
 
 });
+

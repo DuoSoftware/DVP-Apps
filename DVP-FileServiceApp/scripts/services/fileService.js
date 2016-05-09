@@ -11,7 +11,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
   var downloadFile = function (id, fileName) {
 
     $http({
-      url: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
+      url: "http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
       method: "get",
       //data: json, //this is your json data string
       headers: {
@@ -43,7 +43,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
   var getFiles = function () {
     return $http({
       method: 'get',
-      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
+      url: 'http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/Files',
       headers: {
         'authorization': AuthService.Token
       }
@@ -55,7 +55,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
   var deleteFile = function (file) {
     return $http({
       method: 'delete',
-      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
+      url: 'http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
       headers: {'authorization': AuthService.Token}
     }).then(function (response) {
       return response.data.IsSuccess;
@@ -75,7 +75,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
      });
      */
 
-    return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
+    return $http.get('http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/FileCategories',
       {
         headers: {'authorization':  AuthService.Token}
       }
@@ -92,9 +92,9 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
     GetFiles: getFiles,
     DeleteFile: deleteFile,
     GetCatagories: getCatagories,
-    UploadUrl: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Upload",
+    UploadUrl: "http://192.168.0.88:8888/DVP/API/1.0.0.0/FileService/File/Upload",
     File: {},
-    Headers: {}
+    Headers: {'Authorization':  AuthService.Token}
   }
 
 });
