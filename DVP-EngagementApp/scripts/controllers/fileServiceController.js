@@ -1,33 +1,55 @@
 var app = angular.module("EngagementApp");
 
 app.run(function (socketAuth) {
-  socketAuth.getAuthenticatedAsPromise();
+  try{
+    socketAuth.getAuthenticatedAsPromise();
+  }
+  catch(ex){
+    console.error("getAuthenticatedAsPromise");
+  }
 });
 
-app.controller('FileEditController', function ($scope, $filter, $mdDialog, $location, Notification, engagementService, socket) {
+app.controller('FileEditController', function ($scope, $filter, $mdDialog, $location, Notification, engagementService, socket,onlineStatus) {
 
-  $scope.$on('profile-updated', function(event, profileObj) {
-    // profileObj contains; name, country and email from emitted event
-    $scope.showAlert("Save Engagement", "Successfully Saved");
-  });
 
-  console.info("FileEditController" + socket.message);
-  $scope.engagement = {};
-  $scope.engagement.engagementType = "Engagement";
-  if (socket.message) {
-    $scope.engagement.engagementId = socket.message[1];
-    $scope.engagement.data = {};
-    $scope.engagement.data.contactId = socket.message[5];
-    $scope.engagement.data.comments = socket.message[6];
-    $scope.engagement.data.CompanyNo = socket.message[3];
-  }
+
+  var engagement = engagementService.Engagement;
+  engagement.engagementType = "Engagement";
+
+
+  $scope.engagements = [];
+  $scope.engagements.push(engagement);
+
+  $scope.setCallback = function(){
+    socket.callBackMe(function(message){
+      if (message) {
+        var eng = {};
+        eng.engagementType = "Engagement";
+        eng.engagementId = message[1];
+        eng.data = {};
+        eng.data.engagee = message[5];
+        eng.data.comments = message[6];
+        eng.data.CompanyNo = message[3];
+        $scope.engagements.push(eng);
+        console.info("FileEditController : " + socket.message);
+      }
+
+    });
+  };
+  $scope.setCallback();
+
+
 
   $scope.saveEngagement = function (engagement) {
 
     engagementService.SaveEngagement(engagement).then(function (response) {
       if (response) {
-        $scope.showAlert("Save Engagement", "Successfully Saved");
-        $location.path('/engagement/list');
+        var index = $scope.engagements.indexOf(engagement);
+        $scope.engagements.splice(index, 1);
+
+        $scope.showAlert("Save Engagement", "Engagement "+engagement.engagementId+" Successfully Saved");
+        if($scope.engagements.length==0)
+          $location.path('/engagement/list');
       }
       else
         $scope.showAlert("Save Engagement", "Fail to Save.");
@@ -39,7 +61,7 @@ app.controller('FileEditController', function ($scope, $filter, $mdDialog, $loca
     });
   };
 
-  $scope.showAlert = function (title, textContent, ev) {
+  $scope.showAlert = function (title, textContent) {
     // Appending dialog to document.body to cover sidenav in docs app
     // Modal dialogs should fully cover application
     // to prevent interaction outside of dialog
@@ -55,11 +77,28 @@ app.controller('FileEditController', function ($scope, $filter, $mdDialog, $loca
   };
 });
 
-app.controller("FileListController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService) {
+app.controller("FileListController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService,socket,onlineStatus) {
+
 
   $scope.engagements = {};
   $scope.engagementsHistory = {};
   $scope.items = {};
+
+  $scope.setCallback = function(){
+    socket.callBackMe(function(message){
+      var engagement = {};
+      engagement.engagementId = message[1];
+      engagement.data = {};
+      engagement.data.engagee = message[5];
+      engagement.data.comments = message[6];
+      engagement.data.CompanyNo = message[3];
+      engagementService.Engagement = engagement;
+      $location.path('/engagement/create');
+    });
+  };
+  $scope.setCallback();
+
+
 
   $scope.LoadEngagementHistory = function (engagement) {
     engagementService.Engagement = engagement;
@@ -75,7 +114,6 @@ app.controller("FileListController", function ($scope, $mdDialog, $mdMedia, $rou
 
     });
   };
-
 
   $scope.loadEngagements = function () {
 
@@ -137,7 +175,7 @@ app.controller("FileListController", function ($scope, $mdDialog, $mdMedia, $rou
 
 });
 
-app.controller("FileHistoryController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService) {
+app.controller("FileHistoryController", function ($scope, $mdDialog, $mdMedia, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, engagementService,onlineStatus) {
 
 
   $scope.engagement = engagementService.Engagement;
