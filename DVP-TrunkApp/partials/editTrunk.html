@@ -79,8 +79,8 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm="20">
               <md-input-container>
-                <label>Clude</label>
-                <md-select ng-model="editTrunkObj.LoadBalancerId" id="singleSelect" name="lb" ng-change="activatLBButton(newTrunk)" ng-model-options="{trackBy: '$value'}"  >
+                <label>Cloude</label>
+                <md-select ng-model="editTrunkObj.LoadBalancer.Cloud.id" id="singleSelect" name="lb" ng-change="activatLBButton(newTrunk)" ng-model-options="{trackBy: '$value'}"  >
                   <md-option ng-repeat="cloude in editCloude" value="{{cloude.id}}">
                     {{cloude.Name}}
                   </md-option>

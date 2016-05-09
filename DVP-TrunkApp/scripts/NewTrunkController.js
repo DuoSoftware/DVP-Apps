@@ -52,7 +52,7 @@
       if(response)
       {
         $scope.isDisabled = false;
-        commoncontroller.showAlert("Sucess.....", "New Profile Created Sucessfully.....");
+        commoncontroller.showAlert("Sucess.....", "New Trunk Created Sucessfully.....");
         console.log("Updated......................"+response );
         $scope.newTunkId = response;
        // backendcontroller.newTunkId = $scope.newTunkId;
@@ -65,7 +65,7 @@
       }
       else
       {
-        commoncontroller.showAlert("Error..","Can't Create New Profile.....");
+        commoncontroller.showAlert("Error..","Can't Create New Trunk.....");
         console.log("ERRRORRR");
         // alert(response.Message);
       }
@@ -202,7 +202,7 @@
 
       console.log("setNumberTranslation");
       var transId = $scope.newTrunk.translation;
-      backendcontroller.setNumberTranslationOnTrunk($scope.newTunkId,transId).then(onSetNumberTranslationOnTrunkResult,onSetNumberTranslationrOnTrunkError);
+      backendcontroller.setNumberTranslationOnTrunk($scope.newTunkId,transId).then(onSetNumberTranslationOnTrunkResult,onSetNumberTranslationOnTrunkError);
       //onSetNumberTranslationrOnTrunkError();
       //onSetNumberTranslationOnTrunkResult();
     }

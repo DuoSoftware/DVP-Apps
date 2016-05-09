@@ -134,7 +134,15 @@
     var onError = function(reason)
     {
       $scope.error=reason;
-      commoncontroller.showAlert("Error",reason);
+      if(reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
+
       //$mdDialog.hide();
       console.log(reason);
     }
@@ -195,8 +203,16 @@
     var onError = function (reason)
     {
       $scope.isDisabled = false;
-      $scope.error = reason;
-      commoncontroller.showAlert("ERROR",reason);
+      //$scope.error = reason;
+      if(reason.data.message)
+      {
+        commoncontroller.showAlert("ERROR",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("ERROR",reason);
+      }
+
       console.log(reason);
     }
 

@@ -62,8 +62,16 @@
     var onError = function(reason)
     {
       $scope.isDisabled = false;
-      $scope.error=reason;
-      commoncontroller.showAlert("ERROR",reason);
+      //$scope.error=reason;
+      if(reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
+
     }
 
     var onAttributeDeleteComplete = function (response) {
@@ -93,24 +101,24 @@
     }
 
     $scope.loadAttc=function(){
-   if(dbcontroller.GIDst )
-   {
-     console.log("GID is in");
-     console.log("GID "+dbcontroller.GID);
-     console.log("GID status "+dbcontroller.GIDst);
-     dbcontroller.GIDst=false;
-     dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onGrpAttribComplete,onError);
-     $scope.gTopic="Attributes assigned to Group "+dbcontroller.GID;
-   }
-   else
-   {
-     $scope.gTopic="Attribute Viewer";
-     console.log("NO GID");
-     console.log("GID "+dbcontroller.GID);
-     console.log("GID status "+dbcontroller.GIDst);
-     dbcontroller.getAttributeList().then(onAttribComplete,onError);
-   }
- };
+      if(dbcontroller.GIDst )
+      {
+        console.log("GID is in");
+        console.log("GID "+dbcontroller.GID);
+        console.log("GID status "+dbcontroller.GIDst);
+        dbcontroller.GIDst=false;
+        dbcontroller.GetAttributesOfGroup(dbcontroller.GID).then(onGrpAttribComplete,onError);
+        $scope.gTopic="Attributes assigned to Group "+dbcontroller.GID;
+      }
+      else
+      {
+        $scope.gTopic="Attribute Viewer";
+        console.log("NO GID");
+        console.log("GID "+dbcontroller.GID);
+        console.log("GID status "+dbcontroller.GIDst);
+        dbcontroller.getAttributeList().then(onAttribComplete,onError);
+      }
+    };
 
 
 

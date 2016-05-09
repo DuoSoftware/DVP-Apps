@@ -165,7 +165,15 @@
     var onError = function (reason)
     {
       $scope.isDisabled = false;
-      $scope.error = reason;
+      //$scope.error = reason;
+      if (reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
       console.log(reason);
     }
 

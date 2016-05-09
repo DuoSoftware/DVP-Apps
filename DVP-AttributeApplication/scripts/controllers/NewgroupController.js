@@ -16,7 +16,14 @@
       $scope.isDisabled = false;
       $scope.error=reason;
       console.log(reason);
-      commoncontroller.showAlert("ERROR",reason);
+      if (reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
 
 
     }

@@ -70,12 +70,13 @@
 
     var onNewNumberResult=function(response){
 
-      console.log("onNewTrunkResult--NewTrunkController   "+ JSON.stringify(response));
-      if(response)
+      console.log("onNewNumberResult--NewNumberController   "+ JSON.stringify(response));
+      if(JSON.stringify(response) != '{}' )
       {
+
         //updateNumTrueDissable
         $scope.isDisabled = false;
-        commoncontroller.showAlert("Sucess.....", "New Profile Created Sucessfully.....");
+        commoncontroller.showAlert("Sucess.....", "New Number Created Sucessfully.....");
         console.log("Updated......................"+response );
         $scope.newTunkId = response;
         // backendcontroller.newTunkId = $scope.newTunkId;
@@ -86,7 +87,7 @@
       }
       else
       {
-        commoncontroller.showAlert("Error..","Can't Create New Profile.....");
+        commoncontroller.showAlert("Error..","Can't Create New Number.....");
         console.log("ERRRORRR");
         // alert(response.Message);
       }

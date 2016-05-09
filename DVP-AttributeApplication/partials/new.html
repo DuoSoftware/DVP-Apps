@@ -23,7 +23,7 @@
         <div flex="5" hide-xs hide-sm>
           <!-- Spacer //-->
         </div>
-
+<!--
         <md-input-container class="md-block" flex-gt-sm>
           <label style="color: blue" >Attribute Class</label>
           <input type="text"  name = "AttClass" ng-model="newAtrib.AttClass" required />
@@ -32,21 +32,23 @@
 
 </span>
           </md-input-container>
+
       </div>
+      -->
+        <!--
+            <div layout-gt-sm="row">
 
-      <div layout-gt-sm="row">
+           <!--     <md-input-container class="md-block" flex-gt-sm>
+                <label style="color: blue" >Attribute Type</label>
+                <input type="text"  name = "AttType" ng-model="newAtrib.AttType"   required />
 
-        <md-input-container class="md-block" flex-gt-sm>
-          <label style="color: blue" >Attribute Type</label>
-          <input type="text"  name = "AttType" ng-model="newAtrib.AttType"   required />
+                <span style="color:red" ng-show="newAttribForm.AttType.$dirty && newAttribForm.AttType.$invalid">
 
-          <span style="color:red" ng-show="newAttribForm.AttType.$dirty && newAttribForm.AttType.$invalid">
-
-</span>
-        </md-input-container>
-          <div flex="5" hide-xs hide-sm>
-            <!-- Spacer //-->
-          </div>
+      </span>
+              </md-input-container>
+                <div flex="5" hide-xs hide-sm>
+                  <!-- Spacer //-->
+      <!--    </div>
 
           <md-input-container class="md-block" flex-gt-sm>
             <label style="color: blue" >Attribute Category</label>
@@ -59,9 +61,10 @@
           </md-input-container>
 
 
+
       </div>
 
-      <div layout-gt-sm="row">
+      <div layout-gt-sm="row">-->
         <md-input-container  class="md-block" flex-gt-sm>
           <label style="color: blue">OtherData</label>
           <input type="text" name="otherData" ng-model="newAtrib.OtherData" required/>
@@ -70,6 +73,8 @@
 
         </md-input-container>
       </div>
+    <!--    </div>-->
+
       <div >
         <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 70%">
           <div layout="row">
