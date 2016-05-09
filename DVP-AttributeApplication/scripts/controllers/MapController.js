@@ -69,8 +69,16 @@
     }
     var onError = function(reason)
     {
-      $scope.error=reason;
+      //$scope.error=reason;
       console.log(reason);
+      if (reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
     }
 
     dbcontroller.getAttributeList().then(onAttributeComplete,onError);

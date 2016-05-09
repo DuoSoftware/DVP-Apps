@@ -12,7 +12,14 @@
     {
       $scope.isDisabled = false;
       console.log("new saving error "+reason);
-      commoncontroller.showAlert("Error",reason);
+      if (reason.data.message)
+      {
+        commoncontroller.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commoncontroller.showAlert("Error",reason);
+      }
      // $location.path("/attribute");
     }
 
