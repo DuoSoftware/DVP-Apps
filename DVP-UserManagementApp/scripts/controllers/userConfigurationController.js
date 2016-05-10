@@ -7,7 +7,7 @@
 
   var UserConfigurationController = function ($scope, dvpHandler, sharedData, $location, $mdDialog, $mdToast)
   {
-    $scope.endUserList = [{id:9, Domain:"sssss"}];
+    //$scope.endUserList = [{id:9, Domain:"sssss"}];
 
     $scope.IsEdit = sharedData.User.IsEdit;
 
@@ -208,6 +208,46 @@
 
 
      });
+
+
+    dvpHandler.getDomains().then(function(data)
+    {
+      if(data.IsSuccess)
+      {
+        $scope.endUserList = data.Result;
+      }
+      else
+      {
+        var errMsg = data.CustomMessage;
+
+        if(data.Exception)
+        {
+          errMsg = 'Get context Error : ' + data.Exception.Message;
+        }
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(errMsg)
+            .position($scope.getToastPosition())
+            .hideDelay(5000)
+        );
+      }
+
+    }, function(err)
+    {
+      var errMsg = "Error occurred while getting end user list";
+      if(err.statusText)
+      {
+        errMsg = err.statusText;
+      }
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(errMsg)
+          .position($scope.getToastPosition())
+          .hideDelay(5000)
+      );
+
+
+    });
 
     if(sharedData.User.IsEdit)
     {

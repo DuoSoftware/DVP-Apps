@@ -36,8 +36,6 @@
       })
     };
 
-
-
     var getPABXUserTemplates = function(userUuid)
     {
       return $http({
@@ -305,6 +303,7 @@
       saveForwardingConfig: saveForwardingConfig,
       deleteForwarding: deleteForwarding,
       getSchedules: getSchedules
+
     };
   };
 

@@ -9,7 +9,7 @@ service.factory("campaign", function($http){
 
   var createCampaign = function(campaign){
 
-<<<<<<< HEAD
+    /*<<<<<<< HEAD*/
     return $http({
       method: 'POST',
       url: "http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaign",
@@ -188,7 +188,7 @@ service.factory("campaign", function($http){
 
   var getCampaigns = function(){
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     return $http({
       method: 'GET',
       url: "http://campaignmanager.104.131.67.21.xip.io/DVP/API/1.0.0.0/CampaignManager/Campaigns/0",
