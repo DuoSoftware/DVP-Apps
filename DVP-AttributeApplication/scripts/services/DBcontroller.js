@@ -10,14 +10,14 @@
 
   var dbcontroller = function ($http,$mdDialog,$mdMedia) {
 
-    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiMjViZjZmZTItZjZjNC00ZWJhLWFmODgtNmMxNjIxOTU4OGRiIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTI0NDE2NzIsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYwNDM4MDcyfQ.aPoVPiTtoGFgnKmhdLBTzwTrQRTGWWliYujHP5NONqU';
+    var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiYjExYzg3YjktMzYyNS00ZWE0LWFlZWMtYzE0NGEwNjZlM2I5Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTM2NTQyNzEsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYxNjUwNjcxfQ.j4zqaDSeuYIw5fy8AkiBTglyLpjV-Cucmlp1qdq9CfA';
 
     var getAttributeList = function () {
 
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attributes",
         headers: {
           'authorization':authToken
         }
@@ -34,7 +34,7 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+Attribute.AttributeId,
         headers: {
           'authorization':authToken
         }
@@ -52,7 +52,7 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute/"+edtObj.AttributeId,
         headers: {
           'authorization':authToken
         },
@@ -70,7 +70,7 @@
 
       return $http({
         method: 'POST',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Attribute",
         headers: {
           'authorization': authToken
         },
@@ -86,7 +86,7 @@
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Groups",
         headers: {
           'authorization': authToken
         }
@@ -101,7 +101,7 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/" + edtObj.GroupId,
         headers: {
           'authorization': authToken
         },
@@ -117,7 +117,7 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+group.GroupId,
         headers: {
           'authorization': authToken
         }
@@ -135,7 +135,7 @@
 
       return $http({
         method: 'POST',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group",
         headers: {
           'authorization': authToken
         },
@@ -158,7 +158,7 @@
 
       return $http({
         method: 'PUT',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GID+"/Attribute",
         headers: {
           'authorization': authToken
         },
@@ -178,7 +178,7 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+groupId+"/Attribute/"+attributeId,
         headers: {
           'authorization': authToken
         }
@@ -194,7 +194,7 @@
 
       return $http({
         method: 'GET',
-        url: "http://resourceservice.45.55.189.191.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
+        url: "http://resourceservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/ResourceManager/Group/"+GrpID+"/Attribute/Details",
         headers: {
           'authorization': authToken
         }

@@ -12,7 +12,7 @@
             <input ng-model="newTrunk.TrunkCode" required  placeholder="" md-maxlength="30" required name="TrunkCode">
             <div ng-messages="NewTrunkForm.TrunkCode.$error">
               <div ng-message="required">This is required.</div>
-              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+              <div ng-message="md-maxlength">The Trunk Code has to be less than 30 characters long.</div>
             </div>
           </md-input-container>
 
@@ -24,7 +24,7 @@
             <input ng-model="newTrunk.TrunkName" required  placeholder="" md-maxlength="30" required name="TrunkName">
             <div ng-messages="NewTrunkForm.TrunkName.$error">
               <div ng-message="required">This is required.</div>
-              <div ng-message="md-maxlength">The Profile Name has to be less than 30 characters long.</div>
+              <div ng-message="md-maxlength">The Trunk Name has to be less than 30 characters long.</div>
             </div>
           </md-input-container>
         </div>
@@ -68,7 +68,7 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm="35">
               <md-input-container>
-                <label>Clude</label>
+                <label>Cloude</label>
                 <md-select ng-model="newTrunk.cloude" id="singleSelect" name="lb" ng-change="activatLBButton(newTrunk)" ng-model-options="{trackBy: '$value'}"  >
                   <md-option ng-repeat="cloude in CloudeObj" value="{{cloude.id}}">
                     {{cloude.Name}}

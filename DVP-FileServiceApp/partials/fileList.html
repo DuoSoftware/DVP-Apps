@@ -24,21 +24,28 @@
                 <a href="" ng-click="group.$hideRows = !group.$hideRows">
                   <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
                   <strong>{{ group.value }}</strong>
+
                 </a>
               </td>
             </tr>
             <tr ng-hide="group.$hideRows" ng-repeat="file in group.data" ng-repeat-end>
-              <td  data-title="'Category'" groupable="'Category'" ng-if="false">
-                {{file.Category}}
+              <td sortable="'FileCategory.Category'" filter="{Category: 'text'}" data-title="'Category'" groupable="'FileCategory.Category'" >
+                {{file.FileCategory.Category}}
               </td>
-              <td sortable="'Filename'" filter="{Filename: 'text'}" data-title="'Filename'" >
+              <td sortable="'Filename'" filter="{Filename: 'text'}" data-title="'Filename'" groupable="'Filename'">
                 {{file.Filename}}
               </td>
-              <td sortable="'Version'" data-title="'Version'" >
+              <td sortable="'Version'" data-title="'Version'" groupable="'Version'">
                 {{file.Version}}
               </td>
               <td sortable="'UniqueId'" data-title="'UniqueId'">
                 {{file.UniqueId}}
+              </td>
+              <td sortable="'DisplayName'" data-title="'DisplayName'">
+                {{file.DisplayName}}
+              </td>
+              <td sortable="'createdAt'" data-title="'createdAt'">
+                {{file.createdAt}}
               </td>
               <td>
                 <md-button class="md-icon-button" ng-disabled="false" aria-label="delete"

@@ -6,6 +6,7 @@ var socketConnectorAuth = angular.module("socketConnectorAuthModule",[]);
 
 socketConnectorAuth.factory('socketAuth', function(socket, $q) {
         return {
+
             getAuthenticatedAsPromise:function(){
 
                 var listenForAuthentication = function(){

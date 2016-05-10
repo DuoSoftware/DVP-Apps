@@ -19,6 +19,7 @@
     var onLoadData = function(data)
     {
       $scope.editTrunkObj = data.Result;
+      console.log("++++____++++"+JSON.stringify($scope.editTrunkObj));
     }
     var onLoadError = function (data)
     {
@@ -144,6 +145,7 @@
 
     var onGetCloudeNameResult=function(response){
       console.log("onGetCloudeNameResult"+ JSON.stringify(response));
+      console.log("onGetCloudeNameResult++++++++++++++++++++++++++++++++++++++++++");
       $scope.editCloude =response;
       $scope.editTrunk.exProfile=response.Name;
 
@@ -157,7 +159,7 @@
     }
 
     var onGetNumberTranslationNameResult=function(response){
-      console.log("onGetCloudeNameResult"+ JSON.stringify(response));
+      console.log("onGetNumberTranslationNameResult "+ JSON.stringify(response));
       $scope.editTranslation =response;
       $scope.editTrunk.exProfile=response.Name;
 

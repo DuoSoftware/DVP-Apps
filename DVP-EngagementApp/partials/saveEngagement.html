@@ -11,21 +11,83 @@
             </md-card-avatar>
             <md-card-header-text>
               <span class="md-headline">Engagement</span>
-              <span class="md-subhead">Add New</span>
             </md-card-header-text>
           </md-card-header>
-          <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+          <md-card-content>
 
+          <md-tabs md-border-bottom md-autoselect >
+            <md-tab ng-repeat="engagement in engagements" label="{{engagement.data.engagee}}" style="height: 100%">
+              <md-tab-body>
 
-          <div ng-include="'partials/Engagement.html'"></div>
+                <div layout-gt-xs="row">
+                  <md-input-container class="md-block" flex-gt-xs>
+                    <label>Engagement ID</label>
+                    <md-icon md-svg-src="../img/ic_vpn_key_24px.svg" class="name"></md-icon>
+                    <input required name="engagementId" ng-model="engagement.engagementId">
+
+                    <div ng-messages="addEngagementForm.engagementId.$error">
+                      <div ng-message="required">Session ID is required.</div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container class="md-block">
+                    <label>Engagement Type</label>
+                    <md-icon md-svg-src="../img/ic_stars_24px.svg" class="name"></md-icon>
+                    <input required readonly name="engagementType" ng-model="engagement.engagementType">
+
+                    <div ng-messages="addEngagementForm.engagementType.$error">
+                      <div ng-message="required">Engagement Type is required.</div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                    <label>Company No</label>
+                    <md-icon md-svg-src="../img/smartphone-2.svg" class="CompanyNo"></md-icon>
+                    <input ng-model="engagement.data.CompanyNo"/>
+                  </md-input-container>
+                  <div flex="5" hide-xs hide-sm>
+                    <!-- Spacer //-->
+                  </div>
+                  <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                    <label>Contact ID</label>
+                    <md-icon md-svg-src="../img/smartphone-2.svg" class="name"></md-icon>
+                    <input ng-model="engagement.data.contactId"/>
+                  </md-input-container>
+                  <div flex="5" hide-xs hide-sm>
+                    <!-- Spacer //-->
+                  </div>
+                  <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                    <label>Engagee</label>
+                    <md-icon md-svg-src="../img/stickman142.svg" class="name"></md-icon>
+                    <input ng-model="engagement.data.engagee"/>
+                  </md-input-container>
+
+                </div>
+
+                <md-input-container class="md-icon-float md-block">
+                  <label>Comments</label>
+                  <md-icon md-svg-src="../img/edit26.svg" class="name"></md-icon>
+                  <textarea ng-model="engagement.data.comments" columns="1" md-maxlength="500" rows="5"></textarea>
+                </md-input-container>
+
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button class="md-icon-button" ng-disabled="addEngagementForm.$invalid" aria-label="Add"
+                             ng-click="saveEngagement(engagement)">
+                    <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
+                  </md-button>
+                </md-card-actions>
+
+              </md-tab-body>
+            </md-tab>
+          </md-tabs>
+
+          </md-card-content>
 
           <md-card-actions layout="row" layout-align="end center">
             <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" href="#/file/list">
               <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" ng-disabled="addEngagementForm.$invalid" aria-label="Add"
-                       ng-click="saveEngagement(engagement)">
-              <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
             </md-button>
           </md-card-actions>
         </md-card>
