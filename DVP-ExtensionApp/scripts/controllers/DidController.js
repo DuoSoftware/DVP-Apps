@@ -144,8 +144,12 @@ function DialogBoxDidController($scope, sipUser, $mdDialog) {
     if(data.IsSuccess){
       sipUser.updateDidWithExtension("1#1",$scope.didNumber.DidNumber,$scope.didNumber.Extension).then(onAssignExtComplete,function(){onError("edit DID")});
     }else{
-      $scope.error = data.Exception;
-      $scope.answer(false,"Error","OK", "Add DID Failed.");
+      if(data.Exception != null){
+        $scope.error = data.Exception.Message;
+      }else{
+        $scope.error = data.CustomMessage
+      }
+      $scope.answer(false,"Error","OK", $scope.error);
     }
   };
   var onError = function(reason){
@@ -165,7 +169,7 @@ function DialogBoxDidController($scope, sipUser, $mdDialog) {
   $scope.addDidNumber = function(didInfo){
     $scope.didNumber = didInfo;
     if($scope.didNumber.DidActive == null){
-      $scope.didNumber.DidActive = false;
+      $scope.didNumber.DidActive = true;
     }
     sipUser.addDidNumber("1#1",$scope.didNumber).then(onAddDidComplete,function(){onError("add the DID")});
   };
