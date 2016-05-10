@@ -101,21 +101,21 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
 
 
 /*
-fileModule.factory('fileFactory', ['$http', '$window',
-  function ($http, $window) {
-    return {
-      downloadFile: function (id, fileName) {
-        return $http(
-          {
-            method: "GET",
-            data: fileId,
-            url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName,
-            cache: false
-          }).success(function (response) {
-            var url = '/api/File/' + response.downloadId;
-            $window.location = url;
-          });
-      }
-    };
-  }]);
-*/
+ fileModule.factory('fileFactory', ['$http', '$window',
+ function ($http, $window) {
+ return {
+ downloadFile: function (id, fileName) {
+ return $http(
+ {
+ method: "GET",
+ data: fileId,
+ url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName,
+ cache: false
+ }).success(function (response) {
+ var url = '/api/File/' + response.downloadId;
+ $window.location = url;
+ });
+ }
+ };
+ }]);
+ */

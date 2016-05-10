@@ -28,8 +28,9 @@
                 </a>
               </td>
             </tr>
+
             <tr ng-hide="group.$hideRows" ng-repeat="file in group.data" ng-repeat-end>
-              <td sortable="'FileCategory.Category'" filter="{Category: 'text'}" data-title="'Category'" groupable="'FileCategory.Category'" >
+              <td sortable="'FileCategory.Category'" filter="{FileCategory.Category: 'text'}" data-title="'Category'" groupable="'FileCategory.Category'" ng-if="false" >
                 {{file.FileCategory.Category}}
               </td>
               <td sortable="'Filename'" filter="{Filename: 'text'}" data-title="'Filename'" groupable="'Filename'">
@@ -38,9 +39,7 @@
               <td sortable="'Version'" data-title="'Version'" groupable="'Version'">
                 {{file.Version}}
               </td>
-              <td sortable="'UniqueId'" data-title="'UniqueId'">
-                {{file.UniqueId}}
-              </td>
+
               <td sortable="'DisplayName'" data-title="'DisplayName'">
                 {{file.DisplayName}}
               </td>

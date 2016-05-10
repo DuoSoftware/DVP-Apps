@@ -1,4 +1,6 @@
-var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate", "clusterServiceModule"]);
+var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages","ngAnimate", "clusterServiceModule","authServiceModule"]);
+
+app.constant('baseUrl', 'http://localhost:3636/DVP/API/1.0/CloudConfiguration/');
 
 app.config(function ($routeProvider) {
 
