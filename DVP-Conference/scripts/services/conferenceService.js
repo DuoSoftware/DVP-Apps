@@ -216,9 +216,11 @@ taskModule.factory("conference", function($http){
 
   var addUserToConference = function(conferenceName,user){
 
+
+    ///DVP/API/'+version+'/ConferenceConfiguration/ConferenceUser/:UserId/AddToRoom/:RoomName
     return $http({
       method: 'POST',
-      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/"+conferenceName+"/user",
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceUser/"+user.id+"/AddToRoom"+conferenceName,
       headers: {
         'authorization': authToken
       },
