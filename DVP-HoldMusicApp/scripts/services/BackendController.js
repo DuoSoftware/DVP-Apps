@@ -23,6 +23,18 @@
         });
     };
 
+    var getMusicFileList = function () {
+      console.log("BACKENDCONTROLLER-getMusicFileList");
+      return $http.get("http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files/infoByCategory/HOLDMUSIC",{
+        headers:{authorization:authToken}
+      })
+        // return $http.get("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profiles")
+        .then(function (response) {
+          console.log("BACKENDCONTROLLER2  -"+ JSON.stringify(response));
+          return response.data;
+        });
+    };
+
 
     var deleteMusicProfile = function (name) {
 
@@ -57,10 +69,20 @@
       console.log(Attribute.Name);
       console.log(Attribute);
       // return $http.put("http://192.168.0.88:8013/DVP/API/6.0/APPRegistry/Application/"+Attribute.id,Attribute)
-      return $http.put("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile/"+Attribute.Name,{
+     /* return $http.put("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile/"+Attribute.Name,{
         headers:{authorization:authToken}
-      },Attribute)
+      },Attribute)*/
         //QueueMusic/Profile/
+      return $http(
+        {
+          method: 'POST',
+          url:"http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile/"+Attribute.Name,
+          headers:{
+            'authorization':authToken
+          },
+          data:Attribute
+        })
+
         .then(function (response) {
 
           if(response.data && response.data.IsSuccess) {
@@ -84,9 +106,18 @@
       console.log("createNewMusicProfile");
       console.log("AAAAAAAAAAAA---"+JSON.stringify(NewAppDataObj));
 
-      return $http.post("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile",{
+    /*  return $http.post("http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile",{
         headers:{authorization:authToken}
-      },NewAppDataObj)
+      },NewAppDataObj)*/
+      return $http(
+        {
+          method: 'POST',
+          url:"http://queuemusic.104.131.67.21.xip.io/DVP/API/1.0.0.0/QueueMusic/Profile",
+          headers:{
+            'authorization':authToken
+          },
+          data:NewAppDataObj
+        })
         .then(function (response) {
           if (response.data && response.data.IsSuccess) {
 
@@ -108,6 +139,7 @@
 
 
     return{
+      getMusicFileList:getMusicFileList,
       getHoldMusicList:getHoldMusicList,
       updateMusicProfile:updateMusicProfile,
       createNewMusicProfile:createNewMusicProfile,
