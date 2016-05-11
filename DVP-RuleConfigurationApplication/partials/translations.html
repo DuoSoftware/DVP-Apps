@@ -17,17 +17,18 @@
     </tr>
     </thead>
     <tbody md-body>
-    <tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj | limitTo: query.limit: (query.page - 1) * query.limit">
+    <!--<tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj | limitTo: query.limit: (query.page - 1) * query.limit">-->
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="translation in transObj">
       <td md-cell>{{translation.TransName}}</td>
       <td md-cell>{{translation.LAdd}}</td>
       <td md-cell>{{translation.LRemove}}</td>
       <td md-cell>{{translation.RAdd}}</td>
-     <!-- <td md-cell>{{translation.RRemove}}</td>-->
+      <!-- <td md-cell>{{translation.RRemove}}</td>-->
       <!--<td md-cell>{{translation.Replace}}</td>-->
       <td md-cell>
         <div>
 
-         <md-button class="md-icon-button" class="md-raised md-warn" ng-disabled="isDisabled" ng-click="deleteTranslation(translation)"><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
+          <md-button class="md-icon-button" class="md-raised md-warn" ng-disabled="isDisabled" ng-click="deleteTranslation(translation)"><md-icon md-svg-src="../img/ic_delete_24px.svg"></md-icon></md-button>
 
         </div>
 
@@ -45,5 +46,5 @@
   </table>
 
 </md-data-table-container>
-<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>
+<!--<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{total}}></md-table-pagination>-->
 

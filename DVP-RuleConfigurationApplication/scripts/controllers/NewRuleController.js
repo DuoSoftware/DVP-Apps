@@ -52,6 +52,7 @@
 
         //$scope.contextData=response.data.Result;
         //console.log("Gottah "+JSON.stringify(response));
+        alert("Sucessfully Created Rule");
         $location.path("/rules");
       }
     }

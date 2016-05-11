@@ -162,27 +162,26 @@
       </div>
 
       <div  layout-gt-sm="row" class="animate-if" ng-hide="isInRule">
-
         <md-input-container  name= "TrunkIDCnt" class="md-block" flex-gt-sm>
           <label>Trunk Number</label>
-          <md-select ng-model="editObj.TrunkNumber" name = "TrunkId" >
-            <md-option ng-repeat="trunk in trunkObj" value="{{trunk.TrunkNumber}}" ng-model-options="{trackBy: '$value'}"  required>
-              {{trunk.TrunkNumber}}
+          <md-select ng-model="editObj.TrunkNumber" name = "TrunkNumber" ng-change="AttachTrunk()" >
+            <md-option ng-repeat="trunk in trunkObj" value="{{trunk.PhoneNumber}}" ng-model-options="{trackBy: '$value'}"  required>
+              {{trunk.PhoneNumber}}
             </md-option>
           </md-select>
         </md-input-container>
 
+      </div>
+
+
+      <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 75%">
+        <div>
+          <md-button class="md-icon-button" class="md-raised md-primary" ng-click="updateRule(editObj)" ng-disabled="isDisabled || newEditForm.$invalid "><md-icon md-svg-src="../img/ic_save_24px.svg"></md-button>
+          <md-button class="md-icon-button"  class="md-raised md-primary" href="#/rules"ng-click="HideView()" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-button>
         </div>
 
 
-        <md-input-container style="background-color: lightgrey ;padding: 0% 0% 0% 75%">
-          <div>
-            <md-button class="md-icon-button" class="md-raised md-primary" ng-click="updateRule(editObj)" ng-disabled="isDisabled || newEditForm.$invalid "><md-icon md-svg-src="../img/ic_save_24px.svg"></md-button>
-            <md-button class="md-icon-button"  class="md-raised md-primary" href="#/rules"ng-click="HideView()" ng-disabled="isDisabled"><md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-button>
-          </div>
-
-
-        </md-input-container>
+      </md-input-container>
 
 
 
