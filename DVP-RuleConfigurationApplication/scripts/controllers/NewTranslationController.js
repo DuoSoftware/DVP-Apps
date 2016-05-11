@@ -18,7 +18,14 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      commonservice.showAlert("ERROR",reason);
+      if (reason.data.message)
+      {
+        commonservice.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commonservice.showAlert("Error",reason);
+      }
     };
 
     var onSaveComplete = function (response) {
