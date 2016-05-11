@@ -264,7 +264,7 @@ taskModule.factory("conference", function($http){
 
     return $http({
       method: 'GET',
-      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/ConferenceConfiguration/ConferenceRoom/" + name+"/users",
+      url: "http://conference.104.131.67.21.xip.io/DVP/API/1.0.0.0/Conference/" + name+"/users",
       headers: {
         'authorization': authToken
       }
