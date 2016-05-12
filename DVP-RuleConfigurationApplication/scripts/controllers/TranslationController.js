@@ -16,13 +16,13 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      if (reason.data.message)
+      if (reason.data)
       {
         commonservice.showAlert("Error",reason.data.message);
       }
       else
       {
-        commonservice.showAlert("Error",reason);
+        commonservice.showAlert("Error : ","Error in Connection");
       }
     };
     var onTransLoadComplete = function (response) {

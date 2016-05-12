@@ -23,13 +23,13 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      if (reason.data.message)
+      if (reason.data)
       {
         commonservice.showAlert("Error",reason.data.message);
       }
       else
       {
-        commonservice.showAlert("Error",reason);
+        commonservice.showAlert("Error : ","Connection failed");
       }
     };
 
@@ -59,7 +59,7 @@
 
         //$scope.contextData=response.data.Result;
         //console.log("Gottah "+JSON.stringify(response));
-        alert("Sucessfully Created Rule");
+        commonservice.showAlert("Success","New rule added Successfully");
         $location.path("/rules");
       }
     }
