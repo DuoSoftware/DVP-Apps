@@ -167,11 +167,24 @@
             });
         };
 */
-
+      var onResultComplete = function(data){
+        console.log("NewMusicProfile-OnResultComplete");
+        console.log(data);
+        $scope.musicFileList=data.Result;
+        console.log("onResultComplete   "+$scope.musicFileList);
+      }
 
       var onError=function(ex){
         console.log(ex);
       }
+
+      $scope.loadData = function(){
+        // onResultComplete();
+        backendcontroller.getMusicFileList().then(onResultComplete,onError);
+        // backendcontroller.getDeactiveAppList().then(onDeactiveAttribComplete,onError);
+      };
+
+      $scope.loadData();
 
     };
     app.controller("EditHoldMusicController",EditHoldMusicController);

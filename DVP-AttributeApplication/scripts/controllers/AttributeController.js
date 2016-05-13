@@ -63,7 +63,7 @@
     {
       $scope.isDisabled = false;
       //$scope.error=reason;
-      if(reason.data.message)
+      if(reason.data)
       {
         commoncontroller.showAlert("Error",reason.data.message);
       }

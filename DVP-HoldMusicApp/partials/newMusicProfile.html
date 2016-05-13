@@ -31,7 +31,7 @@
         </div>
 
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
+          <md-input-container class="md-block" flex-gt-sm="60">
             <label>Class</label>
             <input ng-model="newMusicProfile.Class" placeholder="" name="Class">
           </md-input-container>
@@ -40,26 +40,62 @@
             <!-- Spacer //-->
           </div>
 
-          <md-input-container class="md-block" flex-gt-sm>
+         <!-- <md-input-container class="md-block" flex-gt-sm>
             <label>Hold Music</label>
             <input ng-model="newMusicProfile.MOH" placeholder="" name="MOH">
+          </md-input-container>-->
+          <md-input-container class="md-block" flex-gt-sm="60">
+            <md-input-container>
+              <label>Hold Music</label>
+              <md-select ng-model="newMusicProfile.MOH" id="singleSelect" name="MOH"  ng-model-options="{trackBy: '$value'}"  >
+                <md-option ng-repeat="musicFile in musicFileList" value="{{musicFile.Filename}}">
+                  {{musicFile.Filename}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <!--   <div ng-messages="NewTrunkForm.lb.$error">
+                 <div ng-message="required">Please Select a value.</div>
+               </div>-->
           </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
+       <!--   <md-input-container class="md-block" flex-gt-sm>
             <label>Announcement </label>
             <input ng-model="newMusicProfile.Announcement " placeholder="" name="Announcement">
+          </md-input-container> -->
+          <md-input-container class="md-block" flex-gt-sm="60">
+            <md-input-container>
+              <label>Announcement</label>
+              <md-select ng-model="newMusicProfile.Announcement" id="singleSelect" name="announcement"  ng-model-options="{trackBy: '$value'}"  >
+                <md-option ng-repeat="musicFile in musicFileList" value="{{musicFile.Filename}}">
+                  {{musicFile.Filename}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <!--   <div ng-messages="NewTrunkForm.lb.$error">
+                 <div ng-message="required">Please Select a value.</div>
+               </div>-->
           </md-input-container>
 
           <div flex="5" hide-xs hide-sm>
             <!-- Spacer //-->
           </div>
 
-          <md-input-container class="md-block" flex-gt-sm>
+          <!--<md-input-container class="md-block" flex-gt-sm>
             <label>FirstAnnounement </label>
             <input ng-model="newMusicProfile.FirstAnnounement " placeholder="" name="FirstAnnounement">
-          </md-input-container>
+          </md-input-container>-->
+          <md-input-container class="md-block" flex-gt-sm="60">
+            <md-input-container>
+              <label>First Announcement</label>
+              <md-select ng-model="newMusicProfile.FirstAnnounement" id="singleSelect" name="FirstAnnounement"  ng-model-options="{trackBy: '$value'}"  >
+                <md-option ng-repeat="musicFile in musicFileList" value="{{musicFile.Filename}}">
+                  {{musicFile.Filename}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
         </div>
 
         <div layout-gt-sm="row">
@@ -102,10 +138,10 @@
           <md-input-container class="md-block" flex-gt-sm style="padding: 5% 0% 5% 70%" layout="row">
 
             <md-button class="md-icon-button" ng-disabled="false" aria-label="Back" ng-click="CancelEdit()">
-              <md-icon md-svg-src="../HoldMusicApp/img/ic_arrow_back_24px.svg"></md-icon>
+              <md-icon md-svg-src="../img/ic_arrow_back_24px.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button" ng-disabled="HoldMusicForm.$invalid" aria-label="Add" ng-click="CreateNewMusicProfile()">
-              <md-icon md-svg-src="../HoldMusicApp/img/ic_save_24px.svg"></md-icon>
+              <md-icon md-svg-src="../img/ic_save_24px.svg"></md-icon>
             </md-button>
 
           </md-input-container>

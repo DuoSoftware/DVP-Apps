@@ -13,7 +13,7 @@ taskModule.factory("sipuser", function($http){
 
     return $http({
       method: 'GET',
-      url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/ExtensionsByCategory/Conference",
+      url: "http://sipuserendpointservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/SipUser/ExtensionsByCategory/CONFERENCE",
       headers: {
         'authorization': authToken
       }

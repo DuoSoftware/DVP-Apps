@@ -17,7 +17,14 @@
     {
       $scope.isDisabled = false;
       $scope.error=reason;
-      commonservice.showAlert("ERROR",reason);
+      if (reason.data)
+      {
+        commonservice.showAlert("Error",reason.data.message);
+      }
+      else
+      {
+        commonservice.showAlert("Error : ","Connection Failed");
+      }
     };
 
 
@@ -89,7 +96,6 @@
       }
       else {
 
-
         //commonservice.showAlert("Rule "+$scope.editObj.id +" assigned to Application "+$scope.editObj.AppId,[])
 
       }
@@ -117,7 +123,7 @@
       if(response.data.Exception)
       {
         $scope.isScheduleDisabled=true;
-       // onError(response.data.Exception.Message);
+        // onError(response.data.Exception.Message);
       }
       else {
 
@@ -143,7 +149,24 @@
 
       }
 
-    }
+    };
+
+    var onTrunkComplete = function (response) {
+
+      if(response.data.Exception)
+      {
+        onError(response.data.Exception.Message);
+      }
+      else
+      {
+
+        $scope.isDisabled=false;
+        $scope.trunkObj=response.data.Result;
+
+      }
+
+    };
+
 
     $scope.loadRule = function () {
 
@@ -239,6 +262,26 @@
       $location.path("/rules");
     };
 
+    $scope.loadTrunkNumbers = function () {
+
+      dbservice.loadTrunks().then(onTrunkComplete,onError);
+    };
+
+    $scope.AttachTrunk= function () {
+      console.log("HITTT");
+
+      console.log("Rule ID "+$scope.editObj.id);
+      console.log("APP ID "+$scope.editObj.TrunkNumber);
+      if($scope.editObj.id && $scope.editObj.TrunkNumber && !$scope.editObj.id==""&& !$scope.editObj.TrunkNumber=="")
+      {
+        dbservice.attchTrunkWithRule($scope.editObj.id,$scope.editObj.TrunkNumber).then(onAttachCompleted,onError);
+      }
+      else
+      {
+        onError("Invalid Rule or Application ID");
+      }
+
+    };
 
 
 
@@ -247,6 +290,7 @@
     $scope.loadApplications();
     $scope.loadTranslations();
     $scope.loadSchedules();
+    $scope.loadTrunkNumbers();
 
   };
 

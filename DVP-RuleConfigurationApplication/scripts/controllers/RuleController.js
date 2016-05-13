@@ -20,8 +20,17 @@
     var onError = function(reason)
     {
       $scope.isDisabled = false;
-      $scope.error=reason;
-      commonservice.showAlert("ERROR",reason);
+      //$scope.error=reason;
+      if(reason.data)
+      {
+        commonservice.showAlert("Error",reason.data);
+      }
+      else
+      {
+        commonservice.showAlert("Error : ","Connection Error ");
+      }
+
+
     };
     var onInLoadComplete = function (response) {
 
@@ -73,6 +82,7 @@
         }
         $scope.isDisabled = false;
         $scope.inRuleData.splice(val, 1);
+        $scope.inTotal = $scope.inRuleData.length;
 
       }
     };
@@ -98,6 +108,7 @@
         }
         $scope.isDisabled = false;
         $scope.outRuleData.splice(val, 1);
+        $scope.outTotal = $scope.outRuleData.length;
 
       }
     };

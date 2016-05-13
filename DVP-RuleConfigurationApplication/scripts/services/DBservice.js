@@ -111,20 +111,20 @@
 
 
     };
-var loadApps = function () {
+    var loadApps = function () {
 
-  return $http({
-    method: 'GET',
-    url: "http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications",
-    headers: {
-      'authorization': authToken
-    }
-  }).then(function(response)
-  {
-    return response;
-  });
+      return $http({
+        method: 'GET',
+        url: "http://appregistry.104.131.67.21.xip.io/DVP/API/1.0.0.0/APPRegistry/Applications",
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
 
-};
+    };
 
     var attchAppWithRule = function (rID,aID) {
 
@@ -175,6 +175,21 @@ var loadApps = function () {
       return $http({
         method: 'POST',
         url: "http://ruleservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/CallRuleApi/CallRule/"+rID+"/SetANITranslation/"+atID,
+        headers: {
+          'authorization': authToken
+        }
+      }).then(function(response)
+      {
+        return response;
+      });
+
+    };
+
+    var attchTrunkWithRule = function (rID,trunk) {
+
+      return $http({
+        method: 'POST',
+        url: "http://ruleservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/CallRuleApi/CallRule/"+rID+"/SetNumber/"+trunk,
         headers: {
           'authorization': authToken
         }
@@ -299,6 +314,7 @@ var loadApps = function () {
       attchScheduleToRule:attchScheduleToRule,
       attchDNISTransToRule:attchDNISTransToRule,
       attchANITransToRule:attchANITransToRule,
+      attchTrunkWithRule:attchTrunkWithRule,
       deleteRule:deleteRule,
       loadTranslations:loadTranslations,
       deleteTranslation:deleteTranslation,
