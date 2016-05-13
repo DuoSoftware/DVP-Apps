@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody md-body>
-    <tr md-row layout-align="center center" md-auto-select ng-repeat="application in appData | limitTo: inQuery.limit: (inQuery.page - 1) * inQuery.limit">
+    <tr md-row layout-align="center center" md-auto-select ng-repeat="application in appData ">
       <td md-cell style="text-align: justify"><h6>{{application.AppName}}</h6></td>
       <td md-cell style="text-align: center"><h6>{{application.MasterApplicationId}}</h6></td>
       <td md-cell style="text-align: justify"><h6>{{application.ObjType}}</h6></td>
@@ -36,7 +36,7 @@
 
 </md-data-table-container>
 
-<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{inTotal}}></md-table-pagination>
+<!--<md-table-pagination md-limit="query.limit" md-page="query.page" md-total={{inTotal}}></md-table-pagination>-->
 <br>
 <br>
 
