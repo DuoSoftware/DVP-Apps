@@ -1,9 +1,35 @@
-<div >
+
+<section class="video" ng-video ng-model="interface" ng-show="showPlayer"  ng-controller="VideoController"  >
+  <section class="video" ng-video  style="cursor: pointer">
+    <video vi-screen autoplay="autoplay"></video>
+    <img src="../img/close_24.svg" ng-click="closePlayer(file)" style="cursor: pointer" />
+  </section>
+</section>
+
+<article class="style1" ng-repeat="file in files" >
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+  <a >
+    <h6>{{file.Filename| limitTo:12}}</h6>
+    <div class="content">
+      <p>{{file.createdAt| date}}</p>
+
+      <img src="../img/ic_delete_24px.svg" ng-click="deleteFile(file)" style="cursor: pointer" />
+      <img src="../img/download_24.svg" ng-click="downloadFile(file)" style="cursor: pointer"/>
+      <img src="../img/play_24.svg" ng-click="playVideo(file)" style="cursor: pointer" ng-controller="VideoController" />
+
+
+    </div>
+  </a>
+</article>
+
+<!--<div >
   <md-card>
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline">File List</span>
-        <!--<span class="md-subhead">Select files</span>-->
+        &lt;!&ndash;<span class="md-subhead">Select files</span>&ndash;&gt;
       </md-card-title-text>
 
     </md-card-title>
@@ -67,4 +93,4 @@
 
     </md-card-actions>
   </md-card>
-</div>
+</div>-->

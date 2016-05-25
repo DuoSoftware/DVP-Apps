@@ -4,7 +4,7 @@
 
 var fileModule = angular.module("fileServiceModule", ["download"]);
 
-fileModule.factory("clusterService", function ($http, download,AuthService) {
+fileModule.factory("clusterService", function ($http, download,AuthService,baseUrl) {
 
 
 
@@ -63,17 +63,6 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
   };
 
   var getCatagories = function (token) {
-    /*
-     return $http({
-     method: 'get',
-     url: 'http://localhost:8888/DVP/API/6.0/FileService/File/Categories',
-     headers: {
-     'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJ1bmFAZHVvc29mdHdhcmUuY29tIiwianRpIjoiYWZmZWU2MjAtM2QxZS00YzY5LWI3ZGQtYjJhMGEzNzc1N2U2Iiwic3ViIjoiOTI0YWVhZDEtOTBkOC00MGE5LTg3M2QtNDc5YzE1ODllYjU1IiwiZXhwIjoxNDYwNTQxMjgyLCJ0ZW5hbnQiOiI1IiwiY29tcGFueSI6IjEwIiwic2NvcGUiOlt7InJlc291cmNlIjoiZmlsZXNlcnZpY2UiLCJhY3Rpb25zIjpbInJlYWQiLCJ3cml0ZSIsImRlbGV0ZSJdfV0sImlhdCI6MTQ1OTkzNjQ4Mn0.zGoXCyrxjXTPASYrrzB0Vifkpf4UqeIqkC67wAzsQ6Q'
-     }
-     }).then(function (response) {
-     return response.data.Result;
-     });
-     */
 
     return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
       {
@@ -99,23 +88,3 @@ fileModule.factory("clusterService", function ($http, download,AuthService) {
 
 });
 
-
-/*
- fileModule.factory('fileFactory', ['$http', '$window',
- function ($http, $window) {
- return {
- downloadFile: function (id, fileName) {
- return $http(
- {
- method: "GET",
- data: fileId,
- url: "http://localhost:8888/DVP/API/6.0/FileService/File/Download/" + id + "/" + fileName,
- cache: false
- }).success(function (response) {
- var url = '/api/File/' + response.downloadId;
- $window.location = url;
- });
- }
- };
- }]);
- */

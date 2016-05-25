@@ -1,61 +1,77 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html ng-app="FileManageApp">
+<head>
+  <title>File App</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head lang="en">
-  <title>File Uploader</title>
   <link rel="stylesheet" type="text/css" href="css/angular-material.css">
   <link rel="stylesheet" href="css/md-data-table.css" type="text/css"/>
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/clusterLayout.css" type="text/css"/>
-  <link rel="stylesheet" href="css/ng-table.min.css" type="text/css"/>
 
+
+  <link rel="stylesheet" href="assets/css/ngvideo.css"/>
+
+  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
+<body>
+<!-- Wrapper -->
+<div id="wrapper">
 
+  <!-- Header -->
+  <header id="header">
+    <div class="inner">
 
+      <!-- Nav -->
+      <nav>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+        </ul>
+      </nav>
 
-<body  layout="column">
-<md-toolbar flex="33">
-
-</md-toolbar>
-
-
-
-<div layout-align="center start" layout="row" >
-
-  <md-content class="md-whiteframe-z2 move-up" flex="80">
-
-    <div class="main-fab">
-      <md-button class="md-fab md-accent" href="#/file/create">+</md-button>
-      <md-tooltip>Upload File</md-tooltip>
     </div>
+  </header>
 
-    <md-card flex="auto" width="100%" class="custBackground1">
+  <!-- Menu -->
+  <nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="generic.html">Ipsum veroeros</a></li>
+      <li><a href="generic.html">Tempus etiam</a></li>
+      <li><a href="generic.html">Consequat dolor</a></li>
+      <li><a href="elements.html">Elements</a></li>
+    </ul>
+  </nav>
 
-      <md-toolbar layout="column" class="md-tall">
-        <span flex="flex"></span>
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+      <header>
+        <h1>FIle Manager<br /></h1>
 
-        <div class="md-toolbar-tools">
-          <div layout="row" flex="flex" class="fill-height">
-            <section style="width: 100% " layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-              <md-button style="width: 25%"  class="md-raised md-primary" href="#/file/list">Files</md-button>
-            </section>
-          </div>
-        </div>
+      </header>
 
-      </md-toolbar>
 
-      <md-card-content ng-view>
-      </md-card-content>
-    </md-card>
 
-  </md-content>
+      <section class="tiles" ng-view>
+
+      </section>
+    </div>
+  </div>
+
 </div>
 
-
-
-
-
+<!-- Scripts -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
@@ -66,6 +82,9 @@
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
 <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
 <script src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<!-- ngVideo! -->
+<script src="../bower_components/ngvideo/dist/ng-video.js"></script>
+
 <script src="scripts/ng-table.min.js"></script>
 
 
@@ -81,14 +100,19 @@
 <script src="scripts/console-sham.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 
-
-
-
 <!--<script src="../bower_components/angular/angular.min.js"></script>-->
 <script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
 <script src="../bower_components/angular-download/angular-download.js"></script>
-
 <script src="../bower_components/angular-file-saver/dist/angular-file-saver.js"></script>
+
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
 
 </body>
 </html>
