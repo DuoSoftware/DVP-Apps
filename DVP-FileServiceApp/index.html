@@ -1,118 +1,137 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html ng-app="FileManageApp">
+<!DOCTYPE html>
+<html lang="en" ng-app="FileManageApp">
+
 <head>
-  <title>File App</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="css/angular-material.css">
-  <link rel="stylesheet" href="css/md-data-table.css" type="text/css"/>
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <title>Media Gallery</title>
 
+  <!-- Bootstrap -->
+  <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Dropzone.js -->
+  <link href="vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/ngvideo.css"/>
-
-  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-  <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+  <!-- Custom styling plus plugins -->
+  <link href="build/css/custom.min.css" rel="stylesheet">
 </head>
-<body>
-<!-- Wrapper -->
-<div id="wrapper">
 
-  <!-- Header -->
-  <header id="header">
-    <div class="inner">
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
 
-      <!-- Nav -->
-      <nav>
-        <ul>
-          <li><a href="#menu">Menu</a></li>
-        </ul>
-      </nav>
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="#/file/list" class="site_title"><i class="fa fa-paw"></i> <span>Media Gallery</span></a>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
 
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="#/file/list">Gallery</a></li>
+                  <li><a href="#/file/create">Upload</a></li>
+                  <li><a href="index3.html">Dashboard3</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="form.html">General Form</a></li>
+                  <li><a href="form_advanced.html">Advanced Components</a></li>
+                  <li><a href="form_validation.html">Form Validation</a></li>
+                  <li><a href="form_wizards.html">Form Wizard</a></li>
+                  <li><a href="form_upload.html">Form Upload</a></li>
+                  <li><a href="form_buttons.html">Form Buttons</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+        <!-- /sidebar menu -->
+      </div>
     </div>
-  </header>
-
-  <!-- Menu -->
-  <nav id="menu">
-    <h2>Menu</h2>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="generic.html">Ipsum veroeros</a></li>
-      <li><a href="generic.html">Tempus etiam</a></li>
-      <li><a href="generic.html">Consequat dolor</a></li>
-      <li><a href="elements.html">Elements</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main -->
-  <div id="main">
-    <div class="inner">
-      <header>
-        <h1>FIle Manager<br /></h1>
-
-      </header>
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav class="" role="navigation">
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
 
 
-
-      <section class="tiles" ng-view>
-
-      </section>
+        </nav>
+      </div>
     </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+
+      <div class="clearfix"></div>
+
+
+      <div class="row" ng-view>
+        </div>
+
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        Facetone <a href="http://Facetone.com">Facetone</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
   </div>
-
 </div>
 
-<!-- Scripts -->
+
+<!-- angular -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../bower_components/angular-aria/angular-aria.js"></script>
-<script src="../bower_components/angular-material/angular-material.js"></script>
 <script src="../bower_components/angular-route/angular-route.js"></script>
 <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
-<script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
-<script src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-<!-- ngVideo! -->
-<script src="../bower_components/ngvideo/dist/ng-video.js"></script>
 
-<script src="scripts/ng-table.min.js"></script>
-
-
-
+<!-- File App -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/chipController.js"></script>
 <script src="scripts/controllers/fileServiceController.js"></script>
 <script src="scripts/services/fileService.js"></script>
 <script src="scripts/services/authService.js"></script>
 <script src="scripts/directives/taskDirective.js"></script>
-
-
-<script src="scripts/console-sham.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
-
-<!--<script src="../bower_components/angular/angular.min.js"></script>-->
 <script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
 <script src="../bower_components/angular-download/angular-download.js"></script>
 <script src="../bower_components/angular-file-saver/dist/angular-file-saver.js"></script>
 
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
-
-
+<!-- jQuery -->
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="vendors/nprogress/nprogress.js"></script>
+<!-- Dropzone.js -->
+<script src="vendors/dropzone/dist/min/dropzone.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="build/js/custom.min.js"></script>
 </body>
 </html>

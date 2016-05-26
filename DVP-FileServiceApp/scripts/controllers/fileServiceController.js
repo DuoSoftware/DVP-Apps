@@ -74,8 +74,7 @@ app.controller('FileEditController', ['$scope', '$filter', 'FileUploader', 'clus
 
 }]);
 
-app.controller("FileListController", function ($scope, $route, $routeParams, $mdDialog, $mdMedia, $location, $log, $filter, $http, NgTableParams, clusterService) {
-
+app.controller("FileListController", function ($scope, $route, $routeParams,$location, $log, $filter, $http, clusterService) {
 
 
   $scope.files = [];
@@ -87,30 +86,6 @@ app.controller("FileListController", function ($scope, $route, $routeParams, $md
     });
   };
   $scope.loadFileList();
-  this.tableParams = new NgTableParams({group: 'FileCategory.Category'}, {
-    getData: function (params) {
-
-
-      return clusterService.GetFiles().then(function (response) {
-
-        // Filtering
-        var orderedData = params.filter() ? $filter('filter')(response, params.filter()) : response;
-        // Sorting
-        orderedData = params.sorting() ? $filter('orderBy')(orderedData, params.orderBy()) : orderedData;
-        //$defer.resolve(orderedData.slice((params.page() - 1) * params.count(),  params.page() * params.count()));
-
-        $scope.files = orderedData;
-        params.total(orderedData.length);
-        return orderedData;
-
-      }, function (err) {
-      });
-
-
-    }
-  });
-
-  $scope.tableParams = this.tableParams;
 
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
@@ -173,40 +148,23 @@ app.controller("FileListController", function ($scope, $route, $routeParams, $md
 
 });
 
+app.controller('SidebarController',function ($scope,sidebar) {
+    $scope.sidebar = sidebar;
+  }
+);
 
-app.controller('VideoController', ['$scope','$rootScope', 'video', function ($rootScope,$scope, video) {
+app.controller('VideoController',function ($sce,$scope) {
+    $scope.playVideo = function (file) {
+      $scope.sources = [
+        {src: $sce.trustAsResourceUrl("http://0.s3.envato.com/h264-video-previews/80fad324-9db4-11e3-bf3d-0050569255a8/490527.mp4"), type: "video/mp4"}
+      ];
+    };
 
-  $scope.safeApply = function(fn) {
-    var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
-      if(fn && (typeof(fn) === 'function')) {
-        fn();
-      }
-    } else {
-      this.$apply(fn);
-    }
-  };
-
-  $rootScope.showPlayer = true;
-  $scope.closePlayer = function () {
-    $scope.safeApply(function() {
-      $rootScope.showPlayer = false;
-    });
-
-  };
-
-  $scope.playVideo = function (file) {
-    $scope.safeApply(function() {
-      $rootScope.showPlayer = false;
-    });
-    video.addSource('mp4','http://www.w3schools.com/html/mov_bbb.mp4');
-    //video.addSource('file.FileStructure', "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + file.UniqueId + "/" + file.Filename);
-    //video.addSource('file.FileStructure', "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + file.UniqueId + "/" + file.Filename);
-    //http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName
-    //http://vjs.zencdn.net/v/oceans.mp4
-  };
-
-
-
-
-}]);
+    this.config = {
+      preload: "none",
+      sources: [
+        {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.mp4"), type: "video/mp4"}
+      ]
+    };
+  }
+);
