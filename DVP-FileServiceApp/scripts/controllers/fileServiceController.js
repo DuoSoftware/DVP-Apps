@@ -74,18 +74,32 @@ app.controller('FileEditController', ['$scope', '$filter', 'FileUploader', 'clus
 
 }]);
 
-app.controller("FileListController", function ($scope, $route, $routeParams,$location, $log, $filter, $http, clusterService) {
+app.controller("FileListController", function ($scope, $route, $routeParams,$location, $log, $filter, $http, clusterService,internalUrl) {
 
+  $scope.internalUrl=internalUrl;
+  $scope.isImage = function(source) {
+    Utils.isImage(source).then(function(result) {
+      $log.debug("isImage" + result);
+      return result;
+    });
+  };
 
   $scope.files = [];
   $scope.loadFileList = function () {
-    clusterService.GetFiles().then(function (response) {
+    clusterService.GetFiles(1).then(function (response) {
       $scope.files = response;
 
     }, function (err) {
     });
   };
   $scope.loadFileList();
+
+  $scope.getFilesCategoryID = function (categoryId,pageNo) {
+    clusterService.GetFilesCategoryID(categoryId,pageNo).then(function (response) {
+      $scope.files = response;
+    }, function (err) {
+    });
+  };
 
   $scope.showConfirm = function (tittle, label, okbutton, cancelbutton, content, OkCallback, CancelCallBack, okObj) {
 
@@ -168,3 +182,15 @@ app.controller('VideoController',function ($sce,$scope) {
     };
   }
 );
+
+app.directive('onErrorSrc', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src != attrs.onErrorSrc) {
+          attrs.$set('src', attrs.onErrorSrc);
+        }
+      });
+    }
+  }
+});

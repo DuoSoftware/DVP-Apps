@@ -9,9 +9,8 @@ fileModule.factory("clusterService", function ($http, download,AuthService,baseU
 
 
   var downloadFile = function (id, fileName) {
-
     $http({
-      url: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Download/" + id + "/" + fileName,
+      url: baseUrl+ "File/Download/" + id + "/" + fileName,
       method: "get",
       //data: json, //this is your json data string
       headers: {
@@ -40,10 +39,22 @@ fileModule.factory("clusterService", function ($http, download,AuthService,baseU
 
   };
 
-  var getFiles = function () {
+  var getFiles = function (pageNo) {
     return $http({
       method: 'get',
-      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/Files',
+      url: baseUrl+ 'Files/20/'+pageNo,
+      headers: {
+        'authorization': AuthService.Token
+      }
+    }).then(function (response) {
+      return response.data.Result;
+    });
+  };
+
+  var getFilesCategoryID = function (categoryId,pageNo) {
+    return $http({
+      method: 'get',
+      url: baseUrl+ 'FilesInfo/Category/'+categoryId+'/50/'+pageNo,
       headers: {
         'authorization': AuthService.Token
       }
@@ -55,7 +66,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService,baseU
   var deleteFile = function (file) {
     return $http({
       method: 'delete',
-      url: 'http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/' + file.UniqueId,
+      url: baseUrl+'File/' + file.UniqueId,
       headers: {'authorization': AuthService.Token}
     }).then(function (response) {
       return response.data.IsSuccess;
@@ -64,7 +75,7 @@ fileModule.factory("clusterService", function ($http, download,AuthService,baseU
 
   var getCatagories = function (token) {
 
-    return $http.get('http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/FileCategories',
+    return $http.get(baseUrl+'FileCategories',
       {
         headers: {'authorization':  AuthService.Token}
       }
@@ -81,7 +92,8 @@ fileModule.factory("clusterService", function ($http, download,AuthService,baseU
     GetFiles: getFiles,
     DeleteFile: deleteFile,
     GetCatagories: getCatagories,
-    UploadUrl: "http://fileservice.104.131.67.21.xip.io/DVP/API/1.0.0.0/FileService/File/Upload",
+    GetFilesCategoryID:getFilesCategoryID,
+    UploadUrl: baseUrl+ "File/Upload",
     File: {},
     Headers: {'Authorization':  AuthService.Token}
   }
