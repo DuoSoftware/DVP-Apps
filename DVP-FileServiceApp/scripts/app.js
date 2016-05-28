@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
 
   })
     .when("/file/create", {
-      templateUrl: 'partials/FileAdd.html',
+      templateUrl: 'partials/fileAdd.html',
       controller: 'FileEditController'
 
     })
