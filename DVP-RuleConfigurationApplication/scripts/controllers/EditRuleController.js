@@ -145,7 +145,8 @@
       else {
 
 
-        commonservice.showAlert("Rule update successfully",[]);
+       commonservice.showAlert("Success","New rule updated Successfully");
+        $location.path("/rules");
 
       }
 
