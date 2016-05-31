@@ -52,7 +52,9 @@
 
       $mdDialog.show(confirm).then(function()
         {
-          dvpHandler.updateSipUserStatus(username, false)
+          var usrObj = {SipUsername: username, Enabled: false};
+
+          dvpHandler.updateUser(usrObj)
             .then(function(data)
             {
               if(data.IsSuccess)

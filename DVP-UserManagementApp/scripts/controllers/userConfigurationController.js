@@ -222,7 +222,7 @@
 
         if(data.Exception)
         {
-          errMsg = 'Get context Error : ' + data.Exception.Message;
+          errMsg = 'Get enduser Error : ' + data.Exception.Message;
         }
         $mdToast.show(
           $mdToast.simple()

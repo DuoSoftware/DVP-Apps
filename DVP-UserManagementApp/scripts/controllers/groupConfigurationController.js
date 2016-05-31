@@ -6,7 +6,7 @@
 
   var GroupConfigurationController = function ($scope, $location, $mdDialog, $mdToast, $filter, dvpHandler)
   {
-    $scope.endUserList = [{id:9, Domain:"45.55.205.92"}];
+    
     $scope.currentGroupUsers = [];
     $scope.searchText = null;
     $scope.selectedItem = null;
@@ -401,6 +401,45 @@
         );
       });
     };
+
+    dvpHandler.getDomains().then(function(data)
+    {
+      if(data.IsSuccess)
+      {
+        $scope.endUserList = data.Result;
+      }
+      else
+      {
+        var errMsg = data.CustomMessage;
+
+        if(data.Exception)
+        {
+          errMsg = 'Get enduser Error : ' + data.Exception.Message;
+        }
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(errMsg)
+            .position($scope.getToastPosition())
+            .hideDelay(5000)
+        );
+      }
+
+    }, function(err)
+    {
+      var errMsg = "Error occurred while getting end user list";
+      if(err.statusText)
+      {
+        errMsg = err.statusText;
+      }
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(errMsg)
+          .position($scope.getToastPosition())
+          .hideDelay(5000)
+      );
+
+
+    });
 
     $scope.reloadUserList();
     $scope.reloadGroupList();
