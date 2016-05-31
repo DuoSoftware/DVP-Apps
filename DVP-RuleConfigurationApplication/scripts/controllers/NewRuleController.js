@@ -85,7 +85,7 @@
     $scope.SaveRule = function () {
 
       $scope.isDisabled=true;
-      alert($scope.newObj.TrunkNumber);
+      //alert($scope.newObj.TrunkNumber);
       dbservice.addNewRule($scope.newObj,$routeParams.rType).then(onSaveComplete,onError);
 
     };
