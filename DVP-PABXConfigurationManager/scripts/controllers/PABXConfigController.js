@@ -49,7 +49,7 @@
     var onError = function(reason) {
       $scope.isDisabled = false;
       $scope.error=reason;
-      commonservice.showAlert("ERROR",reason);
+      commonservice.showAlert("ERROR","Error Occured");
     };
 
     var onMasterLoadCompleted = function (response) {

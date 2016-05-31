@@ -4,16 +4,16 @@
 
 var clusterModule = angular.module("clusterServiceModule", []);
 
-clusterModule.factory("clusterService", function ($http, $log) {
+clusterModule.factory("clusterService", function ($http, $log,authService,baseUrl) {
 
   //////////////////************** call server **************/////////////////
-  var authToken = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkaW51c2hhZGNrIiwianRpIjoiYjExYzg3YjktMzYyNS00ZWE0LWFlZWMtYzE0NGEwNjZlM2I5Iiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE4OTM2NTQyNzEsInRlbmFudCI6MSwiY29tcGFueSI6Mywic2NvcGUiOlt7InJlc291cmNlIjoiYWxsIiwiYWN0aW9ucyI6ImFsbCJ9XSwiaWF0IjoxNDYxNjUwNjcxfQ.j4zqaDSeuYIw5fy8AkiBTglyLpjV-Cucmlp1qdq9CfA';
+
 
   var getCallServer = function (id) {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer/" + id,
+    return $http.get(baseUrl+ "CallServer/" + id,
       {
-        headers:{authorization:authToken}
+        headers:{authorization:authService.Token}
       }).then(function (response) {
         if (response.data && response.data.IsSuccess) {
           return response.data.Result;
@@ -24,8 +24,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var getCallServers = function () {
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServers", {
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "CallServers", {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.Result;
@@ -37,8 +37,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
 
   var createCallServer = function (callServer) {
 
-    return $http.post( "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer", callServer, {
-      headers:{authorization:authToken}
+    return $http.post( baseUrl+ "CallServer", callServer, {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
 
       if (response.data && response.data.IsSuccess) {
@@ -53,9 +53,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var updateCallServer = function (callServer) {
     return $http({
       method: 'put',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer/' + callServer.id,
+      url: baseUrl+ "/CallServer/" + callServer.id,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: callServer
     }).then(function (response) {
@@ -68,8 +68,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var deleteCallServer = function (callServer) {
-    return $http.post("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer/" + callServer.id + "/Activate/false", {
-      headers:{authorization:authToken}
+    return $http.post(baseUrl+ "CallServer/" + callServer.id + "/Activate/false", {
+      headers:{authorization:authService.Token}
     }, callServer).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
@@ -82,8 +82,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   //////////////////************** Cluster Configurations **************/////////////////
 
   var assignCallServerToCluster = function (callServerId, cloudId) {
-    return $http.post("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CallServer/" + callServerId + "/AssignTo/" + cloudId, {
-      headers:{authorization:authToken}
+    return $http.post(baseUrl+ "CallServer/" + callServerId + "/AssignTo/" + cloudId, {
+      headers:{authorization:authService.Token}
     }, {}).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
@@ -94,8 +94,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var deleteCallServerFromCluster = function (cloudId, callServerId) {
-    return $http.delete("http://localhost:3636/DVP/API/:version/CloudConfiguration/CallServer/" + callServerId + "/AssignTo/" + cloudId, {
-      headers:{authorization:authToken}
+    return $http.delete(baseUrl+ "CallServer/" + callServerId + "/AssignTo/" + cloudId, {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
@@ -109,8 +109,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
 
   var getNetworks = function () {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Networks",{
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "Networks",{
+      headers:{authorization:authService.Token}
     }).then(function (response) {
 
       if (response.data && response.data.IsSuccess) {
@@ -128,8 +128,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var assignNetworkToCluster = function (networkId, cloudId) {
-    return $http.post("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Network/" + networkId + "/SetTelcoNetworkToCloud/" + cloudId, {
-      headers:{authorization:authToken}
+    return $http.post(baseUrl+ "Network/" + networkId + "/SetTelcoNetworkToCloud/" + cloudId, {
+      headers:{authorization:authService.Token}
     }, {}).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
@@ -140,8 +140,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   };
 
   var deleteNetworkFromCluster = function (cloudId, networkId) {
-    return $http.delete("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Network/" + networkId + "/SetTelcoNetworkToCloud/" + cloudId, {
-      headers:{authorization:authToken}
+    return $http.delete(baseUrl+ "Network/" + networkId + "/SetTelcoNetworkToCloud/" + cloudId, {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.IsSuccess;
@@ -155,8 +155,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
 
   var getProfile = function (profileId) {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile/" + profileId, {
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "Profile/" + profileId, {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
       if (response.data && response.data.IsSuccess) {
         return response.data.Result;
@@ -168,8 +168,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
 
   var getProfiles = function () {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profiles", {
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "Profiles", {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
 
       if (response.data && response.data.IsSuccess) {
@@ -189,9 +189,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var updateProfile = function (profile) {
     return $http({
       method: 'put',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile/' + profile.id,
+      url: baseUrl+ "Profile/" + profile.id,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: profile
     }).then(function (response) {
@@ -202,9 +202,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var createProfile = function (profile) {
     return $http({
       method: 'post',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile',
+      url: baseUrl+ "Profile",
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: profile
     }).then(function (response) {
@@ -215,9 +215,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var deleteProfile = function (profile) {
     return $http({
       method: 'delete',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile/' + profile.id,
+      url: baseUrl+ "Profile/" + profile.id,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       }
     }).then(function (response) {
       return response.data.IsSuccess;
@@ -227,9 +227,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var assignSipProfileToCallServer = function (profile) {
     return $http({
       method: 'post',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile/'+profile.id +'/SetProfileToCallServer/'+profile.CallServer,
+      url: baseUrl+ "Profile/"+profile.id +"/SetProfileToCallServer/"+profile.CallServer,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: profile
     }).then(function (response) {
@@ -240,9 +240,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var assignSipProfiletoEndUser = function (profile) {
     return $http({
       method: 'post',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/Profile/'+profile.id +'/SetProfileToEndUser/'+profile.EndUser,
+      url: baseUrl+ "Profile/"+profile.id +"/SetProfileToEndUser/"+profile.EndUser,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: profile
     }).then(function (response) {
@@ -254,9 +254,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var createIpAddress = function (profile) {
     return $http({
       method: 'post',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/IPAddress',
+      url: baseUrl+ "/IPAddress",
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       },
       data: profile
     }).then(function (response) {
@@ -266,8 +266,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
 
   var getIpAddresses = function () {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/IPAddresses", {
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "IPAddresses", {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
 
       if (response.data && response.data.IsSuccess) {
@@ -287,9 +287,9 @@ clusterModule.factory("clusterService", function ($http, $log) {
   var deleteIpAddresses = function (ip) {
     return $http({
       method: 'delete',
-      url: 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/IPAddress/' + ip.id,
+      url: baseUrl+ "IPAddress/" + ip.id,
       headers: {
-        'authorization': authToken
+        'authorization': authService.Token
       }
     }).then(function (response) {
       return response.data.IsSuccess;
@@ -299,8 +299,8 @@ clusterModule.factory("clusterService", function ($http, $log) {
   //////////////////************** End Users **************/////////////////
   var getEndUsers = function () {
 
-    return $http.get("http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUsers", {
-      headers:{authorization:authToken}
+    return $http.get(baseUrl+ "CloudEndUsers", {
+      headers:{authorization:authService.Token}
     }).then(function (response) {
 
       if (response.data && response.data.IsSuccess) {
@@ -317,10 +317,30 @@ clusterModule.factory("clusterService", function ($http, $log) {
     });
   };
 
+  var getEndUser = function (endUserId) {
+
+    return $http.get(baseUrl+ "CloudEndUser/"+endUserId, {
+      headers:{authorization:authService.Token}
+    }).then(function (response) {
+
+      if (response.data && response.data.IsSuccess) {
+
+        return response.data.Result;
+
+
+      } else {
+
+        return {};
+      }
+
+
+    });
+  };
 
   return {
 
     GetEndUsers:getEndUsers,
+    GetEndUser:getEndUser,
     CreateIpAddress:createIpAddress,
     GetIpAddresses:getIpAddresses,
     DeleteIpAddresses:deleteIpAddresses,

@@ -33,6 +33,7 @@
       }
       else {
         console.log("Saved data "+JSON.stringify(response.data.Result));
+        commonservice.showAlert("Success", "Successfully Saved");
         $location.path("new/endusers");
       }
 

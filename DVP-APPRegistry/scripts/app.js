@@ -15,7 +15,7 @@
                 controller: "ViewController"
             })
             .when("/apps",{
-                templateUrl: "partials/apps.html",
+                templateUrl: "partials/allapps.html",
                 controller: "AppsController"
             })
             .when("/edit",{

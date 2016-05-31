@@ -44,7 +44,7 @@
 
       return $http({
         method: 'DELETE',
-        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/1.0/CloudConfiguration/CloudEndUser/"+user,
+        url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser/"+user,
         headers: {
           'authorization': authToken
         }
@@ -78,7 +78,7 @@
     var newUser = function (user) {
 
       return $http({
-        method: 'PUT',
+        method: 'POST',
         url: "http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/CloudConfiguration/CloudEndUser",
         headers: {
           'authorization': authToken

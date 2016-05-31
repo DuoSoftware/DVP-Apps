@@ -1,5 +1,5 @@
-var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages", "clusterServiceModule","networkServiceModule"]);
-
+var app = angular.module("ClusterManageApp", ["ngMaterial", "md.data.table", "ngRoute", "ngMessages", "clusterServiceModule","networkServiceModule","authServiceModule"]);
+app.constant('baseUrl', 'http://clusterconfig.104.131.67.21.xip.io/DVP/API/1.0.0.0/');
 app.config(function ($routeProvider) {
 
   $routeProvider.when("/clusters/list", {

@@ -429,7 +429,14 @@ app.controller("ProfileEditController", function ($scope, $routeParams, $mdDialo
       clusterService.GetProfile($routeParams.id).then(function (response) {
         $scope.profile = response;
         clusterService.Profile = $scope.profile;
+        $scope.profile.CallServer = response.CallServerId;
 
+        /*if(response.CallServerId)
+          clusterService.GetCallServer(response.CallServerId).then(function(res){
+            $scope.profile.CallServer = res.id;
+          },function(err){
+            $scope.showAlert("Error", "Error", "ok", "There is an error ");
+          });*/
       }, function (error) {
         $scope.showAlert("Error", "Error", "ok", "There is an error ");
       });

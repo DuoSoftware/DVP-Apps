@@ -23,7 +23,7 @@
                 controller: "EditHoldMusicController"
             })
             .when("/new",{
-                templateUrl:"partials/newTrunk.html",
+                templateUrl:"partials/newMusicProfile.html",
             //templateUrl:"partials/test.html",
                 controller: "NewMusicProfileController"
             })

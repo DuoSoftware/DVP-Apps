@@ -17,7 +17,7 @@
     //$scope.sucess.state = "true";
     // $scope.testStatus = true;
     // $scope.testStatusErr = true;
-
+   // $scope.musicFileList=data.Result;
     $scope.newMusicProfile ={};
 
     $scope.CreateNewMusicProfile= function(){
@@ -141,13 +141,29 @@
       );
     };*/
 
+    var onResultComplete = function(data){
+      console.log("NewMusicProfile-OnResultComplete");
+      console.log(data);
+      $scope.musicFileList=data.Result;
+      console.log("onResultComplete   "+$scope.musicFileList);
+    }
 
-
+    var onError = function(reson){
+      console.log(reson);
+    }
 
 
 
     this.userState = '';
     this.states = ('HTTAPI SOCKET EXTENDED').split(' ').map(function (state) { return { abbrev: state }; });
+
+    $scope.loadData = function(){
+      // onResultComplete();
+      backendcontroller.getMusicFileList().then(onResultComplete,onError);
+      // backendcontroller.getDeactiveAppList().then(onDeactiveAttribComplete,onError);
+    };
+
+    $scope.loadData();
 
   };
   app.controller("NewMusicProfileController",NewMusicProfileController);
