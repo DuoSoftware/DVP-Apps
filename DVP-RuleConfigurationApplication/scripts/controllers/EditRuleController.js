@@ -138,8 +138,9 @@
       }
       else {
 
-
-        commonservice.showAlert("Rule update successfully",[]);
+alert("Rule update successfully");
+$location.path("/rules");
+        //commonservice.showAlert("Rule update successfully",[]);
 
       }
 
