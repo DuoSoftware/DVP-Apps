@@ -64,6 +64,7 @@
         }
         $scope.isDisabled = false;
         $scope.transObj.splice(val, 1);
+        $scope.total = $scope.transObj.length;
 
       }
     };
